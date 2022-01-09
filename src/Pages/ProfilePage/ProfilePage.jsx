@@ -1,7 +1,14 @@
 import React from "react";
+import { Info, Withdrawal, SignOut } from "./Components";
 
 const ProfilePage = () => {
-  return <div>ProfilePage</div>;
+  return (
+    <>
+      <Info />
+      <SignOut />
+      <Withdrawal />
+    </>
+  );
 };
 
 export default ProfilePage;
