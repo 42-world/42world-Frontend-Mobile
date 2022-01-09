@@ -11,6 +11,9 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<MainPage />} />
+        <Route path="/category/anony" element={<MainPage />} />
+        <Route path="/category/free" element={<MainPage />} />
+        <Route path="/" element={<MainPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/*" element={<ErrorPage />} />
       </Routes>
@@ -20,3 +23,9 @@ const App = () => {
 export default App;
 
 // http://skyrich3.synology.me:9930/
+
+// 42world.kr/
+//  42world.kr/board
+//    42world.kr/board/free
+//    42world.kr/board/anony
+//  42world.kr/profile
