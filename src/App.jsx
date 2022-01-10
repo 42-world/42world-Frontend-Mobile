@@ -15,7 +15,7 @@ const App = () => {
         <Route path="/category/free" element={<MainPage />} />
         <Route path="/" element={<MainPage />} />
         <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/*" element={<ErrorPage />} />
+        <Route path="/*" elesfment={<ErrorPage />} />
       </Routes>
     </Router>
   );

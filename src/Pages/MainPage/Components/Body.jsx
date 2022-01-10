@@ -14,8 +14,9 @@ const Body = () => {
     if (highlight !== clicked) setHighlight(clicked);
   };
 
-  const changeBoard = (dest) => {
-    navi(dest);
+  const moveArticles = (category, articleId) => {
+    console.log(category, articleId);
+    navi(`category/${category}/${articleId}`);
   };
   return (
     <>
@@ -36,8 +37,8 @@ const Body = () => {
         <Link to="/category/free">
           <div>자유게시판 -> </div>
         </Link>
-        {freeArticles.map((article) => {
-          return <div>{article}</div>;
+        {freeArticles.map((article, i) => {
+          return <div onClick={() => moveArticles("free", i)}>{article}</div>; // 해당 글의 id가 인자로 넘어가야함
         })}
       </div>
       <div>
@@ -45,8 +46,8 @@ const Body = () => {
           <div>익명게시판 -> </div>
         </Link>
 
-        {anonyArticles.map((article) => {
-          return <div>{article}</div>;
+        {anonyArticles.map((article, i) => {
+          return <div onClick={() => moveArticles("anony", i)}>{article}</div>;
         })}
       </div>
     </>

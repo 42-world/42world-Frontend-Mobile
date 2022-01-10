@@ -3,7 +3,7 @@ import { useSearchParams, useLocation } from "react-router-dom";
 import { Header, Body, MenuModal } from "./Components";
 import styled from "styled-components";
 
-const MainPage = () => {
+const MainPage = ({ match }) => {
   const [isModal, setIsModal] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const loca = useLocation();
