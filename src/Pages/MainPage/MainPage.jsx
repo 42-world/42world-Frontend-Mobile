@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { useSearchParams, useLocation } from "react-router-dom";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { Header, Body, MenuModal } from "./Components";
+import "./style.css";
 import styled from "styled-components";
 
-const MainPage = ({ match }) => {
+const MainPage = () => {
   const [isModal, setIsModal] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const loca = useLocation();
-
   const handleOpenMenu = () => {
     if (loca.search === "") {
       setSearchParams("mode=drawer");
@@ -22,11 +23,15 @@ const MainPage = ({ match }) => {
 
   return (
     <>
-      {loca.search && (
-        <>
-          <MenuModal handleOpenMenu={handleOpenMenu} />
-        </>
-      )}
+      <CSSTransition
+        in={isModal}
+        timeout={300}
+        classNames="alert"
+        unmountOnExit
+      >
+        <MenuModal handleOpenMenu={handleOpenMenu} />
+      </CSSTransition>
+
       <Header handleOpenMenu={handleOpenMenu} />
       <Body />
     </>

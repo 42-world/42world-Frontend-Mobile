@@ -1,6 +1,7 @@
 import * as React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { MainPage, ProfilePage } from "./Pages";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 const ErrorPage = () => {
   return <>Error!</>;
