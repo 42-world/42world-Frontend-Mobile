@@ -1,10 +1,10 @@
 const SignOut = () => {
-  const onClick = () => {
+  const onSignOut = () => {
     console.log("로그아웃 버튼 클릭");
   };
   return (
     <div>
-      <button onClick={onClick}>로그아웃</button>
+      <button onClick={onSignOut}>로그아웃</button>
     </div>
   );
 };

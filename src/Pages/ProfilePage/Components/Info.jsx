@@ -4,7 +4,6 @@ const Info = () => {
   const [character, setCharacter] = useState(0);
   const [inputs, setInputs] = useState({
     nickname: "",
-    email: "",
   });
 
   const onChange = (e) => {
@@ -15,14 +14,11 @@ const Info = () => {
     });
   };
 
-  const duplicateCheck = () => {
+  const onDuplicateCheck = () => {
     console.log(inputs.nickname, "으로 중복 확인");
   };
-  const authenticate = () => {
-    console.log(inputs.email, "로 인증 시도");
-  };
-  const saveInfo = () => {
-    console.log(character, inputs.nickname, inputs.email, "로 정보 변경");
+  const onSaveInfo = () => {
+    console.log(character, inputs.nickname, "로 정보 변경");
   };
   return (
     <>
@@ -39,14 +35,9 @@ const Info = () => {
       <div>
         <div>정보 변경</div>
         <input name="nickname" value={inputs.nickname} onChange={onChange} />
-        <button onClick={duplicateCheck}>중복확인</button>
+        <button onClick={onDuplicateCheck}>중복확인</button>
       </div>
-      <div>
-        <div>인증하기</div>
-        <input name="email" value={inputs.email} onChange={onChange} />
-        <button onClick={authenticate}>인증</button>
-      </div>
-      <button onClick={saveInfo}>저장하기</button>
+      <button onClick={onSaveInfo}>저장하기</button>
     </>
   );
 };
