@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 const Header = ({ handleOpenMenu }) => {
   const [search, setSearch] = useState("");
 
@@ -12,11 +13,9 @@ const Header = ({ handleOpenMenu }) => {
   };
   return (
     <>
-      <div>
-        <button onClick={handleOpenMenu}>메뉴</button>
-        <button>알림</button>
-        <button>마이페이지</button>
-      </div>
+      <button onClick={handleOpenMenu}>메뉴</button>
+      <button>알림</button>
+      <button>마이페이지</button>
       <div>
         <form onSubmit={handleSubmitSearch}>
           <input
