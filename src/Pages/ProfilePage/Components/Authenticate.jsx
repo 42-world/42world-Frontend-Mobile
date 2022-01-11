@@ -1,9 +1,14 @@
 import { useState } from "react";
 
 const Authenticate = () => {
+  const [isClick, setIsClick] = useState(false);
   const [input, setInput] = useState({
     email: "",
   });
+
+  const onClick = () => {
+    setIsClick(!isClick);
+  };
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -18,9 +23,15 @@ const Authenticate = () => {
   };
   return (
     <div>
-      <div>인증하기</div>
-      <input name="email" value={input.email} onChange={onChange} />
-      <button onClick={onAuthenticate}>인증</button>
+      <div onClick={onClick}>{"인증하기 >"}</div>
+      {isClick && (
+        <div>
+          <button onClick={onClick}>뒤로</button>
+          <input name="email" value={input.email} onChange={onChange} />
+          {"@student.42seoul.kr"}
+          <button onClick={onAuthenticate}>인증</button>
+        </div>
+      )}
     </div>
   );
 };
