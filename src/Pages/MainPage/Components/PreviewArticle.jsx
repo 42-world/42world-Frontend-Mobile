@@ -1,4 +1,4 @@
-const Article = ({ article, handleOnclick }) => {
+const PreviewArticle = ({ article, handleOnclick }) => {
   const tempNum = 5; //  좋아요, 댓글 수
   return (
     <div className="article" onClick={handleOnclick}>
@@ -11,4 +11,4 @@ const Article = ({ article, handleOnclick }) => {
   );
 };
 
-export default Article;
+export default PreviewArticle;

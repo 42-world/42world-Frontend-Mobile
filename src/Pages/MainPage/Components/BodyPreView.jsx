@@ -1,4 +1,4 @@
-import Article from "./Article";
+import PreviewArticle from "./PreviewArticle";
 
 const BodyPreView = ({
   handleToggle,
@@ -27,10 +27,10 @@ const BodyPreView = ({
       <div className="articles">
         {highlight === "recent"
           ? recentArticles.map((article, i) => {
-              return <Article article={article}  handleOnclick={() => moveArticles("temp", i)}/>;
+              return <PreviewArticle article={article}  handleOnclick={() => moveArticles("temp", i)}/>;
             })
           : famousArticles.map((article, i) => {
-              return <Article article={article}  handleOnclick={() => moveArticles("temp", i)}/>;
+              return <PreviewArticle article={article}  handleOnclick={() => moveArticles("temp", i)}/>;
             })}
       </div>
     </>

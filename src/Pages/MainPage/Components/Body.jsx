@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import BodyPreView from "./BodyPreView";
-import Article from "./Article";
+import PreviewArticle from "./PreviewArticle";
 
 const Body = () => {
   const [highlight, setHighlight] = useState("recent");
@@ -36,7 +36,7 @@ const Body = () => {
         </Link>
         {freeArticles.map((article, i) => {
           return (
-            <Article
+            <PreviewArticle
               article={article}
               handleOnclick={() => moveArticles("free", i)}
             />
@@ -50,7 +50,7 @@ const Body = () => {
 
         {anonyArticles.map((article, i) => {
           return (
-            <Article
+            <PreviewArticle
               article={article}
               handleOnclick={() => moveArticles("annoy", i)}
             />
