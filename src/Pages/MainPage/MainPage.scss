@@ -15,3 +15,17 @@
   transform: scale(0.9);
   transition: opacity 300ms, transform 300ms;
 }
+
+.mainpage-header {
+  background-color: rgba(42, 45, 56, 1);
+}
+.mainpage-body {
+  .preview {
+    display: flex;
+    flex-direction: row;
+    .highlight {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+  }
+}

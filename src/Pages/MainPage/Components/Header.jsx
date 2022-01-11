@@ -12,10 +12,12 @@ const Header = ({ handleOpenMenu }) => {
     setSearch(e.currentTarget.value);
   };
   return (
-    <>
-      <button onClick={handleOpenMenu}>메뉴</button>
-      <button>알림</button>
-      <button>마이페이지</button>
+    <div className="mainpage-header">
+      <img src="assets/menu.svg" onClick={handleOpenMenu} alt="menu" />
+      <img src="assets/headerLogo.svg" alt="header-logo" />
+      <img src="assets/alarmNo.svg" alt="alarm" />
+      <img src="assets/myPage.svg" alt="my-page" />
+
       <div>
         <form onSubmit={handleSubmitSearch}>
           <input
@@ -25,9 +27,10 @@ const Header = ({ handleOpenMenu }) => {
             className="search"
             value={search}
           />
+          <button onClick={handleSubmitSearch}>검색</button>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 export default Header;

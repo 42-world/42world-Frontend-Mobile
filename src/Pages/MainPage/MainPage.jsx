@@ -2,16 +2,7 @@ import { useState } from "react";
 import { useSearchParams, useLocation } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { Header, Body, MenuModal } from "./Components";
-import styled from "styled-components";
-import "./style.css";
-
-const cusBody = styled.div`
-  backgroud: red;
-`;
-
-const newBody = ({ children }) => {
-  return <cusBody>{children}</cusBody>;
-};
+import "./MainPage.scss";
 
 const MainPage = () => {
   const [isModal, setIsModal] = useState(false);
@@ -41,10 +32,7 @@ const MainPage = () => {
       </CSSTransition>
 
       <Header handleOpenMenu={handleOpenMenu} />
-      <cusBody>
-        <Body />
-      </cusBody>
-      <newBody children={Body} />
+      <Body />
     </>
   );
 };

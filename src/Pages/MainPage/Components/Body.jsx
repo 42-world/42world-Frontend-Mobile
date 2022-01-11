@@ -1,16 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import styled from "styled-components";
-
-const Menu = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-
-const initDiv = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
+import BodyPreView from "./BodyPreView";
+import Article from "./Article";
 
 const Body = () => {
   const [highlight, setHighlight] = useState("recent");
@@ -30,44 +21,43 @@ const Body = () => {
     navi(`category/${category}/${articleId}`);
   };
   return (
-    <>
-      <initDiv>
-        <div>
-          <Menu>
-            <div onClick={() => handleToggle("recent")}>최신글</div>
-            <div onClick={() => handleToggle("famous")}>인기글</div>
-          </Menu>
-          <div>
-            {highlight === "recent"
-              ? recentArticles.map((article) => {
-                  return <div>{article}</div>;
-                })
-              : famousArticles.map((article) => {
-                  return <div>{article}</div>;
-                })}
-          </div>
-        </div>
-        <div>
-          <Link to="/category/free">
-            <div>자유게시판 -> </div>
-          </Link>
-          {freeArticles.map((article, i) => {
-            return <div onClick={() => moveArticles("free", i)}>{article}</div>; // 해당 글의 id가 인자로 넘어가야함
-          })}
-        </div>
-        <div>
-          <Link to="/category/anony">
-            <div>익명게시판 -> </div>
-          </Link>
+    <div className="mainpage-body">
+      <BodyPreView
+        handleToggle={handleToggle}
+        highlight={highlight}
+        recentArticles={recentArticles}
+        famousArticles={famousArticles}
+        moveArticles={moveArticles}
+      />
 
-          {anonyArticles.map((article, i) => {
-            return (
-              <div onClick={() => moveArticles("anony", i)}>{article}</div>
-            );
-          })}
-        </div>
-      </initDiv>
-    </>
+      <div>
+        <Link to="/category/free">
+          <div>자유게시판 -> </div>
+        </Link>
+        {freeArticles.map((article, i) => {
+          return (
+            <Article
+              article={article}
+              handleOnclick={() => moveArticles("free", i)}
+            />
+          ); // 해당 글의 id가 인자로 넘어가야함
+        })}
+      </div>
+      <div>
+        <Link to="/category/anony">
+          <div>익명게시판 -> </div>
+        </Link>
+
+        {anonyArticles.map((article, i) => {
+          return (
+            <Article
+              article={article}
+              handleOnclick={() => moveArticles("annoy", i)}
+            />
+          );
+        })}
+      </div>
+    </div>
   );
 };
 
