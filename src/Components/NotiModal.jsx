@@ -1,4 +1,5 @@
 import Modal from "@mui/material/Modal";
+import globalStyled from "../Utils/global.styled";
 
 const NotiModal = ({ open, handleClose }) => {
   return (
@@ -8,7 +9,7 @@ const NotiModal = ({ open, handleClose }) => {
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <div>알림!!</div>
+      <globalStyled.CusBox>알림!!</globalStyled.CusBox>
     </Modal>
   );
 };
