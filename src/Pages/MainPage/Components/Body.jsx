@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import BodyPreView from "./BodyPreView";
+
 import { PreviewArticle } from "../../../Components";
+
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
@@ -22,11 +24,7 @@ const Body = () => {
 
   const moveArticles = (category, articleId) => {
     console.log(category, articleId);
-    navi(`category/${category}/${articleId}`);
-  };
-
-  const moveCategoty = (dst) => {
-    navi(dst);
+    navi(`/category/${category}/${articleId}`);
   };
 
   useEffect(() => {
@@ -55,7 +53,7 @@ const Body = () => {
           button
           divider
           className="article"
-          onClick={() => moveCategoty("/category/free")}
+          onClick={() => navi("/category/free")}
         >
           <ListItemText>
             자유게시판 -> {freeArticles.length}개의 글
@@ -76,7 +74,7 @@ const Body = () => {
           button
           divider
           className="article"
-          onClick={() => moveCategoty("/category/anony")}
+          onClick={() => navi("/category/anony")}
         >
           <ListItemText>
             익명게시판 -> {anonyArticles.length}개의 글

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import NotificationsIcon from "@mui/icons-material/Notifications";
@@ -9,11 +8,10 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 const SearchBar = () => {
   const [search, setSearch] = useState("");
   const navi = useNavigate();
-
   const handleSubmitSearch = (e) => {
     e.preventDefault();
     console.log(search); // 검색 창으로 이동해야 함.
-    navi(`/search?keyword=${search}`);
+    navi(`search?keyword=${search}`);
     setSearch("");
   };
   const handleChangeSearch = (e) => {
@@ -34,15 +32,18 @@ const SearchBar = () => {
   </div>;
 };
 
-const Header = ({ handleOpenMenu, isSearch }) => {
+const Header = ({ handleOpenMenu, handleOpenNoti, isSearch }) => {
   const navi = useNavigate();
-
   return (
     <div className="mainpage-header">
       <MenuIcon sx={{ color: "white" }} onClick={handleOpenMenu} />
       <SearchIcon sx={{ color: "white" }} onClick={() => navi("/search")} />
-      <img src="assets/headerLogo.svg" alt="header-logo" />
-      <NotificationsIcon sx={{ color: "white" }} />
+      <img
+        src="assets/headerLogo.svg"
+        alt="header-logo"
+        onClick={() => navi("/")}
+      />
+      <NotificationsIcon sx={{ color: "white" }} onClick={handleOpenNoti} />
       <AccountCircleIcon
         sx={{ color: "white" }}
         onClick={() => navi("/profile")}
