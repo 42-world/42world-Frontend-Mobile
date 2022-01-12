@@ -1,6 +1,6 @@
-import * as React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { MainPage, ProfilePage } from "./Pages";
+import * as React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { MainPage, ProfilePage } from './Pages';
 
 const ErrorPage = () => {
   return <>Error!</>;
