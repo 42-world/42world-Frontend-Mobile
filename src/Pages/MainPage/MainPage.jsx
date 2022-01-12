@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useSearchParams, useLocation } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { Header, Body, MenuModal } from "./Components";
-import "./MainPage.scss";
+
+import Styled from "./MainPage.styled";
 
 const MainPage = () => {
   const [isModal, setIsModal] = useState(false);
@@ -22,6 +23,7 @@ const MainPage = () => {
 
   return (
     <>
+      <Styled.MenuModal>
       <CSSTransition
         in={isModal}
         timeout={300}
@@ -30,9 +32,14 @@ const MainPage = () => {
       >
         <MenuModal handleOpenMenu={handleOpenMenu} />
       </CSSTransition>
-
+      </Styled.MenuModal>
+      
+      <Styled.MainHeader>
       <Header handleOpenMenu={handleOpenMenu} />
+      </Styled.MainHeader>
+      <Styled.MainBody>
       <Body />
+      </Styled.MainBody>
     </>
   );
 };

@@ -1,3 +1,6 @@
+import styled from "styled-components"
+
+const MenuModal = styled.div`
 .alert-enter {
   opacity: 0;
   transform: scale(0.9);
@@ -15,10 +18,11 @@
   transform: scale(0.9);
   transition: opacity 300ms, transform 300ms;
 }
-
-.mainpage-header {
+`
+const MainHeader = styled.div`
   background-color: rgba(42, 45, 56, 1);
-}
+`
+const MainBody = styled.div`
 .mainpage-body {
   .preview {
     display: flex;
@@ -29,3 +33,5 @@
     }
   }
 }
+`
+export default {MenuModal, MainHeader, MainBody};
