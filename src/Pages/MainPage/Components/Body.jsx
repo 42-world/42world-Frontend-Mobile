@@ -57,7 +57,9 @@ const Body = () => {
           className="article"
           onClick={() => moveCategoty("/category/free")}
         >
-          <ListItemText>자유게시판 -></ListItemText>
+          <ListItemText>
+            자유게시판 -> {freeArticles.length}개의 글
+          </ListItemText>
         </ListItem>
 
         {freeArticles.map(article => {
@@ -66,7 +68,7 @@ const Body = () => {
               article={article}
               handleOnclick={() => moveArticles("free", article.id)}
             />
-          ); // 해당 글의 id가 인자로 넘어가야함
+          );
         })}
       </List>
       <List component="nav" aria-label="mailbox folders">
@@ -76,7 +78,9 @@ const Body = () => {
           className="article"
           onClick={() => moveCategoty("/category/anony")}
         >
-          <ListItemText>자유게시판 -></ListItemText>
+          <ListItemText>
+            익명게시판 -> {anonyArticles.length}개의 글
+          </ListItemText>
         </ListItem>
 
         {anonyArticles.map(article => {

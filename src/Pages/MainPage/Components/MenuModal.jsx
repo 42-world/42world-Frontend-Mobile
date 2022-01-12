@@ -20,13 +20,3 @@ const MenuModal = ({ open, handleClose }) => {
 };
 
 export default MenuModal;
-
-// const Modal = styled.div`
-//   display: none;
-
-//   ${({ isModal }) => {
-//     if (isModal) return;
-//     // 모달 열기
-//     else return; // 모달 닫기
-//   }}
-// `;
