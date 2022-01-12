@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import React from "react";
 import {
   Header,
@@ -7,20 +8,55 @@ import {
   Authenticate,
   Articles,
 } from "./Components";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Styled from "./ProfilePage.styled";
+
+const theme = createTheme({
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          color: "#ffffff",
+        },
+      },
+    },
+    MuiButtonGroup: {
+      styleOverrides: {
+        root: {
+          borderColor: "#ffffff",
+        },
+      },
+    },
+    MuiDivider: {
+      styleOverrides: {
+        root: {
+          color: "#ffffff",
+        },
+      },
+    },
+  },
+});
 
 const ProfilePage = () => {
   return (
-    <>
-      {/* 각각이 다 모달로 뜨는 건가? */}
-      <Header />
-      <Info />
-      <Articles type="좋아요 누른 글" />
-      <Articles type="내가 쓴 글" />
-      <Articles type="내가 쓴 댓글" />
-      <Authenticate />
-      <SignOut />
-      <Withdrawal />
-    </>
+    <ThemeProvider theme={theme}>
+      <Styled.BackgroundDiv>
+        <Header />
+        <Styled.CustomedBox marginBottom="8px">
+          <Info />
+          <Articles />
+        </Styled.CustomedBox>
+        <Styled.CustomedBox marginBottom="8px">
+          <Authenticate />
+        </Styled.CustomedBox>
+        <Styled.CustomedBox>
+          <SignOut />
+        </Styled.CustomedBox>
+        <Styled.CustomedBox>
+          <Withdrawal />
+        </Styled.CustomedBox>
+      </Styled.BackgroundDiv>
+    </ThemeProvider>
   );
 };
 

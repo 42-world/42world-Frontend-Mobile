@@ -1,4 +1,7 @@
+import { ArrowForwardIos } from "@mui/icons-material";
+import { Dialog } from "@mui/material";
 import { useState } from "react";
+import CommonStyled from "../Common.styled";
 
 const Authenticate = () => {
   const [isClick, setIsClick] = useState(false);
@@ -22,17 +25,20 @@ const Authenticate = () => {
     console.log(input.email, "로 인증 시도");
   };
   return (
-    <div>
-      <div onClick={onClick}>{"인증하기 >"}</div>
-      {isClick && (
+    <>
+      <CommonStyled.CustomDiv onClick={onClick}>
+        <div>인증하기</div>
+        <ArrowForwardIos />
+      </CommonStyled.CustomDiv>
+      <Dialog open={isClick}>
         <div>
           <button onClick={onClick}>뒤로</button>
           <input name="email" value={input.email} onChange={onChange} />
           {"@student.42seoul.kr"}
           <button onClick={onAuthenticate}>인증</button>
         </div>
-      )}
-    </div>
+      </Dialog>
+    </>
   );
 };
 

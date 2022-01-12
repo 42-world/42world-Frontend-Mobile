@@ -1,28 +1,15 @@
-import { useState } from "react";
+import { Box } from "@mui/material";
+import Article from "./Article";
 
-const Articles = ({ type }) => {
-  const articles = ["글1", "글2", "글3"];
-  const [isClick, setIsClick] = useState(false);
-
-  const onClick = () => {
-    setIsClick(!isClick);
-  };
+const Articles = () => {
   return (
-    <div>
-      <button onClick={onClick}>{`${type} >`}</button>
-      {isClick && (
-        <>
-          <div>
-            <button onClick={onClick}>뒤로</button>
-          </div>
-          <div>
-            {articles.map((article, idx) => (
-              <div key={idx}>{article}</div>
-            ))}
-          </div>
-        </>
-      )}
-    </div>
+    <Box sx={{ display: "flex" }}>
+      <Article type="좋아요" />
+      <hr style={{ height: "36px" }} />
+      <Article type="내가 쓴 글" />
+      <hr style={{ height: "36px" }} />
+      <Article type="내 댓글" />
+    </Box>
   );
 };
 
