@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSearchParams, useLocation } from "react-router-dom";
-import { Header, Body, MenuModal } from "./Components";
+import { Body, MenuModal } from "./Components";
+import { Header } from "../../Components";
 
 import Styled from "./MainPage.styled";
 
@@ -27,7 +28,11 @@ const MainPage = () => {
   return (
     <>
       <Styled.MenuModal>
-        <MenuModal open={isModal} handleClose={handleOpenMenu} />
+        <MenuModal
+          open={isModal}
+          handleClose={handleOpenMenu}
+          isSearch={false}
+        />
       </Styled.MenuModal>
 
       <Styled.MainHeader>
