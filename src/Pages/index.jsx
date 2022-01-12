@@ -3,7 +3,7 @@ import ProfilePage from "./ProfilePage";
 import AuthPage from "./AuthPage";
 import LikedArticlePage from "./LikedArticlePage";
 import MyArticlePage from "./MyArticlePage";
-import SettingPage from "./Setting";
+import SettingPage from "./SettingPage";
 import MyCommentPage from "./MyComment";
 
 export {

@@ -1,14 +1,16 @@
 import { Box } from "@mui/material";
-import Article from "./Article";
+import LikedArticle from "./LikedArticle";
+import MyArticle from "./MyArticle";
+import MyComment from "./MyComment";
 
 const Articles = () => {
   return (
     <Box sx={{ display: "flex" }}>
-      <Article type="좋아요" />
+      <LikedArticle />
       <hr style={{ height: "36px" }} />
-      <Article type="내가 쓴 글" />
+      <MyArticle />
       <hr style={{ height: "36px" }} />
-      <Article type="내 댓글" />
+      <MyComment />
     </Box>
   );
 };
