@@ -35,7 +35,8 @@ const Body = () => {
     setFreeArticles(mockupData.fetchAllArticle());
     setAnonyArticles(mockupData.fetchAllArticle());
   }, []);
-
+  // https://mui.com/components/tabs/
+  // tab으로 토글 구현하면 됐었네!!!
   return (
     <div className="mainpage-body">
       <List component="nav" aria-label="mailbox folders">
