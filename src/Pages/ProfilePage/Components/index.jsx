@@ -1,4 +1,4 @@
-import Header from "./Header";
+import Header from "../../Components/ProfileHeader";
 import Info from "./Info";
 import Withdrawal from "./Widhdrawal";
 import SignOut from "./SignOut";

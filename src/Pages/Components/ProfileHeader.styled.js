@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
-const HFlexBox = styled.div`
+const ProfileHeaderDiv = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 `;
 
-const TitleDiv = styled.div`
+const ProfileHeaderTitleDiv = styled.div`
   font-family: Roboto;
   font-style: normal;
   font-weight: 900;
@@ -19,6 +19,6 @@ const TitleDiv = styled.div`
   margin: 16px;
 `;
 
-const Styled = { HFlexBox, TitleDiv };
+const Styled = { ProfileHeaderDiv, ProfileHeaderTitleDiv };
 
 export default Styled;

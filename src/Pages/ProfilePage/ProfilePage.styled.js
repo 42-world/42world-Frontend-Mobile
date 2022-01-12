@@ -12,10 +12,10 @@ const BackgroundDiv = styled.div`
   margin: 0px;
   padding: 0px;
   padding-top: 3vh;
-  height: 100vh;
+  height: 100%;
 `;
 
-const CustomedBox = muiStyled(Box)(({ props }) => ({
+const CustomBox = muiStyled(Box)(() => ({
   backgroundColor: "rgba(255, 255, 255, 0.2)",
   display: "flex",
   flexDirection: "column",
@@ -24,9 +24,8 @@ const CustomedBox = muiStyled(Box)(({ props }) => ({
   border: "0.5px solid #D8D8D8",
   borderLeft: "0px",
   borderRight: "0px",
-  //   marginBottom: "8px",
 }));
 
-const Styled = { BackgroundDiv, CustomedBox };
+const Styled = { BackgroundDiv, CustomBox };
 
 export default Styled;
