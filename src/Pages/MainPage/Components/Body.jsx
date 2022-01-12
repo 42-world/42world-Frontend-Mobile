@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import BodyPreView from "./BodyPreView";
 import PreviewArticle from "./PreviewArticle";
 import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
 
 const Body = () => {
   const [highlight, setHighlight] = useState("recent");
@@ -21,6 +23,11 @@ const Body = () => {
     console.log(category, articleId);
     navi(`category/${category}/${articleId}`);
   };
+
+  const moveCategoty = dst => {
+    navi(dst);
+  };
+
   return (
     <div className="mainpage-body">
       <List component="nav" aria-label="mailbox folders">
@@ -34,9 +41,15 @@ const Body = () => {
       </List>
 
       <List component="nav" aria-label="mailbox folders">
-        <Link to="/category/free">
-          <div>자유게시판 -> </div>
-        </Link>
+        <ListItem
+          button
+          divider
+          className="article"
+          onClick={() => moveCategoty("/category/free")}
+        >
+          <ListItemText>자유게시판 -></ListItemText>
+        </ListItem>
+
         {freeArticles.map((article, i) => {
           return (
             <PreviewArticle
@@ -47,9 +60,14 @@ const Body = () => {
         })}
       </List>
       <List component="nav" aria-label="mailbox folders">
-        <Link to="/category/anony">
-          <div>익명게시판 -> </div>
-        </Link>
+        <ListItem
+          button
+          divider
+          className="article"
+          onClick={() => moveCategoty("/category/anony")}
+        >
+          <ListItemText>자유게시판 -></ListItemText>
+        </ListItem>
 
         {anonyArticles.map((article, i) => {
           return (

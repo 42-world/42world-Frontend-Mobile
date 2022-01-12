@@ -1,8 +1,7 @@
 import PreviewArticle from "./PreviewArticle";
-
 import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
 import ToggleButton from "@mui/material/ToggleButton";
-
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 
 const BodyPreView = ({
@@ -14,32 +13,33 @@ const BodyPreView = ({
 }) => {
   const handleChange = (event, value) => {
     console.log(event, value);
-    handleToggle(value);
+    if (value !== null) handleToggle(value);
   };
   return (
     <>
       <ListItem className="preview">
-        <ToggleButtonGroup
-          color="primary"
-          value={highlight}
-          exclusive
-          onChange={handleChange}
-        >
-          <ToggleButton
-            value="recent"
-            className={highlight === "recent" && "highlight"}
+        <ListItemText>
+          <ToggleButtonGroup
+            color="primary"
+            value={highlight}
+            exclusive
+            onChange={handleChange}
           >
-            최신글
-          </ToggleButton>
-          <ToggleButton
-            value="famous"
-            className={highlight === "famous" && "highlight"}
-          >
-            인기글
-          </ToggleButton>
-        </ToggleButtonGroup>
+            <ToggleButton
+              value="recent"
+              className={highlight === "recent" && "highlight"}
+            >
+              최신글
+            </ToggleButton>
+            <ToggleButton
+              value="famous"
+              className={highlight === "famous" && "highlight"}
+            >
+              인기글
+            </ToggleButton>
+          </ToggleButtonGroup>
+        </ListItemText>
       </ListItem>
-
       <div className="articles">
         {highlight === "recent"
           ? recentArticles.map((article, i) => {
