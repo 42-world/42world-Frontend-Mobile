@@ -1,4 +1,4 @@
-import PreviewArticle from "./PreviewArticle";
+import { PreviewArticle } from "../../../Components";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import ToggleButton from "@mui/material/ToggleButton";
@@ -9,7 +9,7 @@ const BodyPreView = ({
   highlight,
   recentArticles,
   famousArticles,
-  moveArticles
+  moveArticles,
 }) => {
   const handleChange = (event, value) => {
     console.log(event, value);
@@ -42,7 +42,7 @@ const BodyPreView = ({
       </ListItem>
       <div className="articles">
         {highlight === "recent"
-          ? recentArticles.map(article => {
+          ? recentArticles.map((article) => {
               return (
                 <PreviewArticle
                   article={article}
@@ -50,7 +50,7 @@ const BodyPreView = ({
                 />
               );
             })
-          : famousArticles.map(article => {
+          : famousArticles.map((article) => {
               return (
                 <PreviewArticle
                   article={article}

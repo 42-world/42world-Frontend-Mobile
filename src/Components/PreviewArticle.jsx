@@ -1,6 +1,5 @@
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
-import CusListItem from "../MainPageMUI.styled";
 
 const PreviewArticle = ({ article, handleOnclick }) => {
   return (

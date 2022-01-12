@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import BodyPreView from "./BodyPreView";
-import PreviewArticle from "./PreviewArticle";
+import { PreviewArticle } from "../../../Components";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
@@ -16,7 +16,7 @@ const Body = () => {
   const [anonyArticles, setAnonyArticles] = useState(["익명글1", "익명글2"]);
 
   const navi = useNavigate();
-  const handleToggle = clicked => {
+  const handleToggle = (clicked) => {
     if (highlight !== clicked) setHighlight(clicked);
   };
 
@@ -25,7 +25,7 @@ const Body = () => {
     navi(`category/${category}/${articleId}`);
   };
 
-  const moveCategoty = dst => {
+  const moveCategoty = (dst) => {
     navi(dst);
   };
 
@@ -62,7 +62,7 @@ const Body = () => {
           </ListItemText>
         </ListItem>
 
-        {freeArticles.map(article => {
+        {freeArticles.map((article) => {
           return (
             <PreviewArticle
               article={article}
@@ -83,7 +83,7 @@ const Body = () => {
           </ListItemText>
         </ListItem>
 
-        {anonyArticles.map(article => {
+        {anonyArticles.map((article) => {
           return (
             <PreviewArticle
               article={article}

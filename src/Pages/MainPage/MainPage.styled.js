@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import ListItem from "@mui/material/ListItem";
 
 const MenuModal = styled.div`
   display: none;
@@ -29,4 +30,10 @@ const MainBody = styled.div`
   }
 `;
 
-export default { MenuModal, MainHeader, MainBody };
+const CusListItem = styled(ListItem)`
+  && {
+    background-color: red;
+  }
+`;
+
+export default { MenuModal, MainHeader, MainBody, CusListItem };
