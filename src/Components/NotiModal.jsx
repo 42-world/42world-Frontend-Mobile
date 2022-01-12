@@ -1,5 +1,7 @@
-import Modal from "@mui/material/Modal";
-import globalStyled from "../Utils/global.styled";
+import Modal from '@mui/material/Modal';
+import CloseIcon from '@mui/icons-material/Close';
+
+import globalStyled from '../Utils/global.styled';
 
 const NotiModal = ({ open, handleClose }) => {
   return (
@@ -9,7 +11,10 @@ const NotiModal = ({ open, handleClose }) => {
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <globalStyled.CusBox>알림!!</globalStyled.CusBox>
+      <globalStyled.CusBox>
+        <CloseIcon onClick={handleClose} />
+        알림!!
+      </globalStyled.CusBox>
     </Modal>
   );
 };
