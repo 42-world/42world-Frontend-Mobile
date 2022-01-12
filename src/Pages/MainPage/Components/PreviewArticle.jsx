@@ -2,15 +2,14 @@ import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 
 const PreviewArticle = ({ article, handleOnclick }) => {
-  const tempNum = 5; //  좋아요, 댓글 수
   return (
     <ListItem button divider className="article" onClick={handleOnclick}>
       <ListItemText>
-        {article}
+        {article.title}
         <img src="assets/like.svg" alt="like" />
-        {tempNum}
+        {article.view_count}
         <img src="assets/comment.svg" alt="comment" />
-        {tempNum}
+        {article.view_count}
       </ListItemText>
     </ListItem>
   );

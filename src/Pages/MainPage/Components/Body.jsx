@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import BodyPreView from "./BodyPreView";
 import PreviewArticle from "./PreviewArticle";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
+
+import ArticleService from "../../../Network/ArticleService";
 
 const Body = () => {
   const [highlight, setHighlight] = useState("recent");
@@ -14,7 +16,6 @@ const Body = () => {
   const [anonyArticles, setAnonyArticles] = useState(["익명글1", "익명글2"]);
 
   const navi = useNavigate();
-
   const handleToggle = clicked => {
     if (highlight !== clicked) setHighlight(clicked);
   };
@@ -27,6 +28,15 @@ const Body = () => {
   const moveCategoty = dst => {
     navi(dst);
   };
+
+  useEffect(() => {
+    const mockupData = ArticleService;
+    console.log(mockupData.fetchAllArticle());
+    setRecentArticles(mockupData.fetchAllArticle());
+    setFamousArticles(mockupData.fetchAllArticle());
+    setFreeArticles(mockupData.fetchAllArticle());
+    setAnonyArticles(mockupData.fetchAllArticle());
+  }, []);
 
   return (
     <div className="mainpage-body">
@@ -50,11 +60,11 @@ const Body = () => {
           <ListItemText>자유게시판 -></ListItemText>
         </ListItem>
 
-        {freeArticles.map((article, i) => {
+        {freeArticles.map(article => {
           return (
             <PreviewArticle
               article={article}
-              handleOnclick={() => moveArticles("free", i)}
+              handleOnclick={() => moveArticles("free", article.id)}
             />
           ); // 해당 글의 id가 인자로 넘어가야함
         })}
@@ -69,11 +79,11 @@ const Body = () => {
           <ListItemText>자유게시판 -></ListItemText>
         </ListItem>
 
-        {anonyArticles.map((article, i) => {
+        {anonyArticles.map(article => {
           return (
             <PreviewArticle
               article={article}
-              handleOnclick={() => moveArticles("annoy", i)}
+              handleOnclick={() => moveArticles("annoy", article.id)}
             />
           );
         })}
