@@ -11,9 +11,11 @@ const MenuModal = styled.div`
   bgcolor: background.paper;
   border: 2px solid #000;
 `;
+
 const MainHeader = styled.div`
   background-color: rgba(42, 45, 56, 1);
 `;
+
 const MainBody = styled.div`
   .mainpage-body {
     .preview {
@@ -26,4 +28,5 @@ const MainBody = styled.div`
     }
   }
 `;
+
 export default { MenuModal, MainHeader, MainBody };

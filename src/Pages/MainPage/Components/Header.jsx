@@ -3,12 +3,12 @@ import { useState } from "react";
 const Header = ({ handleOpenMenu }) => {
   const [search, setSearch] = useState("");
 
-  const handleSubmitSearch = (e) => {
+  const handleSubmitSearch = e => {
     e.preventDefault();
     console.log(search);
     setSearch("");
   };
-  const handleChangeSearch = (e) => {
+  const handleChangeSearch = e => {
     setSearch(e.currentTarget.value);
   };
   return (
@@ -26,6 +26,7 @@ const Header = ({ handleOpenMenu }) => {
             maxLength="12"
             className="search"
             value={search}
+            placeholder="게시물 제목 검색"
           />
           <button onClick={handleSubmitSearch}>검색</button>
         </form>
