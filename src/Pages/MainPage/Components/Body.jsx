@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import BodyPreView from "./BodyPreView";
 import PreviewArticle from "./PreviewArticle";
+import List from "@mui/material/List";
 
 const Body = () => {
   const [highlight, setHighlight] = useState("recent");
@@ -12,7 +13,7 @@ const Body = () => {
 
   const navi = useNavigate();
 
-  const handleToggle = (clicked) => {
+  const handleToggle = clicked => {
     if (highlight !== clicked) setHighlight(clicked);
   };
 
@@ -22,15 +23,17 @@ const Body = () => {
   };
   return (
     <div className="mainpage-body">
-      <BodyPreView
-        handleToggle={handleToggle}
-        highlight={highlight}
-        recentArticles={recentArticles}
-        famousArticles={famousArticles}
-        moveArticles={moveArticles}
-      />
+      <List component="nav" aria-label="mailbox folders">
+        <BodyPreView
+          handleToggle={handleToggle}
+          highlight={highlight}
+          recentArticles={recentArticles}
+          famousArticles={famousArticles}
+          moveArticles={moveArticles}
+        />
+      </List>
 
-      <div>
+      <List component="nav" aria-label="mailbox folders">
         <Link to="/category/free">
           <div>자유게시판 -> </div>
         </Link>
@@ -42,8 +45,8 @@ const Body = () => {
             />
           ); // 해당 글의 id가 인자로 넘어가야함
         })}
-      </div>
-      <div>
+      </List>
+      <List component="nav" aria-label="mailbox folders">
         <Link to="/category/anony">
           <div>익명게시판 -> </div>
         </Link>
@@ -56,7 +59,7 @@ const Body = () => {
             />
           );
         })}
-      </div>
+      </List>
     </div>
   );
 };
