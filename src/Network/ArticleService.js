@@ -20,7 +20,7 @@ const generateRandomArticle = () => {
   const content = 'this is content';
   const view_count = 1;
   const comment_count = 2;
-  const linked_count = 3;
+  const liked_count = 3;
 
   return new Article(
     id,
@@ -30,7 +30,7 @@ const generateRandomArticle = () => {
     content,
     view_count,
     comment_count,
-    linked_count,
+    liked_count,
   );
 };
 

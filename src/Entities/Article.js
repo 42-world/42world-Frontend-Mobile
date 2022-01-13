@@ -13,7 +13,9 @@ export default class Article {
     writer_id,
     title,
     content,
-    view_count
+    view_count,
+    comment_count,
+    liked_count,
   ) {
     this.id = id;
     this.category_id = category_id;
@@ -21,5 +23,7 @@ export default class Article {
     this.title = title;
     this.content = content;
     this.view_count = view_count;
+    this.comment_count = comment_count;
+    this.liked_count = liked_count;
   }
 }
