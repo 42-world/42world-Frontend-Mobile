@@ -1,5 +1,5 @@
-import * as React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import * as React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {
   MainPage,
   ProfilePage,
@@ -8,7 +8,8 @@ import {
   SettingPage,
   MyArticlePage,
   MyCommentPage,
-} from "./Pages";
+  CategoryPage,
+} from './Pages';
 
 const ErrorPage = () => {
   return <>Error!</>;
@@ -19,8 +20,9 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/category/anony" element={<MainPage />} />
-        <Route path="/category/free" element={<MainPage />} />
+        <Route path="/category/*" element={<CategoryPage />} />
+        <Route path="/category/*/*" element={<CategoryPage />} />
+
         <Route path="/search" element={<MainPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/profile/setting" element={<SettingPage />} />
