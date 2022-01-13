@@ -1,6 +1,14 @@
-import * as React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { MainPage, ProfilePage } from './Pages';
+import * as React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  MainPage,
+  ProfilePage,
+  LikedArticlePage,
+  AuthPage,
+  SettingPage,
+  MyArticlePage,
+  MyCommentPage,
+} from "./Pages";
 
 const ErrorPage = () => {
   return <>Error!</>;
@@ -15,16 +23,17 @@ const App = () => {
         <Route path="/category/free" element={<MainPage />} />
         <Route path="/search" element={<MainPage />} />
         <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/profile/setting" element={<ProfilePage />} />
-        <Route path="/profile/liked-article" element={<ProfilePage />} />
-        <Route path="/profile/my-article" element={<ProfilePage />} />
-        <Route path="/profile/my-comment" element={<ProfilePage />} />
-        <Route path="/profile/auth" element={<ProfilePage />} />
+        <Route path="/profile/setting" element={<SettingPage />} />
+        <Route path="/profile/liked-article" element={<LikedArticlePage />} />
+        <Route path="/profile/my-article" element={<MyArticlePage />} />
+        <Route path="/profile/my-comment" element={<MyCommentPage />} />
+        <Route path="/profile/auth" element={<AuthPage />} />
         <Route path="/*" element={<ErrorPage />} />
       </Routes>
     </Router>
   );
 };
+
 export default App;
 
 // http://skyrich3.synology.me:9930/
