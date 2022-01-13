@@ -1,22 +1,22 @@
-import { Button, Box } from "@mui/material";
-import { SmsOutlined } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
+import { Button, Box } from '@mui/material';
+import { SmsOutlined } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 
 const MyComment = () => {
   const navigate = useNavigate();
 
-  const onClick = () => {
-    navigate("/profile/my-comment");
+  const handleCommentClick = () => {
+    navigate('/profile/my-comment');
   };
 
   return (
-    <Button onClick={onClick}>
+    <Button onClick={handleCommentClick}>
       <Box
         sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          width: "60px",
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          width: '60px',
         }}
       >
         <SmsOutlined />내 댓글

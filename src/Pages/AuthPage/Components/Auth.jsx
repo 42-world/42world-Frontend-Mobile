@@ -1,19 +1,19 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 const Auth = () => {
   const [input, setInput] = useState({
-    email: "",
+    email: '',
   });
 
-  const onChange = (e) => {
+  const onChange = e => {
     const { name, value } = e.target;
     setInput({
       ...input,
       [name]: value,
     });
   };
-  const onAuthenticate = () => {
-    console.log(input.email, "로 인증 시도");
+  const handleAuthenticate = () => {
+    console.log(input.email, '로 인증 시도');
   };
 
   return (
@@ -24,8 +24,8 @@ const Auth = () => {
         onChange={onChange}
         placeholder="인트라 아이디를 입력하세요"
       />
-      {"@student.42seoul.kr"}
-      <button onClick={onAuthenticate}>인증</button>
+      {'@student.42seoul.kr'}
+      <button onClick={handleAuthenticate}>인증</button>
     </div>
   );
 };

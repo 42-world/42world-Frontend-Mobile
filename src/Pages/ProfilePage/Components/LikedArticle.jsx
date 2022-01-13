@@ -1,21 +1,21 @@
-import { Button, Box } from "@mui/material";
-import { FavoriteBorder } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
+import { Button, Box } from '@mui/material';
+import { FavoriteBorder } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 
 const LikedArticle = () => {
   const navigate = useNavigate();
 
-  const onClick = () => {
-    navigate("/profile/liked-article");
+  const handleLikedArticleClick = () => {
+    navigate('/profile/liked-article');
   };
   return (
-    <Button onClick={onClick}>
+    <Button onClick={handleLikedArticleClick}>
       <Box
         sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          width: "60px",
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          width: '60px',
         }}
       >
         <FavoriteBorder />
