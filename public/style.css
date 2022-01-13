@@ -1,0 +1,24 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #e5e5e5;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+#root {
+  background-color: #f5f5f5;
+  width: 24.5rem;
+  height: 100vh;
+  overflow: scroll;
+  scrollbar-width: none;
+}
+
+#root::-webkit-scrollbar {
+  display: none;
+}
