@@ -8,25 +8,13 @@ import {
 } from "./Components";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Styled from "./ProfilePage.styled";
-import { ProfileHeader } from "../Components";
+import GlobalStyled from "../../Styled/Global.styled";
+import { ProfileHeader } from "../../Components";
 
 const theme = createTheme({
+  // mui Button 컬러 적용
   components: {
     MuiButton: {
-      styleOverrides: {
-        root: {
-          color: "#ffffff",
-        },
-      },
-    },
-    MuiButtonGroup: {
-      styleOverrides: {
-        root: {
-          borderColor: "#ffffff",
-        },
-      },
-    },
-    MuiDivider: {
       styleOverrides: {
         root: {
           color: "#ffffff",
@@ -39,7 +27,7 @@ const theme = createTheme({
 const ProfilePage = () => {
   return (
     <ThemeProvider theme={theme}>
-      <Styled.BackgroundDiv>
+      <GlobalStyled.ProfileBackgroundDiv>
         <ProfileHeader title={"내 정보"} />
         <Styled.CustomBox marginBottom="8px">
           <Info />
@@ -54,7 +42,7 @@ const ProfilePage = () => {
         <Styled.CustomBox>
           <Withdrawal />
         </Styled.CustomBox>
-      </Styled.BackgroundDiv>
+      </GlobalStyled.ProfileBackgroundDiv>
     </ThemeProvider>
   );
 };

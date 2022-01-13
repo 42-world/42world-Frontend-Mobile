@@ -1,13 +1,13 @@
+import { ProfileHeader } from "../../Components";
+import GlobalStyled from "../../Styled/Global.styled";
+import { MyArticle } from "./Components";
+
 const MyArticlePage = () => {
-  const articles = ["글1", "글2", "글3"];
   return (
-    <>
-      <div>
-        {articles.map((article, idx) => (
-          <div key={idx}>{article}</div>
-        ))}
-      </div>
-    </>
+    <GlobalStyled.ProfileBackgroundDiv>
+      <ProfileHeader title={"내가 쓴 글"} />
+      <MyArticle />
+    </GlobalStyled.ProfileBackgroundDiv>
   );
 };
 

@@ -1,21 +1,6 @@
-import styled from "styled-components";
-import { Box, styled as muiStyled } from "@mui/material";
+import { Box, styled } from "@mui/material";
 
-const BackgroundDiv = styled.div`
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  display: flex;
-  flex-direction: column;
-  background-color: #2a2d38;
-  width: 100vw;
-  margin: 0px;
-  padding: 0px;
-  padding-top: 3vh;
-  height: 100%;
-`;
-
-const CustomBox = muiStyled(Box)(() => ({
+const CustomBox = styled(Box)(() => ({
   backgroundColor: "rgba(255, 255, 255, 0.2)",
   display: "flex",
   flexDirection: "column",
@@ -26,6 +11,6 @@ const CustomBox = muiStyled(Box)(() => ({
   borderRight: "0px",
 }));
 
-const Styled = { BackgroundDiv, CustomBox };
+const Styled = { CustomBox };
 
 export default Styled;

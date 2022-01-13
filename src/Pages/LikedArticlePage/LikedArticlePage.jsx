@@ -1,13 +1,13 @@
+import { ProfileHeader } from "../../Components";
+import GlobalStyled from "../../Styled/Global.styled";
+import { LikedArticle } from "./Components";
+
 const LikedArticlePage = () => {
-  const articles = ["글1", "글2", "글3"];
   return (
-    <>
-      <div>
-        {articles.map((article, idx) => (
-          <div key={idx}>{article}</div>
-        ))}
-      </div>
-    </>
+    <GlobalStyled.ProfileBackgroundDiv>
+      <ProfileHeader title={"좋아요"} />
+      <LikedArticle />
+    </GlobalStyled.ProfileBackgroundDiv>
   );
 };
 
