@@ -5,6 +5,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
+import Styled from './Header.styled';
+
 const SearchBar = () => {
   const [search, setSearch] = useState('');
   const navi = useNavigate();
@@ -37,20 +39,27 @@ const Header = ({ onClickMenu, onClickNoti, onClickSearch, isSearch }) => {
   const navi = useNavigate();
   return (
     <div className="mainpage-header">
-      <MenuIcon sx={{ color: 'white' }} onClick={onClickMenu} />
-      <img
-        src="assets/headerLogo.svg"
-        alt="header-logo"
-        onClick={() => navi('/')}
-      />
-      {/* <SearchIcon sx={{ color: 'white' }} onClick={() => navi('/search')} /> */}
-      <SearchIcon sx={{ color: 'white' }} onClick={onClickSearch} />
-
-      <NotificationsIcon sx={{ color: 'white' }} onClick={onClickNoti} />
-      <AccountCircleIcon
-        sx={{ color: 'white' }}
-        onClick={() => navi('/profile')}
-      />
+      <Styled.HeaderStyleDiv>
+        <div>
+          <MenuIcon sx={{ color: 'white' }} onClick={onClickMenu} />
+        </div>
+        <div>
+          <img
+            src="assets/headerLogo.svg"
+            alt="header-logo"
+            onClick={() => navi('/')}
+          />
+        </div>
+        {/* <SearchIcon sx={{ color: 'white' }} onClick={() => navi('/search')} /> */}
+        <div>
+          <SearchIcon sx={{ color: 'white' }} onClick={onClickSearch} />
+          <NotificationsIcon sx={{ color: 'white' }} onClick={onClickNoti} />
+          <AccountCircleIcon
+            sx={{ color: 'white' }}
+            onClick={() => navi('/profile')}
+          />
+        </div>
+      </Styled.HeaderStyleDiv>
       {isSearch && <SearchBar />}
     </div>
   );

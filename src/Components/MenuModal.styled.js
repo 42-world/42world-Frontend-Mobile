@@ -8,7 +8,6 @@ const MenuItemDiv = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: left;
-  width: 100%;
   font-decoration: none;
   cursor: pointer;
   transition: all 0.3s;
