@@ -13,7 +13,6 @@ const MyComment = () => {
     <Button onClick={onClick}>
       <Box
         sx={{
-          margin: "0px 8vw",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",

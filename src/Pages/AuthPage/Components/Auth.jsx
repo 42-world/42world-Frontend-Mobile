@@ -18,18 +18,14 @@ const Auth = () => {
 
   return (
     <div>
-      <div>
-        <div>
-          <input
-            name="email"
-            value={input.email}
-            onChange={onChange}
-            placeholder="인트라 아이디를 입력하세요"
-          />
-          {"@student.42seoul.kr"}
-          <button onClick={onAuthenticate}>인증</button>
-        </div>
-      </div>
+      <input
+        name="email"
+        value={input.email}
+        onChange={onChange}
+        placeholder="인트라 아이디를 입력하세요"
+      />
+      {"@student.42seoul.kr"}
+      <button onClick={onAuthenticate}>인증</button>
     </div>
   );
 };
