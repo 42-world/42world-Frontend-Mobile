@@ -9,19 +9,23 @@ import {
   MyArticlePage,
   MyCommentPage,
   CategoryPage,
+  ArticlePage,
 } from './Pages';
 
 const ErrorPage = () => {
   return <>Error!</>;
 };
 
+// 글 보기 : 모드view?글id=12 or view/글id
+// 글 작성 : free?mode=write
 const App = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<MainPage />} />
+
         <Route path="/category/*" element={<CategoryPage />} />
-        <Route path="/category/*/*" element={<CategoryPage />} />
+        <Route path="/article/*" element={<ArticlePage />} />
 
         <Route path="/search" element={<MainPage />} />
         <Route path="/profile" element={<ProfilePage />} />

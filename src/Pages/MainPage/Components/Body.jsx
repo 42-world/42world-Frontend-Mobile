@@ -24,7 +24,7 @@ const Body = () => {
 
   const moveArticles = (category, articleId) => {
     console.log(category, articleId);
-    navi(`/category/${category}/${articleId}`);
+    navi(`/article/${articleId}`);
   };
 
   useEffect(() => {
