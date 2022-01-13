@@ -9,7 +9,7 @@ import ListItemText from '@mui/material/ListItemText';
 
 import globalStyled from '../Utils/global.styled';
 
-const NotiModal = ({ open, handleClose }) => {
+const NotiModal = ({ open, onClickCloseModal }) => {
   const [notiArticles, setNotiArticles] = useState([]);
   useEffect(() => {
     const mockupData = UserService;
@@ -18,12 +18,12 @@ const NotiModal = ({ open, handleClose }) => {
   return (
     <Modal
       open={open}
-      onClose={handleClose}
+      onClose={onClickCloseModal}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
       <globalStyled.CusBox>
-        <CloseIcon onClick={handleClose} />
+        <CloseIcon onClick={onClickCloseModal} />
         <List component="nav" aria-label="mailbox folders">
           {notiArticles.map(article => {
             return (
