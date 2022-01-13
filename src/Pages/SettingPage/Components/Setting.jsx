@@ -6,7 +6,7 @@ const Setting = () => {
     nickname: '',
   });
 
-  const onChange = e => {
+  const handleChange = e => {
     const { name, value } = e.target;
     setInput({
       ...input,
@@ -18,7 +18,7 @@ const Setting = () => {
     console.log(input.nickname, '중복 확인');
   };
 
-  const onCharacterClick = value => {
+  const handleCharacterClick = value => {
     setCharacter(value);
     console.log(`${character}에서 ${value}로 캐릭터 변경`);
   };
@@ -28,7 +28,7 @@ const Setting = () => {
       <div>
         <div>캐릭터 선택</div>
         {[0, 1, 2, 3].map(value => (
-          <button key={value} onClick={() => onCharacterClick(value)}>
+          <button key={value} onClick={() => handleCharacterClick(value)}>
             캐릭터{value}
           </button>
         ))}
@@ -41,7 +41,7 @@ const Setting = () => {
             id="nickname"
             name="nickname"
             value={input.nickname}
-            onChange={onChange}
+            onChange={handleChange}
             placeholder="새로운 닉네임을 입력하세요"
           />
           <button onClick={handleDuplicateCheck}>중복 확인</button>
