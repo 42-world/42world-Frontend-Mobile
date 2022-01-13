@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const PreviewArticleDiv = styled.div`
+  cursor: pointer;
   box-sizing: border-box;
   width: 100%;
   display: flex;

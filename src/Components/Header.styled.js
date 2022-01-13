@@ -9,6 +9,9 @@ const HeaderStyleDiv = styled.div`
   align-items: center;
   padding: 0.25rem 0.8rem;
 
+  svg {
+    cursor: pointer;
+  }
   div {
     width: 100%;
     flex-grow: 1;
