@@ -4,17 +4,17 @@ import Divider from '@mui/material/Divider';
 import Link from '@mui/material/Link';
 import CloseIcon from '@mui/icons-material/Close';
 
-const MenuModal = ({ open, handleClose }) => {
+const MenuModal = ({ open, onClickCloseModal }) => {
   return (
     <Modal
       open={open}
-      onClose={handleClose}
+      onClose={onClickCloseModal}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
       <globalStyled.CusBox>
         <h1>lots of 42</h1>
-        <CloseIcon onClick={handleClose} />
+        <CloseIcon onClick={onClickCloseModal} />
         <Link
           sx={{ color: 'black' }}
           href="https://80000coding.oopy.io/"
@@ -63,7 +63,7 @@ const MenuModal = ({ open, handleClose }) => {
         </Link>
         <div>010-4692-7506</div>
 
-        <button onClick={handleClose}> 돌아가기</button>
+        <button onClick={onClickCloseModal}> 돌아가기</button>
       </globalStyled.CusBox>
     </Modal>
   );

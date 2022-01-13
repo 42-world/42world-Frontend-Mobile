@@ -1,8 +1,8 @@
-import { PreviewArticle } from "../../../Components";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import ToggleButton from "@mui/material/ToggleButton";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import { PreviewArticle } from '../../../Components';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
 const BodyPreView = ({
   handleToggle,
@@ -27,13 +27,13 @@ const BodyPreView = ({
           >
             <ToggleButton
               value="recent"
-              className={highlight === "recent" && "highlight"}
+              className={highlight === 'recent' && 'highlight'}
             >
               최신글
             </ToggleButton>
             <ToggleButton
               value="famous"
-              className={highlight === "famous" && "highlight"}
+              className={highlight === 'famous' && 'highlight'}
             >
               인기글
             </ToggleButton>
@@ -41,20 +41,20 @@ const BodyPreView = ({
         </ListItemText>
       </ListItem>
       <div className="articles">
-        {highlight === "recent"
-          ? recentArticles.map((article) => {
+        {highlight === 'recent'
+          ? recentArticles.map(article => {
               return (
                 <PreviewArticle
                   article={article}
-                  handleOnclick={() => moveArticles("temp", article.id)}
+                  onClickArticle={() => moveArticles('temp', article.id)}
                 />
               );
             })
-          : famousArticles.map((article) => {
+          : famousArticles.map(article => {
               return (
                 <PreviewArticle
                   article={article}
-                  handleOnclick={() => moveArticles("temp", article.id)}
+                  onClickArticle={() => moveArticles('temp', article.id)}
                 />
               );
             })}

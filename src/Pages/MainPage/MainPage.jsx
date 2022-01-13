@@ -46,15 +46,15 @@ const MainPage = () => {
   return (
     <>
       <Styled.MenuModal>
-        <MenuModal open={isMenuModal} handleClose={handleOpenMenu} />
-        <NotiModal open={isNotiModal} handleClose={handleOpenNoti} />
+        <MenuModal open={isMenuModal} onClickCloseModal={handleOpenMenu} />
+        <NotiModal open={isNotiModal} onClickCloseModal={handleOpenNoti} />
       </Styled.MenuModal>
 
       <Styled.MainHeader>
         <Header
-          handleOpenMenu={handleOpenMenu}
-          handleOpenNoti={handleOpenNoti}
-          handleToggleSearch={handleToggleSearch}
+          onClickMenu={handleOpenMenu}
+          onClickNoti={handleOpenNoti}
+          onClickSearch={handleToggleSearch}
           isSearch={isSearch}
         />
       </Styled.MainHeader>

@@ -33,25 +33,20 @@ const SearchBar = () => {
   );
 };
 
-const Header = ({
-  handleOpenMenu,
-  handleOpenNoti,
-  handleToggleSearch,
-  isSearch,
-}) => {
+const Header = ({ onClickMenu, onClickNoti, onClickSearch, isSearch }) => {
   const navi = useNavigate();
   return (
     <div className="mainpage-header">
-      <MenuIcon sx={{ color: 'white' }} onClick={handleOpenMenu} />
+      <MenuIcon sx={{ color: 'white' }} onClick={onClickMenu} />
       <img
         src="assets/headerLogo.svg"
         alt="header-logo"
         onClick={() => navi('/')}
       />
       {/* <SearchIcon sx={{ color: 'white' }} onClick={() => navi('/search')} /> */}
-      <SearchIcon sx={{ color: 'white' }} onClick={handleToggleSearch} />
+      <SearchIcon sx={{ color: 'white' }} onClick={onClickSearch} />
 
-      <NotificationsIcon sx={{ color: 'white' }} onClick={handleOpenNoti} />
+      <NotificationsIcon sx={{ color: 'white' }} onClick={onClickNoti} />
       <AccountCircleIcon
         sx={{ color: 'white' }}
         onClick={() => navi('/profile')}
