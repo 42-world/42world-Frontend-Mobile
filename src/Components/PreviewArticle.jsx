@@ -1,14 +1,16 @@
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import CommentIcon from '@mui/icons-material/Comment';
 
 const PreviewArticle = ({ article, handleOnclick }) => {
   return (
     <ListItem button divider className="article" onClick={handleOnclick}>
       <ListItemText>
         {article.title}
-        <img src="assets/like.svg" alt="like" />
+        <FavoriteIcon />
         {article.view_count}
-        <img src="assets/comment.svg" alt="comment" />
+        <CommentIcon />
         {article.view_count}
       </ListItemText>
     </ListItem>
