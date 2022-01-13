@@ -1,34 +1,66 @@
-import { useState } from "react";
-import { useSearchParams, useLocation } from "react-router-dom";
-import { Header, Body, MenuModal } from "./Components";
-import styled from "styled-components";
+import { useState, useEffect } from 'react';
+import { useSearchParams, useLocation } from 'react-router-dom';
+import { Body } from './Components';
+import { Header, MenuModal, NotiModal } from '../../Components';
+
+import Styled from './MainPage.styled';
 
 const MainPage = () => {
-  const [isModal, setIsModal] = useState(false);
+  const [isMenuModal, setIsMenuModal] = useState(false);
+  const [isNotiModal, setIsNotiModal] = useState(false);
+  const [isSearch, setIsSearch] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const loca = useLocation();
 
   const handleOpenMenu = () => {
-    if (loca.search === "") {
-      setSearchParams("mode=drawer");
-      setIsModal(true);
-      console.log(isModal);
+    if (loca.search === '') {
+      setSearchParams('mode=menu');
+      setIsMenuModal(true);
     } else {
-      setSearchParams("");
-      setIsModal(false);
-      console.log(isModal);
+      setSearchParams('');
+      setIsMenuModal(false);
     }
   };
+  const handleOpenNoti = () => {
+    if (loca.search === '') {
+      setSearchParams('mode=noti');
+      setIsNotiModal(true);
+    } else {
+      setSearchParams('');
+      setIsNotiModal(false);
+    }
+  };
+  const handleToggleSearch = () => {
+    if (isSearch) setIsSearch(false);
+    else setIsSearch(true);
+  };
+  useEffect(() => {
+    if (loca.search === '?mode=menu') {
+      setIsMenuModal(true);
+    }
+    if (loca.search === '?mode=noti') {
+      setIsNotiModal(true);
+    }
+  }, []);
 
   return (
     <>
-      {loca.search && (
-        <>
-          <MenuModal handleOpenMenu={handleOpenMenu} />
-        </>
-      )}
-      <Header handleOpenMenu={handleOpenMenu} />
-      <Body />
+      <Styled.MenuModal>
+        <MenuModal open={isMenuModal} handleClose={handleOpenMenu} />
+        <NotiModal open={isNotiModal} handleClose={handleOpenNoti} />
+      </Styled.MenuModal>
+
+      <Styled.MainHeader>
+        <Header
+          handleOpenMenu={handleOpenMenu}
+          handleOpenNoti={handleOpenNoti}
+          handleToggleSearch={handleToggleSearch}
+          isSearch={isSearch}
+        />
+      </Styled.MainHeader>
+      <Styled.MainBody>
+        <Body />
+      </Styled.MainBody>
     </>
   );
 };
