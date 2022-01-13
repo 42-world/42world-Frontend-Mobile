@@ -43,13 +43,14 @@ const Header = ({
   return (
     <div className="mainpage-header">
       <MenuIcon sx={{ color: 'white' }} onClick={handleOpenMenu} />
-      {/* <SearchIcon sx={{ color: 'white' }} onClick={() => navi('/search')} /> */}
-      <SearchIcon sx={{ color: 'white' }} onClick={handleToggleSearch} />
       <img
         src="assets/headerLogo.svg"
         alt="header-logo"
         onClick={() => navi('/')}
       />
+      {/* <SearchIcon sx={{ color: 'white' }} onClick={() => navi('/search')} /> */}
+      <SearchIcon sx={{ color: 'white' }} onClick={handleToggleSearch} />
+
       <NotificationsIcon sx={{ color: 'white' }} onClick={handleOpenNoti} />
       <AccountCircleIcon
         sx={{ color: 'white' }}
