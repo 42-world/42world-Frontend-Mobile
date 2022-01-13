@@ -14,7 +14,10 @@ const PreviewArticleDiv = styled.div`
   div {
     display: flex;
     align-items: center;
-    margin-right: 0.5rem;
+    margin-right: 0.3rem;
+    &:first-child {
+      margin-left: 0.3rem;
+    }
   }
 
   .favorite_icon {
