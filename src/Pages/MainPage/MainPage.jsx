@@ -1,40 +1,44 @@
-import { useState, useEffect } from "react";
-import { useSearchParams, useLocation } from "react-router-dom";
-import { Body } from "./Components";
-import { Header, MenuModal, NotiModal } from "../../Components";
+import { useState, useEffect } from 'react';
+import { useSearchParams, useLocation } from 'react-router-dom';
+import { Body } from './Components';
+import { Header, MenuModal, NotiModal } from '../../Components';
 
-import Styled from "./MainPage.styled";
+import Styled from './MainPage.styled';
 
 const MainPage = () => {
   const [isMenuModal, setIsMenuModal] = useState(false);
   const [isNotiModal, setIsNotiModal] = useState(false);
-
+  const [isSearch, setIsSearch] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const loca = useLocation();
 
   const handleOpenMenu = () => {
-    if (loca.search === "") {
-      setSearchParams("mode=menu");
+    if (loca.search === '') {
+      setSearchParams('mode=menu');
       setIsMenuModal(true);
     } else {
-      setSearchParams("");
+      setSearchParams('');
       setIsMenuModal(false);
     }
   };
   const handleOpenNoti = () => {
-    if (loca.search === "") {
-      setSearchParams("mode=noti");
+    if (loca.search === '') {
+      setSearchParams('mode=noti');
       setIsNotiModal(true);
     } else {
-      setSearchParams("");
+      setSearchParams('');
       setIsNotiModal(false);
     }
   };
+  const handleToggleSearch = () => {
+    if (isSearch) setIsSearch(false);
+    else setIsSearch(true);
+  };
   useEffect(() => {
-    if (loca.search === "?mode=menu") {
+    if (loca.search === '?mode=menu') {
       setIsMenuModal(true);
     }
-    if (loca.search === "?mode=noti") {
+    if (loca.search === '?mode=noti') {
       setIsNotiModal(true);
     }
   }, []);
@@ -50,7 +54,8 @@ const MainPage = () => {
         <Header
           handleOpenMenu={handleOpenMenu}
           handleOpenNoti={handleOpenNoti}
-          isSearch={false}
+          handleToggleSearch={handleToggleSearch}
+          isSearch={isSearch}
         />
       </Styled.MainHeader>
       <Styled.MainBody>
@@ -61,15 +66,3 @@ const MainPage = () => {
 };
 
 export default MainPage;
-{
-  /* <Styled.MenuModal>
-       <CSSTransition
-          in={isMenuModal}
-          timeout={300}
-          classNames="alert"
-          unmountOnExit
-        > 
-
-       </CSSTransition>
-      </Styled.MenuModal> */
-}
