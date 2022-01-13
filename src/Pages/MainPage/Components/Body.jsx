@@ -57,7 +57,7 @@ const Body = () => {
           onClick={() => navi('/category/free')}
         >
           <ListItemText>
-            자유게시판 -> {freeArticles.length}개의 글
+            자유게시판 -{'>'} {freeArticles.length}개의 글
           </ListItemText>
         </ListItem>
 
@@ -78,7 +78,7 @@ const Body = () => {
           onClick={() => navi('/category/anony')}
         >
           <ListItemText>
-            익명게시판 -> {anonyArticles.length}개의 글
+            익명게시판 -{'>'} {anonyArticles.length}개의 글
           </ListItemText>
         </ListItem>
 

@@ -3,6 +3,8 @@ import { useSearchParams, useLocation } from 'react-router-dom';
 import { Body } from './Components';
 import { Header, MenuModal, NotiModal } from '../../Components';
 
+import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+
 import Styled from './MainPage.styled';
 
 const MainPage = () => {
@@ -12,7 +14,7 @@ const MainPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const loca = useLocation();
 
-  const handleOpenMenu = () => {
+  const handleOpenMenu = (anchor, open) => {
     if (loca.search === '') {
       setSearchParams('mode=menu');
       setIsMenuModal(true);
@@ -45,10 +47,18 @@ const MainPage = () => {
 
   return (
     <>
-      <Styled.MenuModal>
+      {/*<Styled.MenuModal>*/}
+      {/*<MenuModal open={isMenuModal} onClickCloseModal={handleOpenMenu} />*/}
+      {/*<NotiModal open={isNotiModal} onClickCloseModal={handleOpenNoti} />*/}
+      {/*</Styled.MenuModal>*/}
+      <SwipeableDrawer
+        anchor="left"
+        open={isMenuModal}
+        onClose={handleOpenMenu}
+        onOpen={handleOpenMenu}
+      >
         <MenuModal open={isMenuModal} onClickCloseModal={handleOpenMenu} />
-        <NotiModal open={isNotiModal} onClickCloseModal={handleOpenNoti} />
-      </Styled.MenuModal>
+      </SwipeableDrawer>
 
       <Styled.MainHeader>
         <Header
