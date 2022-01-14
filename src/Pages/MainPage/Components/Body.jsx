@@ -22,8 +22,9 @@ const Body = () => {
   const [anonyArticles, setAnonyArticles] = useState(['익명글1', '익명글2']);
 
   const navi = useNavigate();
-  const handleToggle = clicked => {
-    if (highlight !== clicked) setHighlight(clicked);
+  const handleChangeTab = clicked => {
+    console.log('click' + clicked);
+    setHighlight(clicked);
   };
 
   const moveArticles = (category, articleId) => {
@@ -39,13 +40,12 @@ const Body = () => {
     setFreeArticles(mockupData.fetchAllArticle());
     setAnonyArticles(mockupData.fetchAllArticle());
   }, []);
-  // https://mui.com/components/tabs/
-  // tab으로 토글 구현하면 됐었네!!!
+
   return (
     <div className="mainpage-body">
       <Styled.StyledList component="nav" aria-label="mailbox folders">
         <BodyPreView
-          handleToggle={handleToggle}
+          onChangeTab={handleChangeTab}
           highlight={highlight}
           recentArticles={recentArticles}
           famousArticles={famousArticles}

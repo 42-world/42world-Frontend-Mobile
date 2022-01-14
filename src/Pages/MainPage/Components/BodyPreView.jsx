@@ -1,43 +1,29 @@
 import { PreviewArticle } from '../../../Components';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import ToggleButton from '@mui/material/ToggleButton';
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
 
 const BodyPreView = ({
-  handleToggle,
+  onChangeTab,
   highlight,
   recentArticles,
   famousArticles,
   moveArticles,
 }) => {
   const handleChange = (event, value) => {
-    console.log(event, value);
-    if (value !== null) handleToggle(value);
+    onChangeTab(value);
+    console.log(highlight);
   };
+
   return (
     <>
       <ListItem className="preview">
         <ListItemText>
-          <ToggleButtonGroup
-            color="primary"
-            value={highlight}
-            exclusive
-            onChange={handleChange}
-          >
-            <ToggleButton
-              value="recent"
-              className={highlight === 'recent' && 'highlight'}
-            >
-              최신글
-            </ToggleButton>
-            <ToggleButton
-              value="famous"
-              className={highlight === 'famous' && 'highlight'}
-            >
-              인기글
-            </ToggleButton>
-          </ToggleButtonGroup>
+          <Tabs value={highlight} onChange={handleChange}>
+            <Tab label="최신글" value="recent" />
+            <Tab label="인기글" value="famous" />
+          </Tabs>
         </ListItemText>
       </ListItem>
       <div className="articles">
@@ -46,7 +32,7 @@ const BodyPreView = ({
               return (
                 <PreviewArticle
                   article={article}
-                  onClickArticle={() => moveArticles('temp', article.id)}
+                  onClickArticle={() => moveArticles('recent', article.id)}
                 />
               );
             })
@@ -54,8 +40,9 @@ const BodyPreView = ({
               return (
                 <PreviewArticle
                   article={article}
-                  onClickArticle={() => moveArticles('temp', article.id)}
+                  onClickArticle={() => moveArticles('famous', article.id)}
                 />
+                // 임시로 url 세팅.
               );
             })}
       </div>
