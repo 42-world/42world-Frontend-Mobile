@@ -2,7 +2,7 @@ import { PreviewArticle } from '../../../Components';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
+import Styled from './BodyPreView.styled';
 
 const BodyPreView = ({
   onChangeTab,
@@ -18,12 +18,17 @@ const BodyPreView = ({
 
   return (
     <>
-      <ListItem className="preview">
+      <ListItem className="preview" disablePadding="true">
         <ListItemText>
-          <Tabs value={highlight} onChange={handleChange}>
-            <Tab label="최신글" value="recent" />
-            <Tab label="인기글" value="famous" />
-          </Tabs>
+          <Styled.StyledTabs
+            value={highlight}
+            onChange={handleChange}
+            textColor="inherit"
+            indicatorColor="secondary"
+          >
+            <Styled.StyledTab label="최신글" value="recent" />
+            <Styled.StyledTab label="인기글" value="famous" />
+          </Styled.StyledTabs>
         </ListItemText>
       </ListItem>
       <div className="articles">

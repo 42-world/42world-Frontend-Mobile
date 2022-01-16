@@ -22,3 +22,9 @@ body {
 #root::-webkit-scrollbar {
   display: none;
 }
+
+.MuiTabs-indicator {
+  /* Mui Tabs 선택 엘리먼트 하단 바 색깔 */
+  background-color: black !important;
+  height: 3px;
+}
