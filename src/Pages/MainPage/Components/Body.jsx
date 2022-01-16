@@ -67,9 +67,10 @@ const Body = () => {
         <Styled.BoardTitleDiv
           className="article"
           onClick={() => navi('/category/free')}
+          boardArticleCount={freeArticles.length}
         >
           <div className="board_name">자유게시판</div>
-          <div className="board_count">{freeArticles.length}</div>
+          <div className="board_count"></div>
         </Styled.BoardTitleDiv>
 
         {freeArticles.map(article => {
@@ -92,9 +93,10 @@ const Body = () => {
         <Styled.BoardTitleDiv
           className="article"
           onClick={() => navi('/category/anony')}
+          boardArticleCount={anonyArticles.length}
         >
           <div className="board_name">익명게시판</div>
-          <div className="board_count">{anonyArticles.length}</div>
+          <div className="board_count"></div>
         </Styled.BoardTitleDiv>
 
         {anonyArticles.map(article => {
