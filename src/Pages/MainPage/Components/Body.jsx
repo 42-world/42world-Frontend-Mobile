@@ -43,7 +43,11 @@ const Body = () => {
 
   return (
     <div className="mainpage-body">
-      <Styled.StyledList component="nav" aria-label="mailbox folders">
+      <Styled.StyledList
+        disablePadding="true"
+        component="nav"
+        aria-label="mailbox folders"
+      >
         <BodyPreView
           onChangeTab={handleChangeTab}
           highlight={highlight}
@@ -55,7 +59,11 @@ const Body = () => {
 
       <Styled.ListDivider margin="0.7rem" />
 
-      <Styled.StyledList component="nav" aria-label="mailbox folders">
+      <Styled.StyledList
+        disablePadding="true"
+        component="nav"
+        aria-label="mailbox folders"
+      >
         <Styled.BoardTitleDiv
           className="article"
           onClick={() => navi('/category/free')}
@@ -76,7 +84,11 @@ const Body = () => {
 
       <Styled.ListDivider margin="0.7rem" />
 
-      <Styled.StyledList component="nav" aria-label="mailbox folders">
+      <Styled.StyledList
+        disablePadding="true"
+        component="nav"
+        aria-label="mailbox folders"
+      >
         <Styled.BoardTitleDiv
           className="article"
           onClick={() => navi('/category/anony')}
