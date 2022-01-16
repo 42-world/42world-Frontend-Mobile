@@ -15,7 +15,7 @@ const BoardTitleDiv = styled.div`
   box-sizing: border-box;
   width: 100%;
   display: flex;
-  //background-color: #eee;
+  background-color: #53b7ba;
   padding: 0.65rem 1.2rem;
   align-items: center;
   cursor: pointer;
@@ -32,9 +32,9 @@ const BoardTitleDiv = styled.div`
   .board_count {
     font-size: 0.9rem;
     font-weight: 400;
-    color: #999;
+    color: rgba(0, 0, 0, 0.5);
     &::after {
-      content: ' 개의 글';
+      content: '${props => props.boardArticleCount} 개의 글';
     }
   }
 `;

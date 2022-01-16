@@ -57,7 +57,7 @@ const Body = () => {
         />
       </Styled.StyledList>
 
-      <Styled.ListDivider margin="0.7rem" />
+      {/*<Styled.ListDivider margin="0.7rem" />*/}
 
       <Styled.StyledList
         disablePadding="true"
@@ -82,7 +82,7 @@ const Body = () => {
         })}
       </Styled.StyledList>
 
-      <Styled.ListDivider margin="0.7rem" />
+      {/*<Styled.ListDivider margin="0.7rem" />*/}
 
       <Styled.StyledList
         disablePadding="true"
