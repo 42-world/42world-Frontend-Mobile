@@ -1,10 +1,18 @@
 import { useState } from 'react';
+import Styled from './Setting.styled';
 
 const Setting = () => {
   const [character, setCharacter] = useState(0);
   const [input, setInput] = useState({
     nickname: '',
   });
+
+  let profile_list = [
+    '../assets/profile_test.png',
+    '../assets/profile_test.png',
+    '../assets/profile_test.png',
+    '../assets/profile_test.png',
+  ];
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -24,17 +32,17 @@ const Setting = () => {
   };
 
   return (
-    <>
-      <div>
-        <div>캐릭터 선택</div>
-        {[0, 1, 2, 3].map(value => (
+    <Styled.SettingDiv>
+      <div className="setting_container_title">캐릭터 선택</div>
+      <div className="profile_image_div">
+        {profile_list.map(value => (
           <button key={value} onClick={() => handleCharacterClick(value)}>
-            캐릭터{value}
+            <img src={value} alt="profile" />
           </button>
         ))}
       </div>
-      <div>
-        <div>정보 변경</div>
+      <div className="setting_container_title">정보 변경</div>
+      <div className="profile_name_div">
         <label htmlFor="nickname">닉네임</label>
         <div>
           <input
@@ -42,12 +50,12 @@ const Setting = () => {
             name="nickname"
             value={input.nickname}
             onChange={handleChange}
-            placeholder="새로운 닉네임을 입력하세요"
+            placeholder="새로운 닉네임"
           />
           <button onClick={handleDuplicateCheck}>중복 확인</button>
         </div>
       </div>
-    </>
+    </Styled.SettingDiv>
   );
 };
 

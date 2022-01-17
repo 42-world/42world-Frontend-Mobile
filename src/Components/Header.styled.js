@@ -17,7 +17,9 @@ const HeaderStyleDiv = styled.div`
     flex-grow: 1;
   }
   div:nth-child(3) {
-    text-align: right;
+    flex-direction: row-reverse;
+    display: flex;
+    flex-wrap: nowrap;
     * {
       margin-left: 0.5rem;
     }

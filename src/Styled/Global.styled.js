@@ -1,16 +1,17 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const ProfileBackgroundDiv = styled.div`
   // position
-  position: absolute;
-  top: 0px;
-  left: 0px;
+  //position: absolute;
+  //top: 0px;
+  //left: 0px;
 
   // layout
   display: flex;
   flex-direction: column;
   margin: 0px;
   padding: 0px;
+  padding-top: 0.7rem;
 
   // size
   width: 100%;
