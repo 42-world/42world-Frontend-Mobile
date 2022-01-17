@@ -1,10 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const ProfileBackgroundDiv = styled.div`
   // position
-  position: absolute;
-  top: 0px;
-  left: 0px;
+  //position: absolute;
+  //top: 0px;
+  //left: 0px;
 
   // layout
   display: flex;
