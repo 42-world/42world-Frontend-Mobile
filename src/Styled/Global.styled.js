@@ -11,6 +11,7 @@ const ProfileBackgroundDiv = styled.div`
   flex-direction: column;
   margin: 0px;
   padding: 0px;
+  padding-top: 0.7rem;
 
   // size
   width: 100%;
