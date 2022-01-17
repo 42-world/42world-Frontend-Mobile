@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Styled from './Auth.styled';
 
 const Auth = () => {
   const [input, setInput] = useState({
@@ -17,16 +18,17 @@ const Auth = () => {
   };
 
   return (
-    <div>
+    <Styled.AuthDiv>
+      <div>42계정 인증</div>
       <input
         name="email"
         value={input.email}
         onChange={onChange}
-        placeholder="인트라 아이디를 입력하세요"
+        placeholder="인트라 아이디"
       />
-      {'@student.42seoul.kr'}
+      <span></span>
       <button onClick={handleAuthenticate}>인증</button>
-    </div>
+    </Styled.AuthDiv>
   );
 };
 
