@@ -5,6 +5,7 @@ import { PreviewArticle } from '../../../Components';
 
 import List from '@mui/material/List';
 import CircularProgress from '@mui/material/CircularProgress';
+import CreateIcon from '@mui/icons-material/Create';
 
 const Body = () => {
   const [articles, setArticles] = useState([]);
@@ -14,10 +15,13 @@ const Body = () => {
 
   const loca = useLocation();
   const navi = useNavigate();
-  const parse = loca.pathname.split('/');
   const mockupData = ArticleService;
+  console.log(loca.pathname);
+  const handleClickWrite = () => {
+    navi(`${loca.pathname}/create`);
+  };
 
-  const moveArticles = id => {
+  const handleClickArticles = id => {
     navi(`/article/${id}`);
   };
 
@@ -58,19 +62,32 @@ const Body = () => {
   }, [target]);
 
   return (
-    <List component="nav" aria-label="mailbox folders">
-      {articles.map(article => {
-        return (
-          <PreviewArticle
-            article={article}
-            onClickArticle={() => moveArticles(article.id)}
-          />
-        );
-      })}
-      <div ref={setTarget} className="Target-Element">
-        {isLoaded && <CircularProgress />}
-      </div>
-    </List>
+    <>
+      <List component="nav" aria-label="mailbox folders">
+        {articles.map(article => {
+          return (
+            <PreviewArticle
+              article={article}
+              onClickArticle={() => handleClickArticles(article.id)}
+            />
+          );
+        })}
+        <div ref={setTarget} className="Target-Element">
+          {isLoaded && <CircularProgress />}
+        </div>
+      </List>
+      <CreateIcon
+        style={{
+          position: 'fixed',
+          bottom: '50%',
+          right: '20%',
+          borderRadius: '40%',
+          backgroundColor: '#ddd',
+          cursor: 'pointer',
+        }}
+        onClick={handleClickWrite}
+      />
+    </>
   );
 };
 
