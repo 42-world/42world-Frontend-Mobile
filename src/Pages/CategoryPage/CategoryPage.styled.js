@@ -35,5 +35,6 @@ const CusListItem = styled(ListItem)`
     background-color: red;
   }
 `;
+const Styled = { MenuModal, MainHeader, MainBody, CusListItem };
 
-export default { MenuModal, MainHeader, MainBody, CusListItem };
+export default Styled;
