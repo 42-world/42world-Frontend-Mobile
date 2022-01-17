@@ -19,8 +19,19 @@ const generateRandomArticle = () => {
   const title = 'this is title';
   const content = 'this is content';
   const view_count = 1;
+  const comment_count = 2;
+  const liked_count = 3;
 
-  return new Article(id, category_id, writer_id, title, content, view_count);
+  return new Article(
+    id,
+    category_id,
+    writer_id,
+    title,
+    content,
+    view_count,
+    comment_count,
+    liked_count,
+  );
 };
 
 const generateRandomComment = () => {

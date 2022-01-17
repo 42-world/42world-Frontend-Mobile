@@ -3,17 +3,27 @@ import ListItemText from '@mui/material/ListItemText';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import SmsOutlined from '@mui/icons-material/SmsOutlined';
 
+import Styled from './PreviewArticle.styled';
+
 const PreviewArticle = ({ article, onClickArticle }) => {
   return (
-    <ListItem button divider className="article" onClick={onClickArticle}>
-      <ListItemText>
-        {article.title}
+    <Styled.PreviewArticleDiv
+      button
+      divider
+      className="article"
+      onClick={onClickArticle}
+      article={article}
+    >
+      <ListItemText>{article.title}</ListItemText>
+      <div className="favorite_icon">
         <FavoriteBorderIcon />
-        {article.view_count}
+      </div>
+      <div className="comment_icon">
         <SmsOutlined />
-        {article.view_count}
-      </ListItemText>
-    </ListItem>
+        {/*{article.comment_count}*/}
+      </div>
+      {/*{article.liked_count}*/}
+    </Styled.PreviewArticleDiv>
   );
 };
 
