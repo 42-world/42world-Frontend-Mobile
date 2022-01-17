@@ -1,9 +1,9 @@
-import { Body } from './Components';
 import { Header } from '../../Components';
+import Body from './Components';
 
-import Styled from './MainPage.styled';
+import Styled from './CategoryPage.styled.js';
 
-const MainPage = () => {
+const CategoryPage = () => {
   return (
     <>
       <Styled.MainHeader>
@@ -16,4 +16,4 @@ const MainPage = () => {
   );
 };
 
-export default MainPage;
+export default CategoryPage;

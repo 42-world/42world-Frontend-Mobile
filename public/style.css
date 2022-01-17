@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #e5e5e5;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+#root {
+  background-color: #f5f5f5;
+  width: 24.5rem;
+  height: 100vh;
+  overflow: scroll;
+  scrollbar-width: none;
+}
+
+#root::-webkit-scrollbar {
+  display: none;
+}
+
+.MuiTabs-indicator {
+  /* Mui Tabs 선택 엘리먼트 하단 바 색깔 */
+  background-color: black !important;
+  height: 3px;
+}

@@ -1,43 +1,34 @@
 import { PreviewArticle } from '../../../Components';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import ToggleButton from '@mui/material/ToggleButton';
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import Tabs from '@mui/material/Tabs';
+import Styled from './BodyPreView.styled';
 
 const BodyPreView = ({
-  handleToggle,
+  onChangeTab,
   highlight,
   recentArticles,
   famousArticles,
   moveArticles,
 }) => {
   const handleChange = (event, value) => {
-    console.log(event, value);
-    if (value !== null) handleToggle(value);
+    onChangeTab(value);
+    console.log(highlight);
   };
+
   return (
     <>
-      <ListItem className="preview">
+      <ListItem className="preview" disablePadding="true">
         <ListItemText>
-          <ToggleButtonGroup
-            color="primary"
+          <Styled.StyledTabs
             value={highlight}
-            exclusive
             onChange={handleChange}
+            textColor="inherit"
+            indicatorColor="secondary"
           >
-            <ToggleButton
-              value="recent"
-              className={highlight === 'recent' && 'highlight'}
-            >
-              최신글
-            </ToggleButton>
-            <ToggleButton
-              value="famous"
-              className={highlight === 'famous' && 'highlight'}
-            >
-              인기글
-            </ToggleButton>
-          </ToggleButtonGroup>
+            <Styled.StyledTab label="최신글" value="recent" />
+            <Styled.StyledTab label="인기글" value="famous" />
+          </Styled.StyledTabs>
         </ListItemText>
       </ListItem>
       <div className="articles">
@@ -46,7 +37,7 @@ const BodyPreView = ({
               return (
                 <PreviewArticle
                   article={article}
-                  onClickArticle={() => moveArticles('temp', article.id)}
+                  onClickArticle={() => moveArticles('recent', article.id)}
                 />
               );
             })
@@ -54,8 +45,9 @@ const BodyPreView = ({
               return (
                 <PreviewArticle
                   article={article}
-                  onClickArticle={() => moveArticles('temp', article.id)}
+                  onClickArticle={() => moveArticles('famous', article.id)}
                 />
+                // 임시로 url 세팅.
               );
             })}
       </div>

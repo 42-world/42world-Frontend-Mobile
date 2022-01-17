@@ -1,12 +1,16 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BodyPreView from './BodyPreView';
+import Link from '@mui/material/Link';
 
 import { PreviewArticle } from '../../../Components';
 
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
+import Divider from '@mui/material/Divider';
+
+import Styled from './Body.styled';
 
 import ArticleService from '../../../Network/ArticleService';
 
@@ -18,13 +22,14 @@ const Body = () => {
   const [anonyArticles, setAnonyArticles] = useState(['익명글1', '익명글2']);
 
   const navi = useNavigate();
-  const handleToggle = clicked => {
-    if (highlight !== clicked) setHighlight(clicked);
+  const handleChangeTab = clicked => {
+    console.log('click' + clicked);
+    setHighlight(clicked);
   };
 
   const moveArticles = (category, articleId) => {
     console.log(category, articleId);
-    navi(`/category/${category}/${articleId}`);
+    navi(`/article/${articleId}`);
   };
 
   useEffect(() => {
@@ -35,31 +40,38 @@ const Body = () => {
     setFreeArticles(mockupData.fetchAllArticle());
     setAnonyArticles(mockupData.fetchAllArticle());
   }, []);
-  // https://mui.com/components/tabs/
-  // tab으로 토글 구현하면 됐었네!!!
+
   return (
     <div className="mainpage-body">
-      <List component="nav" aria-label="mailbox folders">
+      <Styled.StyledList
+        disablePadding="true"
+        component="nav"
+        aria-label="mailbox folders"
+      >
         <BodyPreView
-          handleToggle={handleToggle}
+          onChangeTab={handleChangeTab}
           highlight={highlight}
           recentArticles={recentArticles}
           famousArticles={famousArticles}
           moveArticles={moveArticles}
         />
-      </List>
+      </Styled.StyledList>
 
-      <List component="nav" aria-label="mailbox folders">
-        <ListItem
-          button
-          divider
+      {/*<Styled.ListDivider margin="0.7rem" />*/}
+
+      <Styled.StyledList
+        disablePadding="true"
+        component="nav"
+        aria-label="mailbox folders"
+      >
+        <Styled.BoardTitleDiv
           className="article"
           onClick={() => navi('/category/free')}
+          boardArticleCount={freeArticles.length}
         >
-          <ListItemText>
-            자유게시판 -> {freeArticles.length}개의 글
-          </ListItemText>
-        </ListItem>
+          <div className="board_name">자유게시판</div>
+          <div className="board_count"></div>
+        </Styled.BoardTitleDiv>
 
         {freeArticles.map(article => {
           return (
@@ -69,18 +81,23 @@ const Body = () => {
             />
           );
         })}
-      </List>
-      <List component="nav" aria-label="mailbox folders">
-        <ListItem
-          button
-          divider
+      </Styled.StyledList>
+
+      {/*<Styled.ListDivider margin="0.7rem" />*/}
+
+      <Styled.StyledList
+        disablePadding="true"
+        component="nav"
+        aria-label="mailbox folders"
+      >
+        <Styled.BoardTitleDiv
           className="article"
           onClick={() => navi('/category/anony')}
+          boardArticleCount={anonyArticles.length}
         >
-          <ListItemText>
-            익명게시판 -> {anonyArticles.length}개의 글
-          </ListItemText>
-        </ListItem>
+          <div className="board_name">익명게시판</div>
+          <div className="board_count"></div>
+        </Styled.BoardTitleDiv>
 
         {anonyArticles.map(article => {
           return (
@@ -90,7 +107,7 @@ const Body = () => {
             />
           );
         })}
-      </List>
+      </Styled.StyledList>
     </div>
   );
 };

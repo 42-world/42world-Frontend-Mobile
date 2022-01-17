@@ -1,5 +1,5 @@
-import * as React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import * as React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {
   MainPage,
   ProfilePage,
@@ -8,19 +8,25 @@ import {
   SettingPage,
   MyArticlePage,
   MyCommentPage,
-} from "./Pages";
+  CategoryPage,
+  ArticlePage,
+} from './Pages';
 
 const ErrorPage = () => {
   return <>Error!</>;
 };
 
+// 글 보기 : 모드view?글id=12 or view/글id
+// 글 작성 : free?mode=write
 const App = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/category/anony" element={<MainPage />} />
-        <Route path="/category/free" element={<MainPage />} />
+
+        <Route path="/category/*" element={<CategoryPage />} />
+        <Route path="/article/*" element={<ArticlePage />} />
+
         <Route path="/search" element={<MainPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/profile/setting" element={<SettingPage />} />

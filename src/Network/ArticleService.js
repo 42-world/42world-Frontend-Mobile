@@ -1,6 +1,6 @@
 // # 게시글 /articles
 
-import { Article, Comment } from "../Entities";
+import { Article, Comment } from '../Entities';
 
 // - 가져오기
 //     - 카테고리별 게시글 목록 GET /articles?category=”anonymous”
@@ -16,25 +16,48 @@ const generateRandomArticle = () => {
   const id = 1;
   const category_id = 1;
   const writer_id = 1;
-  const title = "this is title";
-  const content = "this is content";
+  const title = 'this is title';
+  const content = 'this is content';
   const view_count = 1;
+  const comment_count = 2;
+  const liked_count = 3;
 
-  return new Article(id, category_id, writer_id, title, content, view_count);
+  return new Article(
+    id,
+    category_id,
+    writer_id,
+    title,
+    content,
+    view_count,
+    comment_count,
+    liked_count,
+  );
 };
 
 const generateRandomComment = () => {
   const id = 1;
   const article_id = 1;
   const writer_id = 1;
-  const content = "this is comment";
+  const content = 'this is comment';
 
   return new Comment(id, article_id, writer_id, content);
 };
 
 const ArticleService = {
-  fetchAllArticle: (category_id) => {
+  fetchAllArticle: category_id => {
     return [
+      generateRandomArticle(),
+      generateRandomArticle(),
+      generateRandomArticle(),
+      generateRandomArticle(),
+      generateRandomArticle(),
+      generateRandomArticle(),
+      generateRandomArticle(),
+      generateRandomArticle(),
+      generateRandomArticle(),
+      generateRandomArticle(),
+      generateRandomArticle(),
+      generateRandomArticle(),
       generateRandomArticle(),
       generateRandomArticle(),
       generateRandomArticle(),
@@ -42,10 +65,10 @@ const ArticleService = {
       generateRandomArticle(),
     ];
   },
-  fetchArticle: (id) => {
+  fetchArticle: id => {
     return generateRandomArticle();
   },
-  fetchArticleComments: (id) => {
+  fetchArticleComments: id => {
     return [
       generateRandomComment(),
       generateRandomComment(),
@@ -58,7 +81,7 @@ const ArticleService = {
   updateArticle: (id, title, content) => {
     return true;
   },
-  deleteArticle: (id) => {
+  deleteArticle: id => {
     return true;
   },
 };
