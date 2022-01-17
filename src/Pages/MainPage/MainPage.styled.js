@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import ListItem from "@mui/material/ListItem";
+import styled from 'styled-components';
+import ListItem from '@mui/material/ListItem';
 
 const MenuModal = styled.div`
   display: none;
@@ -7,7 +7,6 @@ const MenuModal = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
   width: 400;
   bgcolor: background.paper;
   border: 2px solid #000;

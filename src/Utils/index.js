@@ -1,3 +1,4 @@
-import globalStyled from "./global.styled";
+import globalStyled from './global.styled';
+import getCurCategory from './getCurCategory';
 
-export default { globalStyled };
+export { globalStyled, getCurCategory };

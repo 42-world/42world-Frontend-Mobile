@@ -2,21 +2,22 @@ import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import ArticleService from '../../../Network/ArticleService';
 import { PreviewArticle } from '../../../Components';
+import { getCurCategory } from '../../../Utils';
 
 import List from '@mui/material/List';
+import ListItemText from '@mui/material/ListItemText';
 import CircularProgress from '@mui/material/CircularProgress';
 import CreateIcon from '@mui/icons-material/Create';
+import Fab from '@mui/material/Fab';
 
 const Body = () => {
   const [articles, setArticles] = useState([]);
-
   const [isLoaded, setIsLoaded] = useState(false);
   const [target, setTarget] = useState(null);
-
+  const [curCate, setCurCate] = useState('');
   const loca = useLocation();
   const navi = useNavigate();
   const mockupData = ArticleService;
-  console.log(loca.pathname);
   const handleClickWrite = () => {
     navi(`${loca.pathname}/create`);
   };
@@ -46,6 +47,7 @@ const Body = () => {
 
   useEffect(() => {
     setArticles(mockupData.fetchAllArticle());
+    setCurCate(getCurCategory(loca));
   }, []);
 
   useEffect(() => {
@@ -64,6 +66,10 @@ const Body = () => {
   return (
     <>
       <List component="nav" aria-label="mailbox folders">
+        <ListItemText style={{ backgroundColor: '#53b7ba' }}>
+          {curCate}
+        </ListItemText>
+
         {articles.map(article => {
           return (
             <PreviewArticle
@@ -76,7 +82,7 @@ const Body = () => {
           {isLoaded && <CircularProgress />}
         </div>
       </List>
-      <CreateIcon
+      <Fab
         style={{
           position: 'fixed',
           bottom: '50%',
@@ -86,7 +92,9 @@ const Body = () => {
           cursor: 'pointer',
         }}
         onClick={handleClickWrite}
-      />
+      >
+        <CreateIcon />{' '}
+      </Fab>
     </>
   );
 };
