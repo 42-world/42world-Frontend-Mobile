@@ -52,14 +52,6 @@ const ArticleService = {
       generateRandomArticle(),
       generateRandomArticle(),
       generateRandomArticle(),
-      generateRandomArticle(),
-      generateRandomArticle(),
-      generateRandomArticle(),
-      generateRandomArticle(),
-      generateRandomArticle(),
-      generateRandomArticle(),
-      generateRandomArticle(),
-      generateRandomArticle(),
     ];
   },
   fetchArticle: id => {

@@ -19,23 +19,6 @@ const CategoryPage = () => {
   const parse = loca.pathname.split('/');
   const mockupData = ArticleService;
 
-  useEffect(() => {
-    setArticles(mockupData.fetchAllArticle());
-  }, []);
-
-  useEffect(() => {
-    let observer;
-    if (target) {
-      console.log('target :', target);
-      observer = new IntersectionObserver(onIntersect, {
-        // ref 역할의 state가 존재한다면 intersection Observer 객체를 observer에 담는다.
-        threshold: 0.4,
-      });
-      observer.observe(target); // observer가 해당 객체를 감시하여 변경된다면 onIntersect 콜백 함수를 실행할 것이다.
-    }
-    return () => observer && observer.disconnect();
-  }, [target]);
-
   const moveArticles = id => {
     navi(`/article/${id}`);
   };
@@ -58,6 +41,23 @@ const CategoryPage = () => {
       observer.observe(entry.target);
     }
   };
+
+  useEffect(() => {
+    setArticles(mockupData.fetchAllArticle());
+  }, []);
+
+  useEffect(() => {
+    let observer;
+    if (target) {
+      console.log('target :', target);
+      observer = new IntersectionObserver(onIntersect, {
+        // ref 역할의 state가 존재한다면 intersection Observer 객체를 observer에 담는다.
+        threshold: 0.4,
+      });
+      observer.observe(target); // observer가 해당 객체를 감시하여 변경된다면 onIntersect 콜백 함수를 실행할 것이다.
+    }
+    // return () => observer && observer.disconnect(); // 주석 씌워도 잘 돌아가네?
+  }, [target]);
 
   return (
     <List component="nav" aria-label="mailbox folders">
