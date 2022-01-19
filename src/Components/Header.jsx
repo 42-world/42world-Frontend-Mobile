@@ -69,8 +69,7 @@ const Header = () => {
     }
   };
   const handleToggleSearch = () => {
-    if (isSearch) setIsSearch(false);
-    else setIsSearch(true);
+    setIsSearch(!isSearch);
   };
   useEffect(() => {
     if (loca.search === '?mode=menu') {
