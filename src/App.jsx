@@ -10,6 +10,7 @@ import {
   MyCommentPage,
   CategoryPage,
   ArticlePage,
+  CreateArticlePage,
 } from './Pages';
 
 const ErrorPage = () => {
@@ -24,8 +25,9 @@ const App = () => {
       <Routes>
         <Route path="/" element={<MainPage />} />
 
-        <Route path="/category/*" element={<CategoryPage />} />
-        <Route path="/article/*" element={<ArticlePage />} />
+        <Route path="/category/:group" element={<CategoryPage />} />
+        <Route path="/category/:group/create" element={<CreateArticlePage />} />
+        <Route path="/article/:id" element={<ArticlePage />} />
 
         <Route path="/search" element={<MainPage />} />
         <Route path="/profile" element={<ProfilePage />} />

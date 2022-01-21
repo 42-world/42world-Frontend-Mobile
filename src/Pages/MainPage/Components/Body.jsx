@@ -1,18 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BodyPreView from './BodyPreView';
-import Link from '@mui/material/Link';
 
 import { PreviewArticle } from '../../../Components';
-
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import Divider from '@mui/material/Divider';
-
-import Styled from './Body.styled';
-
 import ArticleService from '../../../Network/ArticleService';
+import Styled from './Body.styled';
 
 const Body = () => {
   const [highlight, setHighlight] = useState('recent');
@@ -56,8 +48,6 @@ const Body = () => {
           moveArticles={moveArticles}
         />
       </Styled.StyledList>
-
-      {/*<Styled.ListDivider margin="0.7rem" />*/}
 
       <Styled.StyledList
         disablePadding="true"

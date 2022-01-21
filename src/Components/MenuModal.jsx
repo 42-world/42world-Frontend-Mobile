@@ -133,7 +133,7 @@ const MenuModal = ({ open, onClickCloseModal }) => {
     >
       <Styled.MenuModalDiv>
         <img
-          src="assets/headerLogo.svg"
+          src="/assets/headerLogo.svg"
           alt="header-logo"
           onClick={() => navi('/')}
         />

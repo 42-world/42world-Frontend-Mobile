@@ -2,22 +2,27 @@ import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import ArticleService from '../../../Network/ArticleService';
 import { PreviewArticle } from '../../../Components';
+import { getCurCategory } from '../../../Utils';
 
 import List from '@mui/material/List';
+import ListItemText from '@mui/material/ListItemText';
 import CircularProgress from '@mui/material/CircularProgress';
+import CreateIcon from '@mui/icons-material/Create';
+import Fab from '@mui/material/Fab';
 
 const Body = () => {
   const [articles, setArticles] = useState([]);
-
   const [isLoaded, setIsLoaded] = useState(false);
   const [target, setTarget] = useState(null);
-
+  const [curCate, setCurCate] = useState('');
   const loca = useLocation();
   const navi = useNavigate();
-  const parse = loca.pathname.split('/');
   const mockupData = ArticleService;
+  const handleClickWrite = () => {
+    navi(`${loca.pathname}/create`);
+  };
 
-  const moveArticles = id => {
+  const handleClickArticles = id => {
     navi(`/article/${id}`);
   };
 
@@ -42,6 +47,7 @@ const Body = () => {
 
   useEffect(() => {
     setArticles(mockupData.fetchAllArticle());
+    setCurCate(getCurCategory(loca));
   }, []);
 
   useEffect(() => {
@@ -58,19 +64,38 @@ const Body = () => {
   }, [target]);
 
   return (
-    <List component="nav" aria-label="mailbox folders">
-      {articles.map(article => {
-        return (
-          <PreviewArticle
-            article={article}
-            onClickArticle={() => moveArticles(article.id)}
-          />
-        );
-      })}
-      <div ref={setTarget} className="Target-Element">
-        {isLoaded && <CircularProgress />}
-      </div>
-    </List>
+    <>
+      <List component="nav" aria-label="mailbox folders">
+        <ListItemText style={{ backgroundColor: '#53b7ba' }}>
+          {curCate}
+        </ListItemText>
+
+        {articles.map(article => {
+          return (
+            <PreviewArticle
+              article={article}
+              onClickArticle={() => handleClickArticles(article.id)}
+            />
+          );
+        })}
+        <div ref={setTarget} className="Target-Element">
+          {isLoaded && <CircularProgress />}
+        </div>
+      </List>
+      <Fab
+        style={{
+          position: 'fixed',
+          bottom: '50%',
+          right: '20%',
+          borderRadius: '40%',
+          backgroundColor: '#ddd',
+          cursor: 'pointer',
+        }}
+        onClick={handleClickWrite}
+      >
+        <CreateIcon />{' '}
+      </Fab>
+    </>
   );
 };
 
