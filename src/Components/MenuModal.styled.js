@@ -23,11 +23,18 @@ const MenuItem = styled(Link)`
     color: #efefef;
   }
 
-  .menu_item_icon {
+  .menu_item_icon_bg {
+    background-color: #efefef;
     margin-right: 0.8rem;
     width: 3.7rem;
     height: 3.7rem;
     border-radius: 0.4rem;
+    overflow: hidden;
+  }
+
+  .menu_item_icon {
+    with: 100%;
+    height: 100%;
     background: ${props => {
       if (props.icon)
         return `url(${props.icon}) no-repeat center center / contain`;
