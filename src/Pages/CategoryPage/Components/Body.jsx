@@ -10,6 +10,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 import CreateIcon from '@mui/icons-material/Create';
 import Fab from '@mui/material/Fab';
 
+import Styled from './Body.styled';
+
 const Body = () => {
   const [articles, setArticles] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -65,10 +67,10 @@ const Body = () => {
 
   return (
     <>
-      <List component="nav" aria-label="mailbox folders">
-        <ListItemText style={{ backgroundColor: '#53b7ba' }}>
-          {curCate}
-        </ListItemText>
+      <Styled.StyledList component="nav" aria-label="mailbox folders">
+        <Styled.BoardTitleDiv>
+          <div className="board_name">{curCate}</div>
+        </Styled.BoardTitleDiv>
 
         {articles.map(article => {
           return (
@@ -81,7 +83,7 @@ const Body = () => {
         <div ref={setTarget} className="Target-Element">
           {isLoaded && <CircularProgress />}
         </div>
-      </List>
+      </Styled.StyledList>
       <Fab
         style={{
           position: 'fixed',
