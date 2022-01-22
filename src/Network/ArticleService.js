@@ -1,6 +1,11 @@
 // # 게시글 /articles
+import { Article, Comment } from '../Entities';
+import * as API from './APIType';
+import axios from 'axios';
 
-import { Article, Comment } from "../Entities";
+const authUrl = (path) => {
+  return `${API.url('/artiles')}path`;
+};
 
 // - 가져오기
 //     - 카테고리별 게시글 목록 GET /articles?category=”anonymous”
@@ -16,8 +21,8 @@ const generateRandomArticle = () => {
   const id = 1;
   const category_id = 1;
   const writer_id = 1;
-  const title = "this is title";
-  const content = "this is content";
+  const title = 'this is title';
+  const content = 'this is content';
   const view_count = 1;
 
   return new Article(id, category_id, writer_id, title, content, view_count);
@@ -27,7 +32,7 @@ const generateRandomComment = () => {
   const id = 1;
   const article_id = 1;
   const writer_id = 1;
-  const content = "this is comment";
+  const content = 'this is comment';
 
   return new Comment(id, article_id, writer_id, content);
 };
