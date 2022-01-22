@@ -8,7 +8,18 @@ const userUrl = path => {
 const UserService = {
   /**
    * **GET** Signed in User Information
-   * @returns {{User}} user \
+   * @returns {{ \
+   * id: number, \
+   * nickname: string, \
+   * oauthToken: string, \
+   * isAuthenticated: boolean, \
+   * lastLogin: Date, \
+   * role: CADET, \
+   * character: 5, \
+   * deletedAt: Date, \
+   * createdAt: Date, \
+   * updatedAt: Date }} \
+   * user \
    * `200` : success \
    * `401` : fail
    */
@@ -29,7 +40,7 @@ const UserService = {
   },
   /**
    * **DELETE** Signed in User
-   * @returns  user \
+   * @returns
    * `200` : success \
    * `401` : fail
    */
@@ -51,7 +62,18 @@ const UserService = {
   /**
    * **GET** User Information by ID
    * @param {string} id
-   * @returns {{User}} user
+   * @returns {{ \
+   * id: number, \
+   * nickname: string, \
+   * oauthToken: string, \
+   * isAuthenticated: boolean, \
+   * lastLogin: Date, \
+   * role: CADET, \
+   * character: 5, \
+   * deletedAt: Date, \
+   * createdAt: Date, \
+   * updatedAt: Date }} \
+   * user \
    * `200` : success \
    * `401` : fail
    */
@@ -72,7 +94,15 @@ const UserService = {
   },
   /**
    * **GET** User Notification
-   * @returns {{Notification}} notification
+   * @returns {[{ \
+   * id: number, \
+   * type: NEW_COMMENT, \
+   * content: string, \
+   * isRead: boolean, \
+   * userId: number, \
+   * createdAt: Date, \
+   * updatedAt: Date }]} \
+   *  notification
    * `200` : success \
    * `401` : fail
    */
@@ -114,8 +144,19 @@ const UserService = {
   },
   /**
    * **UPDATE** Signed in User Profile
-   * @param {UserProfile} body
-   * @returns {{User}} user
+   * @param {{ nickname: string,character: number}} body
+   * @returns {{ \
+   * id: number, \
+   * nickname: string, \
+   * oauthToken: string, \
+   * isAuthenticated: boolean, \
+   * lastLogin: Date, \
+   * role: CADET, \
+   * character: 5, \
+   * deletedAt: Date, \
+   * createdAt: Date, \
+   * updatedAt: Date }} \
+   * user \
    * `200` : success \
    * `401` : fail
    */

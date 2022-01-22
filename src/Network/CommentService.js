@@ -8,7 +8,7 @@ const commentUrl = path => {
 const CommentService = {
   /**
    * **CREATE** Comments
-   * @param {NewComments} newComments
+   * @param {{content: string,articleId: number}} newComments
    * @returns {{[Comments]}} comments \
    * `200` : success \
    * `401` : fail
@@ -33,7 +33,7 @@ const CommentService = {
   /**
    * **UPDATE** Comments with Comments ID
    * @param {string} commentsId
-   * @param {UpdateComments} updateComments
+   * @param {{content: string}} updateComments
    * @returns {{Comments}} comments \
    * `200` : success \
    * `401` : fail

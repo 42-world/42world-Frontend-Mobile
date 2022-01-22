@@ -8,7 +8,12 @@ const categoryUrl = path => {
 const CategoryService = {
   /**
    * **GET** All Category Type
-   * @returns {{Category}} category \
+   * @returns {[{ \
+   * id: number, \
+   * name: string, \
+   * createdAt: Date, \
+   * updatedAt: Date}]}
+   * category \
    * `200` : success \
    * `401` : fail
    */
