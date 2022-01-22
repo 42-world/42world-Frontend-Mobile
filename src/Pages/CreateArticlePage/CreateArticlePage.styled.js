@@ -43,11 +43,30 @@ const CreateArticlePage = styled.div`
     display: flex;
     flex-direction: column;
     height: 90%;
+
     .category {
+      box-sizing: border-box;
+      width: 100%;
+      display: flex;
       background-color: #53b7ba;
-      height: 40px;
-      text-align: center;
+      padding: 0.65rem 1.2rem;
+      align-items: center;
+      cursor: pointer;
+      justify-content: space-between;
+
+      font-size: 1.1rem;
+      font-weight: 700;
     }
+
+    input {
+      box-sizing: border-box;
+      width: 100%;
+      display: flex;
+      background-color: #fff;
+      padding: 0.9rem 1rem;
+      border: 1px solid #ccc;
+    }
+
     textarea {
       height: 1000px;
     }
