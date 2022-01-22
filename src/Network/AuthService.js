@@ -1,14 +1,15 @@
 import * as API from './APIType';
 import axios from 'axios';
 
-const userUrl = (path) => {
-  return `${API.url('/user')}path`;
+const authUrl = (path) => {
+  return `${API.url('/auth')}${path}`;
 };
 
-const UserService = {
+const AuthService = {
   github: async () => {
     const method = 'GET';
-    const url = userUrl('');
+    const url = authUrl('/github');
+    console.log(url);
 
     let response;
     try {
@@ -53,4 +54,4 @@ const UserService = {
   },
 };
 
-export default UserService;
+export default AuthService;

@@ -1,6 +1,11 @@
 // # 게시글 /articles
-
 import { Article, Comment } from '../Entities';
+import * as API from './APIType';
+import axios from 'axios';
+
+const authUrl = path => {
+  return `${API.url('/artiles')}path`;
+};
 
 // - 가져오기
 //     - 카테고리별 게시글 목록 GET /articles?category=”anonymous”
