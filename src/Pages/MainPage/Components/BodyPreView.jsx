@@ -1,16 +1,8 @@
-import { PreviewArticle } from '../../../Components';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import Tabs from '@mui/material/Tabs';
 import Styled from './BodyPreView.styled';
 
-const BodyPreView = ({
-  onChangeTab,
-  highlight,
-  recentArticles,
-  famousArticles,
-  moveArticles,
-}) => {
+const BodyPreView = ({ onChangeTab, highlight }) => {
   const handleChange = (event, value) => {
     onChangeTab(value);
     console.log(highlight);
@@ -26,31 +18,11 @@ const BodyPreView = ({
             textColor="inherit"
             indicatorColor="secondary"
           >
-            <Styled.StyledTab label="최신글" value="recent" />
-            <Styled.StyledTab label="인기글" value="famous" />
+            <Styled.StyledTab label="홈" value="home" />
+            <Styled.StyledTab label="커뮤니티" value="community" />
           </Styled.StyledTabs>
         </ListItemText>
       </ListItem>
-      <div className="articles">
-        {highlight === 'recent'
-          ? recentArticles.map(article => {
-              return (
-                <PreviewArticle
-                  article={article}
-                  onClickArticle={() => moveArticles('recent', article.id)}
-                />
-              );
-            })
-          : famousArticles.map(article => {
-              return (
-                <PreviewArticle
-                  article={article}
-                  onClickArticle={() => moveArticles('famous', article.id)}
-                />
-                // 임시로 url 세팅.
-              );
-            })}
-      </div>
     </>
   );
 };

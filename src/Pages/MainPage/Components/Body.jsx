@@ -1,21 +1,16 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BodyPreView from './BodyPreView';
-import Link from '@mui/material/Link';
-
-import { PreviewArticle } from '../../../Components';
-
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import Divider from '@mui/material/Divider';
+import Community from './Community';
 
 import Styled from './Body.styled';
-
 import ArticleService from '../../../Network/ArticleService';
 
+const Home = () => {
+  return <div>asdsa</div>;
+};
 const Body = () => {
-  const [highlight, setHighlight] = useState('recent');
+  const [highlight, setHighlight] = useState('home');
   const [recentArticles, setRecentArticles] = useState(['최근글1', '최근글2']);
   const [famousArticles, setFamousArticles] = useState(['인기글1', '인기글2']);
   const [freeArticles, setFreeArticles] = useState(['자유글1', '자유글2']);
@@ -58,56 +53,19 @@ const Body = () => {
       </Styled.StyledList>
 
       {/*<Styled.ListDivider margin="0.7rem" />*/}
-
-      <Styled.StyledList
-        disablePadding="true"
-        component="nav"
-        aria-label="mailbox folders"
-      >
-        <Styled.BoardTitleDiv
-          className="article"
-          onClick={() => navi('/category/free')}
-          boardArticleCount={freeArticles.length}
-        >
-          <div className="board_name">자유게시판</div>
-          <div className="board_count"></div>
-        </Styled.BoardTitleDiv>
-
-        {freeArticles.map(article => {
-          return (
-            <PreviewArticle
-              article={article}
-              onClickArticle={() => moveArticles('free', article.id)}
-            />
-          );
-        })}
-      </Styled.StyledList>
-
-      {/*<Styled.ListDivider margin="0.7rem" />*/}
-
-      <Styled.StyledList
-        disablePadding="true"
-        component="nav"
-        aria-label="mailbox folders"
-      >
-        <Styled.BoardTitleDiv
-          className="article"
-          onClick={() => navi('/category/anony')}
-          boardArticleCount={anonyArticles.length}
-        >
-          <div className="board_name">익명게시판</div>
-          <div className="board_count"></div>
-        </Styled.BoardTitleDiv>
-
-        {anonyArticles.map(article => {
-          return (
-            <PreviewArticle
-              article={article}
-              onClickArticle={() => moveArticles('annoy', article.id)}
-            />
-          );
-        })}
-      </Styled.StyledList>
+      <div className="articles">
+        {highlight === 'home' ? (
+          <Home />
+        ) : (
+          <Community
+            famousArticles={famousArticles}
+            freeArticles={freeArticles}
+            anonyArticles={anonyArticles}
+            moveArticles={moveArticles}
+            navi={navi}
+          />
+        )}
+      </div>
     </div>
   );
 };
