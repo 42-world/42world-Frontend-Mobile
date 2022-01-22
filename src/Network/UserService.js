@@ -1,27 +1,6 @@
 import * as API from './APIType';
 import axios from 'axios';
 
-// GET
-// /users
-// 내 정보 가져오기
-// DELETE
-// /users
-// 유저 삭제
-// GET
-// /users/profile/{id}
-// 특정 유저 정보 가져오기
-// GET
-// /users/notification
-// 알람 가져오기
-// PUT
-// /users/notification/readall
-// 알람 다 읽기
-// PUT
-// /users/profile
-// 유저 프로필 변경
-// Category
-
-
 const userUrl = (path) => {
   return `${API.url('/users')}${path}`;
 };
@@ -29,7 +8,7 @@ const userUrl = (path) => {
 const UserService = {
   /**
    * **GET** Signed in User Information
-   * @returns {JSON} HTTP Status Code \
+   * @returns {{User}} user \
    * `200` : success \
    * `401` : fail
    */
@@ -49,8 +28,8 @@ const UserService = {
     return response;
   },
   /**
-   * DELETE Signed in User
-   * @returns **HTTP Status Code** \
+   * **DELETE** Signed in User
+   * @returns  user \
    * `200` : success \
    * `401` : fail
    */
@@ -70,9 +49,11 @@ const UserService = {
     return response;
   },
   /**
-   *
-   * @param {*} id
-   * @returns
+   * **GET** User Information by ID
+   * @param {string} id
+   * @returns {{User}} user
+   * `200` : success \
+   * `401` : fail
    */
   getUserById: async (id) => {
     const method = 'GET';
@@ -90,8 +71,10 @@ const UserService = {
     return response;
   },
   /**
-   *
-   * @returns
+   * **GET** User Notification
+   * @returns {{Notification}} notification
+   * `200` : success \
+   * `401` : fail
    */
   getNotification: async () => {
     const method = 'GET';
@@ -109,8 +92,10 @@ const UserService = {
     return response;
   },
   /**
-   *
+   * **UPDATE** User Notification Status (read all notification)
    * @returns
+   * `200` : success \
+   * `401` : fail
    */
   updateNotificationStatus: async () => {
     const method = 'PUT';
@@ -128,14 +113,16 @@ const UserService = {
     return response;
   },
   /**
-   *
-   * @param {*} body
-   * @returns
+   * **UPDATE** Signed in User Profile
+   * @param {UserProfile} body
+   * @returns {{User}} user
+   * `200` : success \
+   * `401` : fail
    */
-	updateUser: async (body) => {
+	updateUser: async (changedProfile) => {
     const method = 'PUT';
     const url = userUrl('/profile');
-    const body = body
+    const body = changedProfile
 
     let response;
     try {
