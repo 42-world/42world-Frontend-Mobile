@@ -1,7 +1,7 @@
 import * as API from './APIType';
 import axios from 'axios';
 
-const authUrl = (path) => {
+const authUrl = path => {
   return `${API.url('/auth')}${path}`;
 };
 
@@ -18,13 +18,13 @@ const AuthService = {
         url,
       });
     } catch (error) {
-      alert(error);
+      return error;
     }
     return response;
   },
-  githubCallback: async () => {
+  githubCallback: async code => {
     const method = 'GET';
-    const url = API.url('/github/callback');
+    const url = authUrl('/github/callback' + code);
 
     let response;
     try {
