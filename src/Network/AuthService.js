@@ -2,13 +2,14 @@ import * as API from './APIType';
 import axios from 'axios';
 
 const authUrl = (path) => {
-  return `${API.url('/auth')}path`;
+  return `${API.url('/auth')}${path}`;
 };
 
 const AuthService = {
   github: async () => {
     const method = 'GET';
     const url = authUrl('/github');
+    console.log(url);
 
     let response;
     try {
