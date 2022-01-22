@@ -1,8 +1,10 @@
 import styled from 'styled-components';
+import GlobalStyled from '../Styled/Global.styled';
 
 const HeaderStyleDiv = styled.div`
-  background-color: rgba(42, 45, 56, 1);
+  background-color: ${GlobalStyled.theme.secondary};
   box-sizing: border-box;
+  max-width: 24.5rem;
   width: 100%;
   display: flex;
   height: 4.5rem;
@@ -10,6 +12,10 @@ const HeaderStyleDiv = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0.25rem 0.8rem;
+  z-index: 1;
+
+  position: fixed;
+  top: 0;
 
   svg {
     cursor: pointer;
