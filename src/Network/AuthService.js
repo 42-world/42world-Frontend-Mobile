@@ -15,7 +15,6 @@ const AuthService = {
   getAuth: async () => {
     const method = 'GET';
     const url = authUrl('/github');
-    console.log(url);
 
     let response;
     try {
