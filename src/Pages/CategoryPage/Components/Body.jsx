@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import ArticleService from '../../../Network/ArticleService';
+import ArticleService from '../../../Network/ArticleService_old';
 import { PreviewArticle } from '../../../Components';
 import { getCurCategory } from '../../../Utils';
 

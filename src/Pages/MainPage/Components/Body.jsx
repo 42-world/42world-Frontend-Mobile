@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import BodyPreView from './BodyPreView';
 
 import { PreviewArticle } from '../../../Components';
-import ArticleService from '../../../Network/ArticleService';
+import ArticleService from '../../../Network/ArticleService_old';
 import Styled from './Body.styled';
 
 const Body = () => {
