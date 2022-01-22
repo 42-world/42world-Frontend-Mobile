@@ -4,15 +4,18 @@ import GlobalStyled from '../Styled/Global.styled';
 const HeaderStyleDiv = styled.div`
   background-color: ${GlobalStyled.theme.secondary};
   box-sizing: border-box;
-  max-width: 24.5rem;
   width: 100%;
   display: flex;
-  height: 4.5rem;
+  height: ${GlobalStyled.theme.headerHeight};
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 0.25rem 0.8rem;
   z-index: 1;
+
+  @media (min-width: ${GlobalStyled.theme.mobileMaxWidth}) {
+    width: ${GlobalStyled.theme.desktopWidth};
+  }
 
   position: fixed;
   top: 0;
