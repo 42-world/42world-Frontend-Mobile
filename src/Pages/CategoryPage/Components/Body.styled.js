@@ -14,7 +14,6 @@ const BoardTitleDiv = styled.div`
   background-color: #53b7ba;
   padding: 0.65rem 1.2rem;
   align-items: center;
-  cursor: pointer;
   justify-content: space-between;
 
   .board_name {
