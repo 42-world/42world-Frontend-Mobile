@@ -1,9 +1,20 @@
 import styled from 'styled-components';
 import List from '@mui/material/List';
+import GlobalStyled from '../../../Styled/Global.styled';
 
 const StyledList = styled(List)`
   && {
     padding: 0;
+  }
+
+  .scroll_loading_progress {
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    svg {
+      color: ${GlobalStyled.theme.primary};
+    }
   }
 `;
 

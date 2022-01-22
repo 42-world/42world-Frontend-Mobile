@@ -80,23 +80,26 @@ const Body = () => {
             />
           );
         })}
-        <div ref={setTarget} className="Target-Element">
+
+        <div ref={setTarget} className="scroll_loading_progress">
           {isLoaded && <CircularProgress />}
         </div>
+
+        <Fab
+          className="fab_button"
+          style={{
+            position: 'fixed',
+            bottom: '50%',
+            right: '20%',
+            borderRadius: '40%',
+            backgroundColor: '#ddd',
+            cursor: 'pointer',
+          }}
+          onClick={handleClickWrite}
+        >
+          <CreateIcon />{' '}
+        </Fab>
       </Styled.StyledList>
-      <Fab
-        style={{
-          position: 'fixed',
-          bottom: '50%',
-          right: '20%',
-          borderRadius: '40%',
-          backgroundColor: '#ddd',
-          cursor: 'pointer',
-        }}
-        onClick={handleClickWrite}
-      >
-        <CreateIcon />{' '}
-      </Fab>
     </>
   );
 };
