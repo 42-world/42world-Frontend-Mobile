@@ -13,7 +13,7 @@ const HeaderStyleDiv = styled.div`
   padding: 0.25rem 0.8rem;
   z-index: 1;
 
-  @media (min-width: ${GlobalStyled.theme.mobileMaxWidth}) {
+  @media (min-width: ${GlobalStyled.theme.mobileMinWidth}) {
     width: ${GlobalStyled.theme.desktopWidth};
   }
 

@@ -14,7 +14,7 @@ const theme = {
   borderRadius: '0.25rem',
   headerHeight: '4.5rem',
 
-  mobileMaxWidth: '28rem',
+  mobileMinWidth: '28rem',
   desktopWidth: '24.5rem',
 };
 

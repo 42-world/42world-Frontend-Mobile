@@ -85,18 +85,7 @@ const Body = () => {
           {isLoaded && <CircularProgress />}
         </div>
 
-        <Fab
-          className="fab_button"
-          style={{
-            position: 'fixed',
-            bottom: '50%',
-            right: '20%',
-            borderRadius: '40%',
-            backgroundColor: '#ddd',
-            cursor: 'pointer',
-          }}
-          onClick={handleClickWrite}
-        >
+        <Fab className="fab_button" onClick={handleClickWrite}>
           <CreateIcon />{' '}
         </Fab>
       </Styled.StyledList>

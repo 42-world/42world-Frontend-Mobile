@@ -16,13 +16,31 @@ const StyledList = styled(List)`
       color: ${GlobalStyled.theme.primary};
     }
   }
+
+  .fab_button {
+    position: fixed;
+    bottom: 1.8rem;
+    right: 1.5rem;
+    z-index: 100;
+    background-color: ${GlobalStyled.theme.primary};
+    color: ${GlobalStyled.theme.textLight};
+    border-radius: 40%;
+    cursor: 'pointer';
+    @media (min-width: ${GlobalStyled.theme.mobileMinWidth}) {
+      bottom: 1.8rem;
+      left: calc(50% + 7rem);
+    }
+    &:hover {
+      background-color: ${GlobalStyled.theme.secondary};
+    }
+  }
 `;
 
 const BoardTitleDiv = styled.div`
   box-sizing: border-box;
   width: 100%;
   display: flex;
-  background-color: #53b7ba;
+  background-color: ${GlobalStyled.theme.primary};
   padding: 0.65rem 1.2rem;
   align-items: center;
   justify-content: space-between;
