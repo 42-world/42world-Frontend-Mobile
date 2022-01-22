@@ -44,11 +44,21 @@ const Body = () => {
   return (
     <>
       <div className="header">
-        <ArrowBackIcon onClick={handleClickCancel} />
-        <text>글 작성하기</text>
-        <Button onClick={handleClickSubmit} variant="outlined">
-          완료
-        </Button>
+        <div>
+          <ArrowBackIcon onClick={handleClickCancel} />
+        </div>
+        <div>
+          <span>글 작성하기</span>
+        </div>
+        <div>
+          <Button
+            onClick={handleClickSubmit}
+            variant="outlined"
+            className="submit_button"
+          >
+            완료
+          </Button>
+        </div>
       </div>
       <div className="body">
         <div className="category">{curCate}</div>
