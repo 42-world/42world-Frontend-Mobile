@@ -39,6 +39,22 @@ const BoardTitleDiv = styled.div`
   }
 `;
 
-const Styled = { BoardTitleDiv, StyledList, ListDivider };
+const CheckInHeader = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
+
+const CheckInBody = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
+
+const Styled = {
+  BoardTitleDiv,
+  StyledList,
+  ListDivider,
+  CheckInHeader,
+  CheckInBody,
+};
 
 export default Styled;

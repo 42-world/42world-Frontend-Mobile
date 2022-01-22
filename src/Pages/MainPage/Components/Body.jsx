@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BodyPreView from './BodyPreView';
+
 import Community from './Community';
+import Home from './Home';
 
 import Styled from './Body.styled';
 import ArticleService from '../../../Network/ArticleService';
 
-const Home = () => {
-  return <div>asdsa</div>;
-};
+import Divider from '@mui/material/Divider';
+
 const Body = () => {
   const [highlight, setHighlight] = useState('home');
-  const [recentArticles, setRecentArticles] = useState(['최근글1', '최근글2']);
   const [famousArticles, setFamousArticles] = useState(['인기글1', '인기글2']);
   const [freeArticles, setFreeArticles] = useState(['자유글1', '자유글2']);
   const [anonyArticles, setAnonyArticles] = useState(['익명글1', '익명글2']);
@@ -30,7 +30,6 @@ const Body = () => {
   useEffect(() => {
     const mockupData = ArticleService;
     console.log(mockupData.fetchAllArticle());
-    setRecentArticles(mockupData.fetchAllArticle());
     setFamousArticles(mockupData.fetchAllArticle());
     setFreeArticles(mockupData.fetchAllArticle());
     setAnonyArticles(mockupData.fetchAllArticle());
@@ -43,15 +42,9 @@ const Body = () => {
         component="nav"
         aria-label="mailbox folders"
       >
-        <BodyPreView
-          onChangeTab={handleChangeTab}
-          highlight={highlight}
-          recentArticles={recentArticles}
-          famousArticles={famousArticles}
-          moveArticles={moveArticles}
-        />
+        <BodyPreView onChangeTab={handleChangeTab} highlight={highlight} />
       </Styled.StyledList>
-
+      <Divider />
       {/*<Styled.ListDivider margin="0.7rem" />*/}
       <div className="articles">
         {highlight === 'home' ? (
