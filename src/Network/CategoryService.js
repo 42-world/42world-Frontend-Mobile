@@ -1,7 +1,7 @@
 import * as API from './APIType';
 import axios from 'axios';
 
-const categoryUrl = (path) => {
+const categoryUrl = path => {
   return `${API.url('/categories')}${path}`;
 };
 
@@ -14,7 +14,7 @@ const CategoryService = {
    */
   getCategories: async () => {
     const method = 'GET';
-    const url = userUrl('');
+    const url = categoryUrl('');
 
     let response;
     try {
