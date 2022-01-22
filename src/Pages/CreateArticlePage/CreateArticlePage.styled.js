@@ -42,7 +42,7 @@ const CreateArticlePage = styled.div`
   .body {
     display: flex;
     flex-direction: column;
-    height: 90%;
+    height: calc(100vh - 4.5rem);
 
     .category {
       box-sizing: border-box;
@@ -65,10 +65,24 @@ const CreateArticlePage = styled.div`
       background-color: #fff;
       padding: 0.9rem 1rem;
       border: 1px solid #ccc;
+      font-size: 1rem;
+      &:focus {
+        outline: none;
+      }
     }
 
     textarea {
-      height: 1000px;
+      box-sizing: border-box;
+      width: 100%;
+      display: flex;
+      background-color: #fff;
+      padding: 0.9rem 1rem;
+      border: 1px solid #ccc;
+      height: 100%;
+      resize: none;
+      &:focus {
+        outline: none;
+      }
     }
   }
 `;
