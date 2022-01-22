@@ -95,7 +95,7 @@ const ArticleService = {
    */
   getArticles: async categoriesId => {
     const method = 'GET';
-    const url = articleUrl(`${categoriesId}`);
+    const url = articleUrl(`?categoryId=${categoriesId}`);
 
     let response;
     try {
