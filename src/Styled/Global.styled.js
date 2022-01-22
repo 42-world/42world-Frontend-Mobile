@@ -18,6 +18,18 @@ const theme = {
   desktopWidth: '24.5rem',
 };
 
+const assets = {
+  headerLogo: '/assets/headerLogo.svg',
+  sidebar: {
+    '80000co': '/assets/sidebar/80000co.png',
+    humansof42: '/assets/sidebar/humansof42.png',
+    giggle: '/assets/sidebar/giggle.png',
+    '42doproject': '/assets/sidebar/42doproject.png',
+    '42swim': '/assets/sidebar/42swim.png',
+    '42psychic': '/assets/sidebar/42psychic.png',
+  },
+};
+
 const ProfileBackgroundDiv = styled.div`
   // position
   //position: absolute;
@@ -39,6 +51,6 @@ const ProfileBackgroundDiv = styled.div`
   background-color: #2a2d38;
 `;
 
-const GlobalStyled = { theme, ProfileBackgroundDiv };
+const GlobalStyled = { theme, assets, ProfileBackgroundDiv };
 
 export default GlobalStyled;
