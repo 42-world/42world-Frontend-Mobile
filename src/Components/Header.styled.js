@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 
 const HeaderStyleDiv = styled.div`
+  background-color: rgba(42, 45, 56, 1);
   box-sizing: border-box;
   width: 100%;
   display: flex;
+  height: 4.5rem;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
