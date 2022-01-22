@@ -1,7 +1,7 @@
 import * as API from './APIType';
 import axios from 'axios';
 
-const userUrl = (path) => {
+const userUrl = path => {
   return `${API.url('/users')}${path}`;
 };
 
@@ -55,7 +55,7 @@ const UserService = {
    * `200` : success \
    * `401` : fail
    */
-  getUserById: async (id) => {
+  getUserById: async id => {
     const method = 'GET';
     const url = userUrl(`/profile/${id}`);
 
@@ -119,10 +119,10 @@ const UserService = {
    * `200` : success \
    * `401` : fail
    */
-	updateUser: async (changedProfile) => {
+  updateUser: async changedProfile => {
     const method = 'PUT';
     const url = userUrl('/profile');
-    const body = changedProfile
+    const body = changedProfile;
 
     let response;
     try {

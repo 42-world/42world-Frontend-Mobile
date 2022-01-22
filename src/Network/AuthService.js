@@ -6,7 +6,13 @@ const authUrl = path => {
 };
 
 const AuthService = {
-  github: async () => {
+  /**
+   * **GET** User Auth
+   * @returns
+   * `200` : success \
+   * `other` : fail
+   */
+  getAuth: async () => {
     const method = 'GET';
     const url = authUrl('/github');
     console.log(url);
@@ -22,7 +28,13 @@ const AuthService = {
     }
     return response;
   },
-  githubCallback: async code => {
+  /**
+   * **GET** User Auth Access Token
+   * @returns
+   * `200` : success \
+   * `other` : fail
+   */
+  getAuthAccessToken: async code => {
     const method = 'GET';
     const url = authUrl('/github/callback' + code);
 
@@ -37,7 +49,13 @@ const AuthService = {
     }
     return response;
   },
-  signout: async () => {
+  /**
+   * **GET** User Sign Out
+   * @returns
+   * `200` : success \
+   * `other` : fail
+   */
+  signOut: async () => {
     const method = 'GET';
     const url = API.url('/signout');
 
