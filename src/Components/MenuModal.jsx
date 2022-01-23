@@ -5,7 +5,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import EmailIcon from '@mui/icons-material/Email';
 import BookIcon from '@mui/icons-material/Book';
 
-import globalStyled from '../Utils/global.styled';
+import GlobalStyled from '../Styled/Global.styled';
 import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';
 import Link from '@mui/material/Link';
@@ -29,31 +29,37 @@ const siteMap = [
     name: '팔만코딩경',
     link: 'https://80000coding.oopy.io/',
     desc: '개발에 관련된 것을 모두 모아!',
-    icon: '',
+    icon: GlobalStyled.assets.sidebar['80000co'],
   },
   {
     name: 'Humans of 42',
     link: 'https://humansof42.com/',
-    desc: '42 사람들의 이야기를 듣습니다.',
-    icon: '',
+    desc: '42Seoul의 이야기를 전합니다',
+    icon: GlobalStyled.assets.sidebar['humansof42'],
+  },
+  {
+    name: 'Giggle Forest',
+    link: 'https://giggleforest.com/',
+    desc: '귀여운 아바타로 대화해보세요',
+    icon: GlobalStyled.assets.sidebar['giggle'],
   },
   {
     name: '42DoProject',
     link: 'https://42doproject.com/',
-    desc: '42드 프로젝트를 찾고 계시나요?',
-    icon: '',
+    desc: '42서울 사이드 프로젝트 플랫폼',
+    icon: GlobalStyled.assets.sidebar['42doproject'],
   },
   {
     name: '42SWIM',
     link: 'https://swim.42seoul.io/',
-    desc: '42 스택 오버플로우',
-    icon: '',
+    desc: '42서울의 Q&A 커뮤니티',
+    icon: GlobalStyled.assets.sidebar['42swim'],
   },
   {
     name: '42Psychic',
     link: 'https://devfor.fun/',
     desc: '당신의 평가자를 점쳐보세요...',
-    icon: '',
+    icon: GlobalStyled.assets.sidebar['42psychic'],
   },
 ];
 
@@ -66,7 +72,9 @@ const MenuItem = ({ item, index }) => {
       }}
       icon={item.icon}
     >
-      <div className="menu_item_icon" icon={item.icon}></div>
+      <div className="menu_item_icon_bg">
+        <div className="menu_item_icon" icon={item.icon}></div>
+      </div>
       <div className="menu_item_text">
         <h2>{item.name}</h2>
         <h3>{item.desc}</h3>
@@ -133,7 +141,7 @@ const MenuModal = ({ open, onClickCloseModal }) => {
     >
       <Styled.MenuModalDiv>
         <img
-          src="/assets/headerLogo.svg"
+          src={GlobalStyled.assets.headerLogo}
           alt="header-logo"
           onClick={() => navi('/')}
         />
