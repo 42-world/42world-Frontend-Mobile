@@ -26,6 +26,8 @@ const App = () => {
         <Route path="/" element={<MainPage />} />
 
         <Route path="/category/:id" element={<CategoryPage />} />
+        <Route path="/category/:id/create" element={<CreateArticlePage />} />
+
         <Route path="/article/:id" element={<ArticlePage />} />
 
         <Route path="/search" element={<MainPage />} />

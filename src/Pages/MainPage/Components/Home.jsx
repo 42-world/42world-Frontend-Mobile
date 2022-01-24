@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import Styled from './Body.styled';
 import { PreviewArticle } from '../../../Components';
 
-import ArticleService from '../../../Network/ArticleService';
+import ArticleService from '../../../Network/ArticleService_old';
 
 const Home = () => {
   const [notiArticles, setNotiArticles] = useState([]);

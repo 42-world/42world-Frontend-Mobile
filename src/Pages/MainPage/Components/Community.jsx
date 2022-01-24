@@ -1,7 +1,6 @@
 import { PreviewArticle } from '../../../Components';
 
 import Styled from './Body.styled';
-import ArticleService from '../../../Network/ArticleService';
 
 const Community = ({
   famousArticles,

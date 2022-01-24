@@ -2,19 +2,13 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BodyPreView from './BodyPreView';
 
-<<<<<<< HEAD
 import Community from './Community';
 import Home from './Home';
 
 import Styled from './Body.styled';
-import ArticleService from '../../../Network/ArticleService';
+import ArticleService from '../../../Network/ArticleService_old';
 
 import Divider from '@mui/material/Divider';
-=======
-import { PreviewArticle } from '../../../Components';
-import ArticleService from '../../../Network/ArticleService_old';
-import Styled from './Body.styled';
->>>>>>> dev
 
 const Body = () => {
   const [highlight, setHighlight] = useState('home');
