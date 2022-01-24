@@ -94,7 +94,7 @@ const Header = () => {
         </div>
         <div>
           <img
-            src="/assets/headerLogo.svg"
+            src={GlobalStyled.assets.headerLogo}
             alt="header-logo"
             onClick={() => navi('/')}
           />

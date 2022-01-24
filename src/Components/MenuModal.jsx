@@ -4,25 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import EmailIcon from '@mui/icons-material/Email';
 import BookIcon from '@mui/icons-material/Book';
+import Box from '@mui/material/Box';
+import List from '@mui/material/List';
 
 import GlobalStyled from '../Styled/Global.styled';
-import Modal from '@mui/material/Modal';
-import Divider from '@mui/material/Divider';
-import Link from '@mui/material/Link';
-import CloseIcon from '@mui/icons-material/Close';
-
 import Styled from './MenuModal.styled';
 
-import Box from '@mui/material/Box';
-import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import Button from '@mui/material/Button';
-import List from '@mui/material/List';
-//import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 
 const siteMap = [
   {
@@ -141,8 +128,8 @@ const MenuModal = ({ open, onClickCloseModal }) => {
     >
       <Styled.MenuModalDiv>
         <img
-          src="/assets/headerLogo.svg"
-          alt="header-logo"
+            src={GlobalStyled.assets.headerLogo}
+            alt="header-logo"
           onClick={() => navi('/')}
         />
         <QuickLink />
