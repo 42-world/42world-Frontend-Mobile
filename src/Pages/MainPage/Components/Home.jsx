@@ -45,7 +45,7 @@ const Home = () => {
           className="article"
           boardArticleCount={notiArticles.length}
         >
-          <div className="board_name">공지</div>
+          <div className="board_name">42born2code 공지</div>
           <div className="board_count"></div>
         </Styled.BoardTitleDiv>
 

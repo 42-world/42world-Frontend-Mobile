@@ -24,8 +24,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<MainPage />} />
 
-        <Route path="/category/*" element={<CategoryPage />} />
-        <Route path="/article/*" element={<ArticlePage />} />
+        <Route path="/category/:id" element={<CategoryPage />} />
+        <Route path="/article/:id" element={<ArticlePage />} />
 
         <Route path="/search" element={<MainPage />} />
         <Route path="/profile" element={<ProfilePage />} />

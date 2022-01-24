@@ -90,7 +90,7 @@ const Header = () => {
         </div>
         <div>
           <img
-            src="assets/headerLogo.svg"
+            src="/assets/headerLogo.svg"
             alt="header-logo"
             onClick={() => navi('/')}
           />
