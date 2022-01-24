@@ -1,21 +1,7 @@
-import styled from "styled-components";
-import ListItem from "@mui/material/ListItem";
+import styled from 'styled-components';
+import ListItem from '@mui/material/ListItem';
 
-const MenuModal = styled.div`
-  display: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  width: 400;
-  bgcolor: background.paper;
-  border: 2px solid #000;
-`;
-
-const MainHeader = styled.div`
-  background-color: rgba(42, 45, 56, 1);
-`;
+const MainHeader = styled.div``;
 
 const MainBody = styled.div`
   .mainpage-body {
@@ -30,10 +16,4 @@ const MainBody = styled.div`
   }
 `;
 
-const CusListItem = styled(ListItem)`
-  && {
-    background-color: red;
-  }
-`;
-
-export default { MenuModal, MainHeader, MainBody, CusListItem };
+export default { MainHeader, MainBody };

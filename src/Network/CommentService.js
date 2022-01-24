@@ -1,27 +1,81 @@
-// # 댓글 /comments
+import * as API from './APIType';
+import axios from 'axios';
 
-// - 쓰기 POST /comments/:id
-// - 수정하기 PUT /comments/:id
-// - 삭제하기 DELETE /comments/:id
-
-const generateRandomComment = () => {
-  const id = 1;
-  const article_id = 1;
-  const writer_id = 1;
-  const content = "this is comment";
-
-  return new Comment(id, article_id, writer_id, content);
+const commentUrl = path => {
+  return `${API.url('/comments')}${path}`;
 };
 
 const CommentService = {
-  createComment: (article_id, writer_id, content) => {
-    return generateRandomComment();
+  /**
+   * **CREATE** Comments
+   * @param {{content: string,articleId: number}} newComments
+   * @returns {{[Comments]}} comments \
+   * `200` : success \
+   * `401` : fail
+   */
+  createComments: async newComments => {
+    const method = 'POST';
+    const url = commentUrl('');
+    const body = newComments;
+
+    let response;
+    try {
+      response = await axios({
+        method,
+        body,
+        url,
+      });
+    } catch (error) {
+      alert(error);
+    }
+    return response;
   },
-  updateComment: (id) => {
-    return true;
+  /**
+   * **UPDATE** Comments with Comments ID
+   * @param {string} commentsId
+   * @param {{content: string}} updateComments
+   * @returns {{Comments}} comments \
+   * `200` : success \
+   * `401` : fail
+   */
+  updateComments: async (updateComments, commentsId) => {
+    const method = 'PUT';
+    const url = commentUrl(`/${commentsId}`);
+    const body = updateComments;
+
+    let response;
+    try {
+      response = await axios({
+        method,
+        body,
+        url,
+      });
+    } catch (error) {
+      alert(error);
+    }
+    return response;
   },
-  deleteComment: (id) => {
-    return true;
+  /**
+   * **DELETE** Comments with Comments ID
+   * @param {string} commentsId
+   * @returns
+   * `200` : success \
+   * `401` : fail
+   */
+  deleteComments: async commentsId => {
+    const method = 'DELETE';
+    const url = commentUrl(`/${commentsId}`);
+
+    let response;
+    try {
+      response = await axios({
+        method,
+        url,
+      });
+    } catch (error) {
+      alert(error);
+    }
+    return response;
   },
 };
 

@@ -1,4 +1,6 @@
 const ArticlePage = () => {
+  // const loca = useLocation();
+  // console.log(loca);
   return (
     <>
       라우팅 이거 맞나?

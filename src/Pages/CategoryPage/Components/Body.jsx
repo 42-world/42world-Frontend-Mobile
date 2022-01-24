@@ -1,23 +1,30 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import ArticleService from '../../../Network/ArticleService';
+import ArticleService from '../../../Network/ArticleService_old';
 import { PreviewArticle } from '../../../Components';
+import { getCurCategory } from '../../../Utils';
 
 import List from '@mui/material/List';
+import ListItemText from '@mui/material/ListItemText';
 import CircularProgress from '@mui/material/CircularProgress';
+import CreateIcon from '@mui/icons-material/Create';
+import Fab from '@mui/material/Fab';
+
+import Styled from './Body.styled';
 
 const Body = () => {
   const [articles, setArticles] = useState([]);
-
   const [isLoaded, setIsLoaded] = useState(false);
   const [target, setTarget] = useState(null);
-
+  const [curCate, setCurCate] = useState('');
   const loca = useLocation();
   const navi = useNavigate();
-  const parse = loca.pathname.split('/');
   const mockupData = ArticleService;
+  const handleClickWrite = () => {
+    navi(`${loca.pathname}/create`);
+  };
 
-  const moveArticles = id => {
+  const handleClickArticles = id => {
     navi(`/article/${id}`);
   };
 
@@ -42,6 +49,7 @@ const Body = () => {
 
   useEffect(() => {
     setArticles(mockupData.fetchAllArticle());
+    setCurCate(getCurCategory(loca));
   }, []);
 
   useEffect(() => {
@@ -58,19 +66,30 @@ const Body = () => {
   }, [target]);
 
   return (
-    <List component="nav" aria-label="mailbox folders">
-      {articles.map(article => {
-        return (
-          <PreviewArticle
-            article={article}
-            onClickArticle={() => moveArticles(article.id)}
-          />
-        );
-      })}
-      <div ref={setTarget} className="Target-Element">
-        {isLoaded && <CircularProgress />}
-      </div>
-    </List>
+    <>
+      <Styled.StyledList component="nav" aria-label="mailbox folders">
+        <Styled.BoardTitleDiv>
+          <div className="board_name">{curCate}</div>
+        </Styled.BoardTitleDiv>
+
+        {articles.map(article => {
+          return (
+            <PreviewArticle
+              article={article}
+              onClickArticle={() => handleClickArticles(article.id)}
+            />
+          );
+        })}
+
+        <div ref={setTarget} className="scroll_loading_progress">
+          {isLoaded && <CircularProgress />}
+        </div>
+
+        <Fab className="fab_button" onClick={handleClickWrite}>
+          <CreateIcon />{' '}
+        </Fab>
+      </Styled.StyledList>
+    </>
   );
 };
 

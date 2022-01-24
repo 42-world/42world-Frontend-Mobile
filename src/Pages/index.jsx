@@ -8,6 +8,7 @@ import MyCommentPage from './MyComment';
 
 import CategoryPage from './CategoryPage';
 import ArticlePage from './ArticlePage';
+import CreateArticlePage from './CreateArticlePage';
 
 export {
   MainPage,
@@ -19,4 +20,5 @@ export {
   AuthPage,
   CategoryPage,
   ArticlePage,
+  CreateArticlePage,
 };

@@ -13,10 +13,16 @@ body {
 
 #root {
   background-color: #f5f5f5;
-  width: 24.5rem;
+  width: 100vw;
   height: 100vh;
   overflow: scroll;
   scrollbar-width: none;
+}
+
+@media screen and (min-width: 28rem) {
+  #root {
+    width: 24.5rem;
+  }
 }
 
 #root::-webkit-scrollbar {

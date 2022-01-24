@@ -10,6 +10,7 @@ import {
   MyCommentPage,
   CategoryPage,
   ArticlePage,
+  CreateArticlePage,
 } from './Pages';
 
 const ErrorPage = () => {
