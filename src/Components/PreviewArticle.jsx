@@ -12,6 +12,7 @@ const PreviewArticle = ({ article, onClickArticle }) => {
       ? article.content.substr(0, mainTextLen) + '...'
       : article.content;
   const created = article.createdAt.substr(0, 10);
+
   return (
     <Styled.PreviewArticleDiv
       button
