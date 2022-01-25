@@ -5,7 +5,7 @@ import SmsOutlined from '@mui/icons-material/SmsOutlined';
 
 import Styled from './PreviewArticle.styled';
 
-const PreviewArticle = ({ article, onClickArticle }) => {
+const PreviewArticleNoti = ({ article, onClickArticle }) => {
   const previewMainText = article.content.substr(0, 30);
   const created = article.createdAt.substr(0, 10);
   console.log(created);
@@ -23,16 +23,9 @@ const PreviewArticle = ({ article, onClickArticle }) => {
         <text>{article.writer.nickname}</text>
         <text>{created}</text>
         <text>조회수 {article.viewCount}</text>
-
-        <div className="favorite_icon">
-          <FavoriteBorderIcon />
-        </div>
-        <div className="comment_icon">
-          <SmsOutlined />
-        </div>
       </div>
     </Styled.PreviewArticleDiv>
   );
 };
 
-export default PreviewArticle;
+export default PreviewArticleNoti;

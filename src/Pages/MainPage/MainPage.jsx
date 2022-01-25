@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Body } from './Components';
+import { MainBody } from './Components';
 import { Header } from '../../Components';
 import UserService from '../../Network/UserService';
 import Styled from './MainPage.styled';
@@ -12,8 +12,8 @@ const MainPage = () => {
     //   '?code=d0de243fa3ab9f232c6a',
     // );
     // console.log('result :', result);
-    const result = await UserService.getUser();
-    console.log(result);
+    // const result = await UserService.getUser();
+    // console.log(result);
   }, []);
   return (
     <>
@@ -21,7 +21,7 @@ const MainPage = () => {
         <Header />
       </Styled.MainHeader>
       <Styled.MainBody>
-        <Body />
+        <MainBody />
       </Styled.MainBody>
     </>
   );

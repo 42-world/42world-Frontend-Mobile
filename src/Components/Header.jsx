@@ -19,7 +19,7 @@ const SearchBar = () => {
 
   const handleSubmitSearch = e => {
     e.preventDefault();
-    console.log(search); // 검색 창으로 이동해야 함.
+    // console.log(search); // 검색 창으로 이동해야 함.
     navi(`/search?keyword=${search}`);
     setSearch('');
   };

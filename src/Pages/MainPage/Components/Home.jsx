@@ -1,25 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { PreviewArticleNoti } from '../../../Components';
 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-
 import Styled from './Body.styled';
-import { PreviewArticle } from '../../../Components';
 
-import ArticleService_old from '../../../Network/ArticleService_old';
-import ArticleService from '../../../Network/ArticleService';
+const Home = ({ notiArticles }) => {
+  const navi = useNavigate();
 
-import GetCheckIn from '../../../Network/GetCheckIn';
+  const moveArticles = articleId => {
+    navi(`/article/${articleId}`);
+  };
 
-const Home = () => {
-  const [notiArticles, setNotiArticles] = useState([]);
-
-  useEffect(async () => {
-    const mockupData = ArticleService_old;
-    setNotiArticles(mockupData.fetchAllArticle());
-    const result = await ArticleService.getArticlesCommentsById(1);
-    console.log(result);
-  }, []);
   return (
     <Box>
       <Styled.CheckInHeader>
@@ -52,7 +44,12 @@ const Home = () => {
         </Styled.BoardTitleDiv>
 
         {notiArticles.map(article => {
-          return <PreviewArticle article={article} />;
+          return (
+            <PreviewArticleNoti
+              article={article}
+              onClickArticle={() => moveArticles(article.id)}
+            />
+          );
         })}
       </Styled.StyledList>
     </Box>

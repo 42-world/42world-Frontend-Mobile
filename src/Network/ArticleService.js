@@ -8,7 +8,7 @@ const articleUrl = path => {
 const ArticleService = {
   /**
    * **CREATE** New Articles with Signned User
-   * @param {{title: string,content: string,categoryId: number}} newArticles
+   * @param {{title: string, content: string,categoryId: number}} newArticles
    * @returns {{ \
    *    id: number, \
    *    title: string, \
@@ -94,14 +94,15 @@ const ArticleService = {
    * `200` : success \
    * `401` : fail
    */
-  getArticles: async categoriesId => {
+  getArticles: async categoryId => {
     const method = 'GET';
-
-    const url = articleUrl(`?categoryId=${categoriesId}`);
+    const url = articleUrl('');
+    const params = { categoryId };
 
     let response;
     try {
       response = await axios({
+        params,
         method,
         url,
         withCredentials: true,
@@ -109,7 +110,7 @@ const ArticleService = {
     } catch (error) {
       alert(error);
     }
-    return response;
+    return response.data;
   },
   /**
    * **GET** One Articles By Articles ID

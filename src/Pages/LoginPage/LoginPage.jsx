@@ -22,7 +22,7 @@ const LoginPage = ({ isCallback }) => {
         alert('다시 로그인 하세요!'); // 임시
       }
       const result = await AuthService.getAuthAccessToken(github_code);
-      //   navi('/');
+      navi('/');
 
       console.log(result);
     }

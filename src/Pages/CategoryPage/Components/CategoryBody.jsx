@@ -1,25 +1,25 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import ArticleService from '../../../Network/ArticleService_old';
+
+import ArticleService from '../../../Network/ArticleService';
+
 import { PreviewArticle } from '../../../Components';
 import { getCurCategory } from '../../../Utils';
 
-import List from '@mui/material/List';
-import ListItemText from '@mui/material/ListItemText';
 import CircularProgress from '@mui/material/CircularProgress';
 import CreateIcon from '@mui/icons-material/Create';
 import Fab from '@mui/material/Fab';
 
 import Styled from './Body.styled';
 
-const Body = () => {
+const CategoryBody = () => {
   const [articles, setArticles] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [target, setTarget] = useState(null);
   const [curCate, setCurCate] = useState('');
   const loca = useLocation();
   const navi = useNavigate();
-  const mockupData = ArticleService;
+
   const handleClickWrite = () => {
     navi(`${loca.pathname}/create`);
   };
@@ -30,16 +30,15 @@ const Body = () => {
 
   const getMoreItem = async () => {
     setIsLoaded(true);
-    await new Promise(resolve => setTimeout(resolve, 1500));
     // 실제 API 통신처럼 비동기로 받아오는 것을 구현하기 위해 1.5 초 뒤에 데이터를 갱신한다.
     // resolve, reject는 각각 성공 시, 실패 시의 동작을 의미. reject를 생략하니 reslove의 경우만 익명함수로 처리해주었다.
-    const newData = mockupData.fetchAllArticle();
+    const categoryId = loca.pathname.split('/')[2];
+    console.log(categoryId);
+    const newData = await ArticleService.getArticles(categoryId);
     setArticles(prevList => prevList.concat(newData));
     setIsLoaded(false);
   };
   const onIntersect = async ([entry], observer) => {
-    console.log('entry :', entry); // 더 보이거나 덜 보이게 되면서 통과한 역치를 나타내는, IntersectionObserverEntry (en-US) 객체의 배열.
-    console.log('observer : ', observer); // 자신을 호출한 IntersectionObserver.
     if (entry.isIntersecting && !isLoaded) {
       observer.unobserve(entry.target);
       await getMoreItem();
@@ -48,7 +47,6 @@ const Body = () => {
   };
 
   useEffect(() => {
-    setArticles(mockupData.fetchAllArticle());
     setCurCate(getCurCategory(loca));
   }, []);
 
@@ -86,11 +84,11 @@ const Body = () => {
         </div>
 
         <Fab className="fab_button" onClick={handleClickWrite}>
-          <CreateIcon />{' '}
+          <CreateIcon />
         </Fab>
       </Styled.StyledList>
     </>
   );
 };
 
-export default Body;
+export default CategoryBody;

@@ -23,7 +23,7 @@ const PreviewArticleDiv = styled.div`
   .favorite_icon {
     &::after {
       content: '${props => {
-        if (props.article.liked_count > 0) return props.article.liked_count;
+        if (props.article.likeCount > 0) return props.article.likeCount;
         else return '';
       }}';
     }
@@ -32,7 +32,7 @@ const PreviewArticleDiv = styled.div`
   .comment_icon {
     &::after {
       content: '${props => {
-        if (props.article.comment_count > 0) return props.article.comment_count;
+        if (props.article.commentCount > 0) return props.article.commentCount;
         else return '';
       }}';
     }

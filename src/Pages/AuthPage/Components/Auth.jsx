@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Styled from './Auth.styled';
+import FtAuthService from '../../../Network/FtAuthService';
 
 const authRequestInformation = intraId => {
   return (
@@ -47,8 +48,10 @@ const Auth = () => {
     });
   };
   const handleAuthenticate = () => {
+    FtAuthService.createFtAuth(input.email);
     setIsSend(true);
     setIsBlock(true);
+
     console.log(input.email, '로 인증 시도');
     setTimeout(() => {
       setIsBlock(false);

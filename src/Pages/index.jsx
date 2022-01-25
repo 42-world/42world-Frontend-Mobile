@@ -11,6 +11,7 @@ import ArticlePage from './ArticlePage';
 import CreateArticlePage from './CreateArticlePage';
 
 import LoginPage from './LoginPage';
+import AlarmPage from './AlarmPage';
 
 export {
   MainPage,
@@ -24,4 +25,5 @@ export {
   ArticlePage,
   CreateArticlePage,
   LoginPage,
+  AlarmPage,
 };

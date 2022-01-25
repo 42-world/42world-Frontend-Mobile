@@ -1,5 +1,5 @@
 import { Header } from '../../Components';
-import Body from './Components';
+import CategoryBody from './Components';
 
 import Styled from './CategoryPage.styled.js';
 
@@ -10,7 +10,7 @@ const CategoryPage = () => {
         <Header />
       </Styled.MainHeader>
       <Styled.MainBody>
-        <Body />
+        <CategoryBody />
       </Styled.MainBody>
     </>
   );

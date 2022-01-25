@@ -16,13 +16,14 @@ const Community = ({
         component="nav"
         aria-label="mailbox folders"
       >
-        {famousArticles.map(article => {
+        {/* famousArticles 대신 freeArticles로 */}
+        {freeArticles.map(article => {
           return (
             <PreviewArticle
               article={article}
-              onClickArticle={() => moveArticles('famous', article.id)}
+              onClickArticle={() => moveArticles(article.id)}
             />
-            // 임시로 url 세팅.
+            // 인기글 가져오기, 지금은 보류.
           );
         })}
       </Styled.StyledList>
@@ -34,7 +35,7 @@ const Community = ({
       >
         <Styled.BoardTitleDiv
           className="article"
-          onClick={() => navi('/category/free')}
+          onClick={() => navi('/category/1')}
           boardArticleCount={freeArticles.length}
         >
           <div className="board_name">자유게시판</div>
@@ -45,7 +46,7 @@ const Community = ({
           return (
             <PreviewArticle
               article={article}
-              onClickArticle={() => moveArticles('free', article.id)}
+              onClickArticle={() => moveArticles(article.id)}
             />
           );
         })}
@@ -58,7 +59,7 @@ const Community = ({
       >
         <Styled.BoardTitleDiv
           className="article"
-          onClick={() => navi('/category/anony')}
+          onClick={() => navi('/category/2')}
           boardArticleCount={anonyArticles.length}
         >
           <div className="board_name">익명게시판</div>
@@ -69,7 +70,7 @@ const Community = ({
           return (
             <PreviewArticle
               article={article}
-              onClickArticle={() => moveArticles('annoy', article.id)}
+              onClickArticle={() => moveArticles(article.id)}
             />
           );
         })}

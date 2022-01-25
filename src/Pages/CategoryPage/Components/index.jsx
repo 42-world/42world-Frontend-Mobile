@@ -1,3 +1,3 @@
-import Body from './Body';
+import CategoryBody from './CategoryBody';
 
-export default Body;
+export default CategoryBody;
