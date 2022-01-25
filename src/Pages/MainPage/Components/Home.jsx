@@ -1,10 +1,17 @@
+import { useNavigate } from 'react-router-dom';
+import { PreviewArticleNoti } from '../../../Components';
+
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-
 import Styled from './Body.styled';
-import { PreviewArticle } from '../../../Components';
 
 const Home = ({ notiArticles }) => {
+  const navi = useNavigate();
+
+  const moveArticles = articleId => {
+    navi(`/article/${articleId}`);
+  };
+
   return (
     <Box>
       <Styled.CheckInHeader>
@@ -37,7 +44,12 @@ const Home = ({ notiArticles }) => {
         </Styled.BoardTitleDiv>
 
         {notiArticles.map(article => {
-          return <PreviewArticle article={article} />;
+          return (
+            <PreviewArticleNoti
+              article={article}
+              onClickArticle={() => moveArticles(article.id)}
+            />
+          );
         })}
       </Styled.StyledList>
     </Box>

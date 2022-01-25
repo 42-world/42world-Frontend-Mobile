@@ -33,13 +33,12 @@ const CategoryBody = () => {
     // 실제 API 통신처럼 비동기로 받아오는 것을 구현하기 위해 1.5 초 뒤에 데이터를 갱신한다.
     // resolve, reject는 각각 성공 시, 실패 시의 동작을 의미. reject를 생략하니 reslove의 경우만 익명함수로 처리해주었다.
     const categoryId = loca.pathname.split('/')[2];
+    console.log(categoryId);
     const newData = await ArticleService.getArticles(categoryId);
     setArticles(prevList => prevList.concat(newData));
     setIsLoaded(false);
   };
   const onIntersect = async ([entry], observer) => {
-    console.log('entry :', entry); // 더 보이거나 덜 보이게 되면서 통과한 역치를 나타내는, IntersectionObserverEntry (en-US) 객체의 배열.
-    console.log('observer : ', observer); // 자신을 호출한 IntersectionObserver.
     if (entry.isIntersecting && !isLoaded) {
       observer.unobserve(entry.target);
       await getMoreItem();
@@ -85,7 +84,7 @@ const CategoryBody = () => {
         </div>
 
         <Fab className="fab_button" onClick={handleClickWrite}>
-          <CreateIcon />{' '}
+          <CreateIcon />
         </Fab>
       </Styled.StyledList>
     </>

@@ -7,7 +7,8 @@ import Styled from './PreviewArticle.styled';
 
 const PreviewArticle = ({ article, onClickArticle }) => {
   const previewMainText = article.content.substr(0, 30);
-
+  const created = article.createdAt.substr(0, 10);
+  console.log(created);
   return (
     <Styled.PreviewArticleDiv
       button
@@ -20,8 +21,8 @@ const PreviewArticle = ({ article, onClickArticle }) => {
       <div className="middle">{previewMainText}</div>
       <div className="bottom">
         <text>{article.writer.nickname}</text>
-        {/* <text>{article.createdAt}</text> */}
-        <text>{article.view_count}</text>
+        <text>{created}</text>
+        <text>조회수 {article.viewCount}</text>
 
         <div className="favorite_icon">
           <FavoriteBorderIcon />

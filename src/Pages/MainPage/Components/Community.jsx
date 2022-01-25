@@ -16,7 +16,8 @@ const Community = ({
         component="nav"
         aria-label="mailbox folders"
       >
-        {famousArticles.map(article => {
+        {/* famousArticles 대신 freeArticles로 */}
+        {freeArticles.map(article => {
           return (
             <PreviewArticle
               article={article}
