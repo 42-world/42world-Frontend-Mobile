@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BodyPreView from './BodyPreView';
-
 import Community from './Community';
 import Home from './Home';
 
@@ -10,31 +9,30 @@ import ArticleService from '../../../Network/ArticleService';
 
 import Divider from '@mui/material/Divider';
 
-const Body = () => {
+const MainBody = () => {
   const [highlight, setHighlight] = useState('home');
-  const [famousArticles, setFamousArticles] = useState(['인기글1', '인기글2']);
-  const [freeArticles, setFreeArticles] = useState(['자유글1', '자유글2']);
-  const [anonyArticles, setAnonyArticles] = useState(['익명글1', '익명글2']);
+  const [famousArticles, setFamousArticles] = useState([]);
+  const [freeArticles, setFreeArticles] = useState([]);
+  const [anonyArticles, setAnonyArticles] = useState([]);
+  const [notiArticles, setNotiArticles] = useState([]);
 
   const navi = useNavigate();
   const handleChangeTab = clicked => {
-    console.log('click' + clicked);
+    // console.log('click' + clicked);
     setHighlight(clicked);
   };
 
-  const moveArticles = (category, articleId) => {
-    console.log(category, articleId);
+  const moveArticles = articleId => {
     navi(`/article/${articleId}`);
   };
 
-  useEffect(() => {
-    // const mockupData = ArticleService;
-    // console.log(mockupData.fetchAllArticle());
-    // setFamousArticles(ArticleService.categoriesId());
-    setFreeArticles(!ArticleService.getArticles(1));
-    console.log(ArticleService);
-    setAnonyArticles(!ArticleService.getArticles(2));
-    console.log(ArticleService);
+  useEffect(async () => {
+    let articles = await ArticleService.getArticles(1);
+    setFreeArticles(articles);
+    articles = await ArticleService.getArticles(2);
+    setAnonyArticles(articles);
+    articles = await ArticleService.getArticles(3);
+    setNotiArticles(articles);
   }, []);
 
   return (
@@ -50,7 +48,7 @@ const Body = () => {
       {/*<Styled.ListDivider margin="0.7rem" />*/}
       <div className="articles">
         {highlight === 'home' ? (
-          <Home />
+          <Home notiArticles={notiArticles} />
         ) : (
           <Community
             famousArticles={famousArticles}
@@ -65,4 +63,4 @@ const Body = () => {
   );
 };
 
-export default Body;
+export default MainBody;

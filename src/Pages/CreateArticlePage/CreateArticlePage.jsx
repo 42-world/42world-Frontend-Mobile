@@ -1,10 +1,10 @@
-import { Body } from './Components';
+import { CreateArticleBody } from './Components';
 import Styled from './CreateArticlePage.styled';
 const CreateArticlePage = () => {
   return (
     <>
       <Styled.CreateArticlePage>
-        <Body />
+        <CreateArticleBody />
       </Styled.CreateArticlePage>
     </>
   );

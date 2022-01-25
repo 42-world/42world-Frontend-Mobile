@@ -1,2 +1,2 @@
-import Body from './Body';
-export { Body };
+import MainBody from './MainBody';
+export { MainBody };

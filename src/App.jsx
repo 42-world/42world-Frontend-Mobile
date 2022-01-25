@@ -17,6 +17,7 @@ import {
   ArticlePage,
   CreateArticlePage,
   LoginPage,
+  AlarmPage,
 } from './Pages';
 
 const ErrorPage = () => {
@@ -40,13 +41,14 @@ const App = () => {
           path="/auth/github/callback"
           element={<LoginPage isCallback={true} />}
         />
+        <Route path="/alarm" element={<AlarmPage />} />
 
         <Route path="/category/:id" element={<CategoryPage />} />
         <Route path="/category/:id/create" element={<CreateArticlePage />} />
 
         <Route path="/article/:id" element={<ArticlePage />} />
 
-        <Route path="/search" element={<MainPage />} />
+        {/* <Route path="/search" element={<MainPage />} /> */}
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/profile/setting" element={<SettingPage />} />
         <Route path="/profile/liked-article" element={<LikedArticlePage />} />
