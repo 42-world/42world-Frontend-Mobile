@@ -19,6 +19,7 @@ const CategoryBody = () => {
   const [curCate, setCurCate] = useState('');
   const loca = useLocation();
   const navi = useNavigate();
+  const categoryId = loca.pathname.split('/')[2];
 
   const handleClickWrite = () => {
     navi(`${loca.pathname}/create`);
@@ -32,8 +33,7 @@ const CategoryBody = () => {
     setIsLoaded(true);
     // 실제 API 통신처럼 비동기로 받아오는 것을 구현하기 위해 1.5 초 뒤에 데이터를 갱신한다.
     // resolve, reject는 각각 성공 시, 실패 시의 동작을 의미. reject를 생략하니 reslove의 경우만 익명함수로 처리해주었다.
-    const categoryId = loca.pathname.split('/')[2];
-    console.log(categoryId);
+    // console.log(categoryId);
     const newData = await ArticleService.getArticles(categoryId);
     setArticles(prevList => prevList.concat(newData));
     setIsLoaded(false);
@@ -73,22 +73,25 @@ const CategoryBody = () => {
           <div className="board_name">{curCate}</div>
         </Styled.BoardTitleDiv>
 
-        {articles.map(article => {
-          return (
-            <PreviewArticle
-              article={article}
-              onClickArticle={() => handleClickArticles(article.id)}
-            />
-          );
-        })}
+        {articles &&
+          articles.map(article => {
+            return (
+              <PreviewArticle
+                article={article}
+                onClickArticle={() => handleClickArticles(article.id)}
+              />
+            );
+          })}
 
         <div ref={setTarget} className="scroll_loading_progress">
           {isLoaded && <CircularProgress />}
         </div>
 
-        <Fab className="fab_button" onClick={handleClickWrite}>
-          <CreateIcon />
-        </Fab>
+        {+categoryId !== 3 && (
+          <Fab className="fab_button" onClick={handleClickWrite}>
+            <CreateIcon />
+          </Fab>
+        )}
       </Styled.StyledList>
     </>
   );

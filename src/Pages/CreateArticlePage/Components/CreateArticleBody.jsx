@@ -36,7 +36,6 @@ const CreateArticleBody = () => {
       alert('내용을 입력하세요!');
       return;
     }
-    console.log(pathArray[2]);
     const result = await ArticleService.createArticles({
       title: title,
       content: content,
@@ -47,7 +46,6 @@ const CreateArticleBody = () => {
   };
 
   useEffect(() => {
-    console.log(loca);
     setCurCate(getCurCategory(loca));
   }, []);
   return (

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { PreviewArticle } from '../../../Components';
+import { PreviewArticleAlarm } from '../../../Components';
 
 import ArticleService from '../../../Network/ArticleService';
 
@@ -13,24 +13,30 @@ const AlarmBody = () => {
   };
 
   useEffect(async () => {
-    let articles = await ArticleService.getArticles(1); // 인기글 API 필요
+    let articles = await ArticleService.getArticles(1); // 알람 API 필요
     setAlarmArticles(articles);
   }, []);
 
   return (
-    <div>
-      <div className="board_name">공지</div>
-      {alarmArticles &&
-        alarmArticles.map(article => {
-          return (
-            <PreviewArticle
-              article={article}
-              onClickArticle={() => moveArticles(article.id)}
-            />
-            // 인기글 가져오기, 지금은 보류.
-          );
-        })}
-    </div>
+    <>
+      <div className="alarm">
+        <div className="left">공지</div>
+        <div className="middle">42월드 많이 이용해주세요!</div>
+        <div className="right">2022-01-26</div>
+      </div>
+      <div>
+        {alarmArticles &&
+          alarmArticles.map(article => {
+            return (
+              <PreviewArticleAlarm
+                article={article}
+                onClickArticle={() => moveArticles(article.id)}
+              />
+              // 인기글 가져오기, 지금은 보류.
+            );
+          })}
+      </div>
+    </>
   );
 };
 

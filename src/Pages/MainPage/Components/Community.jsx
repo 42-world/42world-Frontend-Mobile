@@ -17,16 +17,17 @@ const Community = ({
         aria-label="mailbox folders"
       >
         {/* famousArticles 대신 freeArticles로 */}
-        {freeArticles.map(article => {
-          return (
-            <PreviewArticle
-              id={article.id}
-              article={article}
-              onClickArticle={() => moveArticles(article.id)}
-            />
-            // 인기글 가져오기, 지금은 보류.
-          );
-        })}
+        {freeArticles &&
+          freeArticles.slice(0, 3).map(article => {
+            return (
+              <PreviewArticle
+                id={article.id}
+                article={article}
+                onClickArticle={() => moveArticles(article.id)}
+              />
+              // 인기글 가져오기, 지금은 보류.
+            );
+          })}
       </Styled.StyledList>
 
       <Styled.StyledList
@@ -43,15 +44,16 @@ const Community = ({
           <div className="board_count"></div>
         </Styled.BoardTitleDiv>
 
-        {freeArticles.map(article => {
-          return (
-            <PreviewArticle
-              id={article.id}
-              article={article}
-              onClickArticle={() => moveArticles(article.id)}
-            />
-          );
-        })}
+        {freeArticles &&
+          freeArticles.slice(0, 3).map(article => {
+            return (
+              <PreviewArticle
+                id={article.id}
+                article={article}
+                onClickArticle={() => moveArticles(article.id)}
+              />
+            );
+          })}
       </Styled.StyledList>
 
       <Styled.StyledList
@@ -68,15 +70,16 @@ const Community = ({
           <div className="board_count"></div>
         </Styled.BoardTitleDiv>
 
-        {anonyArticles.map(article => {
-          return (
-            <PreviewArticle
-              id={article.id}
-              article={article}
-              onClickArticle={() => moveArticles(article.id)}
-            />
-          );
-        })}
+        {anonyArticles &&
+          anonyArticles.slice(0, 3).map(article => {
+            return (
+              <PreviewArticle
+                id={article.id}
+                article={article}
+                onClickArticle={() => moveArticles(article.id)}
+              />
+            );
+          })}
       </Styled.StyledList>
     </>
   );

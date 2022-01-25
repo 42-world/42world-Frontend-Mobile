@@ -59,6 +59,7 @@ const Header = () => {
       setIsMenuModal(false);
     }
   };
+
   // const handleOpenNoti = () => {
   //   if (loca.search === '') {
   //     setSearchParams('mode=noti');
@@ -68,6 +69,7 @@ const Header = () => {
   //     setIsNotiModal(false);
   //   }
   // };
+
   const handleToggleSearch = () => {
     setIsSearch(!isSearch);
   };

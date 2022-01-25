@@ -44,15 +44,16 @@ const Home = ({ notiArticles }) => {
           <div className="board_count"></div>
         </Styled.BoardTitleDiv>
 
-        {notiArticles.map(article => {
-          return (
-            <PreviewArticleNoti
-              article={article}
-              onClickArticle={() => moveArticles(article.id)}
-              key={article.id}
-            />
-          );
-        })}
+        {notiArticles &&
+          notiArticles.map(article => {
+            return (
+              <PreviewArticleNoti
+                article={article}
+                onClickArticle={() => moveArticles(article.id)}
+                key={article.id}
+              />
+            );
+          })}
       </Styled.StyledList>
     </Box>
   );
