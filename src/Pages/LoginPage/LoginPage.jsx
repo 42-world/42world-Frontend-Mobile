@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Styled from './LoginPage.styled';
 import qs from 'qs';
 
 import AuthService from '../../Network/AuthService';
 
 import Button from '@mui/material/Button';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import CircularProgress from '@mui/material/CircularProgress';
 
 const LoginPage = ({ isCallback }) => {
@@ -13,7 +15,10 @@ const LoginPage = ({ isCallback }) => {
   const queryData = qs.parse(location.search, {
     ignoreQueryPrefix: true,
   });
-  console.log(queryData);
+
+  const handleLoginButton = () => {
+    window.location.href = GithubLoginUrl;
+  };
 
   useEffect(async () => {
     if (isCallback) {
@@ -23,21 +28,30 @@ const LoginPage = ({ isCallback }) => {
       }
       const result = await AuthService.getAuthAccessToken(github_code);
       navi('/');
-
       console.log(result);
     }
   }, []);
 
   return (
-    <>
-      {isCallback ? (
-        <CircularProgress />
-      ) : (
-        <a href={GithubLoginUrl}>
-          <Button variant="contained">깃허브 로그인</Button>
-        </a>
-      )}
-    </>
+    <Styled.LoginPageBackground>
+      <Styled.LoginPageBox>
+        <h1>42WORLD</h1>
+        <Button
+          disabled={isCallback}
+          variant="contained"
+          onClick={handleLoginButton}
+        >
+          {isCallback ? (
+            <CircularProgress />
+          ) : (
+            <>
+              <GitHubIcon />
+              <span>깃허브 계정으로 로그인 하기</span>
+            </>
+          )}
+        </Button>
+      </Styled.LoginPageBox>
+    </Styled.LoginPageBackground>
   );
 };
 

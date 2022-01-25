@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
+import qs from 'qs';
 
 import MenuModal from './MenuModal';
 // import NotiModal from './NotiModal';
@@ -46,6 +47,10 @@ const SearchBar = () => {
 };
 
 const Header = () => {
+  const location = useLocation();
+  const queryData = qs.parse(location.search, {
+    ignoreQueryPrefix: true,
+  });
   const [isMenuModal, setIsMenuModal] = useState(false);
   // const [isNotiModal, setIsNotiModal] = useState(false);
   const [isSearch, setIsSearch] = useState(false);
@@ -54,13 +59,23 @@ const Header = () => {
   const loca = useLocation();
 
   const handleOpenMenu = (anchor, open) => {
-    if (loca.search === '') {
-      setSearchParams('mode=menu');
+    console.log(queryData.mode);
+    if (!queryData.mode) {
+      setSearchParams({ ...queryData, mode: 'menu' });
+      // searchParams.append('mode', 'menu');
       setIsMenuModal(true);
     } else {
-      setSearchParams('');
+      delete queryData.mode;
+      setSearchParams({ ...queryData });
       setIsMenuModal(false);
     }
+    // if (loca.search === '') {
+    //   setSearchParams('mode=menu');
+    //   setIsMenuModal(true);
+    // } else {
+    //   setSearchParams('');
+    //   setIsMenuModal(false);
+    // }
   };
   const handleBackButton = () => {
     navi(-1);
@@ -78,12 +93,9 @@ const Header = () => {
     setIsSearch(!isSearch);
   };
   useEffect(() => {
-    if (loca.search === '?mode=menu') {
+    if (queryData.mode === 'menu') {
       setIsMenuModal(true);
     }
-    // if (loca.search === '?mode=noti') {
-    //   setIsNotiModal(true);
-    // }
     if (loca.pathname.includes('article')) {
       setIsArticle(true);
     }
