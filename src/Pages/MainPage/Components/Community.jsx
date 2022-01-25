@@ -20,7 +20,7 @@ const Community = ({
           return (
             <PreviewArticle
               article={article}
-              onClickArticle={() => moveArticles('famous', article.id)}
+              onClickArticle={() => moveArticles(article.id)}
             />
             // 인기글 가져오기, 지금은 보류.
           );
@@ -45,7 +45,7 @@ const Community = ({
           return (
             <PreviewArticle
               article={article}
-              onClickArticle={() => moveArticles('free', article.id)}
+              onClickArticle={() => moveArticles(article.id)}
             />
           );
         })}
@@ -69,7 +69,7 @@ const Community = ({
           return (
             <PreviewArticle
               article={article}
-              onClickArticle={() => moveArticles('annoy', article.id)}
+              onClickArticle={() => moveArticles(article.id)}
             />
           );
         })}

@@ -23,8 +23,7 @@ const Body = () => {
     setHighlight(clicked);
   };
 
-  const moveArticles = (category, articleId) => {
-    console.log(category, articleId);
+  const moveArticles = articleId => {
     navi(`/article/${articleId}`);
   };
 
