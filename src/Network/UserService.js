@@ -144,7 +144,7 @@ const UserService = {
   },
   /**
    * **UPDATE** Signed in User Profile
-   * @param {{ nickname: string,character: number}} body
+   * @param {{ nickname: string,character: number}} changedProfile
    * @returns {{ \
    * id: number, \
    * nickname: string, \

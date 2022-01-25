@@ -56,7 +56,7 @@ const AuthService = {
    */
   signOut: async () => {
     const method = 'GET';
-    const url = API.url('/signout');
+    const url = authUrl('/signout');
 
     let response;
     try {
