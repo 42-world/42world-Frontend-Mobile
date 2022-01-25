@@ -38,6 +38,13 @@ const CategoryBody = () => {
     setArticles(prevList => prevList.concat(newData));
     setIsLoaded(false);
   };
+
+  useEffect(() => {
+    setCurCate(getCurCategory(loca));
+    // 무한 스크롤 임시 정지
+    getMoreItem();
+  }, []);
+
   const onIntersect = async ([entry], observer) => {
     if (entry.isIntersecting && !isLoaded) {
       observer.unobserve(entry.target);
@@ -46,22 +53,18 @@ const CategoryBody = () => {
     }
   };
 
-  useEffect(() => {
-    setCurCate(getCurCategory(loca));
-  }, []);
-
-  useEffect(() => {
-    let observer;
-    if (target) {
-      console.log('target :', target);
-      observer = new IntersectionObserver(onIntersect, {
-        // ref 역할의 state가 존재한다면 intersection Observer 객체를 observer에 담는다.
-        threshold: 0.4,
-      });
-      observer.observe(target); // observer가 해당 객체를 감시하여 변경된다면 onIntersect 콜백 함수를 실행할 것이다.
-    }
-    // return () => observer && observer.disconnect(); // 주석 씌워도 잘 돌아가네?
-  }, [target]);
+  // useEffect(() => {
+  //   let observer;
+  //   if (target) {
+  //     console.log('target :', target);
+  //     observer = new IntersectionObserver(onIntersect, {
+  //       // ref 역할의 state가 존재한다면 intersection Observer 객체를 observer에 담는다.
+  //       threshold: 0.4,
+  //     });
+  //     observer.observe(target); // observer가 해당 객체를 감시하여 변경된다면 onIntersect 콜백 함수를 실행할 것이다.
+  //   }
+  //   return () => observer && observer.disconnect(); // 주석 씌워도 잘 돌아가네?
+  // }, [target]);
 
   return (
     <>

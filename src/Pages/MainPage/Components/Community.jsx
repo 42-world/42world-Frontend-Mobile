@@ -20,6 +20,7 @@ const Community = ({
         {freeArticles.map(article => {
           return (
             <PreviewArticle
+              id={article.id}
               article={article}
               onClickArticle={() => moveArticles(article.id)}
             />
@@ -45,6 +46,7 @@ const Community = ({
         {freeArticles.map(article => {
           return (
             <PreviewArticle
+              id={article.id}
               article={article}
               onClickArticle={() => moveArticles(article.id)}
             />
@@ -69,6 +71,7 @@ const Community = ({
         {anonyArticles.map(article => {
           return (
             <PreviewArticle
+              id={article.id}
               article={article}
               onClickArticle={() => moveArticles(article.id)}
             />
