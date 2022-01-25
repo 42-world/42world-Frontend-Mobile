@@ -20,6 +20,7 @@ const Body = () => {
   const handleChangeContent = e => {
     setContent(e.target.value);
   };
+
   const handleClickCancel = () => {
     const pathArray = loca.pathname.split('/');
     navi(`/${pathArray[1]}/${pathArray[2]}`);
@@ -62,11 +63,17 @@ const Body = () => {
       </div>
       <div className="body">
         <div className="category">{curCate}</div>
-        <input placeholder="제목을 입력하세요" onChange={handleChangeTitle} />
+        <input
+          placeholder="제목을 입력하세요"
+          onChange={handleChangeTitle}
+          maxLength={42}
+        />
         <textarea
           placeholder="내용을 입력하세요"
           onChange={handleChangeContent}
+          maxLength={4200}
         />
+        <div>{content.length}/4200</div>
       </div>
     </>
   );
