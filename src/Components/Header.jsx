@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
 
 import MenuModal from './MenuModal';
-import NotiModal from './NotiModal';
+// import NotiModal from './NotiModal';
 
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
@@ -46,7 +46,7 @@ const SearchBar = () => {
 
 const Header = () => {
   const [isMenuModal, setIsMenuModal] = useState(false);
-  const [isNotiModal, setIsNotiModal] = useState(false);
+  // const [isNotiModal, setIsNotiModal] = useState(false);
   const [isSearch, setIsSearch] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const loca = useLocation();
@@ -60,15 +60,15 @@ const Header = () => {
       setIsMenuModal(false);
     }
   };
-  const handleOpenNoti = () => {
-    if (loca.search === '') {
-      setSearchParams('mode=noti');
-      setIsNotiModal(true);
-    } else {
-      setSearchParams('');
-      setIsNotiModal(false);
-    }
-  };
+  // const handleOpenNoti = () => {
+  //   if (loca.search === '') {
+  //     setSearchParams('mode=noti');
+  //     setIsNotiModal(true);
+  //   } else {
+  //     setSearchParams('');
+  //     setIsNotiModal(false);
+  //   }
+  // };
   const handleToggleSearch = () => {
     setIsSearch(!isSearch);
   };
@@ -76,9 +76,9 @@ const Header = () => {
     if (loca.search === '?mode=menu') {
       setIsMenuModal(true);
     }
-    if (loca.search === '?mode=noti') {
-      setIsNotiModal(true);
-    }
+    // if (loca.search === '?mode=noti') {
+    //   setIsNotiModal(true);
+    // }
   }, []);
 
   const navi = useNavigate();
@@ -106,7 +106,7 @@ const Header = () => {
           />
           <NotificationsIcon
             sx={{ color: GlobalStyled.theme.textLight }}
-            onClick={handleOpenNoti}
+            // onClick={handleOpenNoti}
           />
           <AccountCircleIcon
             sx={{ color: GlobalStyled.theme.textLight }}

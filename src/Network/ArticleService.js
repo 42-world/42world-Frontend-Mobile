@@ -52,6 +52,7 @@ const ArticleService = {
         method,
         body,
         url,
+        withCredentials: true,
       });
     } catch (error) {
       alert(error);
@@ -95,13 +96,14 @@ const ArticleService = {
    */
   getArticles: async categoriesId => {
     const method = 'GET';
-    const url = articleUrl(`${categoriesId}`);
+    const url = articleUrl(`/${categoriesId}`);
 
     let response;
     try {
       response = await axios({
         method,
         url,
+        withCredentials: true,
       });
     } catch (error) {
       alert(error);
@@ -152,6 +154,7 @@ const ArticleService = {
       response = await axios({
         method,
         url,
+        withCredentials: true,
       });
     } catch (error) {
       alert(error);
@@ -177,6 +180,7 @@ const ArticleService = {
         method,
         body,
         url,
+        withCredentials: true,
       });
     } catch (error) {
       alert(error);
@@ -199,6 +203,7 @@ const ArticleService = {
       response = await axios({
         method,
         url,
+        withCredentials: true,
       });
     } catch (error) {
       alert(error);
@@ -240,6 +245,7 @@ const ArticleService = {
       response = await axios({
         method,
         url,
+        withCredentials: true,
       });
     } catch (error) {
       alert(error);

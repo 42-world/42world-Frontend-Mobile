@@ -24,6 +24,7 @@ const DefaultService = {
         response = await axios({
           method,
           url,
+          withCredentials: true,
         });
       } catch (error) {
         return error;
@@ -48,6 +49,7 @@ const DefaultService = {
         response = await axios({
           method,
           url,
+          withCredentials: true,
         });
       } catch (error) {
         return error;
