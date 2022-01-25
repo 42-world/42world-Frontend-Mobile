@@ -6,9 +6,13 @@ import SmsOutlined from '@mui/icons-material/SmsOutlined';
 import Styled from './PreviewArticle.styled';
 
 const PreviewArticle = ({ article, onClickArticle }) => {
-  const previewMainText = article.content.substr(0, 30);
+  const mainTextLen = 70;
+  const previewMainText =
+    article.content.length > mainTextLen
+      ? article.content.substr(0, mainTextLen) + '...'
+      : article.content;
   const created = article.createdAt.substr(0, 10);
-  console.log(created);
+
   return (
     <Styled.PreviewArticleDiv
       button
@@ -20,9 +24,9 @@ const PreviewArticle = ({ article, onClickArticle }) => {
       <div className="top">{article.title}</div>
       <div className="middle">{previewMainText}</div>
       <div className="bottom">
-        <text>{article.writer.nickname}</text>
-        <text>{created}</text>
-        <text>조회수 {article.viewCount}</text>
+        <h2>{article.writer.nickname}</h2>
+        <h2>{created}</h2>
+        <h2>조회수 {article.viewCount}</h2>
 
         <div className="favorite_icon">
           <FavoriteBorderIcon />

@@ -1,25 +1,30 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
 import BodyPreView from './BodyPreView';
 import Community from './Community';
 import Home from './Home';
-
 import Styled from './Body.styled';
 import ArticleService from '../../../Network/ArticleService';
+import qs from 'qs';
 
 import Divider from '@mui/material/Divider';
 
 const MainBody = () => {
-  const [highlight, setHighlight] = useState('home');
+  const navi = useNavigate();
+  const location = useLocation();
+  const queryData = qs.parse(location.search, {
+    ignoreQueryPrefix: true,
+  });
+  const [highlight, setHighlight] = useState(queryData.category || 'home');
+  const [searchParams, setSearchParams] = useSearchParams();
   const [famousArticles, setFamousArticles] = useState([]);
   const [freeArticles, setFreeArticles] = useState([]);
   const [anonyArticles, setAnonyArticles] = useState([]);
   const [notiArticles, setNotiArticles] = useState([]);
 
-  const navi = useNavigate();
   const handleChangeTab = clicked => {
-    // console.log('click' + clicked);
     setHighlight(clicked);
+    setSearchParams(`category=${clicked}`);
   };
 
   const moveArticles = articleId => {

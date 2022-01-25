@@ -8,6 +8,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 
 import Styled from './Header.styled';
@@ -49,6 +50,7 @@ const Header = () => {
   // const [isNotiModal, setIsNotiModal] = useState(false);
   const [isSearch, setIsSearch] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [isArticle, setIsArticle] = useState(false);
   const loca = useLocation();
 
   const handleOpenMenu = (anchor, open) => {
@@ -59,6 +61,9 @@ const Header = () => {
       setSearchParams('');
       setIsMenuModal(false);
     }
+  };
+  const handleBackButton = () => {
+    navi(-1);
   };
   // const handleOpenNoti = () => {
   //   if (loca.search === '') {
@@ -79,6 +84,9 @@ const Header = () => {
     // if (loca.search === '?mode=noti') {
     //   setIsNotiModal(true);
     // }
+    if (loca.pathname.includes('article')) {
+      setIsArticle(true);
+    }
   }, []);
 
   const navi = useNavigate();
@@ -87,10 +95,18 @@ const Header = () => {
     <div className="mainpage-header">
       <Styled.HeaderStyleDiv>
         <div>
-          <MenuIcon
-            sx={{ color: GlobalStyled.theme.textLight }}
-            onClick={handleOpenMenu}
-          />
+          {!isArticle && (
+            <MenuIcon
+              sx={{ color: GlobalStyled.theme.textLight }}
+              onClick={handleOpenMenu}
+            />
+          )}
+          {isArticle && (
+            <ArrowBackIosRoundedIcon
+              sx={{ color: GlobalStyled.theme.textLight }}
+              onClick={handleBackButton}
+            />
+          )}
         </div>
         <div>
           <img
