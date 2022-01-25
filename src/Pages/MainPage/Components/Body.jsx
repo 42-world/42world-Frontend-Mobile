@@ -6,7 +6,7 @@ import Community from './Community';
 import Home from './Home';
 
 import Styled from './Body.styled';
-import ArticleService from '../../../Network/ArticleService_old';
+import ArticleService from '../../../Network/ArticleService';
 
 import Divider from '@mui/material/Divider';
 
@@ -28,11 +28,13 @@ const Body = () => {
   };
 
   useEffect(() => {
-    const mockupData = ArticleService;
-    console.log(mockupData.fetchAllArticle());
-    setFamousArticles(mockupData.fetchAllArticle());
-    setFreeArticles(mockupData.fetchAllArticle());
-    setAnonyArticles(mockupData.fetchAllArticle());
+    // const mockupData = ArticleService;
+    // console.log(mockupData.fetchAllArticle());
+    // setFamousArticles(ArticleService.categoriesId());
+    setFreeArticles(!ArticleService.getArticles(1));
+    console.log(ArticleService);
+    setAnonyArticles(!ArticleService.getArticles(2));
+    console.log(ArticleService);
   }, []);
 
   return (
