@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Styled from './Auth.styled';
+import FtAuthService from '../../../Network/FtAuthService';
 
 const Auth = () => {
   const [input, setInput] = useState({
@@ -14,6 +15,7 @@ const Auth = () => {
     });
   };
   const handleAuthenticate = () => {
+    FtAuthService.createFtAuth(input.email);
     console.log(input.email, '로 인증 시도');
   };
 
