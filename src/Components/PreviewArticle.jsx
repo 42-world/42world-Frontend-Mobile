@@ -8,7 +8,7 @@ import Styled from './PreviewArticle.styled';
 const PreviewArticle = ({ article, onClickArticle }) => {
   const previewMainText = article.content.substr(0, 30);
   const created = article.createdAt.substr(0, 10);
-  console.log(created);
+  // console.log(created);
   return (
     <Styled.PreviewArticleDiv
       button
