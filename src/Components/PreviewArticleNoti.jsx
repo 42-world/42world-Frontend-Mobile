@@ -1,11 +1,11 @@
-// import ListItem from '@mui/material/ListItem';
-// import ListItemText from '@mui/material/ListItemText';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import SmsOutlined from '@mui/icons-material/SmsOutlined';
 
 import Styled from './PreviewArticle.styled';
 
-const PreviewArticle = ({ article, onClickArticle }) => {
+const PreviewArticleNoti = ({ article, onClickArticle }) => {
   const previewMainText = article.content.substr(0, 30);
 
   return (
@@ -22,16 +22,9 @@ const PreviewArticle = ({ article, onClickArticle }) => {
         <text>{article.writer.nickname}</text>
         {/* <text>{article.createdAt}</text> */}
         <text>{article.view_count}</text>
-
-        <div className="favorite_icon">
-          <FavoriteBorderIcon />
-        </div>
-        <div className="comment_icon">
-          <SmsOutlined />
-        </div>
       </div>
     </Styled.PreviewArticleDiv>
   );
 };
 
-export default PreviewArticle;
+export default PreviewArticleNoti;
