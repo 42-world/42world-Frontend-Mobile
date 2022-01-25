@@ -1,34 +1,28 @@
-import { useState } from "react";
-import { useSearchParams, useLocation } from "react-router-dom";
-import { Header, Body, MenuModal } from "./Components";
-import styled from "styled-components";
+import { useEffect } from 'react';
+import { Body } from './Components';
+import { Header } from '../../Components';
+import UserService from '../../Network/UserService';
+import Styled from './MainPage.styled';
 
+// 프론트 -> github API -> 깃허브 인증 -> 쿼리 스트링으로 code가 날아옴 -> githubCallback API -> 서버에서 쿠키 보내줌.
 const MainPage = () => {
-  const [isModal, setIsModal] = useState(false);
-  const [searchParams, setSearchParams] = useSearchParams();
-  const loca = useLocation();
-
-  const handleOpenMenu = () => {
-    if (loca.search === "") {
-      setSearchParams("mode=drawer");
-      setIsModal(true);
-      console.log(isModal);
-    } else {
-      setSearchParams("");
-      setIsModal(false);
-      console.log(isModal);
-    }
-  };
-
+  useEffect(async () => {
+    // const redi = await AuthService.github();
+    // const result = await AuthService.githubCallback(
+    //   '?code=d0de243fa3ab9f232c6a',
+    // );
+    // console.log('result :', result);
+    const result = await UserService.getUser();
+    console.log(result);
+  }, []);
   return (
     <>
-      {loca.search && (
-        <>
-          <MenuModal handleOpenMenu={handleOpenMenu} />
-        </>
-      )}
-      <Header handleOpenMenu={handleOpenMenu} />
-      <Body />
+      <Styled.MainHeader>
+        <Header />
+      </Styled.MainHeader>
+      <Styled.MainBody>
+        <Body />
+      </Styled.MainBody>
     </>
   );
 };

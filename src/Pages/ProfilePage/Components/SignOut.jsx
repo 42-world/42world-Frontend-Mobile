@@ -1,11 +1,13 @@
+import CommonStyled from '../Common.styled';
+
 const SignOut = () => {
-  const onClick = () => {
-    console.log("로그아웃 버튼 클릭");
+  const handleSignOut = () => {
+    console.log('로그아웃 버튼 클릭');
   };
   return (
-    <div>
-      <button onClick={onClick}>로그아웃</button>
-    </div>
+    <CommonStyled.CustomDiv>
+      <div onClick={handleSignOut}>로그아웃</div>
+    </CommonStyled.CustomDiv>
   );
 };
 

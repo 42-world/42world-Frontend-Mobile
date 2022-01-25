@@ -1,94 +1,187 @@
-import axios from "axios";
-import { User, Notification } from "../Entities";
-import * as API from "./APIType";
-// # 유저 /users
+import * as API from './APIType';
+import axios from 'axios';
 
-// - 인증
-//     - 로그아웃 DELETE /users/logout
-//     - 깃헙 로그인 인증 POST /users/github
-//     - 유저 42 인증 요청
-//         - 42 로그인으로 인증 요청 POST /users/42auth/login
-//         - 42 이메일로 인증 요청 POST /users/42auth/email
-//     - 회원 탈퇴 DELETE /users
-// - 정보
-//     - 로그인 및 내 정보 가져오기  GET /users
-//     - 프로필  정보 수정 PUT /users/profile
-//     - 닉네임 중복확인 GET /users/nickname
-// - 알람
-//     - 가져오기 GET /users/alarm
-//     - 읽음 PUT /users/alarm/readall <❗️추후 수정 여지 있음❗️>
-
-const generateRandomUser = () => {
-  const id = 1;
-  const nickname = "ycha";
-  const is_authenticated = true;
-  const role = "CADET";
-  const charactor = "https://picsum.photos/200/200";
-
-  return new User(id, nickname, is_authenticated, role, charactor);
-};
-
-const generateRandomNotification = () => {
-  const id = 1;
-  const user_id = "ycha";
-  const type = "NEW_COMMENT";
-  const content = "asdf";
-  const time = new Date();
-  const is_read = true;
-
-  return new Notification(id, user_id, type, content, time, is_read);
+const userUrl = path => {
+  return `${API.url('/users')}${path}`;
 };
 
 const UserService = {
-  Auth: {
-    signOut: () => {},
-    validateGithub: (token) => {
-      return true;
-    },
-    validate42Login: (intra_token) => {
-      return true;
-    },
-    validate42Email: (intra_id) => {
-      return true;
-    },
-    deleteUser: () => {},
+  /**
+   * **GET** Signed in User Information
+   * @returns {{ \
+   * id: number, \
+   * nickname: string, \
+   * oauthToken: string, \
+   * isAuthenticated: boolean, \
+   * lastLogin: Date, \
+   * role: CADET, \
+   * character: 5, \
+   * deletedAt: Date, \
+   * createdAt: Date, \
+   * updatedAt: Date }} \
+   * user \
+   * `200` : success \
+   * `401` : fail
+   */
+  getUser: async () => {
+    const method = 'GET';
+    const url = userUrl('');
+
+    let response;
+    try {
+      response = await axios({
+        method,
+        url,
+        withCredentials: true,
+      });
+    } catch (error) {
+      alert(error);
+    }
+    return response;
   },
-  Info: {
-    fetchUser: async () => {
-      try {
-        const method = "GET";
-        const headers = {};
-        const body = {};
-        const url = API.url("path");
-        const response = await axios({
-          method,
-          headers,
-          body,
-          url,
-        });
-      } catch (error) {
-        console.log("error");
-      }
-      return generateRandomUser();
-    },
-    updateUserProfile: (character, nickname) => {
-      return true;
-    },
-    checkDuplicateNickname: (nickname) => {
-      return true;
-    },
+  /**
+   * **DELETE** Signed in User
+   * @returns
+   * `200` : success \
+   * `401` : fail
+   */
+  deleteUser: async () => {
+    const method = 'DELETE';
+    const url = userUrl('');
+
+    let response;
+    try {
+      response = await axios({
+        method,
+        url,
+        withCredentials: true,
+      });
+    } catch (error) {
+      alert(error);
+    }
+    return response;
   },
-  Noti: {
-    fetchNotification: () => {
-      return [
-        generateRandomNotification(),
-        generateRandomNotification(),
-        generateRandomNotification(),
-      ];
-    },
-    updateNotification: () => {
-      return true;
-    },
+  /**
+   * **GET** User Information by ID
+   * @param {string} id
+   * @returns {{ \
+   * id: number, \
+   * nickname: string, \
+   * oauthToken: string, \
+   * isAuthenticated: boolean, \
+   * lastLogin: Date, \
+   * role: CADET, \
+   * character: 5, \
+   * deletedAt: Date, \
+   * createdAt: Date, \
+   * updatedAt: Date }} \
+   * user \
+   * `200` : success \
+   * `401` : fail
+   */
+  getUserById: async id => {
+    const method = 'GET';
+    const url = userUrl(`/profile/${id}`);
+
+    let response;
+    try {
+      response = await axios({
+        method,
+        url,
+        withCredentials: true,
+      });
+    } catch (error) {
+      alert(error);
+    }
+    return response;
+  },
+  /**
+   * **GET** User Notification
+   * @returns {[{ \
+   * id: number, \
+   * type: NEW_COMMENT, \
+   * content: string, \
+   * isRead: boolean, \
+   * userId: number, \
+   * createdAt: Date, \
+   * updatedAt: Date }]} \
+   *  notification
+   * `200` : success \
+   * `401` : fail
+   */
+  getNotification: async () => {
+    const method = 'GET';
+    const url = userUrl('/notification');
+
+    let response;
+    try {
+      response = await axios({
+        method,
+        url,
+        withCredentials: true,
+      });
+    } catch (error) {
+      alert(error);
+    }
+    return response;
+  },
+  /**
+   * **UPDATE** User Notification Status (read all notification)
+   * @returns
+   * `200` : success \
+   * `401` : fail
+   */
+  updateNotificationStatus: async () => {
+    const method = 'PUT';
+    const url = userUrl('/notification/readall');
+
+    let response;
+    try {
+      response = await axios({
+        method,
+        url,
+        withCredentials: true,
+      });
+    } catch (error) {
+      alert(error);
+    }
+    return response;
+  },
+  /**
+   * **UPDATE** Signed in User Profile
+   * @param {{ nickname: string,character: number}} changedProfile
+   * @returns {{ \
+   * id: number, \
+   * nickname: string, \
+   * oauthToken: string, \
+   * isAuthenticated: boolean, \
+   * lastLogin: Date, \
+   * role: CADET, \
+   * character: 5, \
+   * deletedAt: Date, \
+   * createdAt: Date, \
+   * updatedAt: Date }} \
+   * user \
+   * `200` : success \
+   * `401` : fail
+   */
+  updateUser: async changedProfile => {
+    const method = 'PUT';
+    const url = userUrl('/profile');
+    const body = changedProfile;
+
+    let response;
+    try {
+      response = await axios({
+        method,
+        body,
+        url,
+        withCredentials: true,
+      });
+    } catch (error) {
+      alert(error);
+    }
+    return response;
   },
 };
 
