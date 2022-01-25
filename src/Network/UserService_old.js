@@ -1,6 +1,6 @@
-import axios from "axios";
-import { User, Notification } from "../Entities";
-import * as API from "./APIType";
+import axios from 'axios';
+import { User, Notification } from '../Entities';
+import * as API from './APIType';
 // # 유저 /users
 
 // - 인증
@@ -20,19 +20,19 @@ import * as API from "./APIType";
 
 const generateRandomUser = () => {
   const id = 1;
-  const nickname = "ycha";
+  const nickname = 'ycha';
   const is_authenticated = true;
-  const role = "CADET";
-  const charactor = "https://picsum.photos/200/200";
+  const role = 'CADET';
+  const charactor = 'https://picsum.photos/200/200';
 
   return new User(id, nickname, is_authenticated, role, charactor);
 };
 
 const generateRandomNotification = () => {
   const id = 1;
-  const user_id = "ycha";
-  const type = "NEW_COMMENT";
-  const content = "asdf";
+  const user_id = 'ycha';
+  const type = 'NEW_COMMENT';
+  const content = 'asdf';
   const time = new Date();
   const is_read = true;
 
@@ -42,13 +42,13 @@ const generateRandomNotification = () => {
 const UserService = {
   Auth: {
     signOut: () => {},
-    validateGithub: (token) => {
+    validateGithub: token => {
       return true;
     },
-    validate42Login: (intra_token) => {
+    validate42Login: intra_token => {
       return true;
     },
-    validate42Email: (intra_id) => {
+    validate42Email: intra_id => {
       return true;
     },
     deleteUser: () => {},
@@ -56,25 +56,26 @@ const UserService = {
   Info: {
     fetchUser: async () => {
       try {
-        const method = "GET";
+        const method = 'GET';
         const headers = {};
         const body = {};
-        const url = API.url("path");
+        const url = API.url('path');
         const response = await axios({
           method,
           headers,
           body,
           url,
+          withCredentials: true,
         });
       } catch (error) {
-        console.log("error");
+        console.log('error');
       }
       return generateRandomUser();
     },
     updateUserProfile: (character, nickname) => {
       return true;
     },
-    checkDuplicateNickname: (nickname) => {
+    checkDuplicateNickname: nickname => {
       return true;
     },
   },

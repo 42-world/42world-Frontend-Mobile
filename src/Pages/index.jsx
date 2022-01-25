@@ -10,6 +10,8 @@ import CategoryPage from './CategoryPage';
 import ArticlePage from './ArticlePage';
 import CreateArticlePage from './CreateArticlePage';
 
+import LoginPage from './LoginPage';
+
 export {
   MainPage,
   ProfilePage,
@@ -21,4 +23,5 @@ export {
   CategoryPage,
   ArticlePage,
   CreateArticlePage,
+  LoginPage,
 };

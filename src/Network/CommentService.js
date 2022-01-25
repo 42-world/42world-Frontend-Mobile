@@ -43,6 +43,7 @@ const CommentService = {
         method,
         body,
         url,
+        withCredentials: true,
       });
     } catch (error) {
       alert(error);
@@ -87,6 +88,7 @@ const CommentService = {
         method,
         body,
         url,
+        withCredentials: true,
       });
     } catch (error) {
       alert(error);
@@ -109,6 +111,7 @@ const CommentService = {
       response = await axios({
         method,
         url,
+        withCredentials: true,
       });
     } catch (error) {
       alert(error);

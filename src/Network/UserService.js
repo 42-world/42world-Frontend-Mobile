@@ -32,6 +32,7 @@ const UserService = {
       response = await axios({
         method,
         url,
+        withCredentials: true,
       });
     } catch (error) {
       alert(error);
@@ -53,6 +54,7 @@ const UserService = {
       response = await axios({
         method,
         url,
+        withCredentials: true,
       });
     } catch (error) {
       alert(error);
@@ -86,6 +88,7 @@ const UserService = {
       response = await axios({
         method,
         url,
+        withCredentials: true,
       });
     } catch (error) {
       alert(error);
@@ -115,6 +118,7 @@ const UserService = {
       response = await axios({
         method,
         url,
+        withCredentials: true,
       });
     } catch (error) {
       alert(error);
@@ -136,6 +140,7 @@ const UserService = {
       response = await axios({
         method,
         url,
+        withCredentials: true,
       });
     } catch (error) {
       alert(error);
@@ -171,6 +176,7 @@ const UserService = {
         method,
         body,
         url,
+        withCredentials: true,
       });
     } catch (error) {
       alert(error);

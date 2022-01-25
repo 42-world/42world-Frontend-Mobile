@@ -9,23 +9,10 @@ const AuthService = {
   /**
    * **GET** User Auth
    * @returns
-   * `200` : success \
-   * `other` : fail
+   * github login url
    */
-  getAuth: async () => {
-    const method = 'GET';
-    const url = authUrl('/github');
-
-    let response;
-    try {
-      response = await axios({
-        method,
-        url,
-      });
-    } catch (error) {
-      return error;
-    }
-    return response;
+  getAuthUrl: () => {
+    return authUrl('/github');
   },
   /**
    * **GET** User Auth Access Token
@@ -35,13 +22,16 @@ const AuthService = {
    */
   getAuthAccessToken: async code => {
     const method = 'GET';
-    const url = authUrl('/github/callback' + code);
+    const url = authUrl('/github/callback');
+    const params = { code };
 
     let response;
     try {
       response = await axios({
+        params,
         method,
         url,
+        withCredentials: true,
       });
     } catch (error) {
       alert(error);
@@ -63,6 +53,7 @@ const AuthService = {
       response = await axios({
         method,
         url,
+        withCredentials: true,
       });
     } catch (error) {
       alert(error);

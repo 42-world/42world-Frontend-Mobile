@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
 
 import MenuModal from './MenuModal';
-import NotiModal from './NotiModal';
+// import NotiModal from './NotiModal';
 
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
@@ -11,6 +11,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 
 import Styled from './Header.styled';
+import GlobalStyled from '../Styled/Global.styled';
 
 const SearchBar = () => {
   const [search, setSearch] = useState('');
@@ -45,7 +46,7 @@ const SearchBar = () => {
 
 const Header = () => {
   const [isMenuModal, setIsMenuModal] = useState(false);
-  const [isNotiModal, setIsNotiModal] = useState(false);
+  // const [isNotiModal, setIsNotiModal] = useState(false);
   const [isSearch, setIsSearch] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const loca = useLocation();
@@ -59,15 +60,15 @@ const Header = () => {
       setIsMenuModal(false);
     }
   };
-  const handleOpenNoti = () => {
-    if (loca.search === '') {
-      setSearchParams('mode=noti');
-      setIsNotiModal(true);
-    } else {
-      setSearchParams('');
-      setIsNotiModal(false);
-    }
-  };
+  // const handleOpenNoti = () => {
+  //   if (loca.search === '') {
+  //     setSearchParams('mode=noti');
+  //     setIsNotiModal(true);
+  //   } else {
+  //     setSearchParams('');
+  //     setIsNotiModal(false);
+  //   }
+  // };
   const handleToggleSearch = () => {
     setIsSearch(!isSearch);
   };
@@ -75,9 +76,9 @@ const Header = () => {
     if (loca.search === '?mode=menu') {
       setIsMenuModal(true);
     }
-    if (loca.search === '?mode=noti') {
-      setIsNotiModal(true);
-    }
+    // if (loca.search === '?mode=noti') {
+    //   setIsNotiModal(true);
+    // }
   }, []);
 
   const navi = useNavigate();
@@ -86,27 +87,41 @@ const Header = () => {
     <div className="mainpage-header">
       <Styled.HeaderStyleDiv>
         <div>
-          <MenuIcon sx={{ color: 'white' }} onClick={handleOpenMenu} />
+          <MenuIcon
+            sx={{ color: GlobalStyled.theme.textLight }}
+            onClick={handleOpenMenu}
+          />
         </div>
         <div>
           <img
-            src="/assets/headerLogo.svg"
+            src={GlobalStyled.assets.headerLogo}
             alt="header-logo"
             onClick={() => navi('/')}
           />
         </div>
         <div>
-          <SearchIcon sx={{ color: 'white' }} onClick={handleToggleSearch} />
-          <NotificationsIcon sx={{ color: 'white' }} onClick={handleOpenNoti} />
+          <SearchIcon
+            sx={{ color: GlobalStyled.theme.textLight }}
+            onClick={handleToggleSearch}
+          />
+          <NotificationsIcon
+            sx={{ color: GlobalStyled.theme.textLight }}
+            // onClick={handleOpenNoti}
+          />
           <AccountCircleIcon
-            sx={{ color: 'white' }}
+            sx={{ color: GlobalStyled.theme.textLight }}
             onClick={() => navi('/profile')}
           />
         </div>
+        {/*{isSearch && <SearchBar />}*/}
       </Styled.HeaderStyleDiv>
-
-      {/* <SearchIcon sx={{ color: 'white' }} onClick={() => navi('/search')} /> */}
-      {isSearch && <SearchBar />}
+      <div
+        style={{
+          display: 'block',
+          height: GlobalStyled.theme.headerHeight,
+        }}
+      ></div>
+      {/* <SearchIcon sx={{ color: GlobalStyled.theme.textLight }} onClick={() => navi('/search')} /> */}
 
       <SwipeableDrawer
         anchor="left"
