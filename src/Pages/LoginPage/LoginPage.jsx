@@ -23,7 +23,7 @@ const LoginPage = ({ isCallback }) => {
         navi('/login');
       }
       const result = await AuthService.getAuthAccessToken(github_code);
-      //   navi('/');
+      navi('/');
 
       console.log(result);
     }

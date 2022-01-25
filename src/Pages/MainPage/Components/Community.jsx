@@ -22,7 +22,7 @@ const Community = ({
               article={article}
               onClickArticle={() => moveArticles('famous', article.id)}
             />
-            // 임시로 url 세팅.
+            // 인기글 가져오기, 지금은 보류.
           );
         })}
       </Styled.StyledList>
@@ -34,7 +34,7 @@ const Community = ({
       >
         <Styled.BoardTitleDiv
           className="article"
-          onClick={() => navi('/category/free')}
+          onClick={() => navi('/category/1')}
           boardArticleCount={freeArticles.length}
         >
           <div className="board_name">자유게시판</div>
@@ -58,7 +58,7 @@ const Community = ({
       >
         <Styled.BoardTitleDiv
           className="article"
-          onClick={() => navi('/category/anony')}
+          onClick={() => navi('/category/2')}
           boardArticleCount={anonyArticles.length}
         >
           <div className="board_name">익명게시판</div>

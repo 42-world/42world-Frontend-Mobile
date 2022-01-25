@@ -1,25 +1,12 @@
-import { useEffect, useState } from 'react';
-
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 
 import Styled from './Body.styled';
 import { PreviewArticle } from '../../../Components';
 
-import ArticleService_old from '../../../Network/ArticleService_old';
 import ArticleService from '../../../Network/ArticleService';
 
-import GetCheckIn from '../../../Network/GetCheckIn';
-
-const Home = () => {
-  const [notiArticles, setNotiArticles] = useState([]);
-
-  useEffect(async () => {
-    const mockupData = ArticleService_old;
-    setNotiArticles(mockupData.fetchAllArticle());
-    const result = await ArticleService.getArticlesCommentsById(1);
-    console.log(result);
-  }, []);
+const Home = ({ notiArticles }) => {
   return (
     <Box>
       <Styled.CheckInHeader>

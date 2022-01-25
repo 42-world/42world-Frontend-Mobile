@@ -12,8 +12,8 @@ const MainPage = () => {
     //   '?code=d0de243fa3ab9f232c6a',
     // );
     // console.log('result :', result);
-    const result = await UserService.getUser();
-    console.log(result);
+    // const result = await UserService.getUser();
+    // console.log(result);
   }, []);
   return (
     <>
