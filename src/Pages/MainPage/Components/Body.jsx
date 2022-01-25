@@ -19,7 +19,7 @@ const Body = () => {
 
   const navi = useNavigate();
   const handleChangeTab = clicked => {
-    console.log('click' + clicked);
+    // console.log('click' + clicked);
     setHighlight(clicked);
   };
 

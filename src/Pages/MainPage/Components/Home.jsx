@@ -4,8 +4,6 @@ import Button from '@mui/material/Button';
 import Styled from './Body.styled';
 import { PreviewArticle } from '../../../Components';
 
-import ArticleService from '../../../Network/ArticleService';
-
 const Home = ({ notiArticles }) => {
   return (
     <Box>
