@@ -20,7 +20,6 @@ const LoginPage = ({ isCallback }) => {
       const github_code = queryData.code;
       if (!github_code) {
         alert('다시 로그인 하세요!'); // 임시
-        navi('/login');
       }
       const result = await AuthService.getAuthAccessToken(github_code);
       //   navi('/');
