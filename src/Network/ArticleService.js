@@ -8,7 +8,7 @@ const articleUrl = path => {
 const ArticleService = {
   /**
    * **CREATE** New Articles with Signned User
-   * @param {{title: string,content: string,categoryId: number}} newArticles
+   * @param {{title: string, content: string,categoryId: number}} newArticles
    * @returns {{ \
    *    id: number, \
    *    title: string, \
