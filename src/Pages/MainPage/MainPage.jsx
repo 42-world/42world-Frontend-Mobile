@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Body } from './Components';
+import { MainBody } from './Components';
 import { Header } from '../../Components';
 import UserService from '../../Network/UserService';
 import Styled from './MainPage.styled';
@@ -21,7 +21,7 @@ const MainPage = () => {
         <Header />
       </Styled.MainHeader>
       <Styled.MainBody>
-        <Body />
+        <MainBody />
       </Styled.MainBody>
     </>
   );

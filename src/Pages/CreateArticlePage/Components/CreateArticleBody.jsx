@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
-const Body = () => {
+const CreateArticleBody = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [curCate, setCurCate] = useState('');
@@ -79,4 +79,4 @@ const Body = () => {
   );
 };
 
-export default Body;
+export default CreateArticleBody;

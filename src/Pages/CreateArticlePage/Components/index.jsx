@@ -1,3 +1,3 @@
-import Body from './Body';
+import CreateArticleBody from './CreateArticleBody';
 
-export { Body };
+export { CreateArticleBody };

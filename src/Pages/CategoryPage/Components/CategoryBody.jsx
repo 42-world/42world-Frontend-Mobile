@@ -6,15 +6,13 @@ import ArticleService from '../../../Network/ArticleService';
 import { PreviewArticle } from '../../../Components';
 import { getCurCategory } from '../../../Utils';
 
-import List from '@mui/material/List';
-import ListItemText from '@mui/material/ListItemText';
 import CircularProgress from '@mui/material/CircularProgress';
 import CreateIcon from '@mui/icons-material/Create';
 import Fab from '@mui/material/Fab';
 
 import Styled from './Body.styled';
 
-const Body = () => {
+const CategoryBody = () => {
   const [articles, setArticles] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [target, setTarget] = useState(null);
@@ -94,4 +92,4 @@ const Body = () => {
   );
 };
 
-export default Body;
+export default CategoryBody;

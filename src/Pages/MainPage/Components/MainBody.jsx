@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BodyPreView from './BodyPreView';
-
 import Community from './Community';
 import Home from './Home';
 
@@ -10,7 +9,7 @@ import ArticleService from '../../../Network/ArticleService';
 
 import Divider from '@mui/material/Divider';
 
-const Body = () => {
+const MainBody = () => {
   const [highlight, setHighlight] = useState('home');
   const [famousArticles, setFamousArticles] = useState([]);
   const [freeArticles, setFreeArticles] = useState([]);
@@ -64,4 +63,4 @@ const Body = () => {
   );
 };
 
-export default Body;
+export default MainBody;
