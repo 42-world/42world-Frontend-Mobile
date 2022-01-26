@@ -1,4 +1,18 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const slideIn = keyframes`
+  0% {
+    // transform: translateX(100%);
+    transform: scale(1);
+    opacity: 0.9;
+    border-radius: 15px;
+  }
+  100% {
+    // transform: translateX(0);
+    transform: scale(1);
+    border-radius: 0;
+  }
+`;
 
 const theme = {
   primary: '#53b7ba',
@@ -49,6 +63,8 @@ const ProfileBackgroundDiv = styled.div`
 
   // color
   background-color: #2a2d38;
+
+  animation: ${slideIn} 1000ms ease-in-out 0ms;
 `;
 
 const GlobalStyled = { theme, assets, ProfileBackgroundDiv };
