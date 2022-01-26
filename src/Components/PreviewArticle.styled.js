@@ -5,36 +5,77 @@ const PreviewArticleDiv = styled.div`
   box-sizing: border-box;
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 0.2rem 0.45rem;
+  padding: 0.5rem 0.9rem 0.3rem 0.9rem;
   border-bottom: 1px solid #e6e6e6;
 
-  div {
+  .top {
     display: flex;
+    font-size: 0.95rem;
+    font-weight: 700;
+    align-items: left;
+    margin-bottom: 0.15rem;
+    width: 100%;
+  }
+
+  .middle {
+    display: flex;
+    font-size: 0.75rem;
+    font-weight: 400;
+    align-items: left;
+    width: 100%;
+  }
+
+  .bottom {
+    display: flex;
+    width: 100%;
     align-items: center;
-    margin-right: 0.3rem;
-    &:first-child {
-      margin-left: 0.3rem;
-    }
-  }
+    justify-content: left;
+    width: 100%;
 
-  .favorite_icon {
-    &::after {
-      content: '${props => {
-        if (props.article.likeCount > 0) return props.article.likeCount;
-        else return '';
-      }}';
+    h2 {
+      font-size: 0.6rem;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.5);
+      margin-right: 0.5rem;
+      width: max-content;
+      //padding-top: 0.5rem;
     }
-  }
 
-  .comment_icon {
-    &::after {
-      content: '${props => {
-        if (props.article.commentCount > 0) return props.article.commentCount;
-        else return '';
-      }}';
+    div {
+      margin-left: 0.5rem;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      svg {
+        width: 1.4rem;
+        margin-right: 0.1rem;
+      }
+    }
+
+    .favorite_icon {
+      margin-left: auto;
+      margin-bottom: 0.1rem;
+      color: #df867d;
+      &::after {
+        content: '${props => {
+          if (props.article.likeCount > 0) return props.article.likeCount;
+          else return '';
+        }}';
+      }
+    }
+
+    .comment_icon {
+      color: #53b7ba;
+      &::after {
+        content: '${props => {
+          if (props.article.commentCount > 0) return props.article.commentCount;
+          else return '';
+        }}';
+      }
     }
   }
 `;
