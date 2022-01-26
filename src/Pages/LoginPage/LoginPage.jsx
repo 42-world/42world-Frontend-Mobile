@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Styled from './LoginPage.styled';
 import qs from 'qs';
@@ -8,8 +8,10 @@ import AuthService from '../../Network/AuthService';
 import Button from '@mui/material/Button';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import CircularProgress from '@mui/material/CircularProgress';
+import { AuthContext } from '../../App';
 
 const LoginPage = ({ isCallback }) => {
+  const auth = useContext(AuthContext);
   const navi = useNavigate();
   const GithubLoginUrl = AuthService.getAuthUrl();
   const queryData = qs.parse(location.search, {
@@ -20,17 +22,25 @@ const LoginPage = ({ isCallback }) => {
     window.location.href = GithubLoginUrl;
   };
 
-  useEffect(async () => {
-    if (isCallback) {
-      const github_code = queryData.code;
-      if (!github_code) {
-        alert('다시 로그인 하세요!'); // 임시
+  useEffect(() => {
+    const getAuth = async () => {
+      if (isCallback) {
+        const github_code = queryData.code;
+        if (!github_code) {
+          alert('다시 로그인 하세요!'); // 임시
+          navi('/login');
+        }
+        const result = await AuthService.getAuthAccessToken(github_code);
+        auth.setState(true);
+        navi('/');
       }
-      const result = await AuthService.getAuthAccessToken(github_code);
-      navi('/');
-      console.log(result);
-    }
+    };
+    getAuth();
   }, []);
+
+  useEffect(() => {
+    if (auth.state) navi('/');
+  });
 
   return (
     <Styled.LoginPageBackground>

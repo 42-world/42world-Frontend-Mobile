@@ -1,12 +1,19 @@
 import CommonStyled from '../Common.styled';
+import AuthService from '../../../Network/AuthService';
+import { AuthContext } from '../../../App';
+import { useContext } from 'react';
 
 const SignOut = () => {
+  const auth = useContext(AuthContext);
+
   const handleSignOut = () => {
+    auth.setState(false);
+    AuthService.signOut();
     console.log('로그아웃 버튼 클릭');
   };
   return (
-    <CommonStyled.CustomDiv>
-      <div onClick={handleSignOut}>로그아웃</div>
+    <CommonStyled.CustomDiv onClick={handleSignOut}>
+      <div>로그아웃</div>
     </CommonStyled.CustomDiv>
   );
 };
