@@ -30,6 +30,9 @@ const theme = {
 
   mobileMinWidth: '28rem',
   desktopWidth: '24.5rem',
+
+  likedCountColor: '#DF867D',
+  commentCountColor: '#53B7BA',
 };
 
 const assets = {
