@@ -8,7 +8,7 @@ const ArticlePage = () => {
     <>
       <Header />
       <Body articleId={id} />
-      {/* <Comment articleId={id} /> */}
+      <Comment articleId={id} />
     </>
   );
 };
