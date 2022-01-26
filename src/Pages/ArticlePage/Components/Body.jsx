@@ -1,7 +1,8 @@
 import { FavoriteBorder, SmsOutlined } from '@mui/icons-material';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ArticleService from '../../../Network/ArticleService';
+import { AuthContext } from '../../../App';
 
 const Body = ({ articleId }) => {
   // articleId로 패칭 fetching
@@ -13,6 +14,7 @@ const Body = ({ articleId }) => {
   const handleClickDelete = () => {
     ArticleService.deleteArticles(articleId);
   };
+  const { userId } = useContext(AuthContext);
   useEffect(() => {
     const fetch = async () => {
       const res = await ArticleService.getArticlesById(articleId);
@@ -28,9 +30,14 @@ const Body = ({ articleId }) => {
       <div>
         <div>{article.title}</div>
         {/* 내가 쓴 글인지 아닌지에 따라 (수정,삭제) 또는 (조회수)  */}
-        <button onClick={handleClickEdit}>수정</button>
-        <button onClick={handleClickDelete}>삭제</button>
-        <div>조회수 {article.viewCount}</div>
+        {article.writeId === userId ? (
+          <>
+            <button onClick={handleClickEdit}>수정</button>
+            <button onClick={handleClickDelete}>삭제</button>
+          </>
+        ) : (
+          <div>조회수 {article.viewCount}</div>
+        )}
       </div>
       <div>{article.content}</div>
       <div>
