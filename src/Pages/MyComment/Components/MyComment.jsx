@@ -28,16 +28,17 @@ const MyComment = () => {
   return (
     <>
       <Styled.MyCommentsDiv>
-        {articles.map((article, idx) => (
-          <Styled.MyCommentDiv
-            key={idx}
-            article={article}
-            onClick={() => handleClick(article.articleId)}
-          >
-            <span className="article_board">{article.board}</span>
-            <span className="article_title">{article.title}</span>
-          </Styled.MyCommentDiv>
-        ))}
+        {articles &&
+          articles.map((article, idx) => (
+            <Styled.MyCommentDiv
+              key={idx}
+              article={article}
+              onClick={() => handleClick(article.articleId)}
+            >
+              <span className="article_board">{article.board}</span>
+              <span className="article_title">{article.title}</span>
+            </Styled.MyCommentDiv>
+          ))}
       </Styled.MyCommentsDiv>
     </>
   );

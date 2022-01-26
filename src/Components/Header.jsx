@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
+import qs from 'qs';
 
 import MenuModal from './MenuModal';
 // import NotiModal from './NotiModal';
@@ -14,53 +15,65 @@ import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Styled from './Header.styled';
 import GlobalStyled from '../Styled/Global.styled';
 
-const SearchBar = () => {
-  const [search, setSearch] = useState('');
-  const navi = useNavigate();
+// const SearchBar = () => {
+//   const [search, setSearch] = useState('');
+//   const navi = useNavigate();
 
-  const handleSubmitSearch = e => {
-    e.preventDefault();
-    // console.log(search); // 검색 창으로 이동해야 함.
-    navi(`/search?keyword=${search}`);
-    setSearch('');
-  };
+//   const handleSubmitSearch = e => {
+//     e.preventDefault();
+//     // console.log(search); // 검색 창으로 이동해야 함.
+//     navi(`/search?keyword=${search}`);
+//     setSearch('');
+//   };
 
-  const handleChangeSearch = e => {
-    setSearch(e.currentTarget.value);
-  };
+//   const handleChangeSearch = e => {
+//     setSearch(e.currentTarget.value);
+//   };
 
-  return (
-    <div>
-      <form onSubmit={handleSubmitSearch}>
-        <input
-          onChange={handleChangeSearch}
-          type="text"
-          className="search"
-          value={search}
-          placeholder="게시물 제목 검색"
-        />
-        <button onClick={handleSubmitSearch}>검색</button>
-      </form>
-    </div>
-  );
-};
+//   return (
+//     <div>
+//       <form onSubmit={handleSubmitSearch}>
+//         <input
+//           onChange={handleChangeSearch}
+//           type="text"
+//           className="search"
+//           value={search}
+//           placeholder="게시물 제목 검색"
+//         />
+//         <button onClick={handleSubmitSearch}>검색</button>
+//       </form>
+//     </div>
+//   );
+// };
 
 const Header = () => {
+  const location = useLocation();
+  const queryData = qs.parse(location.search, {
+    ignoreQueryPrefix: true,
+  });
   const [isMenuModal, setIsMenuModal] = useState(false);
-  // const [isNotiModal, setIsNotiModal] = useState(false);
   const [isSearch, setIsSearch] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const [isArticle, setIsArticle] = useState(false);
   const loca = useLocation();
 
   const handleOpenMenu = (anchor, open) => {
-    if (loca.search === '') {
-      setSearchParams('mode=menu');
+    if (!queryData.mode) {
+      setSearchParams({ ...queryData, mode: 'menu' });
+      // searchParams.append('mode', 'menu');
       setIsMenuModal(true);
     } else {
-      setSearchParams('');
+      delete queryData.mode;
+      setSearchParams({ ...queryData });
       setIsMenuModal(false);
     }
+    // if (loca.search === '') {
+    //   setSearchParams('mode=menu');
+    //   setIsMenuModal(true);
+    // } else {
+    //   setSearchParams('');
+    //   setIsMenuModal(false);
+    // }
   };
   const handleBackButton = () => {
     navi(-1);
@@ -74,16 +87,14 @@ const Header = () => {
   //     setIsNotiModal(false);
   //   }
   // };
+
   const handleToggleSearch = () => {
     setIsSearch(!isSearch);
   };
   useEffect(() => {
-    if (loca.search === '?mode=menu') {
+    if (queryData.mode === 'menu') {
       setIsMenuModal(true);
     }
-    // if (loca.search === '?mode=noti') {
-    //   setIsNotiModal(true);
-    // }
     if (loca.pathname.includes('article')) {
       setIsArticle(true);
     }
@@ -122,7 +133,7 @@ const Header = () => {
           />
           <NotificationsIcon
             sx={{ color: GlobalStyled.theme.textLight }}
-            // onClick={handleOpenNoti}
+            onClick={() => navi('/alarm')}
           />
           <AccountCircleIcon
             sx={{ color: GlobalStyled.theme.textLight }}

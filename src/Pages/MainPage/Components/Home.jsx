@@ -38,19 +38,22 @@ const Home = ({ notiArticles }) => {
         <Styled.BoardTitleDiv
           className="article"
           boardArticleCount={notiArticles.length}
+          onClick={() => navi('/category/3')}
         >
           <div className="board_name">42born2code 공지</div>
           <div className="board_count"></div>
         </Styled.BoardTitleDiv>
 
-        {notiArticles.map(article => {
-          return (
-            <PreviewArticleNoti
-              article={article}
-              onClickArticle={() => moveArticles(article.id)}
-            />
-          );
-        })}
+        {notiArticles &&
+          notiArticles.map(article => {
+            return (
+              <PreviewArticleNoti
+                article={article}
+                onClickArticle={() => moveArticles(article.id)}
+                key={article.id}
+              />
+            );
+          })}
       </Styled.StyledList>
     </Box>
   );

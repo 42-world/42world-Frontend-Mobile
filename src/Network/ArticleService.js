@@ -45,12 +45,11 @@ const ArticleService = {
     const method = 'POST';
     const url = articleUrl('');
     const body = newArticles;
-
     let response;
     try {
       response = await axios({
         method,
-        body,
+        data: body,
         url,
         withCredentials: true,
       });
@@ -119,7 +118,7 @@ const ArticleService = {
    *    id: number, \
    *    title: string, \
    *    content: string, \
-   *    view_count: number, \
+   *    viewCount: number, \
    *    categoryId: number, \
    *    category: { \
    *        id: number, \ \

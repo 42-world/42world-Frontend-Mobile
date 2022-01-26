@@ -35,7 +35,7 @@ const UserService = {
         withCredentials: true,
       });
     } catch (error) {
-      alert(error);
+      console.log('service : ', error);
     }
     return response;
   },

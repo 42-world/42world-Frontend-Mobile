@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getCurCategory } from '../../../Utils';
 import { useLocation, useNavigate } from 'react-router-dom';
+import ArticleService from '../../../Network/ArticleService';
 
 import Button from '@mui/material/Button';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -12,6 +13,7 @@ const CreateArticleBody = () => {
 
   const loca = useLocation();
   const navi = useNavigate();
+  const pathArray = loca.pathname.split('/');
 
   const handleChangeTitle = e => {
     setTitle(e.target.value);
@@ -22,11 +24,10 @@ const CreateArticleBody = () => {
   };
 
   const handleClickCancel = () => {
-    const pathArray = loca.pathname.split('/');
     navi(`/${pathArray[1]}/${pathArray[2]}`);
   };
 
-  const handleClickSubmit = () => {
+  const handleClickSubmit = async () => {
     if (title === '') {
       alert('제목을 입력하세요!');
       return;
@@ -35,11 +36,17 @@ const CreateArticleBody = () => {
       alert('내용을 입력하세요!');
       return;
     }
-    console.log(title, content);
+    navi(`/${pathArray[1]}/${pathArray[2]}`);
+    // 이동한 뒤에 API 실행됨
+    const result = await ArticleService.createArticles({
+      title: title,
+      content: content,
+      categoryId: +pathArray[2], // + 붙이면 number 타입
+    });
+    console.log(result);
   };
 
   useEffect(() => {
-    console.log(loca);
     setCurCate(getCurCategory(loca));
   }, []);
   return (
