@@ -8,9 +8,8 @@ import Styled from './MainPage.styled';
 const MainPage = () => {
   useEffect(async () => {
     let result = await GetCheckIn.checkInInfo();
-    console.log(result);
+
     result = await GetCheckIn.curCheckIn();
-    console.log(result);
   }, []);
   return (
     <>
