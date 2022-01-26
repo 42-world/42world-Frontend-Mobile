@@ -45,7 +45,7 @@ const AuthService = {
    * `other` : fail
    */
   signOut: async () => {
-    const method = 'GET';
+    const method = 'DELETE';
     const url = authUrl('/signout');
 
     let response;

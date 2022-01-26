@@ -10,7 +10,6 @@ import List from '@mui/material/List';
 import GlobalStyled from '../Styled/Global.styled';
 import Styled from './MenuModal.styled';
 
-
 const siteMap = [
   {
     name: '팔만코딩경',
@@ -128,9 +127,9 @@ const MenuModal = ({ open, onClickCloseModal }) => {
     >
       <Styled.MenuModalDiv>
         <img
-            src={GlobalStyled.assets.headerLogo}
-            alt="header-logo"
-          onClick={() => navi('/')}
+          src={GlobalStyled.assets.headerLogo}
+          alt="header-logo"
+          onClick={onClickCloseModal}
         />
         <QuickLink />
         <ContactUs />
