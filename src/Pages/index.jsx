@@ -9,10 +9,11 @@ import MyCommentPage from './MyComment';
 import CategoryPage from './CategoryPage';
 import ArticlePage from './ArticlePage';
 import CreateArticlePage from './CreateArticlePage';
-
+import EditArticlePage from './EditArticlePage';
 import LoginPage from './LoginPage';
 import AlarmPage from './AlarmPage';
 
+import ErrorPage from './ErrorPage';
 export {
   MainPage,
   ProfilePage,
@@ -24,6 +25,8 @@ export {
   CategoryPage,
   ArticlePage,
   CreateArticlePage,
+  EditArticlePage,
   LoginPage,
   AlarmPage,
+  ErrorPage,
 };

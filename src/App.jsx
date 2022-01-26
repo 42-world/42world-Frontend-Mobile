@@ -1,12 +1,10 @@
 import * as React from 'react';
 import { useState, createContext } from 'react';
-
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
-  useNavigate,
 } from 'react-router-dom';
 import {
   MainPage,
@@ -19,24 +17,18 @@ import {
   CategoryPage,
   ArticlePage,
   CreateArticlePage,
+  EditArticlePage,
   LoginPage,
   AlarmPage,
+  ErrorPage,
 } from './Pages';
 import Loading from './Components/Loading';
 import { useContext } from 'react';
 import UserService from './Network/UserService';
 
-const ErrorPage = () => {
-  const navi = useNavigate();
-  return (
-    <div style={{ backgroundColor: 'black' }}>
-      <img src="/assets/error.png" />
-      <img src="/assets/headerLogo.svg" onClick={() => navi('/')} />
-    </div>
-  );
-};
-
 export const AuthContext = createContext();
+
+let userId = '';
 
 const AuthProvider = ({ children }) => {
   const [state, setState] = useState(false);
@@ -50,16 +42,20 @@ const AuthProvider = ({ children }) => {
       } catch (e) {
         console.log('app : ', e);
       }
-      if (!response) setState(false);
-      else setState(true);
-
+      if (!response) {
+        userId = '';
+        setState(false);
+      } else {
+        userId = response.data.id;
+        setState(true);
+      }
       setIsLoading(false);
     };
     initState();
   }, []);
 
   return (
-    <AuthContext.Provider value={{ state, isLoading, setState }}>
+    <AuthContext.Provider value={{ state, isLoading, setState, userId }}>
       {children}
     </AuthContext.Provider>
   );
@@ -126,6 +122,15 @@ const App = () => {
             element={
               <PrivateRoute>
                 <ArticlePage />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/article/:id/edit"
+            element={
+              <PrivateRoute>
+                <EditArticlePage />
               </PrivateRoute>
             }
           />
