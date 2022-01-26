@@ -36,13 +36,14 @@ const CreateArticleBody = () => {
       alert('내용을 입력하세요!');
       return;
     }
+    navi(`/${pathArray[1]}/${pathArray[2]}`);
+    // 이동한 뒤에 API 실행됨
     const result = await ArticleService.createArticles({
       title: title,
       content: content,
       categoryId: +pathArray[2], // + 붙이면 number 타입
     });
     console.log(result);
-    navi(`/${pathArray[1]}/${pathArray[2]}`);
   };
 
   useEffect(() => {
