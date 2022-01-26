@@ -17,16 +17,20 @@ const slideIn = keyframes`
 const theme = {
   primary: '#53b7ba',
   secondary: 'rgba(42, 45, 56, 1)',
-  background: '#fff',
+  background: '#f5f5f5',
   text: '#000',
   textSecondary: '#666',
   textLight: '#fff',
   textLightSecondary: '#ccc',
-  border: '#ccc',
-  borderLight: '#eee',
-  borderDark: '#999',
+
+  borderColor: '#eee',
   borderRadius: '0.25rem',
+
   headerHeight: '4.5rem',
+  headerColor: 'rgba(42, 45, 56, 1)',
+
+  categoryNameBackgroundColor: '#4C5A66',
+  categoryNameTextColor: '#FFF',
 
   mobileMinWidth: '28rem',
   desktopWidth: '24.5rem',
@@ -70,6 +74,22 @@ const ProfileBackgroundDiv = styled.div`
   animation: ${slideIn} 1000ms ease-in-out 0ms;
 `;
 
-const GlobalStyled = { theme, assets, ProfileBackgroundDiv };
+const BoardTitleDiv = styled.div`
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  background-color: ${theme.categoryNameBackgroundColor};
+  color: ${theme.categoryNameTextColor};
+  padding: 0.65rem 1.2rem;
+  align-items: center;
+  justify-content: space-between;
+
+  .board_name {
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+`;
+
+const GlobalStyled = { theme, assets, ProfileBackgroundDiv, BoardTitleDiv };
 
 export default GlobalStyled;

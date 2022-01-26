@@ -1,4 +1,6 @@
 import { FavoriteBorder, SmsOutlined } from '@mui/icons-material';
+import GlobalStyled from '../../../Styled/Global.styled';
+
 // import { useEffect, useState } from 'react';
 // import ArticleService from '../../../Network/ArticleService_old';
 
@@ -17,7 +19,7 @@ const Body = ({ articleId }) => {
     categoryId: 0,
     category: {
       id: 0,
-      name: 'string',
+      name: '자유 게시판',
       createdAt: '2022-01-25T13:39:46.985Z',
       updatedAt: '2022-01-25T13:39:46.985Z',
       deletedAt: '2022-01-25T13:39:46.985Z',
@@ -42,20 +44,21 @@ const Body = ({ articleId }) => {
     deletedAt: '2022-01-25T13:39:46.985Z',
   };
   return (
-    <div style={{ background: 'green' }}>
-      <div>
+    <div className="content_div">
+      <GlobalStyled.BoardTitleDiv>
+        <div className="board_name">{article.category.name}</div>
+      </GlobalStyled.BoardTitleDiv>
+      <div className="content_top">
         <div>{article.title}</div>
         {/* 내가 쓴 글인지 아닌지에 따라 (수정,삭제) 또는 (조회수)  */}
       </div>
-      <div>{article.content}</div>
-      <div>
-        <span>
+      <div className="content_middle">{article.content}</div>
+      <div className="content_bottom">
+        <span className="comment_count">
           <SmsOutlined />
-          {article.likeCount}
         </span>
-        <span>
+        <span className="liked_count">
           <FavoriteBorder />
-          {article.commentCount}
         </span>
       </div>
     </div>

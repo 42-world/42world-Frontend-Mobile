@@ -36,21 +36,6 @@ const StyledList = styled(List)`
   }
 `;
 
-const BoardTitleDiv = styled.div`
-  box-sizing: border-box;
-  width: 100%;
-  display: flex;
-  background-color: ${GlobalStyled.theme.primary};
-  padding: 0.65rem 1.2rem;
-  align-items: center;
-  justify-content: space-between;
-
-  .board_name {
-    font-size: 1.1rem;
-    font-weight: 700;
-  }
-`;
-
-const Styled = { BoardTitleDiv, StyledList };
+const Styled = { StyledList };
 
 export default Styled;

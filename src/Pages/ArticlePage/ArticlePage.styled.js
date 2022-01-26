@@ -25,7 +25,7 @@ const CommentContent = styled.div`
     margin-right: 0.3rem;
   }
 
-  .liked_count_div {
+  .liked_count {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -88,6 +88,12 @@ const ArticlePageDiv = styled.div`
         }
       }
     }
+  }
+
+  .content_div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
   }
 `;
 

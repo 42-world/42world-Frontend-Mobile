@@ -94,9 +94,9 @@ const Comment = () => {
             liked_count={comment.liked_count}
           >
             <div className="text">{comment.content}</div>
-            <div className="liked_count_div">
+            <span className="liked_count">
               <FavoriteBorder />
-            </div>
+            </span>
           </Styled.CommentContent>
         </div>
       ))}
