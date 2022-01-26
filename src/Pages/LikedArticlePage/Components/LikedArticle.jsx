@@ -52,7 +52,7 @@ const LikedArticle = () => {
               article={article}
               onClick={() => handleClick(article.id)}
             >
-              <span className="article_board">{article.board}</span>
+              <span className="article_board">{article.category.name}</span>
               <span className="article_title">{article.title}</span>
               <div className="favorite_icon">
                 <FavoriteBorder />
