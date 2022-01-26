@@ -67,8 +67,9 @@ const PrivateRoute = ({ children }) => {
   if (auth.isLoading) {
     return <Loading />;
   } else {
-    if (auth.state) return children;
-    else return <Navigate to="/login" />;
+    return children;
+    // if (auth.state) return children;
+    // else return <Navigate to="/login" />;
   }
 };
 // 글 보기 : 모드view?글id=12 or view/글id
