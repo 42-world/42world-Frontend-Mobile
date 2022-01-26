@@ -21,7 +21,6 @@ const LoginPage = ({ isCallback }) => {
   const handleLoginButton = () => {
     window.location.href = GithubLoginUrl;
   };
-
   useEffect(() => {
     const getAuth = async () => {
       if (isCallback) {
@@ -39,8 +38,9 @@ const LoginPage = ({ isCallback }) => {
   }, []);
 
   useEffect(() => {
+    console.log(auth.userId);
     if (auth.state) navi('/');
-  });
+  }, [auth]);
 
   return (
     <Styled.LoginPageBackground>

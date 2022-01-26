@@ -41,7 +41,7 @@ const CommentService = {
     try {
       response = await axios({
         method,
-        body,
+        data: body,
         url,
         withCredentials: true,
       });
