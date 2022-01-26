@@ -75,6 +75,10 @@ const App = () => {
         <Routes>
           <Route path="login" element={<LoginPage isCallback={false} />} />
           <Route
+            path="/auth/github/callback"
+            element={<LoginPage isCallback={true} />}
+          />
+          <Route
             path="/"
             element={
               <PrivateRoute>
@@ -83,16 +87,39 @@ const App = () => {
             }
           />
           <Route
-            path="/auth/github/callback"
-            element={<LoginPage isCallback={true} />}
+            path="/alarm"
+            element={
+              <PrivateRoute>
+                <AlarmPage />
+              </PrivateRoute>
+            }
           />
-          <Route path="/alarm" element={<AlarmPage />} />
 
-          <Route path="/category/:id" element={<CategoryPage />} />
-          <Route path="/category/:id/create" element={<CreateArticlePage />} />
+          <Route
+            path="/category/:id"
+            element={
+              <PrivateRoute>
+                <CategoryPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/category/:id/create"
+            element={
+              <PrivateRoute>
+                <CreateArticlePage />
+              </PrivateRoute>
+            }
+          />
 
-          <Route path="/article/:id" element={<ArticlePage />} />
-
+          <Route
+            path="/article/:id"
+            element={
+              <PrivateRoute>
+                <ArticlePage />
+              </PrivateRoute>
+            }
+          />
           {/* <Route path="/search" element={<MainPage />} /> */}
           <Route
             path="/profile"
