@@ -1,14 +1,9 @@
-// import ListItem from '@mui/material/ListItem';
-// import ListItemText from '@mui/material/ListItemText';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import SmsOutlined from '@mui/icons-material/SmsOutlined';
-
 import Styled from './PreviewArticle.styled';
 
 const PreviewArticleNoti = ({ article, onClickArticle }) => {
   const previewMainText = article.content.substr(0, 30);
   const created = article.createdAt.substr(0, 10);
-  console.log(created);
+
   return (
     <Styled.PreviewArticleDiv
       button

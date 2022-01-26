@@ -34,22 +34,23 @@ const MyArticle = () => {
   return (
     <>
       <Styled.MyArticlesDiv>
-        {articles.map((article, idx) => (
-          <Styled.MyArticleDiv
-            key={idx}
-            article={article}
-            onClick={() => handleClick(article.id)}
-          >
-            <span className="article_board">{article.board}</span>
-            <span className="article_title">{article.title}</span>
-            <div className="favorite_icon">
-              <FavoriteBorder />
-            </div>
-            <div className="comment_icon">
-              <SmsOutlined />
-            </div>
-          </Styled.MyArticleDiv>
-        ))}
+        {articles &&
+          articles.map((article, idx) => (
+            <Styled.MyArticleDiv
+              key={idx}
+              article={article}
+              onClick={() => handleClick(article.id)}
+            >
+              <span className="article_board">{article.board}</span>
+              <span className="article_title">{article.title}</span>
+              <div className="favorite_icon">
+                <FavoriteBorder />
+              </div>
+              <div className="comment_icon">
+                <SmsOutlined />
+              </div>
+            </Styled.MyArticleDiv>
+          ))}
       </Styled.MyArticlesDiv>
     </>
   );
