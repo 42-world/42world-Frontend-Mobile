@@ -1,10 +1,12 @@
 import * as React from 'react';
-import { useState, useEffect, createContext } from 'react';
+import { useState, createContext } from 'react';
+
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
+  useNavigate,
 } from 'react-router-dom';
 import {
   MainPage,
@@ -25,7 +27,13 @@ import { useContext } from 'react';
 import UserService from './Network/UserService';
 
 const ErrorPage = () => {
-  return <>Error!</>;
+  const navi = useNavigate();
+  return (
+    <div style={{ backgroundColor: 'black' }}>
+      <img src="/assets/error.png" />
+      <img src="/assets/headerLogo.svg" onClick={() => navi('/')} />
+    </div>
+  );
 };
 
 export const AuthContext = createContext();
@@ -121,7 +129,6 @@ const App = () => {
               </PrivateRoute>
             }
           />
-          {/* <Route path="/search" element={<MainPage />} /> */}
           <Route
             path="/profile"
             element={
