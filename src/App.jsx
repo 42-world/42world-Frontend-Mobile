@@ -20,6 +20,7 @@ import {
   LoginPage,
   AlarmPage,
 } from './Pages';
+import Loading from './Components/Loading';
 import { useContext } from 'react';
 import UserService from './Network/UserService';
 
@@ -60,7 +61,7 @@ const PrivateRoute = ({ children }) => {
   const auth = useContext(AuthContext);
 
   if (auth.isLoading) {
-    return <p>loading</p>;
+    return <Loading />;
   } else {
     if (auth.state) return children;
     else return <Navigate to="/login" />;
