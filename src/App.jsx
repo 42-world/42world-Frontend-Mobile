@@ -28,8 +28,6 @@ import UserService from './Network/UserService';
 
 export const AuthContext = createContext();
 
-let userId = '';
-
 const AuthProvider = ({ children }) => {
   const [state, setState] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -42,20 +40,16 @@ const AuthProvider = ({ children }) => {
       } catch (e) {
         console.log('app : ', e);
       }
-      if (!response) {
-        userId = '';
-        setState(false);
-      } else {
-        userId = response.data.id;
-        setState(true);
-      }
+      if (!response) setState(false);
+      else setState(true);
+
       setIsLoading(false);
     };
     initState();
   }, []);
 
   return (
-    <AuthContext.Provider value={{ state, isLoading, setState, userId }}>
+    <AuthContext.Provider value={{ state, isLoading, setState }}>
       {children}
     </AuthContext.Provider>
   );
@@ -67,8 +61,9 @@ const PrivateRoute = ({ children }) => {
   if (auth.isLoading) {
     return <Loading />;
   } else {
-    if (auth.state) return children;
-    else return <Navigate to="/login" />;
+    return children;
+    // if (auth.state) return children;
+    // else return <Navigate to="/login" />;
   }
 };
 // 글 보기 : 모드view?글id=12 or view/글id
