@@ -5,7 +5,7 @@ const GetCheckIn = {
     const method = 'GET';
     const headers = {};
     const body = {};
-    const url = 'https://api.checkin.42seoul.io/config';
+    const url = 'https://cors.bridged.cc/https://api.checkin.42seoul.io/config';
     let response;
     try {
       response = await axios({
@@ -24,7 +24,8 @@ const GetCheckIn = {
     const method = 'GET';
     const headers = {};
     const body = {};
-    const url = 'https://api.checkin.42seoul.io/user/using';
+    const url =
+      'https://cors.bridged.cc/https://api.checkin.42seoul.io/user/using';
     let response;
     try {
       response = await axios({
