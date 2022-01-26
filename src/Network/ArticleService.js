@@ -253,6 +253,23 @@ const ArticleService = {
     }
     return response;
   },
+  editArticles: async (articlesId, articles) => {
+    const method = 'PUT';
+    const url = articleUrl(`/${articlesId}`);
+    const body = articles;
+    let response;
+    try {
+      response = await axios({
+        method,
+        data: body,
+        url,
+        withCredentials: true,
+      });
+    } catch (error) {
+      alert(error);
+    }
+    return response;
+  },
 };
 
 export default ArticleService;

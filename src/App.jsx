@@ -28,8 +28,6 @@ import UserService from './Network/UserService';
 
 export const AuthContext = createContext();
 
-let userId = '';
-
 const AuthProvider = ({ children }) => {
   const [state, setState] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -42,20 +40,16 @@ const AuthProvider = ({ children }) => {
       } catch (e) {
         console.log('app : ', e);
       }
-      if (!response) {
-        userId = '';
-        setState(false);
-      } else {
-        userId = response.data.id;
-        setState(true);
-      }
+      if (!response) setState(false);
+      else setState(true);
+
       setIsLoading(false);
     };
     initState();
   }, []);
 
   return (
-    <AuthContext.Provider value={{ state, isLoading, setState, userId }}>
+    <AuthContext.Provider value={{ state, isLoading, setState }}>
       {children}
     </AuthContext.Provider>
   );
