@@ -42,7 +42,6 @@ const DefaultService = {
     getAuth: async () => {
       const method = 'GET';
       const url = reactiontUrl('/github');
-      console.log(url);
 
       let response;
       try {
