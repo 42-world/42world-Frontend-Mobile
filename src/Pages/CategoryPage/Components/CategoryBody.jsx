@@ -33,7 +33,7 @@ const CategoryBody = () => {
     setIsLoaded(true);
     // 실제 API 통신처럼 비동기로 받아오는 것을 구현하기 위해 1.5 초 뒤에 데이터를 갱신한다.
     // resolve, reject는 각각 성공 시, 실패 시의 동작을 의미. reject를 생략하니 reslove의 경우만 익명함수로 처리해주었다.
-    // console.log(categoryId);
+    // (categoryId);
     const newData = await ArticleService.getArticles(categoryId);
     setArticles(prevList => prevList.concat(newData));
     setIsLoaded(false);
@@ -56,7 +56,6 @@ const CategoryBody = () => {
   // useEffect(() => {
   //   let observer;
   //   if (target) {
-  //     console.log('target :', target);
   //     observer = new IntersectionObserver(onIntersect, {
   //       // ref 역할의 state가 존재한다면 intersection Observer 객체를 observer에 담는다.
   //       threshold: 0.4,

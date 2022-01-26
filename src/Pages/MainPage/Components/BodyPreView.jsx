@@ -5,7 +5,6 @@ import Styled from './BodyPreView.styled';
 const BodyPreView = ({ onChangeTab, highlight }) => {
   const handleChange = (event, value) => {
     onChangeTab(value);
-    console.log(highlight);
   };
 
   return (

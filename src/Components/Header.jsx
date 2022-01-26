@@ -58,7 +58,6 @@ const Header = () => {
   const loca = useLocation();
 
   const handleOpenMenu = (anchor, open) => {
-    console.log(queryData.mode);
     if (!queryData.mode) {
       setSearchParams({ ...queryData, mode: 'menu' });
       // searchParams.append('mode', 'menu');

@@ -45,7 +45,6 @@ const ArticleService = {
     const method = 'POST';
     const url = articleUrl('');
     const body = newArticles;
-    console.log(body);
     let response;
     try {
       response = await axios({
