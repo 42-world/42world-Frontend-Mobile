@@ -28,7 +28,7 @@ const EditArticlePage = () => {
   };
 
   const handleClickCancel = () => {
-    navi(`/${pathArray[1]}/${pathArray[2]}`);
+    navi(-1);
   };
 
   const handleClickSubmit = async () => {
@@ -41,13 +41,13 @@ const EditArticlePage = () => {
       return;
     }
     // 수정하려고 카테고리 아이디 API 받는 게 조회로 인식.
-    navi(`/${pathArray[1]}/${pathArray[2]}`);
     // 이동한 뒤에 API 실행됨
     const result = await ArticleService.editArticles(+pathArray[2], {
       title: title,
       content: content,
       categoryId: articleId.current, // + 붙이면 number 타입
     });
+    navi(-1);
   };
 
   useEffect(() => {
