@@ -38,12 +38,12 @@ const MainBody = () => {
     };
 
     const getAnonyArticles = async () => {
-      const response = await ArticleService.getArticles(1);
+      const response = await ArticleService.getArticles(2);
       setAnonyArticles(response.data);
     };
 
     const getNotiArticles = async () => {
-      const response = await ArticleService.getArticles(1);
+      const response = await ArticleService.getArticles(3);
       setNotiArticles(response.data);
     };
     getFreeArticles();
