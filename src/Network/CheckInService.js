@@ -19,7 +19,7 @@ const CheckInService = {
     } catch (error) {
       console.log('error');
     }
-    return response;
+    return response.data;
   },
 };
 

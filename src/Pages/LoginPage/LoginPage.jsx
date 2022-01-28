@@ -22,6 +22,7 @@ const LoginPage = ({ isCallback }) => {
     window.location.href = GithubLoginUrl;
   };
   useEffect(() => {
+    console.log('login auth : ', auth);
     const getAuth = async () => {
       if (isCallback) {
         const github_code = queryData.code;
@@ -38,7 +39,6 @@ const LoginPage = ({ isCallback }) => {
   }, []);
 
   useEffect(() => {
-    console.log(auth.userId);
     if (auth.state) navi('/');
   }, [auth]);
 

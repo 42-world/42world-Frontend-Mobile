@@ -31,6 +31,7 @@ export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const [state, setState] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [curUser, setCurUser] = useState(null);
 
   React.useEffect(() => {
     const initState = async () => {
@@ -41,15 +42,18 @@ const AuthProvider = ({ children }) => {
         console.log('app : ', e);
       }
       if (!response) setState(false);
-      else setState(true);
-
+      else {
+        console.log('there is res!');
+        setState(true);
+        setCurUser(response);
+      }
       setIsLoading(false);
     };
     initState();
   }, []);
 
   return (
-    <AuthContext.Provider value={{ state, isLoading, setState }}>
+    <AuthContext.Provider value={{ state, isLoading, setState, curUser }}>
       {children}
     </AuthContext.Provider>
   );
@@ -57,13 +61,12 @@ const AuthProvider = ({ children }) => {
 
 const PrivateRoute = ({ children }) => {
   const auth = useContext(AuthContext);
-
   if (auth.isLoading) {
     return <Loading />;
   } else {
-    return children;
-    // if (auth.state) return children;
-    // else return <Navigate to="/login" />;
+    // if (auth.state && auth.curUser.isAuthenticated) return children;
+    if (auth.state) return children;
+    else return <Navigate to="/login" />;
   }
 };
 // 글 보기 : 모드view?글id=12 or view/글id
@@ -129,14 +132,7 @@ const App = () => {
               </PrivateRoute>
             }
           />
-          <Route
-            path="/profile"
-            element={
-              <PrivateRoute>
-                <ProfilePage />
-              </PrivateRoute>
-            }
-          />
+          <Route path="/profile" element={<ProfilePage />} />
           <Route
             path="/profile/setting"
             element={

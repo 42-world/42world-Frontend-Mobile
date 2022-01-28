@@ -17,7 +17,7 @@ const Comment = ({ articleId }) => {
   useEffect(() => {
     const fetch = async () => {
       const res = await ArticleService.getArticlesCommentsById(articleId);
-      setComments(res.data);
+      setComments(res);
     };
     fetch();
   }, []);
@@ -74,9 +74,9 @@ const CreateComment = ({ articleId, handleCreateComment }) => {
       content: input,
       articleId: +articleId,
     });
-    if (res.data) {
-      console.log(res.data);
-      // handleCreateComment(res.data);
+    if (res) {
+      console.log(res);
+      // handleCreateComment(res);
     }
   };
   return (
