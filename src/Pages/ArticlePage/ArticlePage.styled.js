@@ -101,6 +101,7 @@ const CreateCommentDiv = styled.div`
       height: 40px;
       margin-left: 0.5rem;
       border-radius: 50%;
+      box-shadow: none;
 
       &:hover {
         background-color: ${GlobalStyled.theme.secondary};
@@ -251,9 +252,6 @@ const ArticlePageDiv = styled.div`
       font-size: 0.85rem;
       font-weight: 400;
       color: ${GlobalStyled.theme.textColor};
-    }
-
-    .content_bottom {
     }
   }
 `;

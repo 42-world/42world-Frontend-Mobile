@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Fab from '@mui/material/Fab';
-import MessageOutlinedIcon from '@mui/icons-material/MessageOutlined';
+import ArrowUpwardRoundedIcon from '@mui/icons-material/ArrowUpwardRounded';
 
 import ArticleService from '../../../Network/ArticleService';
 import CommentService from '../../../Network/CommentService';
@@ -84,7 +84,7 @@ const CreateComment = ({ articleId, handleCreateComment }) => {
         placeholder="댓글을 입력하세요"
       />
       <Fab className="fab_button" type="submit">
-        <MessageOutlinedIcon />
+        <ArrowUpwardRoundedIcon />
       </Fab>
     </form>
   );
