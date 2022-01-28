@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import Fab from '@mui/material/Fab';
+import MessageOutlinedIcon from '@mui/icons-material/MessageOutlined';
 
 import ArticleService from '../../../Network/ArticleService';
 import CommentService from '../../../Network/CommentService';
@@ -23,10 +25,12 @@ const Comment = ({ articleId }) => {
   // articleId로 패칭 fetching
   return (
     <div className="comment_list_div">
-      <CreateComment
-        articleId={articleId}
-        handleCreateComment={handleCreateComment}
-      />
+      <Styled.CreateCommentDiv>
+        <CreateComment
+          articleId={articleId}
+          handleCreateComment={handleCreateComment}
+        />
+      </Styled.CreateCommentDiv>
 
       <span className="comment_count">
         <SmsOutlined />
@@ -74,8 +78,14 @@ const CreateComment = ({ articleId, handleCreateComment }) => {
   };
   return (
     <form onSubmit={handleClickSubmit}>
-      <input value={input} onChange={handleChange} />
-      <button type="submit">제출</button>
+      <input
+        value={input}
+        onChange={handleChange}
+        placeholder="댓글을 입력하세요"
+      />
+      <Fab className="fab_button" type="submit">
+        <MessageOutlinedIcon />
+      </Fab>
     </form>
   );
 };

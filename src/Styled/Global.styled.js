@@ -25,7 +25,7 @@ const theme = {
   textColor: '#000',
   textColorSecondary: '#666',
   textColorGray: '#999',
-  textColorLight: '#ccc',
+  textColorLight: '#ddd',
   textColorWhite: '#fff',
 
   borderColor: '#e6e6e6',

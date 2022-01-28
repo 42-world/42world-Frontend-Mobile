@@ -51,6 +51,63 @@ const CommentContent = styled.div`
   }
 `;
 
+const CreateCommentDiv = styled.div`
+  position: fixed;
+  bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+
+  width: 100%;
+  margin: 1rem;
+
+  @media (min-width: ${GlobalStyled.theme.mobileMinWidth}) {
+    width: ${GlobalStyled.theme.desktopWidth};
+  }
+
+  form {
+    width: 90%;
+    background-color: ${GlobalStyled.theme.textColorLight};
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+
+    input {
+      width: 90%;
+      color: ${GlobalStyled.theme.textColor};
+      background-color: rgba(0, 0, 0, 0);
+      border: none;
+      &::placeholder {
+        color: ${GlobalStyled.theme.textColorGray};
+      }
+      &:focus {
+        outline: none;
+        border: none;
+      }
+    }
+
+    button {
+      box-sizing: content-box;
+      border: none;
+      background: none;
+      background-color: ${GlobalStyled.theme.primary};
+      color: ${GlobalStyled.theme.textColorWhite};
+      width: 40px;
+      height: 40px;
+      margin-left: 0.5rem;
+      border-radius: 50%;
+
+      &:hover {
+        background-color: ${GlobalStyled.theme.secondary};
+      }
+    }
+  }
+`;
+
 const ArticleLikedDiv = styled.div`
   display: flex;
   align-items: center;
@@ -188,6 +245,7 @@ const Styled = {
   ProfileImage,
   CommentContent,
   ArticleLikedDiv,
+  CreateCommentDiv,
 };
 
 export default Styled;
