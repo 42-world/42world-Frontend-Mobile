@@ -59,9 +59,6 @@ const Body = ({ articleId }) => {
       </div>
       <div className="content_middle">{article.content}</div>
       <div className="content_bottom">
-        <span className="comment_count">
-          <SmsOutlined />
-        </span>
         <span className="liked_count">
           <FavoriteBorder />
         </span>

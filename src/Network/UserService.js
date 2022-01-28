@@ -25,7 +25,7 @@ const UserService = {
    */
   getUser: async () => {
     const method = 'GET';
-    const url = userUrl('');
+    const url = userUrl('/me');
 
     let response;
     try {

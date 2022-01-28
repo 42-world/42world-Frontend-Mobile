@@ -27,6 +27,10 @@ const Comment = ({ articleId }) => {
         articleId={articleId}
         handleCreateComment={handleCreateComment}
       />
+
+      <span className="comment_count">
+        <SmsOutlined />
+      </span>
       {comments.map((comment, idx) => (
         <div className="comment_div" key={idx}>
           <div className="info">

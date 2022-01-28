@@ -98,7 +98,7 @@ const ArticlePageDiv = styled.div`
     .content_top {
       display: flex;
       flex-direction: row;
-      padding: 0.5rem;
+      padding: 0.7rem;
       border-bottom: 1px solid ${GlobalStyled.theme.borderColor};
 
       .title {
@@ -142,6 +142,17 @@ const ArticlePageDiv = styled.div`
           font-weight: 400;
         }
       }
+    }
+
+    .content_middle {
+      display: flex;
+      padding: 0.7rem;
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: ${GlobalStyled.theme.textColor};
+    }
+
+    .content_bottom {
     }
   }
 `;
