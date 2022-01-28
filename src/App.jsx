@@ -43,6 +43,7 @@ const AuthProvider = ({ children }) => {
       }
       if (!response) setState(false);
       else {
+        console.log('there is res!');
         setState(true);
         setCurUser(response);
       }
@@ -60,14 +61,13 @@ const AuthProvider = ({ children }) => {
 
 const PrivateRoute = ({ children }) => {
   const auth = useContext(AuthContext);
-  console.log(auth.curUser);
 
   if (auth.isLoading) {
     return <Loading />;
   } else {
-    // if (auth.state) return children;
-    if (auth.state && auth.curUser.isAuthenticated) return children;
-    else if (auth.state) return <Navigate to="/profile" />;
+    console.log(auth.curUser);
+    // if (auth.state && auth.curUser.isAuthenticated) return children;
+    if (auth.state) return children;
     else return <Navigate to="/login" />;
   }
 };
@@ -134,14 +134,7 @@ const App = () => {
               </PrivateRoute>
             }
           />
-          <Route
-            path="/profile"
-            element={
-              <PrivateRoute>
-                <ProfilePage />
-              </PrivateRoute>
-            }
-          />
+          <Route path="/profile" element={<ProfilePage />} />
           <Route
             path="/profile/setting"
             element={
