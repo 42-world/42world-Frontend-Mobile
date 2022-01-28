@@ -75,8 +75,7 @@ const CreateComment = ({ articleId, handleCreateComment }) => {
       articleId: +articleId,
     });
     if (res) {
-      console.log(res);
-      // handleCreateComment(res);
+      handleCreateComment(res);
     }
   };
   return (

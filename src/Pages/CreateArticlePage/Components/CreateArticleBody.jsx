@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import ArticleService from '../../../Network/ArticleService';
 
 import Button from '@mui/material/Button';
-import LoadingButton from '@mui/lab/LoadingButton';
+// import LoadingButton from '@mui/lab/LoadingButton';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import GlobalStyled from '../../../Styled/Global.styled';
 
@@ -64,14 +64,14 @@ const CreateArticleBody = () => {
           <span>글 작성하기</span>
         </div>
         <div>
-          <LoadingButton
+          {/* <LoadingButton
             loading={isSending}
             onClick={handleClickSubmit}
             variant="outlined"
             className="submit_button"
           >
             완료
-          </LoadingButton>
+          </LoadingButton> */}
         </div>
       </div>
       <div className="body">
