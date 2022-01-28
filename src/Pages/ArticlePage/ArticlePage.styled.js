@@ -39,6 +39,7 @@ const CommentContent = styled.div`
       width: 1rem;
       height: 1rem;
       margin-right: 0.1rem;
+      cursor: pointer;
     }
 
     &::after {
@@ -64,6 +65,7 @@ const ArticleLikedDiv = styled.div`
     width: 2rem;
     height: 2rem;
     margin-right: 0.2rem;
+    cursor: pointer;
   }
 
   &::after {
