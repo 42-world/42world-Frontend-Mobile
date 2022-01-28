@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 import List from '@mui/material/List';
+import GlobalStyled from '../../../Styled/Global.styled';
 
 const ListDivider = styled.div`
   box-sizing: border-box;
   padding: ${props => props.margin || '0'};
-  background-color: ${props => props.backgroundColor || '#ccc'};
+  background-color: ${props =>
+    props.backgroundColor || GlobalStyled.theme.borderColor};
 `;
 
 const StyledList = styled(List)`
@@ -15,7 +17,9 @@ const BoardTitleDiv = styled.div`
   box-sizing: border-box;
   width: 100%;
   display: flex;
-  background-color: #53b7ba;
+  background-color: ${GlobalStyled.theme.background};
+  color: ${GlobalStyled.theme.text};
+  border-bottom: 1px solid ${GlobalStyled.theme.borderColor};
   padding: 0.65rem 1.2rem;
   align-items: center;
   cursor: pointer;
@@ -32,7 +36,6 @@ const BoardTitleDiv = styled.div`
   .board_count {
     font-size: 0.9rem;
     font-weight: 400;
-    color: rgba(0, 0, 0, 0.5);
     &::after {
       content: '${props => props.boardArticleCount} 개의 글';
     }

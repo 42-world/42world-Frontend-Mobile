@@ -11,6 +11,7 @@ import CreateIcon from '@mui/icons-material/Create';
 import Fab from '@mui/material/Fab';
 
 import Styled from './Body.styled';
+import GlobalStyled from '../../../Styled/Global.styled';
 
 const CategoryBody = () => {
   const [articles, setArticles] = useState([]);
@@ -68,9 +69,9 @@ const CategoryBody = () => {
   return (
     <>
       <Styled.StyledList component="nav" aria-label="mailbox folders">
-        <Styled.BoardTitleDiv>
+        <GlobalStyled.BoardTitleDiv>
           <div className="board_name">{curCate}</div>
-        </Styled.BoardTitleDiv>
+        </GlobalStyled.BoardTitleDiv>
 
         {articles &&
           articles.map(article => {

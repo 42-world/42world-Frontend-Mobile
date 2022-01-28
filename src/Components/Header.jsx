@@ -129,10 +129,10 @@ const Header = () => {
           />
         </div>
         <div>
-          <SearchIcon
+          {/*<SearchIcon
             sx={{ color: GlobalStyled.theme.textLight }}
             onClick={handleToggleSearch}
-          />
+          />*/}
           <NotificationsIcon
             sx={{ color: GlobalStyled.theme.textLight }}
             onClick={() => navi('/alarm')}
