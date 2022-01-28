@@ -16,7 +16,7 @@ const MyComment = () => {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          width: '60px',
+          width: '70px',
         }}
       >
         <SmsOutlined />내 댓글

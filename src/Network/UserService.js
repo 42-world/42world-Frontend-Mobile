@@ -189,6 +189,73 @@ const UserService = {
     }
     return response.data;
   },
+  // 내 정보 가져오기 추가
+  getMe: async () => {
+    const method = 'GET';
+    const url = userUrl('/me');
+
+    let response;
+    try {
+      response = await axios({
+        method,
+        url,
+        withCredentials: true,
+      });
+    } catch (error) {
+      console.log('service : ', error);
+    }
+    return response.data;
+  },
+
+  // 내 글, 내 댓글, 좋아요한 글 불러오기 추가
+  getLikeArticles: async () => {
+    const method = 'GET';
+    const url = userUrl('/me/like-articles');
+
+    let response;
+    try {
+      response = await axios({
+        method,
+        url,
+        withCredentials: true,
+      });
+    } catch (error) {
+      console.log('service : ', error);
+    }
+    return response.data;
+  },
+  getMyArticles: async () => {
+    const method = 'GET';
+    const url = userUrl('/me/articles');
+
+    let response;
+    try {
+      response = await axios({
+        method,
+        url,
+        withCredentials: true,
+      });
+    } catch (error) {
+      console.log('service : ', error);
+    }
+    return response.data;
+  },
+  getMyComments: async () => {
+    const method = 'GET';
+    const url = userUrl('/me/comments');
+
+    let response;
+    try {
+      response = await axios({
+        method,
+        url,
+        withCredentials: true,
+      });
+    } catch (error) {
+      console.log('service : ', error);
+    }
+    return response.data;
+  },
 };
 
 export default UserService;
