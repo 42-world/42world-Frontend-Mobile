@@ -4,13 +4,30 @@ import { PreviewArticleNoti } from '../../../Components';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Styled from './Body.styled';
+import CheckInService from '../../../Network/CheckInService';
+import { useCallback, useEffect, useState } from 'react';
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 const Home = ({ notiArticles }) => {
+  const [checkInStatus, setCheckInStatus] = useState({
+    gaepo: 0,
+    seocho: 0,
+  });
   const navi = useNavigate();
 
   const moveArticles = articleId => {
     navi(`/article/${articleId}`);
   };
+  const getCheckInStatus = useCallback(async () => {
+    const response = await CheckInService.curCheckInStatus();
+
+    setCheckInStatus(response.data);
+  }, [setCheckInStatus]);
+
+  useEffect(() => {
+    getCheckInStatus();
+  }, []);
 
   return (
     <Box>
@@ -23,11 +40,25 @@ const Home = ({ notiArticles }) => {
       <Styled.CheckInBody>
         <div>
           <h2>개포</h2>
-          <h2>0/200</h2>
+          <div style={{ width: 100, height: 100 }}>
+            <CircularProgressbar
+              maxValue={225}
+              text={checkInStatus.gaepo + '명'}
+              value={checkInStatus.gaepo}
+              strokeWidth={10}
+            />
+          </div>
         </div>
         <div>
           <h2>서초</h2>
-          <h2>0/200</h2>
+          <div style={{ width: 100, height: 100 }}>
+            <CircularProgressbar
+              maxValue={225}
+              text={checkInStatus.seocho + '명'}
+              value={checkInStatus.seocho}
+              strokeWidth={10}
+            />
+          </div>
         </div>
       </Styled.CheckInBody>
       <Styled.StyledList
