@@ -99,7 +99,9 @@ const App = () => {
             path="/alarm"
             element={
               <PrivateRouteCheckAuth>
-                <AlarmPage />
+                <PrivateRouteCheckFtAuth>
+                  <AlarmPage />
+                </PrivateRouteCheckFtAuth>
               </PrivateRouteCheckAuth>
             }
           />
@@ -108,7 +110,9 @@ const App = () => {
             path="/category/:id"
             element={
               <PrivateRouteCheckAuth>
-                <CategoryPage />
+                <PrivateRouteCheckFtAuth>
+                  <CategoryPage />
+                </PrivateRouteCheckFtAuth>
               </PrivateRouteCheckAuth>
             }
           />
@@ -116,7 +120,9 @@ const App = () => {
             path="/category/:id/create"
             element={
               <PrivateRouteCheckAuth>
-                <CreateArticlePage />
+                <PrivateRouteCheckFtAuth>
+                  <CreateArticlePage />
+                </PrivateRouteCheckFtAuth>
               </PrivateRouteCheckAuth>
             }
           />
@@ -125,7 +131,9 @@ const App = () => {
             path="/article/:id"
             element={
               <PrivateRouteCheckAuth>
-                <ArticlePage />
+                <PrivateRouteCheckFtAuth>
+                  <ArticlePage />
+                </PrivateRouteCheckFtAuth>
               </PrivateRouteCheckAuth>
             }
           />
@@ -134,7 +142,9 @@ const App = () => {
             path="/article/:id/edit"
             element={
               <PrivateRouteCheckAuth>
-                <EditArticlePage />
+                <PrivateRouteCheckFtAuth>
+                  <EditArticlePage />
+                </PrivateRouteCheckFtAuth>
               </PrivateRouteCheckAuth>
             }
           />
@@ -151,7 +161,9 @@ const App = () => {
             path="/profile/setting"
             element={
               <PrivateRouteCheckAuth>
-                <SettingPage />
+                <PrivateRouteCheckFtAuth>
+                  <SettingPage />
+                </PrivateRouteCheckFtAuth>
               </PrivateRouteCheckAuth>
             }
           />
@@ -159,7 +171,9 @@ const App = () => {
             path="/profile/liked-article"
             element={
               <PrivateRouteCheckAuth>
-                <LikedArticlePage />
+                <PrivateRouteCheckFtAuth>
+                  <LikedArticlePage />
+                </PrivateRouteCheckFtAuth>
               </PrivateRouteCheckAuth>
             }
           />
@@ -167,7 +181,9 @@ const App = () => {
             path="/profile/my-article"
             element={
               <PrivateRouteCheckAuth>
-                <MyArticlePage />
+                <PrivateRouteCheckFtAuth>
+                  <MyArticlePage />
+                </PrivateRouteCheckFtAuth>
               </PrivateRouteCheckAuth>
             }
           />
@@ -175,7 +191,9 @@ const App = () => {
             path="/profile/my-comment"
             element={
               <PrivateRouteCheckAuth>
-                <MyCommentPage />
+                <PrivateRouteCheckFtAuth>
+                  <MyCommentPage />
+                </PrivateRouteCheckFtAuth>
               </PrivateRouteCheckAuth>
             }
           />
@@ -183,7 +201,9 @@ const App = () => {
             path="/profile/auth"
             element={
               <PrivateRouteCheckAuth>
-                <AuthPage />
+                <PrivateRouteCheckFtAuth>
+                  <AuthPage />
+                </PrivateRouteCheckFtAuth>
               </PrivateRouteCheckAuth>
             }
           />
@@ -191,7 +211,9 @@ const App = () => {
             path="/*"
             element={
               <PrivateRouteCheckAuth>
-                <ErrorPage />
+                <PrivateRouteCheckFtAuth>
+                  <ErrorPage />
+                </PrivateRouteCheckFtAuth>
               </PrivateRouteCheckAuth>
             }
           />

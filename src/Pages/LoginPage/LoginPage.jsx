@@ -37,6 +37,10 @@ const LoginPage = ({ isCallback }) => {
     getAuth();
   }, []);
 
+  useEffect(() => {
+    if (!isCallback && (auth.state === 200 || auth.state === 403)) navi('/');
+  }, [auth.state]);
+
   return (
     <Styled.LoginPageBackground>
       <Styled.LoginPageBox>
