@@ -28,14 +28,6 @@ const theme = createTheme({
 });
 
 const ProfilePage = () => {
-  const auth = useContext(AuthContext);
-  const navi = useNavigate();
-  console.log('profile auth : ', auth);
-
-  useEffect(() => {
-    if (!auth.state && !auth.isLoading) navi('/login');
-  }, [auth.state, auth.isLoading]);
-
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyled.ProfileBackgroundDiv>

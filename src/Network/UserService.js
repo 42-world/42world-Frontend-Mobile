@@ -8,17 +8,17 @@ const userUrl = path => {
 const UserService = {
   /**
    * **GET** Signed in User Information
-   * @returns {{ \
-   * id: number, \
-   * nickname: string, \
-   * oauthToken: string, \
-   * isAuthenticated: boolean, \
-   * lastLogin: Date, \
-   * role: CADET, \
-   * character: 5, \
-   * deletedAt: Date, \
-   * createdAt: Date, \
-   * updatedAt: Date }} \
+   * @returns {Promise<{
+   * id: number,
+   * nickname: string,
+   * oauthToken: string,
+   * isAuthenticated: boolean,
+   * lastLogin: Date,
+   * role: CADET,
+   * character: 5,
+   * deletedAt: Date,
+   * createdAt: Date,
+   * updatedAt: Date }>}
    * user \
    * `200` : success \
    * `401` : fail
@@ -35,9 +35,15 @@ const UserService = {
         withCredentials: true,
       });
     } catch (error) {
-      console.log('service : ', error);
+      return {
+        data: null,
+        state: error.response.status,
+      };
     }
-    return response.data;
+    return {
+      data: response.data,
+      state: 200,
+    };
   },
   /**
    * **DELETE** Signed in User
