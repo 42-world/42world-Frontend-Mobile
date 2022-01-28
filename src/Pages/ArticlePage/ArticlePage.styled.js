@@ -52,7 +52,7 @@ const CommentContent = styled.div`
 `;
 
 const CreateCommentDiv = styled.div`
-  position: fixed;
+  position: sticky;
   bottom: 1rem;
   display: flex;
   align-items: center;
