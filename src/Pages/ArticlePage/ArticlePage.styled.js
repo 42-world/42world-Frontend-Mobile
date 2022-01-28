@@ -99,8 +99,48 @@ const ArticlePageDiv = styled.div`
       display: flex;
       flex-direction: row;
       padding: 0.5rem;
+      border-bottom: 1px solid ${GlobalStyled.theme.borderColor};
 
       .title {
+        display: flex;
+        flex-direction: column;
+        margin-right: auto;
+
+        h1 {
+          font-size: 1rem;
+          font-weight: 600;
+          color: ${GlobalStyled.theme.textColor};
+          margin-bottom: 0.2rem;
+        }
+
+        .info {
+          display: flex;
+          flex-direction: row;
+
+          h2 {
+            color: ${GlobalStyled.theme.textColorSecondary};
+            font-size: 0.7rem;
+            font-weight: 300;
+            margin-right: 0.8rem;
+          }
+        }
+      }
+
+      .edit_article {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        margin: 0 0.5rem;
+
+        button {
+          padding: 0;
+          border: none;
+          background: none;
+          cursor: pointer;
+          margin: 0.25rem;
+          font-size: 0.7rem;
+          font-weight: 400;
+        }
       }
     }
   }

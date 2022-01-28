@@ -20,14 +20,20 @@ const theme = {
   background: '#f5f5f5',
   text: '#000',
   textSecondary: '#666',
-  textLight: '#fff',
   textLightSecondary: '#ccc',
 
-  borderColor: '#eee',
+  textColor: '#000',
+  textColorSecondary: '#666',
+  textColorGray: '#999',
+  textColorLight: '#ccc',
+  textColorWhite: '#fff',
+
+  borderColor: '#e6e6e6',
   borderRadius: '0.25rem',
 
   headerHeight: '4.5rem',
-  headerColor: 'rgba(42, 45, 56, 1)',
+  headerBackgroundColor: 'rgba(42, 45, 56, 1)',
+  headerIconColor: '#fff',
 
   categoryNameBackgroundColor: '#4C5A66',
   categoryNameTextColor: '#FFF',
