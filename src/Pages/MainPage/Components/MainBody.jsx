@@ -30,25 +30,22 @@ const MainBody = () => {
   const moveArticles = articleId => {
     navi(`/article/${articleId}`);
   };
-  const getFreeArticles = useCallback(async () => {
-    const response = await ArticleService.getArticles(1);
 
-    setFreeArticles(response.data);
-  }, [setFreeArticles]);
+  useEffect(() => {
+    const getFreeArticles = async () => {
+      const response = await ArticleService.getArticles(1);
+      setFreeArticles(response.data);
+    };
 
-  const getAnonyArticles = useCallback(async () => {
-    const response = await ArticleService.getArticles(1);
+    const getAnonyArticles = async () => {
+      const response = await ArticleService.getArticles(1);
+      setAnonyArticles(response.data);
+    };
 
-    setAnonyArticles(response.data);
-  }, [setAnonyArticles]);
-
-  const getNotiArticles = useCallback(async () => {
-    const response = await ArticleService.getArticles(1);
-
-    setNotiArticles(response.data);
-  }, [setNotiArticles]);
-
-  useEffect(async () => {
+    const getNotiArticles = async () => {
+      const response = await ArticleService.getArticles(1);
+      setNotiArticles(response.data);
+    };
     getFreeArticles();
     getAnonyArticles();
     getNotiArticles();
