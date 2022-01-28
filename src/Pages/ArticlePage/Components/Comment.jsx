@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import Fab from '@mui/material/Fab';
+import ArrowUpwardRoundedIcon from '@mui/icons-material/ArrowUpwardRounded';
 
 import ArticleService from '../../../Network/ArticleService';
 import CommentService from '../../../Network/CommentService';
@@ -23,10 +25,12 @@ const Comment = ({ articleId }) => {
   // articleId로 패칭 fetching
   return (
     <div className="comment_list_div">
-      <CreateComment
-        articleId={articleId}
-        handleCreateComment={handleCreateComment}
-      />
+      <Styled.ArticleCommentDiv
+        className="comment_count"
+        commentCount={comments.length}
+      >
+        <SmsOutlined />
+      </Styled.ArticleCommentDiv>
       {comments.map((comment, idx) => (
         <div className="comment_div" key={idx}>
           <div className="info">
@@ -48,6 +52,13 @@ const Comment = ({ articleId }) => {
           </Styled.CommentContent>
         </div>
       ))}
+
+      <Styled.CreateCommentDiv>
+        <CreateComment
+          articleId={articleId}
+          handleCreateComment={handleCreateComment}
+        />
+      </Styled.CreateCommentDiv>
     </div>
   );
 };
@@ -64,14 +75,19 @@ const CreateComment = ({ articleId, handleCreateComment }) => {
       articleId: +articleId,
     });
     if (res) {
-      console.log(res);
-      // handleCreateComment(res);
+      handleCreateComment(res);
     }
   };
   return (
     <form onSubmit={handleClickSubmit}>
-      <input value={input} onChange={handleChange} />
-      <button type="submit">제출</button>
+      <input
+        value={input}
+        onChange={handleChange}
+        placeholder="댓글을 입력하세요"
+      />
+      <Fab className="fab_button" type="submit">
+        <ArrowUpwardRoundedIcon />
+      </Fab>
     </form>
   );
 };

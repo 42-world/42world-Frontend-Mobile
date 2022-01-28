@@ -5,6 +5,7 @@ import ArticleService from '../../../Network/ArticleService';
 import { AuthContext } from '../../../App';
 import GlobalStyled from '../../../Styled/Global.styled';
 import dayjs from 'dayjs';
+import Styled from '../ArticlePage.styled';
 
 const Body = ({ articleId }) => {
   // articleId로 패칭 fetching
@@ -40,29 +41,26 @@ const Body = ({ articleId }) => {
       </GlobalStyled.BoardTitleDiv>
       <div className="content_top">
         <div className="title">
-          {article.title}
+          <h1>{article.title}</h1>
           <div className="info">
             <h2>{article.writer.nickname}</h2>
             <h2>{getArticleTime(article.createdAt)}</h2>
             <h2>조회수 {article.viewCount}</h2>
           </div>
         </div>
-        {/* 내가 쓴 글인지 아닌지에 따라 (수정,삭제) 또는 (조회수)  */}
         {article.writer.Id === userId && (
-          <div className="">
+          <div className="edit_article">
             <button onClick={handleClickEdit}>수정</button>
             <button onClick={handleClickDelete}>삭제</button>
           </div>
         )}
+        <Styled.ProfileImage width="2.5rem" imagePath=""></Styled.ProfileImage>
       </div>
       <div className="content_middle">{article.content}</div>
       <div className="content_bottom">
-        <span className="comment_count">
-          <SmsOutlined />
-        </span>
-        <span className="liked_count">
+        <Styled.ArticleLikedDiv likedCount={article.likedCount || 1}>
           <FavoriteBorder />
-        </span>
+        </Styled.ArticleLikedDiv>
       </div>
     </div>
   );
