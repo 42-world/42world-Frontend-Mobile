@@ -4,12 +4,14 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import ArticleService from '../../../Network/ArticleService';
 
 import Button from '@mui/material/Button';
+import LoadingButton from '@mui/lab/LoadingButton';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const CreateArticleBody = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [curCate, setCurCate] = useState('');
+  const [isSending, setIsSending] = useState(false);
 
   const loca = useLocation();
   const navi = useNavigate();
@@ -38,11 +40,13 @@ const CreateArticleBody = () => {
     }
 
     // 이동한 뒤에 API 실행됨
+    setIsSending(true);
     const result = await ArticleService.createArticles({
       title: title,
       content: content,
       categoryId: +pathArray[2], // + 붙이면 number 타입
     });
+    setIsSending(false);
     navi(-1);
   };
 
@@ -59,13 +63,14 @@ const CreateArticleBody = () => {
           <span>글 작성하기</span>
         </div>
         <div>
-          <Button
+          <LoadingButton
+            loading={isSending}
             onClick={handleClickSubmit}
             variant="outlined"
             className="submit_button"
           >
             완료
-          </Button>
+          </LoadingButton>
         </div>
       </div>
       <div className="body">
