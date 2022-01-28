@@ -60,11 +60,13 @@ const AuthProvider = ({ children }) => {
 
 const PrivateRoute = ({ children }) => {
   const auth = useContext(AuthContext);
+  console.log(auth.curUser);
 
   if (auth.isLoading) {
     return <Loading />;
   } else {
-    if (auth.state && auth.isAuthenticate) return children;
+    // if (auth.state) return children;
+    if (auth.state && auth.curUser.isAuthenticate) return children;
     else if (auth.state) return <Navigate to="/profile" />;
     else return <Navigate to="/login" />;
   }

@@ -20,7 +20,7 @@ const Body = ({ articleId }) => {
   useEffect(() => {
     const fetch = async () => {
       const res = await ArticleService.getArticlesById(articleId);
-      setArticle(res.data);
+      setArticle(res);
     };
     fetch();
   }, []);

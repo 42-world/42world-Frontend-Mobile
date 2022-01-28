@@ -57,13 +57,13 @@ const EditArticlePage = () => {
   useEffect(() => {
     const getArticle = async () => {
       const response = await ArticleService.getArticlesById(pathArray[2]);
-
-      return response.data;
+      const article = response.data;
+      console.log('article', article);
+      setTitle(article.title);
+      setContent(article.content);
+      articleId.current = article.categoryId;
     };
-    const article = getArticle();
-    setTitle(article.title);
-    setContent(article.content);
-    articleId.current = article.categoryId;
+    getArticle();
   }, [setTitle, setContent, articleId]);
 
   return (
