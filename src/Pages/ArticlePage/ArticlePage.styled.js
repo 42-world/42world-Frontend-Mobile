@@ -50,6 +50,30 @@ const CommentContent = styled.div`
   }
 `;
 
+const ArticleLikedDiv = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: 1em;
+  margin-bottom: 0.2rem;
+  font-size: 0.95rem;
+  color: ${GlobalStyled.theme.likedCountColor};
+
+  svg {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 0.2rem;
+  }
+
+  &::after {
+    content: '${props => {
+      if (props.likedCount > 0) return props.likedCount;
+      else return '';
+    }}';
+  }
+`;
+
 const ArticlePageDiv = styled.div`
   display: flex;
   flex-direction: column;
@@ -157,6 +181,11 @@ const ArticlePageDiv = styled.div`
   }
 `;
 
-const Styled = { ArticlePageDiv, ProfileImage, CommentContent };
+const Styled = {
+  ArticlePageDiv,
+  ProfileImage,
+  CommentContent,
+  ArticleLikedDiv,
+};
 
 export default Styled;

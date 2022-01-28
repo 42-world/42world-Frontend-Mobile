@@ -59,9 +59,9 @@ const Body = ({ articleId }) => {
       </div>
       <div className="content_middle">{article.content}</div>
       <div className="content_bottom">
-        <span className="liked_count">
+        <Styled.ArticleLikedDiv likedCount={article.likedCount || 1}>
           <FavoriteBorder />
-        </span>
+        </Styled.ArticleLikedDiv>
       </div>
     </div>
   );
