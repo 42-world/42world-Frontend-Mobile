@@ -114,35 +114,35 @@ const ArticleService = {
   /**
    * **GET** One Articles By Articles ID
    * @param {string} articlesId
-   * @returns {{ \
-   *    id: number, \
-   *    title: string, \
-   *    content: string, \
-   *    viewCount: number, \
-   *    categoryId: number, \
-   *    category: { \
-   *        id: number, \ \
-   *        name: string, \
-   *        createdAt: Date, \
+   * @returns {Promise<{
+   *    id: number,
+   *    title: string,
+   *    content: string,
+   *    viewCount: number,
+   *    categoryId: number,
+   *    category: {
+   *        id: number,
+   *        name: string,
+   *        createdAt: Date,
    *        updatedAt: Date
-   *    }, \
-   *    writerId: number, \
-   *    writer: { \
-   *        id: number, \
-   *        nickname: string, \
-   *        oauthToken: string, \
-   *        isAuthenticated: boolean, \
-   *        lastLogin: Date, \
-   *        role: CADET, \
-   *        character: number, \
-   *        deletedAt: Date, \
-   *        createdAt: Date, \
-   *        updatedAt: Date \
-   *    }, \
-   *    deletedAt: Date, \
-   *    createdAt: Date, \
-   *    updatedAt: Date \
-   * }} articles \
+   *    },
+   *    writerId: number,
+   *    writer: {
+   *        id: number,
+   *        nickname: string,
+   *        oauthToken: string,
+   *        isAuthenticated: boolean,
+   *        lastLogin: Date,
+   *        role: CADET,
+   *        character: number,
+   *        deletedAt: Date,
+   *        createdAt: Date,
+   *        updatedAt: Date
+   *    },
+   *    deletedAt: Date,
+   *    createdAt: Date,
+   *    updatedAt: Date
+   * }>} articles \
    * `200` : success \
    * `401` : fail
    */
