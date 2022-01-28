@@ -3,6 +3,8 @@ import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ArticleService from '../../../Network/ArticleService';
 import { AuthContext } from '../../../App';
+import GlobalStyled from '../../../Styled/Global.styled';
+import dayjs from 'dayjs';
 
 const Body = ({ articleId }) => {
   // articleId로 패칭 fetching
@@ -23,31 +25,43 @@ const Body = ({ articleId }) => {
     fetch();
   }, []);
 
+  const getArticleTime = time =>
+    dayjs(time).isSame(dayjs(), 'day')
+      ? dayjs(time).format('HH:mm')
+      : dayjs(time).format('MM/DD');
+
   // 로딩 중 어떻게 처리할지
   if (!article) return <></>;
+
   return (
-    <div style={{ background: 'green' }}>
-      <div>
-        <div>{article.title}</div>
+    <div className="content_div">
+      <GlobalStyled.BoardTitleDiv>
+        <div className="board_name">{article.category.name}</div>
+      </GlobalStyled.BoardTitleDiv>
+      <div className="content_top">
+        <div className="title">
+          {article.title}
+          <div className="info">
+            <h2>{article.writer.nickname}</h2>
+            <h2>{getArticleTime(article.createdAt)}</h2>
+            <h2>조회수 {article.viewCount}</h2>
+          </div>
+        </div>
         {/* 내가 쓴 글인지 아닌지에 따라 (수정,삭제) 또는 (조회수)  */}
-        {article.writeId === userId ? (
-          <>
+        {article.writer.Id === userId && (
+          <div className="">
             <button onClick={handleClickEdit}>수정</button>
             <button onClick={handleClickDelete}>삭제</button>
-          </>
-        ) : (
-          <div>조회수 {article.viewCount}</div>
+          </div>
         )}
       </div>
-      <div>{article.content}</div>
-      <div>
-        <span>
+      <div className="content_middle">{article.content}</div>
+      <div className="content_bottom">
+        <span className="comment_count">
           <SmsOutlined />
-          {article.likeCount}
         </span>
-        <span>
+        <span className="liked_count">
           <FavoriteBorder />
-          {article.commentCount}
         </span>
       </div>
     </div>
