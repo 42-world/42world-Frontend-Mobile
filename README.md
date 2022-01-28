@@ -103,7 +103,8 @@ https://www.42world.kr/
 - 위 두가지 방법으로 설명할 수 없는 문제라면 이메일로 연락주세요.
 - 42world.official@gmail.com
 
-# 기여한 사람들
+# 개발 이야기
+## 기여한 사람들
 
 <!-- <a href="https://github.com/42-world/42world-Frontend/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=42-world/42world-Frontend" />
@@ -112,3 +113,10 @@ https://www.42world.kr/
 
 |[🍑 echung](https://github.com/euiminnn)| [🍇 ycha](https://github.com/Skyrich2000)| [🥑 klim](https://github.com/PIut0)| [🥝 hyeonkim](https://github.com/hyongti)| [🍋 suhshin](https://github.com/rkskekzzz)| [🍍 sham](https://github.com/GulSam00)| [🍹 sooyoon](https://github.com/blingblin-g)| [🍒 chlim](https://github.com/rockpell) 
 |---|---|---|---|---|---|---|---|
+
+## 개발노트
+[이곳](https://euimin.notion.site/42WORLD-925997bb2e7245b48fca5afeb298db76)에 개발과정을 상세히 기록해 두었습니다 :)
+
+질문이 생기면 이메일(42world.official@gmail.com)로 언제든 연락주세요.
+
+저장소에 별 달아주시는거 잊지마세요 ✨✨✨
