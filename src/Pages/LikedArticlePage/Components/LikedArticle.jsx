@@ -54,7 +54,7 @@ const LikedArticle = () => {
             >
               <span className="article_board">{article.category.name}</span>
               <span className="article_title">{article.title}</span>
-              <div className="favorite_icon">
+              <div className="liked_icon">
                 <FavoriteBorder />
               </div>
               <div className="comment_icon">

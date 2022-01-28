@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import GlobalStyled from '../Styled/Global.styled';
 
 const PreviewArticleDiv = styled.div`
   cursor: pointer;
@@ -56,10 +57,10 @@ const PreviewArticleDiv = styled.div`
       }
     }
 
-    .favorite_icon {
+    .liked_icon {
       margin-left: auto;
       margin-bottom: 0.1rem;
-      color: #df867d;
+      color: ${GlobalStyled.theme.likedIconColor};
       &::after {
         content: '${props => {
           if (props.article.likeCount > 0) return props.article.likeCount;
@@ -69,7 +70,7 @@ const PreviewArticleDiv = styled.div`
     }
 
     .comment_icon {
-      color: #53b7ba;
+      color: ${GlobalStyled.theme.commentIconColor};
       &::after {
         content: '${props => {
           if (props.article.commentCount > 0) return props.article.commentCount;
