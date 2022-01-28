@@ -104,7 +104,7 @@ const CreateCommentDiv = styled.div`
       box-shadow: none;
 
       &:hover {
-        background-color: ${GlobalStyled.theme.secondary};
+        background-color: ${GlobalStyled.theme.primary};
       }
     }
   }
