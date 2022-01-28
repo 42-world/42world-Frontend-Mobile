@@ -60,36 +60,36 @@ const ArticleService = {
   },
   /**
    * **GET** All Articles By Categories ID
-   * @param {string} categoriesId
-   * @returns {[{ \
-   *    id: number, \
-   *    title: string, \
-   *    content: string, \
-   *    view_count: number, \
-   *    categoryId: number, \
-   *    category: { \
-   *        id: number, \ \
-   *        name: string, \
-   *        createdAt: Date, \
+   * @param  {string}  categoriesId
+   * @returns {Promise<AxiosResponse<[{
+   *    id: number,
+   *    title: string,
+   *    content: string,
+   *    view_count: number,
+   *    categoryId: number,
+   *    category: {
+   *        id: number,
+   *        name: string,
+   *        createdAt: Date,
    *        updatedAt: Date
-   *    }, \
-   *    writerId: number, \
-   *    writer: { \
-   *        id: number, \
-   *        nickname: string, \
-   *        oauthToken: string, \
-   *        isAuthenticated: boolean, \
-   *        lastLogin: Date, \
-   *        role: CADET, \
-   *        character: number, \
-   *        deletedAt: Date, \
-   *        createdAt: Date, \
-   *        updatedAt: Date \
-   *    }, \
-   *    deletedAt: Date, \
-   *    createdAt: Date, \
-   *    updatedAt: Date \
-   * }]} articles \
+   *    },
+   *    writerId: number,
+   *    writer: {
+   *        id: number,
+   *        nickname: string,
+   *        oauthToken: string,
+   *        isAuthenticated: boolean,
+   *        lastLogin: Date,
+   *        role: CADET,
+   *        character: number,
+   *        deletedAt: Date,
+   *        createdAt: Date,
+   *        updatedAt: Date
+   *    },
+   *    deletedAt: Date,
+   *    createdAt: Date,
+   *    updatedAt: Date
+   * }]>>} articles \
    * `200` : success \
    * `401` : fail
    */
@@ -109,40 +109,40 @@ const ArticleService = {
     } catch (error) {
       alert(error);
     }
-    return response.data;
+    return response;
   },
   /**
    * **GET** One Articles By Articles ID
    * @param {string} articlesId
-   * @returns {{ \
-   *    id: number, \
-   *    title: string, \
-   *    content: string, \
-   *    viewCount: number, \
-   *    categoryId: number, \
-   *    category: { \
-   *        id: number, \ \
-   *        name: string, \
-   *        createdAt: Date, \
+   * @returns {Promise<{
+   *    id: number,
+   *    title: string,
+   *    content: string,
+   *    viewCount: number,
+   *    categoryId: number,
+   *    category: {
+   *        id: number,
+   *        name: string,
+   *        createdAt: Date,
    *        updatedAt: Date
-   *    }, \
-   *    writerId: number, \
-   *    writer: { \
-   *        id: number, \
-   *        nickname: string, \
-   *        oauthToken: string, \
-   *        isAuthenticated: boolean, \
-   *        lastLogin: Date, \
-   *        role: CADET, \
-   *        character: number, \
-   *        deletedAt: Date, \
-   *        createdAt: Date, \
-   *        updatedAt: Date \
-   *    }, \
-   *    deletedAt: Date, \
-   *    createdAt: Date, \
-   *    updatedAt: Date \
-   * }} articles \
+   *    },
+   *    writerId: number,
+   *    writer: {
+   *        id: number,
+   *        nickname: string,
+   *        oauthToken: string,
+   *        isAuthenticated: boolean,
+   *        lastLogin: Date,
+   *        role: CADET,
+   *        character: number,
+   *        deletedAt: Date,
+   *        createdAt: Date,
+   *        updatedAt: Date
+   *    },
+   *    deletedAt: Date,
+   *    createdAt: Date,
+   *    updatedAt: Date
+   * }>} articles \
    * `200` : success \
    * `401` : fail
    */

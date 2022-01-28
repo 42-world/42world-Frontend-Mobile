@@ -50,15 +50,21 @@ const EditArticlePage = () => {
     });
   };
 
-  useEffect(async () => {
-    console.log(auth);
-    const result = await ArticleService.getArticlesById(pathArray[2]);
-    const article = result.data;
+  useEffect(() => {
     cateId.current = getCurCategory(loca);
-    articleId.current = article.categoryId;
+  }, [cateId, loca, getCurCategory]);
+
+  useEffect(() => {
+    const getArticle = async () => {
+      const response = await ArticleService.getArticlesById(pathArray[2]);
+
+      return response.data;
+    };
+    const article = getArticle();
     setTitle(article.title);
     setContent(article.content);
-  }, []);
+    articleId.current = article.categoryId;
+  }, [setTitle, setContent, articleId]);
 
   return (
     <Styled.EditArticlePage>

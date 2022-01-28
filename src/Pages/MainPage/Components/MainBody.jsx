@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
 import BodyPreView from './BodyPreView';
 import Community from './Community';
@@ -31,13 +31,24 @@ const MainBody = () => {
     navi(`/article/${articleId}`);
   };
 
-  useEffect(async () => {
-    let articles = await ArticleService.getArticles(1);
-    setFreeArticles(articles);
-    articles = await ArticleService.getArticles(2);
-    setAnonyArticles(articles);
-    articles = await ArticleService.getArticles(3);
-    setNotiArticles(articles);
+  useEffect(() => {
+    const getFreeArticles = async () => {
+      const response = await ArticleService.getArticles(1);
+      setFreeArticles(response.data);
+    };
+
+    const getAnonyArticles = async () => {
+      const response = await ArticleService.getArticles(2);
+      setAnonyArticles(response.data);
+    };
+
+    const getNotiArticles = async () => {
+      const response = await ArticleService.getArticles(3);
+      setNotiArticles(response.data);
+    };
+    getFreeArticles();
+    getAnonyArticles();
+    getNotiArticles();
   }, []);
 
   return (
