@@ -32,7 +32,7 @@ const Home = ({ notiArticles }) => {
       setCheckInStatus(response.data);
     };
     getCheckInStatus();
-  }, [setCheckInStatus]);
+  }, []);
 
   return (
     <Box>
