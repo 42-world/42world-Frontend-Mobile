@@ -22,7 +22,7 @@ const Body = ({ articleId }) => {
       setArticle(response.data);
     };
     fetch();
-  }, [setArticle]);
+  }, []);
 
   // 로딩 중 어떻게 처리할지
   if (!article) return <></>;

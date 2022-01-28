@@ -19,7 +19,7 @@ const AlarmBody = () => {
       setAlarmArticles(response.data);
     };
     getArticles();
-  }, [setAlarmArticles]);
+  }, []);
 
   return (
     <>
