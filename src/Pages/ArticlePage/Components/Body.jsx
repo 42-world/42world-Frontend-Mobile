@@ -48,7 +48,6 @@ const Body = ({ articleId }) => {
             <h2>조회수 {article.viewCount}</h2>
           </div>
         </div>
-        {/* 내가 쓴 글인지 아닌지에 따라 (수정,삭제) 또는 (조회수)  */}
         {article.writer.Id === userId && (
           <div className="edit_article">
             <button onClick={handleClickEdit}>수정</button>
