@@ -7,7 +7,7 @@ const SignOut = () => {
   const auth = useContext(AuthContext);
 
   const handleSignOut = () => {
-    auth.setState(false);
+    auth.setIsLoading(true);
     AuthService.signOut();
     console.log('로그아웃 버튼 클릭');
   };

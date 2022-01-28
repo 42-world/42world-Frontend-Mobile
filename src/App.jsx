@@ -29,7 +29,7 @@ import UserService from './Network/UserService';
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const [state, setState] = useState(false);
+  const [state, setState] = useState(200);
   const [isLoading, setIsLoading] = useState(true);
   const [curUser, setCurUser] = useState(null);
 
@@ -41,34 +41,38 @@ const AuthProvider = ({ children }) => {
       } catch (e) {
         console.log('app : ', e);
       }
-      if (!response) setState(false);
-      else {
-        console.log('there is res!');
-        setState(true);
-        setCurUser(response);
-      }
+      setCurUser(response.data);
+      setState(response.state);
       setIsLoading(false);
     };
     initState();
-  }, []);
+  }, [isLoading]);
 
   return (
-    <AuthContext.Provider value={{ state, isLoading, setState, curUser }}>
+    <AuthContext.Provider value={{ state, isLoading, curUser, setIsLoading }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
-const PrivateRoute = ({ children }) => {
+const PrivateRouteCheckAuth = ({ children }) => {
   const auth = useContext(AuthContext);
+
   if (auth.isLoading) {
     return <Loading />;
   } else {
-    // if (auth.state && auth.curUser.isAuthenticated) return children;
-    if (auth.state) return children;
+    if (auth.state !== 401) return children;
     else return <Navigate to="/login" />;
   }
 };
+
+const PrivateRouteCheckFtAuth = ({ children }) => {
+  const auth = useContext(AuthContext);
+
+  if (auth.state === 200) return children;
+  else return <Navigate to="/profile" />;
+};
+
 // 글 보기 : 모드view?글id=12 or view/글id
 // 글 작성 : free?mode=write
 const App = () => {
@@ -84,101 +88,111 @@ const App = () => {
           <Route
             path="/"
             element={
-              <PrivateRoute>
-                <MainPage />
-              </PrivateRoute>
+              <PrivateRouteCheckAuth>
+                <PrivateRouteCheckFtAuth>
+                  <MainPage />
+                </PrivateRouteCheckFtAuth>
+              </PrivateRouteCheckAuth>
             }
           />
           <Route
             path="/alarm"
             element={
-              <PrivateRoute>
+              <PrivateRouteCheckAuth>
                 <AlarmPage />
-              </PrivateRoute>
+              </PrivateRouteCheckAuth>
             }
           />
 
           <Route
             path="/category/:id"
             element={
-              <PrivateRoute>
+              <PrivateRouteCheckAuth>
                 <CategoryPage />
-              </PrivateRoute>
+              </PrivateRouteCheckAuth>
             }
           />
           <Route
             path="/category/:id/create"
             element={
-              <PrivateRoute>
+              <PrivateRouteCheckAuth>
                 <CreateArticlePage />
-              </PrivateRoute>
+              </PrivateRouteCheckAuth>
             }
           />
 
           <Route
             path="/article/:id"
             element={
-              <PrivateRoute>
+              <PrivateRouteCheckAuth>
                 <ArticlePage />
-              </PrivateRoute>
+              </PrivateRouteCheckAuth>
             }
           />
 
           <Route
             path="/article/:id/edit"
             element={
-              <PrivateRoute>
+              <PrivateRouteCheckAuth>
                 <EditArticlePage />
-              </PrivateRoute>
+              </PrivateRouteCheckAuth>
             }
           />
-          <Route path="/profile" element={<ProfilePage />} />
+
+          <Route
+            path="/profile"
+            element={
+              <PrivateRouteCheckAuth>
+                <ProfilePage />
+              </PrivateRouteCheckAuth>
+            }
+          />
           <Route
             path="/profile/setting"
             element={
-              <PrivateRoute>
+              <PrivateRouteCheckAuth>
                 <SettingPage />
-              </PrivateRoute>
+              </PrivateRouteCheckAuth>
             }
           />
           <Route
             path="/profile/liked-article"
             element={
-              <PrivateRoute>
+              <PrivateRouteCheckAuth>
                 <LikedArticlePage />
-              </PrivateRoute>
+              </PrivateRouteCheckAuth>
             }
           />
           <Route
             path="/profile/my-article"
             element={
-              <PrivateRoute>
+              <PrivateRouteCheckAuth>
                 <MyArticlePage />
-              </PrivateRoute>
+              </PrivateRouteCheckAuth>
             }
           />
           <Route
             path="/profile/my-comment"
             element={
-              <PrivateRoute>
+              <PrivateRouteCheckAuth>
                 <MyCommentPage />
-              </PrivateRoute>
+              </PrivateRouteCheckAuth>
             }
           />
           <Route
             path="/profile/auth"
             element={
-              <PrivateRoute>
+              <PrivateRouteCheckAuth>
                 <AuthPage />
-              </PrivateRoute>
+              </PrivateRouteCheckAuth>
             }
           />
           <Route
             path="/*"
             element={
-              <PrivateRoute>
+              <PrivateRouteCheckAuth>
                 <ErrorPage />
-              </PrivateRoute>
+              </PrivateRouteCheckAuth>
             }
           />
         </Routes>
