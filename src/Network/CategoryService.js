@@ -23,10 +23,9 @@ const CategoryService = {
 
     let response;
     try {
-      response = await axios({
+      response = await API.AXIOS({
         method,
         url,
-        withCredentials: true,
       });
     } catch (error) {
       alert(error);

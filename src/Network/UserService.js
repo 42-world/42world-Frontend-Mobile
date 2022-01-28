@@ -1,5 +1,4 @@
 import * as API from './APIType';
-import axios from 'axios';
 
 const userUrl = path => {
   return `${API.url('/users')}${path}`;
@@ -29,10 +28,9 @@ const UserService = {
 
     let response;
     try {
-      response = await axios({
+      response = await API.AXIOS({
         method,
         url,
-        withCredentials: true,
       });
     } catch (error) {
       return {
@@ -57,10 +55,9 @@ const UserService = {
 
     let response;
     try {
-      response = await axios({
+      response = await API.AXIOS({
         method,
         url,
-        withCredentials: true,
       });
     } catch (error) {
       alert(error);
@@ -91,10 +88,9 @@ const UserService = {
 
     let response;
     try {
-      response = await axios({
+      response = await API.AXIOS({
         method,
         url,
-        withCredentials: true,
       });
     } catch (error) {
       alert(error);
@@ -121,10 +117,9 @@ const UserService = {
 
     let response;
     try {
-      response = await axios({
+      response = await API.AXIOS({
         method,
         url,
-        withCredentials: true,
       });
     } catch (error) {
       alert(error);
@@ -143,10 +138,9 @@ const UserService = {
 
     let response;
     try {
-      response = await axios({
+      response = await API.AXIOS({
         method,
         url,
-        withCredentials: true,
       });
     } catch (error) {
       alert(error);
@@ -178,11 +172,10 @@ const UserService = {
 
     let response;
     try {
-      response = await axios({
+      response = await API.AXIOS({
         method,
         body,
         url,
-        withCredentials: true,
       });
     } catch (error) {
       alert(error);
@@ -196,15 +189,20 @@ const UserService = {
 
     let response;
     try {
-      response = await axios({
+      response = await API.AXIOS({
         method,
         url,
-        withCredentials: true,
+
+        headers: {
+          Authorization:
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJSb2xlIjoiQ0FERVQiLCJpYXQiOjE2NDI4Mzk2NDMsImV4cCI6MTY3NDM3NTY0M30.njfNsxkeFymN-WC7BS3h26yEWl2ftWrNe--8GGkzsJ4',
+        },
       });
     } catch (error) {
       console.log('service : ', error);
     }
-    return response.data;
+    return { nickname: 'asdf' };
+    // return response.data;
   },
 
   // 내 글, 내 댓글, 좋아요한 글 불러오기 추가
@@ -214,10 +212,9 @@ const UserService = {
 
     let response;
     try {
-      response = await axios({
+      response = await API.AXIOS({
         method,
         url,
-        withCredentials: true,
       });
     } catch (error) {
       console.log('service : ', error);
@@ -230,10 +227,9 @@ const UserService = {
 
     let response;
     try {
-      response = await axios({
+      response = await API.AXIOS({
         method,
         url,
-        withCredentials: true,
       });
     } catch (error) {
       console.log('service : ', error);
@@ -246,10 +242,9 @@ const UserService = {
 
     let response;
     try {
-      response = await axios({
+      response = await API.AXIOS({
         method,
         url,
-        withCredentials: true,
       });
     } catch (error) {
       console.log('service : ', error);

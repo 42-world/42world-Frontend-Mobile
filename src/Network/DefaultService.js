@@ -21,10 +21,9 @@ const DefaultService = {
 
       let response;
       try {
-        response = await axios({
+        response = await API.AXIOS({
           method,
           url,
-          withCredentials: true,
         });
       } catch (error) {
         return error;
@@ -45,10 +44,9 @@ const DefaultService = {
 
       let response;
       try {
-        response = await axios({
+        response = await API.AXIOS({
           method,
           url,
-          withCredentials: true,
         });
       } catch (error) {
         return error;

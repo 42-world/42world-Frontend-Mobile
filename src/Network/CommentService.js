@@ -39,11 +39,10 @@ const CommentService = {
 
     let response;
     try {
-      response = await axios({
+      response = await API.AXIOS({
         method,
         data: body,
         url,
-        withCredentials: true,
       });
     } catch (error) {
       alert(error);
@@ -84,11 +83,10 @@ const CommentService = {
 
     let response;
     try {
-      response = await axios({
+      response = await API.AXIOS({
         method,
         body,
         url,
-        withCredentials: true,
       });
     } catch (error) {
       alert(error);
@@ -108,10 +106,9 @@ const CommentService = {
 
     let response;
     try {
-      response = await axios({
+      response = await API.AXIOS({
         method,
         url,
-        withCredentials: true,
       });
     } catch (error) {
       alert(error);
