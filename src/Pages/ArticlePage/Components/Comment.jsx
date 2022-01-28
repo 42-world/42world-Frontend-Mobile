@@ -1,84 +1,32 @@
 import { useEffect, useState } from 'react';
-import ArticleService from '../../../Network/ArticleService_old';
+
+import ArticleService from '../../../Network/ArticleService';
+import CommentService from '../../../Network/CommentService';
 import { FavoriteBorder, SmsOutlined } from '@mui/icons-material';
 import Styled from '../ArticlePage.styled';
 import dayjs from 'dayjs';
 
 const Comment = () => {
-  //dayjs().tz('Asia/Seoul');
-  // articleId로 패칭 fetching
-  const comments = [
-    {
-      id: 0,
-      content: '댓글 내용',
-      articleId: 0,
-      writerId: 0,
-      liked_count: 0,
-      writer: {
-        id: 0,
-        nickname: '꿈틀대는 지렁이',
-        oauthToken: 'string',
-        isAuthenticated: true,
-        lastLogin: '2022-01-25T13:39:47.009Z',
-        role: 'NOVICE',
-        character: 0,
-        createdAt: '2022-01-25T13:39:47.009Z',
-        updatedAt: '2022-01-25T13:39:47.009Z',
-        deletedAt: '2022-01-25T13:39:47.009Z',
-      },
-      createdAt: '2022-01-25T13:39:47.009Z',
-      updatedAt: '2022-01-25T13:39:47.009Z',
-      deletedAt: '2022-01-25T13:39:47.009Z',
-    },
-    {
-      id: 0,
-      content: '댓글 내용',
-      articleId: 0,
-      writerId: 0,
-      liked_count: 2,
-      writer: {
-        id: 0,
-        nickname: '체리가 올려진 케이크',
-        oauthToken: 'string',
-        isAuthenticated: true,
-        lastLogin: '2022-01-25T13:39:47.009Z',
-        role: 'NOVICE',
-        character: 1,
-        createdAt: '2022-01-25T13:39:47.009Z',
-        updatedAt: '2022-01-25T13:39:47.009Z',
-        deletedAt: '2022-01-25T13:39:47.009Z',
-      },
-      createdAt: '2022-01-25T13:39:47.009Z',
-      updatedAt: '2022-01-25T13:39:47.009Z',
-      deletedAt: '2022-01-25T13:39:47.009Z',
-    },
-    {
-      id: 0,
-      content:
-        '댓글 내용댓글 내용댓글 내용댓글 내용댓글 내용댓글 내용댓글 내용댓글 내용댓글 내용댓글 내용댓글 내용댓글 내용댓글 내용댓글 내용댓글 내용댓글 내용댓글 내용댓글 내용댓글 내용댓글 내용댓글 내용',
-      articleId: 0,
-      writerId: 0,
-      liked_count: 1,
-      writer: {
-        id: 0,
-        nickname: '흥부놀부 동화속의 제비',
-        oauthToken: 'string',
-        isAuthenticated: true,
-        lastLogin: '2022-01-25T13:39:47.009Z',
-        role: 'NOVICE',
-        character: 2,
-        createdAt: '2022-01-25T13:39:47.009Z',
-        updatedAt: '2022-01-25T13:39:47.009Z',
-        deletedAt: '2022-01-25T13:39:47.009Z',
-      },
-      createdAt: '2022-01-25T13:39:47.009Z',
-      updatedAt: '2022-01-25T13:39:47.009Z',
-      deletedAt: '2022-01-25T13:39:47.009Z',
-    },
-  ];
+  const [comments, setComments] = useState();
+  const handleCreateComment = newComment => {
+    setComments(comments => comments.concat(newComment));
+  };
 
+  useEffect(() => {
+    const fetch = async () => {
+      const res = await ArticleService.getArticlesCommentsById(articleId);
+      setComments(res.data);
+    };
+    fetch();
+  }, []);
+  if (!comments) return <></>;
+  // articleId로 패칭 fetching
   return (
     <div className="comment_list_div">
+      <CreateComment
+        articleId={articleId}
+        handleCreateComment={handleCreateComment}
+      />
       {comments.map((comment, idx) => (
         <div className="comment_div" key={idx}>
           <div className="info">
@@ -101,6 +49,30 @@ const Comment = () => {
         </div>
       ))}
     </div>
+  );
+};
+
+const CreateComment = ({ articleId, handleCreateComment }) => {
+  const [input, setInput] = useState('');
+  const handleChange = e => {
+    setInput(e.target.value);
+  };
+  const handleClickSubmit = async e => {
+    e.preventDefault();
+    const res = await CommentService.createComments({
+      content: input,
+      articleId: +articleId,
+    });
+    if (res.data) {
+      console.log(res.data);
+      // handleCreateComment(res.data);
+    }
+  };
+  return (
+    <form onSubmit={handleClickSubmit}>
+      <input value={input} onChange={handleChange} />
+      <button type="submit">제출</button>
+    </form>
   );
 };
 

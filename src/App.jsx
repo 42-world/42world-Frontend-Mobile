@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useEffect, createContext } from 'react';
+import { useState, createContext } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -17,16 +17,14 @@ import {
   CategoryPage,
   ArticlePage,
   CreateArticlePage,
+  EditArticlePage,
   LoginPage,
   AlarmPage,
+  ErrorPage,
 } from './Pages';
 import Loading from './Components/Loading';
 import { useContext } from 'react';
 import UserService from './Network/UserService';
-
-const ErrorPage = () => {
-  return <>Error!</>;
-};
 
 export const AuthContext = createContext();
 
@@ -63,8 +61,9 @@ const PrivateRoute = ({ children }) => {
   if (auth.isLoading) {
     return <Loading />;
   } else {
-    if (auth.state) return children;
-    else return <Navigate to="/login" />;
+    return children;
+    // if (auth.state) return children;
+    // else return <Navigate to="/login" />;
   }
 };
 // 글 보기 : 모드view?글id=12 or view/글id
@@ -121,7 +120,15 @@ const App = () => {
               </PrivateRoute>
             }
           />
-          {/* <Route path="/search" element={<MainPage />} /> */}
+
+          <Route
+            path="/article/:id/edit"
+            element={
+              <PrivateRoute>
+                <EditArticlePage />
+              </PrivateRoute>
+            }
+          />
           <Route
             path="/profile"
             element={

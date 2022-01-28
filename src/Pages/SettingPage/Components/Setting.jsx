@@ -8,10 +8,10 @@ const Setting = () => {
   });
 
   let profile_list = [
-    '../assets/profile_test.png',
-    '../assets/profile_test.png',
-    '../assets/profile_test.png',
-    '../assets/profile_test.png',
+    '../assets/CharacterNoBG/bbo.png',
+    '../assets/CharacterNoBG/bora.png',
+    '../assets/CharacterNoBG/ddub.png',
+    '../assets/CharacterNoBG/nana.png',
   ];
 
   const handleChange = e => {

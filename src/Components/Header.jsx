@@ -149,7 +149,6 @@ const Header = () => {
         }}
       ></div>
       {/* <SearchIcon sx={{ color: GlobalStyled.theme.textLight }} onClick={() => navi('/search')} /> */}
-
       <SwipeableDrawer
         anchor="left"
         open={isMenuModal}
