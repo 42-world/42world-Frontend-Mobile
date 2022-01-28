@@ -8,7 +8,6 @@ import CheckInService from '../../../Network/CheckInService';
 import { useCallback, useEffect, useState } from 'react';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import MyInfoAccordion from './MyInfoAccordion';
 
 const Home = ({ notiArticles }) => {
   const [checkInStatus, setCheckInStatus] = useState({
@@ -62,7 +61,6 @@ const Home = ({ notiArticles }) => {
           </div>
         </div>
       </Styled.CheckInBody>
-      <MyInfoAccordion />
       <Styled.StyledList
         disablePadding="true"
         component="nav"
