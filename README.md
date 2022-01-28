@@ -4,6 +4,8 @@
 ## 소개
 42서울 재학생과 졸업생이 교류하는 온라인 커뮤니티 제작 프로젝트입니다.
 
+이 저장소에는 **프론트엔드 소스코드**가 저장되어 있고, 백엔드 소스코드는 [이곳](https://github.com/42-world/42world-Backend)에서 볼 수 있습니다.
+
 ## 커뮤니티 둘러보기
 https://www.42world.kr/
 
@@ -23,11 +25,10 @@ https://www.42world.kr/
 ```
 
 ## 기술스택
-- [React.js](https://reactjs.org/)
-- [Nest.js](https://nestjs.com/)
+- Frontend: [React.js](https://reactjs.org/)
+- Backend: [Nest.js](https://nestjs.com/)
 
-
-# 프론트엔드
+# 프로젝트
 ## 설치하기
 0. npm 버전을 확인해주세요.
     ```
@@ -54,32 +55,6 @@ https://www.42world.kr/
     ```
     - 명령어는 디렉토리 최상단에서 실행해주세요.
 
-# 백엔드
-**! Docker 가 설치되어 있어야 합니다.**
-## 설치하기
-0. yarn 버전을 확인해주세요.
-    ```
-    yarn -v
-    ```
-    - 명령어를 입력했을 때 **1.22.10** 미만이면 아래 명령어를 통해 버전 업그레이드를 진행해주세요.
-        ```
-        yarn set version 1.22.10
-        ```
-1. 백엔드 저장소를 클론해주세요.
-    ```
-    git clone https://github.com/42-world/42world-Backend.git
-    ```
-2. yarn으로 패키지를 설치해주세요.
-    ```
-    yarn install
-    ```
-
-## 실행하기
-- 아래 명령어를 입력하여 실행해주세요.
-    ```
-    make dev
-    ```
-
 # 기여하기
 42world 커뮤니티 제작은 오픈소스로 진행되고 있습니다.
 
@@ -105,11 +80,6 @@ https://www.42world.kr/
 
 # 개발 이야기
 ## 기여한 사람들
-
-<!-- <a href="https://github.com/42-world/42world-Frontend/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=42-world/42world-Frontend" />
-</a> -->
-
 
 |[🍑 echung](https://github.com/euiminnn)| [🍇 ycha](https://github.com/Skyrich2000)| [🥑 klim](https://github.com/PIut0)| [🥝 hyeonkim](https://github.com/hyongti)| [🍋 suhshin](https://github.com/rkskekzzz)| [🍍 sham](https://github.com/GulSam00)| [🍹 sooyoon](https://github.com/blingblin-g)| [🍒 chlim](https://github.com/rockpell) 
 |---|---|---|---|---|---|---|---|
