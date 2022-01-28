@@ -60,7 +60,7 @@ const AuthProvider = ({ children }) => {
 
 const PrivateRoute = ({ children }) => {
   const auth = useContext(AuthContext);
-  console.log(auth.curUser);
+  // console.log(auth.curUser);
 
   if (auth.isLoading) {
     return <Loading />;

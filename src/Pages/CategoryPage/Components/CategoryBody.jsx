@@ -30,30 +30,38 @@ const CategoryBody = () => {
     navi(`/article/${id}`);
   };
 
-  const getMoreItem = async () => {
+  const setInitalArticles = async () => {
     setIsLoaded(true);
-    // 실제 API 통신처럼 비동기로 받아오는 것을 구현하기 위해 1.5 초 뒤에 데이터를 갱신한다.
-    // resolve, reject는 각각 성공 시, 실패 시의 동작을 의미. reject를 생략하니 reslove의 경우만 익명함수로 처리해주었다.
-    // (categoryId);
     const result = await ArticleService.getArticles(categoryId);
-    const newData = result;
-    setArticles(prevList => prevList.concat(newData));
+    setArticles(result);
     setIsLoaded(false);
   };
 
   useEffect(() => {
     setCurCate(getCurCategory(loca));
-    // 무한 스크롤 임시 정지
-    getMoreItem();
+    setInitalArticles();
   }, []);
 
-  const onIntersect = async ([entry], observer) => {
-    if (entry.isIntersecting && !isLoaded) {
-      observer.unobserve(entry.target);
-      await getMoreItem();
-      observer.observe(entry.target);
-    }
-  };
+  // 무한 스크롤 임시 정지
+
+  // const getMoreItem = async () => {
+  //   setIsLoaded(true);
+  //   // 실제 API 통신처럼 비동기로 받아오는 것을 구현하기 위해 1.5 초 뒤에 데이터를 갱신한다.
+  //   // resolve, reject는 각각 성공 시, 실패 시의 동작을 의미. reject를 생략하니 reslove의 경우만 익명함수로 처리해주었다.
+  //   // (categoryId);
+  //   const result = await ArticleService.getArticles(categoryId);
+  //   const newData = result;
+  //   setArticles(prevList => prevList.concat(newData));
+  //   setIsLoaded(false);
+  // };
+
+  // const onIntersect = async ([entry], observer) => {
+  //   if (entry.isIntersecting && !isLoaded) {
+  //     observer.unobserve(entry.target);
+  //     await getMoreItem();
+  //     observer.observe(entry.target);
+  //   }
+  // };
 
   // useEffect(() => {
   //   let observer;
