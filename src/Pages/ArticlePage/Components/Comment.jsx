@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
+
 import ArticleService from '../../../Network/ArticleService';
 import CommentService from '../../../Network/CommentService';
+import { FavoriteBorder, SmsOutlined } from '@mui/icons-material';
+import Styled from '../ArticlePage.styled';
+import dayjs from 'dayjs';
 
-const Comment = ({ articleId }) => {
-  // articleId로 패칭 fetching
+const Comment = () => {
   const [comments, setComments] = useState();
   const handleCreateComment = newComment => {
     setComments(comments => comments.concat(newComment));
@@ -17,24 +20,35 @@ const Comment = ({ articleId }) => {
     fetch();
   }, []);
   if (!comments) return <></>;
+  // articleId로 패칭 fetching
   return (
-    <>
-      {/* 글쓰기 버튼처럼 고정된 위치에 떠있게? */}
+    <div className="comment_list_div">
       <CreateComment
         articleId={articleId}
         handleCreateComment={handleCreateComment}
       />
-      <div style={{ background: 'skyblue' }}>
-        {comments.map((comment, idx) => (
-          <div key={idx}>
-            <img src={'#'} />
-            <div>{comment.writer.nickname}</div>
-            <div>{comment.updatedAt}</div>
-            <div>{comment.content}</div>
+      {comments.map((comment, idx) => (
+        <div className="comment_div" key={idx}>
+          <div className="info">
+            <Styled.ProfileImage width="2.4rem" imagePath="" />
+            <div className="picture"></div>
+            <div className="text">
+              <h1>{comment.writer.nickname}</h1>
+              <h2>{dayjs(comment.updatedAt).format('MM/DD HH:mm')}</h2>
+            </div>
           </div>
-        ))}
-      </div>
-    </>
+          <Styled.CommentContent
+            className="content"
+            liked_count={comment.liked_count}
+          >
+            <div className="text">{comment.content}</div>
+            <span className="liked_count">
+              <FavoriteBorder />
+            </span>
+          </Styled.CommentContent>
+        </div>
+      ))}
+    </div>
   );
 };
 

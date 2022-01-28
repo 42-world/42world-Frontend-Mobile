@@ -31,6 +31,7 @@ export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const [state, setState] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [curUser, setCurUser] = useState(null);
 
   React.useEffect(() => {
     const initState = async () => {
@@ -41,15 +42,17 @@ const AuthProvider = ({ children }) => {
         console.log('app : ', e);
       }
       if (!response) setState(false);
-      else setState(true);
-
+      else {
+        setState(true);
+        setCurUser(response.data);
+      }
       setIsLoading(false);
     };
     initState();
   }, []);
 
   return (
-    <AuthContext.Provider value={{ state, isLoading, setState }}>
+    <AuthContext.Provider value={{ state, isLoading, setState, curUser }}>
       {children}
     </AuthContext.Provider>
   );
@@ -61,9 +64,9 @@ const PrivateRoute = ({ children }) => {
   if (auth.isLoading) {
     return <Loading />;
   } else {
-    return children;
-    // if (auth.state) return children;
-    // else return <Navigate to="/login" />;
+    if (auth.state && auth.isAuthenticate) return children;
+    else if (auth.state) return <Navigate to="/profile" />;
+    else return <Navigate to="/login" />;
   }
 };
 // 글 보기 : 모드view?글id=12 or view/글id
