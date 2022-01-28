@@ -41,7 +41,7 @@ const AuthProvider = ({ children }) => {
       } catch (e) {
         console.log('app : ', e);
       }
-      setCurUser(response.data);
+      setCurUser(response);
       setState(response.state);
       setIsLoading(false);
     };
@@ -201,9 +201,7 @@ const App = () => {
             path="/profile/auth"
             element={
               <PrivateRouteCheckAuth>
-                <PrivateRouteCheckFtAuth>
-                  <AuthPage />
-                </PrivateRouteCheckFtAuth>
+                <AuthPage />
               </PrivateRouteCheckAuth>
             }
           />

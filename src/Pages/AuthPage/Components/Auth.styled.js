@@ -5,10 +5,12 @@ const AuthDiv = styled.div`
   display: flex;
 
   flex-direction: column;
-  span::before {
+
+  #domain::before {
     content: '@student.42seoul.kr';
     color: #fff;
   }
+
   * {
     text-align: center;
   }
