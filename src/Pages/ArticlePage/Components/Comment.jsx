@@ -25,13 +25,6 @@ const Comment = ({ articleId }) => {
   // articleId로 패칭 fetching
   return (
     <div className="comment_list_div">
-      <Styled.CreateCommentDiv>
-        <CreateComment
-          articleId={articleId}
-          handleCreateComment={handleCreateComment}
-        />
-      </Styled.CreateCommentDiv>
-
       <span className="comment_count">
         <SmsOutlined />
       </span>
@@ -56,6 +49,13 @@ const Comment = ({ articleId }) => {
           </Styled.CommentContent>
         </div>
       ))}
+
+      <Styled.CreateCommentDiv>
+        <CreateComment
+          articleId={articleId}
+          handleCreateComment={handleCreateComment}
+        />
+      </Styled.CreateCommentDiv>
     </div>
   );
 };

@@ -147,7 +147,7 @@ const ArticlePageDiv = styled.div`
 
     .comment_div {
       border-bottom: 1px solid #e6e6e6;
-      padding: 0.5rem;
+      padding: 0.5rem 0.8rem;
       width: 100%;
       display: flex;
       flex-direction: column;
@@ -173,6 +173,21 @@ const ArticlePageDiv = styled.div`
           }
         }
       }
+
+      .text {
+        margin-left: 0.2rem;
+        word-break: break-all;
+      }
+    }
+
+    .comment_count {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      align-items: center;
+      justify-content: flex-start;
+
+      padding: 0.5rem 0.8rem;
     }
   }
 
