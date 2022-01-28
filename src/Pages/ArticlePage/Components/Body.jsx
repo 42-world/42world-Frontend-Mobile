@@ -17,11 +17,12 @@ const Body = ({ articleId }) => {
   const { userId } = useContext(AuthContext);
   useEffect(() => {
     const fetch = async () => {
-      const res = await ArticleService.getArticlesById(articleId);
-      setArticle(res.data);
+      const response = await ArticleService.getArticlesById(articleId);
+
+      setArticle(response.data);
     };
     fetch();
-  }, []);
+  }, [setArticle]);
 
   // 로딩 중 어떻게 처리할지
   if (!article) return <></>;

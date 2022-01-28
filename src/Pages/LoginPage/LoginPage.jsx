@@ -38,7 +38,6 @@ const LoginPage = ({ isCallback }) => {
   }, []);
 
   useEffect(() => {
-    console.log(auth.userId);
     if (auth.state) navi('/');
   }, [auth]);
 

@@ -43,7 +43,7 @@ const CategoryBody = () => {
     setCurCate(getCurCategory(loca));
     // 무한 스크롤 임시 정지
     getMoreItem();
-  }, []);
+  }, [setCurCate, getMoreItem, getCurCategory, loca]);
 
   const onIntersect = async ([entry], observer) => {
     if (entry.isIntersecting && !isLoaded) {

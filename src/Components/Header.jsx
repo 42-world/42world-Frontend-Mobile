@@ -95,10 +95,12 @@ const Header = () => {
     if (queryData.mode === 'menu') {
       setIsMenuModal(true);
     }
+  }, [queryData.mode, setIsMenuModal]);
+  useEffect(() => {
     if (loca.pathname.includes('article')) {
       setIsArticle(true);
     }
-  }, []);
+  }, [loca, setIsArticle]);
 
   const navi = useNavigate();
 

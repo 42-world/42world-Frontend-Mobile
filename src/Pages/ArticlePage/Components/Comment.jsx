@@ -15,7 +15,7 @@ const Comment = ({ articleId }) => {
       setComments(res.data);
     };
     fetch();
-  }, []);
+  }, [setComments]);
   if (!comments) return <></>;
   return (
     <>
