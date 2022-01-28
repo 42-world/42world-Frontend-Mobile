@@ -1,6 +1,11 @@
-# 소개
-## 42world
-42서울 재학생과 졸업생이 교류하는 온라인 커뮤니티입니다.
+<p align = "center"><img src = ./public/assets/characterLogo.png width = "400"></p>
+
+# 42WORLD
+## 소개
+42서울 재학생과 졸업생이 교류하는 온라인 커뮤니티 제작 프로젝트입니다.
+
+## 커뮤니티 둘러보기
+https://www.42world.kr/
 
 ## 저장소 구조
 
@@ -22,30 +27,57 @@
 - [Nest.js](https://nestjs.com/)
 
 
-# 설치하기
+# 프론트엔드
+## 설치하기
 0. npm 버전을 확인해주세요.
     ```
     npm -v
     ```
-    - 명령어를 입력했을 때 **8.1.4** 이하이면 아래 명령어를 통해 버전 업그레이드를 진행해주세요.
+    - 명령어를 입력했을 때 **8.1.4** 미만이면 아래 명령어를 통해 버전 업그레이드를 진행해주세요.
         ```
-        npm install npm@latest -g
+        npm install npm@8.1.4 -g
         ```
-1. 이 저장소를 클론해주세요.
+1. 프론트엔드 저장소를 클론해주세요.
     ```
     git clone https://github.com/42-world/42world-Frontend.git
     ```
-2. NPM 패키지를 설치해주세요.
+2. npm으로 패키지를 설치해주세요.
     ```
     npm install
     ```
     - 명령어는 디렉토리 최상단에서 실행해주세요.
 
-
-# 실행하기
-1. 아래 명령어를 입력하여 실행해주세요.
+## 실행하기
+- 아래 명령어를 입력하여 실행해주세요.
     ```
     npm run start
+    ```
+    - 명령어는 디렉토리 최상단에서 실행해주세요.
+
+# 백엔드
+**! Docker 가 설치되어 있어야 합니다.**
+## 설치하기
+0. yarn 버전을 확인해주세요.
+    ```
+    yarn -v
+    ```
+    - 명령어를 입력했을 때 **1.22.10** 미만이면 아래 명령어를 통해 버전 업그레이드를 진행해주세요.
+        ```
+        yarn set version 1.22.10
+        ```
+1. 백엔드 저장소를 클론해주세요.
+    ```
+    git clone https://github.com/42-world/42world-Backend.git
+    ```
+2. yarn으로 패키지를 설치해주세요.
+    ```
+    yarn install
+    ```
+
+## 실행하기
+- 아래 명령어를 입력하여 실행해주세요.
+    ```
+    make dev
     ```
 
 # 기여하기
@@ -60,7 +92,7 @@
 - 설명과 함께 "enhancement" 태그를 달아주시면 확인 후 빠르게 수정하겠습니다.
 
 ## 2. Pull Request 보내기
-### 1. 이 프로젝트를 포크하세요.
+### 1. 해당 저장소를 포크 후 클론하세요.
 ### 2. Feature 브랜치를 생성하세요. (`git checkout -b feature/your-branch-name`)
 ### 3. 수정사항을 커밋해주세요.
 ### 4. 리모트 저장소에 푸시하세요. (`git push origin feature/your-branch-name`)
@@ -72,6 +104,11 @@
 - 42world.official@gmail.com
 
 # 기여한 사람들
+
+<!-- <a href="https://github.com/42-world/42world-Frontend/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=42-world/42world-Frontend" />
+</a> -->
+
 
 |[🍑 echung](https://github.com/euiminnn)| [🍇 ycha](https://github.com/Skyrich2000)| [🥑 klim](https://github.com/PIut0)| [🥝 hyeonkim](https://github.com/hyongti)| [🍋 suhshin](https://github.com/rkskekzzz)| [🍍 sham](https://github.com/GulSam00)| [🍹 sooyoon](https://github.com/blingblin-g)| [🍒 chlim](https://github.com/rockpell) 
 |---|---|---|---|---|---|---|---|
