@@ -6,7 +6,7 @@ import { FavoriteBorder, SmsOutlined } from '@mui/icons-material';
 import Styled from '../ArticlePage.styled';
 import dayjs from 'dayjs';
 
-const Comment = () => {
+const Comment = ({ articleId }) => {
   const [comments, setComments] = useState();
   const handleCreateComment = newComment => {
     setComments(comments => comments.concat(newComment));
