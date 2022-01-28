@@ -18,7 +18,7 @@ const CommentContent = styled.div`
 
   .text {
     padding: 0.5rem 0.8rem;
-    background: rgba(196, 196, 196, 0.5);
+    background: ${GlobalStyled.theme.textColorLightGray};
     border-radius: 0.5rem;
     font-size: 0.75rem;
     font-weight: 300;
@@ -75,6 +75,7 @@ const CreateCommentDiv = styled.div`
     align-items: center;
     justify-content: space-between;
     padding: 0.5rem 0.5rem 0.5rem 1rem;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12), 0 3px 6px rgba(0, 0, 0, 0.19);
 
     input {
       width: 90%;
@@ -160,11 +161,13 @@ const ArticlePageDiv = styled.div`
         .text {
           margin-left: 0.7rem;
           h1 {
+            color: ${GlobalStyled.theme.textColor};
             font-size: 0.9rem;
             font-weight: 600;
             line-height: 1.1;
           }
           h2 {
+            color: ${GlobalStyled.theme.textColorGray};
             font-size: 0.4rem;
             font-weight: 400;
           }
@@ -201,7 +204,7 @@ const ArticlePageDiv = styled.div`
           flex-direction: row;
 
           h2 {
-            color: ${GlobalStyled.theme.textColorSecondary};
+            color: ${GlobalStyled.theme.textColorGray};
             font-size: 0.7rem;
             font-weight: 300;
             margin-right: 0.8rem;
