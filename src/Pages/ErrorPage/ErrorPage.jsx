@@ -3,7 +3,7 @@ import Styled from './ErrorPage.styled';
 
 const ErrorPage = () => {
   const navi = useNavigate();
-  console.log('error page');
+
   return (
     <Styled.ErrorBackground>
       <img id="logo" src="/assets/error.png" style={{ width: '300px' }} />

@@ -12,9 +12,13 @@ const AlarmBody = () => {
     navi(`/article/${articleId}`);
   };
 
-  useEffect(async () => {
-    let articles = await ArticleService.getArticles(1); // 알람 API 필요
-    setAlarmArticles(articles);
+  useEffect(() => {
+    const getArticles = async () => {
+      const response = await ArticleService.getArticles(1); // 알람 API 필요
+
+      setAlarmArticles(response.data);
+    };
+    getArticles();
   }, []);
 
   return (

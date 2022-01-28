@@ -53,7 +53,7 @@ const CreateArticleBody = () => {
 
   useEffect(() => {
     setCurCate(getCurCategory(loca));
-  }, []);
+  }, [loca]);
   return (
     <>
       <div className="header">

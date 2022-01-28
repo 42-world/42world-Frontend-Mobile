@@ -60,8 +60,8 @@ const ArticleService = {
   },
   /**
    * **GET** All Articles By Categories ID
-   * @param  {string}  categoriesId
-   * @returns {Promise<AxiosResponse<[{
+   * @param {string} categoriesId
+   * @returns {Promise<[{
    *    id: number,
    *    title: string,
    *    content: string,
@@ -89,8 +89,8 @@ const ArticleService = {
    *    deletedAt: Date,
    *    createdAt: Date,
    *    updatedAt: Date
-   * }]>>} articles
-   * `200` : success
+   * }]>} articles \
+   * `200` : success \
    * `401` : fail
    */
   getArticles: async categoryId => {
@@ -234,7 +234,7 @@ const ArticleService = {
    * deletedAt: Date,
    * createdAt: Date,
    * updatedAt: Date}]>}
-   * `200` : success
+   * `200` : success \
    * `401` : fail
    */
   getArticlesCommentsById: async articlesId => {
