@@ -36,7 +36,7 @@ const CategoryBody = () => {
     // resolve, reject는 각각 성공 시, 실패 시의 동작을 의미. reject를 생략하니 reslove의 경우만 익명함수로 처리해주었다.
     // (categoryId);
     const result = await ArticleService.getArticles(categoryId);
-    const newData = result.data;
+    const newData = result;
     setArticles(prevList => prevList.concat(newData));
     setIsLoaded(false);
   };

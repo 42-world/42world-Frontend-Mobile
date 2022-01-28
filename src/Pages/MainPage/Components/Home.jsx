@@ -23,7 +23,7 @@ const Home = ({ notiArticles }) => {
   const getCheckInStatus = useCallback(async () => {
     const response = await CheckInService.curCheckInStatus();
 
-    setCheckInStatus(response.data);
+    setCheckInStatus(response);
   }, [setCheckInStatus]);
 
   useEffect(() => {

@@ -29,7 +29,7 @@ const FtAuthService = {
     } catch (error) {
       alert(error);
     }
-    return response;
+    return response.data;
   },
 };
 

@@ -37,7 +37,7 @@ const UserService = {
     } catch (error) {
       console.log('service : ', error);
     }
-    return response;
+    return response.data;
   },
   /**
    * **DELETE** Signed in User
@@ -59,7 +59,7 @@ const UserService = {
     } catch (error) {
       alert(error);
     }
-    return response;
+    return response.data;
   },
   /**
    * **GET** User Information by ID
@@ -93,7 +93,7 @@ const UserService = {
     } catch (error) {
       alert(error);
     }
-    return response;
+    return response.data;
   },
   /**
    * **GET** User Notification
@@ -123,7 +123,7 @@ const UserService = {
     } catch (error) {
       alert(error);
     }
-    return response;
+    return response.data;
   },
   /**
    * **UPDATE** User Notification Status (read all notification)
@@ -145,7 +145,7 @@ const UserService = {
     } catch (error) {
       alert(error);
     }
-    return response;
+    return response.data;
   },
   /**
    * **UPDATE** Signed in User Profile
@@ -181,7 +181,7 @@ const UserService = {
     } catch (error) {
       alert(error);
     }
-    return response;
+    return response.data;
   },
 };
 

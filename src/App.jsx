@@ -44,7 +44,7 @@ const AuthProvider = ({ children }) => {
       if (!response) setState(false);
       else {
         setState(true);
-        setCurUser(response.data);
+        setCurUser(response);
       }
       setIsLoading(false);
     };
@@ -66,7 +66,7 @@ const PrivateRoute = ({ children }) => {
     return <Loading />;
   } else {
     // if (auth.state) return children;
-    if (auth.state && auth.curUser.isAuthenticate) return children;
+    if (auth.state && auth.curUser.isAuthenticated) return children;
     else if (auth.state) return <Navigate to="/profile" />;
     else return <Navigate to="/login" />;
   }

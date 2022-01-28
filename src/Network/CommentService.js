@@ -48,7 +48,7 @@ const CommentService = {
     } catch (error) {
       alert(error);
     }
-    return response;
+    return response.data;
   },
   /**
    * **UPDATE** Comments with Comments ID
@@ -93,7 +93,7 @@ const CommentService = {
     } catch (error) {
       alert(error);
     }
-    return response;
+    return response.data;
   },
   /**
    * **DELETE** Comments with Comments ID
@@ -116,7 +116,7 @@ const CommentService = {
     } catch (error) {
       alert(error);
     }
-    return response;
+    return response.data;
   },
 };
 

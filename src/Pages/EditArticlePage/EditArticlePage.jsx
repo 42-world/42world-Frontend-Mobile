@@ -57,7 +57,7 @@ const EditArticlePage = () => {
   useEffect(() => {
     const getArticle = async () => {
       const response = await ArticleService.getArticlesById(pathArray[2]);
-      const article = response.data;
+      const article = response;
       console.log('article', article);
       setTitle(article.title);
       setContent(article.content);

@@ -56,7 +56,7 @@ const ArticleService = {
     } catch (error) {
       alert(error);
     }
-    return response;
+    return response.data;
   },
   /**
    * **GET** All Articles By Categories ID
@@ -109,7 +109,7 @@ const ArticleService = {
     } catch (error) {
       alert(error);
     }
-    return response;
+    return response.data;
   },
   /**
    * **GET** One Articles By Articles ID
@@ -160,7 +160,7 @@ const ArticleService = {
     } catch (error) {
       alert(error);
     }
-    return response;
+    return response.data;
   },
   /**
    * **UPDATE** One Articles By Articles ID
@@ -186,7 +186,7 @@ const ArticleService = {
     } catch (error) {
       alert(error);
     }
-    return response;
+    return response.data;
   },
   /**
    * **DELETE** One Articles By Articles ID
@@ -209,7 +209,7 @@ const ArticleService = {
     } catch (error) {
       alert(error);
     }
-    return response;
+    return response.data;
   },
   /**
    * **GET** One Articles By Articles ID
@@ -251,7 +251,7 @@ const ArticleService = {
     } catch (error) {
       alert(error);
     }
-    return response;
+    return response.data;
   },
   editArticles: async (articlesId, articles) => {
     const method = 'PUT';
@@ -268,7 +268,7 @@ const ArticleService = {
     } catch (error) {
       alert(error);
     }
-    return response;
+    return response.data;
   },
 };
 

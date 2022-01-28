@@ -34,17 +34,17 @@ const MainBody = () => {
   useEffect(() => {
     const getFreeArticles = async () => {
       const response = await ArticleService.getArticles(1);
-      setFreeArticles(response.data);
+      setFreeArticles(response);
     };
 
     const getAnonyArticles = async () => {
       const response = await ArticleService.getArticles(2);
-      setAnonyArticles(response.data);
+      setAnonyArticles(response);
     };
 
     const getNotiArticles = async () => {
       const response = await ArticleService.getArticles(3);
-      setNotiArticles(response.data);
+      setNotiArticles(response);
     };
     getFreeArticles();
     getAnonyArticles();
