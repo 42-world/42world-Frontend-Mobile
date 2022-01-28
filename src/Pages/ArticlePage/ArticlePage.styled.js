@@ -94,6 +94,15 @@ const ArticlePageDiv = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
+
+    .content_top {
+      display: flex;
+      flex-direction: row;
+      padding: 0.5rem;
+
+      .title {
+      }
+    }
   }
 `;
 
