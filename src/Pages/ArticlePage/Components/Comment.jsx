@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import Fab from '@mui/material/Fab';
+import ArrowUpwardRoundedIcon from '@mui/icons-material/ArrowUpwardRounded';
 
 import ArticleService from '../../../Network/ArticleService';
 import CommentService from '../../../Network/CommentService';
@@ -6,7 +8,7 @@ import { FavoriteBorder, SmsOutlined } from '@mui/icons-material';
 import Styled from '../ArticlePage.styled';
 import dayjs from 'dayjs';
 
-const Comment = () => {
+const Comment = ({ articleId }) => {
   const [comments, setComments] = useState();
   const handleCreateComment = newComment => {
     setComments(comments => comments.concat(newComment));
@@ -15,7 +17,7 @@ const Comment = () => {
   useEffect(() => {
     const fetch = async () => {
       const res = await ArticleService.getArticlesCommentsById(articleId);
-      setComments(res.data);
+      setComments(res);
     };
     fetch();
   }, []);
@@ -23,10 +25,12 @@ const Comment = () => {
   // articleId로 패칭 fetching
   return (
     <div className="comment_list_div">
-      <CreateComment
-        articleId={articleId}
-        handleCreateComment={handleCreateComment}
-      />
+      <Styled.ArticleCommentDiv
+        className="comment_count"
+        commentCount={comments.length}
+      >
+        <SmsOutlined />
+      </Styled.ArticleCommentDiv>
       {comments.map((comment, idx) => (
         <div className="comment_div" key={idx}>
           <div className="info">
@@ -48,6 +52,13 @@ const Comment = () => {
           </Styled.CommentContent>
         </div>
       ))}
+
+      <Styled.CreateCommentDiv>
+        <CreateComment
+          articleId={articleId}
+          handleCreateComment={handleCreateComment}
+        />
+      </Styled.CreateCommentDiv>
     </div>
   );
 };
@@ -63,15 +74,20 @@ const CreateComment = ({ articleId, handleCreateComment }) => {
       content: input,
       articleId: +articleId,
     });
-    if (res.data) {
-      console.log(res.data);
-      // handleCreateComment(res.data);
+    if (res) {
+      handleCreateComment(res);
     }
   };
   return (
     <form onSubmit={handleClickSubmit}>
-      <input value={input} onChange={handleChange} />
-      <button type="submit">제출</button>
+      <input
+        value={input}
+        onChange={handleChange}
+        placeholder="댓글을 입력하세요"
+      />
+      <Fab className="fab_button" type="submit">
+        <ArrowUpwardRoundedIcon />
+      </Fab>
     </form>
   );
 };

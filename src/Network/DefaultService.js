@@ -29,7 +29,7 @@ const DefaultService = {
       } catch (error) {
         return error;
       }
-      return response;
+      return response.data;
     },
   },
   reaction: {
@@ -53,7 +53,7 @@ const DefaultService = {
       } catch (error) {
         return error;
       }
-      return response;
+      return response.data;
     },
   },
 };

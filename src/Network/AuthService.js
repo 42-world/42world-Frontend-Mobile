@@ -36,7 +36,7 @@ const AuthService = {
     } catch (error) {
       alert(error);
     }
-    return response;
+    return response.data;
   },
   /**
    * **GET** User Sign Out
@@ -58,7 +58,7 @@ const AuthService = {
     } catch (error) {
       alert(error);
     }
-    return response;
+    return response.data;
   },
 };
 

@@ -31,7 +31,7 @@ const CategoryService = {
     } catch (error) {
       alert(error);
     }
-    return response;
+    return response.data;
   },
 };
 

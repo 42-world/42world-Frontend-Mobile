@@ -9,36 +9,36 @@ const ArticleService = {
   /**
    * **CREATE** New Articles with Signned User
    * @param {{title: string, content: string,categoryId: number}} newArticles
-   * @returns {{ \
-   *    id: number, \
-   *    title: string, \
-   *    content: string, \
-   *    view_count: number, \
-   *    categoryId: number, \
-   *    category: { \
-   *        id: number, \ \
-   *        name: string, \
-   *        createdAt: Date, \
+   * @returns {{
+   *    id: number,
+   *    title: string,
+   *    content: string,
+   *    view_count: number,
+   *    categoryId: number,
+   *    category: {
+   *        id: number,
+   *        name: string,
+   *        createdAt: Date,
    *        updatedAt: Date
-   *    }, \
-   *    writerId: number, \
-   *    writer: { \
-   *        id: number, \
-   *        nickname: string, \
-   *        oauthToken: string, \
-   *        isAuthenticated: boolean, \
-   *        lastLogin: Date, \
-   *        role: CADET, \
-   *        character: number, \
-   *        deletedAt: Date, \
-   *        createdAt: Date, \
-   *        updatedAt: Date \
-   *    }, \
-   *    deletedAt: Date, \
-   *    createdAt: Date, \
-   *    updatedAt: Date \
-   * }} articles \
-   * `200` : success \
+   *    },
+   *    writerId: number,
+   *    writer: {
+   *        id: number,
+   *        nickname: string,
+   *        oauthToken: string,
+   *        isAuthenticated: boolean,
+   *        lastLogin: Date,
+   *        role: CADET,
+   *        character: number,
+   *        deletedAt: Date,
+   *        createdAt: Date,
+   *        updatedAt: Date
+   *    },
+   *    deletedAt: Date,
+   *    createdAt: Date,
+   *    updatedAt: Date
+   * }} articles
+   * `200` : success
    * `401` : fail
    */
   createArticles: async newArticles => {
@@ -56,7 +56,7 @@ const ArticleService = {
     } catch (error) {
       alert(error);
     }
-    return response;
+    return response.data;
   },
   /**
    * **GET** All Articles By Categories ID
@@ -109,7 +109,7 @@ const ArticleService = {
     } catch (error) {
       alert(error);
     }
-    return response;
+    return response.data;
   },
   /**
    * **GET** One Articles By Articles ID
@@ -142,8 +142,8 @@ const ArticleService = {
    *    deletedAt: Date,
    *    createdAt: Date,
    *    updatedAt: Date
-   * }>} articles \
-   * `200` : success \
+   * }>} articles
+   * `200` : success
    * `401` : fail
    */
   getArticlesById: async articlesId => {
@@ -160,14 +160,14 @@ const ArticleService = {
     } catch (error) {
       alert(error);
     }
-    return response;
+    return response.data;
   },
   /**
    * **UPDATE** One Articles By Articles ID
    * @param {string} articlesId
    * @param {{title: string,content: string,categoryId: number}} newArticles
    * @returns
-   * `200` : success \
+   * `200` : success
    * `401` : fail
    */
   updateArticles: async (articlesId, newArticles) => {
@@ -186,13 +186,13 @@ const ArticleService = {
     } catch (error) {
       alert(error);
     }
-    return response;
+    return response.data;
   },
   /**
    * **DELETE** One Articles By Articles ID
    * @param {string} articlesId
    * @returns
-   * `200` : success \
+   * `200` : success
    * `401` : fail
    */
   deleteArticles: async articlesId => {
@@ -209,7 +209,7 @@ const ArticleService = {
     } catch (error) {
       alert(error);
     }
-    return response;
+    return response.data;
   },
   /**
    * **GET** One Articles By Articles ID
@@ -251,7 +251,7 @@ const ArticleService = {
     } catch (error) {
       alert(error);
     }
-    return response;
+    return response.data;
   },
   editArticles: async (articlesId, articles) => {
     const method = 'PUT';
@@ -268,7 +268,7 @@ const ArticleService = {
     } catch (error) {
       alert(error);
     }
-    return response;
+    return response.data;
   },
 };
 
