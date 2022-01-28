@@ -43,7 +43,7 @@ const MyArticle = () => {
             >
               <span className="article_board">{article.board}</span>
               <span className="article_title">{article.title}</span>
-              <div className="favorite_icon">
+              <div className="liked_icon">
                 <FavoriteBorder />
               </div>
               <div className="comment_icon">

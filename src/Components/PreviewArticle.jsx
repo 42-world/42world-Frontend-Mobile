@@ -28,7 +28,7 @@ const PreviewArticle = ({ article, onClickArticle }) => {
         <h2>{created}</h2>
         <h2>조회수 {article.viewCount}</h2>
 
-        <div className="favorite_icon">
+        <div className="liked_icon">
           <FavoriteBorderIcon />
         </div>
         <div className="comment_icon">

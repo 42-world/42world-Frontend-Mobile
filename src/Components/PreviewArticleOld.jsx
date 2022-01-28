@@ -14,7 +14,7 @@ const PreviewArticle = ({ article, onClickArticle }) => {
       article={article}
     >
       <ListItemText>{article.title}</ListItemText>
-      <div className="favorite_icon">
+      <div className="liked_icon">
         <FavoriteBorderIcon />
       </div>
       <div className="comment_icon">

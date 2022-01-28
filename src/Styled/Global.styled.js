@@ -29,6 +29,9 @@ const theme = {
   textColorLight: '#eee',
   textColorWhite: '#fff',
 
+  likedIconColor: '#df867d',
+  commentIconColor: '#53b7ba',
+
   borderColor: '#e6e6e6',
   borderRadius: '0.25rem',
 

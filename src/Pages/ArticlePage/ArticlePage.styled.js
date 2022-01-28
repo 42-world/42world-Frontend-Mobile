@@ -135,6 +135,34 @@ const ArticleLikedDiv = styled.div`
   }
 `;
 
+const ArticleCommentDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  color: ${GlobalStyled.theme.commentIconColor};
+  font-size: 0.85rem;
+
+  margin-top: 0.5rem;
+  padding: 0.3rem 0.8rem 0.5rem 0.8rem;
+  border-top: 1.5px solid ${GlobalStyled.theme.borderColor};
+
+  svg {
+    width: 1.3rem;
+    height: 1.3rem;
+    margin-top: 0.2rem;
+    margin-right: 0.2rem;
+  }
+
+  &::after {
+    content: '${props => {
+      if (props.commentCount > 0) return props.commentCount;
+      else return '';
+    }}';
+  }
+`;
+
 const ArticlePageDiv = styled.div`
   display: flex;
   flex-direction: column;
@@ -147,7 +175,7 @@ const ArticlePageDiv = styled.div`
     width: 100%;
 
     .comment_div {
-      border-bottom: 1px solid #e6e6e6;
+      border-top: 1px solid #e6e6e6;
       padding: 0.5rem 0.8rem;
       width: 100%;
       display: flex;
@@ -182,13 +210,6 @@ const ArticlePageDiv = styled.div`
     }
 
     .comment_count {
-      display: flex;
-      flex-direction: row;
-      width: 100%;
-      align-items: center;
-      justify-content: flex-start;
-
-      padding: 0.5rem 0.8rem;
     }
   }
 
@@ -261,6 +282,7 @@ const Styled = {
   ProfileImage,
   CommentContent,
   ArticleLikedDiv,
+  ArticleCommentDiv,
   CreateCommentDiv,
 };
 

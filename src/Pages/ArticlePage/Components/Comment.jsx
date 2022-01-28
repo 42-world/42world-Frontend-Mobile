@@ -25,9 +25,12 @@ const Comment = ({ articleId }) => {
   // articleId로 패칭 fetching
   return (
     <div className="comment_list_div">
-      <span className="comment_count">
+      <Styled.ArticleCommentDiv
+        className="comment_count"
+        commentCount={comments.length}
+      >
         <SmsOutlined />
-      </span>
+      </Styled.ArticleCommentDiv>
       {comments.map((comment, idx) => (
         <div className="comment_div" key={idx}>
           <div className="info">
