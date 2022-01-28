@@ -92,11 +92,11 @@ https://www.42world.kr/
 - 설명과 함께 "enhancement" 태그를 달아주시면 확인 후 빠르게 수정하겠습니다.
 
 ## 2. Pull Request 보내기
-### 1. 해당 저장소를 포크 후 클론하세요.
-### 2. Feature 브랜치를 생성하세요. (`git checkout -b feature/your-branch-name`)
-### 3. 수정사항을 커밋해주세요.
-### 4. 리모트 저장소에 푸시하세요. (`git push origin feature/your-branch-name`)
-### 5. Pull Request를 열어 dev 브랜치에 머지해주세요.
+1. 해당 저장소를 포크 후 클론하세요.
+2. Feature 브랜치를 생성하세요. (`git checkout -b feature/your-branch-name`)
+3. 수정사항을 커밋해주세요.
+4. 리모트 저장소에 푸시하세요. (`git push origin feature/your-branch-name`)
+5. Pull Request를 열어 dev 브랜치에 머지해주세요.
 - your-branch-name -> dev
 
 ## 3. 이메일 보내기
