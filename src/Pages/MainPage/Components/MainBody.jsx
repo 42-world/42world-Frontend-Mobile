@@ -74,7 +74,7 @@ const MainBody = () => {
           <Home notiArticles={notiArticles} />
         ) : (
           <Community
-            famousArticles={bestArticles}
+            bestArticles={bestArticles}
             freeArticles={freeArticles}
             anonyArticles={anonyArticles}
             moveArticles={moveArticles}
