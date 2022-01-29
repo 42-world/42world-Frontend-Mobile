@@ -16,16 +16,15 @@ const Community = ({
         component="nav"
         aria-label="mailbox folders"
       >
-        {bestArticles &&
-          bestArticles.slice(0, 3).map(article => {
-            return (
-              <PreviewArticle
-                id={article.id}
-                article={article}
-                onClickArticle={() => moveArticles(article.id)}
-              />
-            );
-          })}
+        {bestArticles.map(article => {
+          return (
+            <PreviewArticle
+              id={article.id}
+              article={article}
+              onClickArticle={() => moveArticles(article.id)}
+            />
+          );
+        })}
       </Styled.StyledList>
 
       <Styled.ListDivider margin="0.4rem" />
