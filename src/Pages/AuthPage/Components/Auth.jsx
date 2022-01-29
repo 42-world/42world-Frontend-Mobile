@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Styled from './Auth.styled';
 import FtAuthService from '../../../Network/FtAuthService';
 import { LoadingButton } from '@mui/lab';
 import { TextField } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../App';
 
 const AuthRequestInformation = ({ intraId }) => {
   return (
@@ -33,6 +35,8 @@ const AuthRequestCheckStep = ({ handleSendReset }) => {
 };
 
 const Auth = () => {
+  const navigate = useNavigate();
+  const auth = useContext(AuthContext);
   const [isSend, setIsSend] = useState(false);
   const [isBlock, setIsBlock] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -95,6 +99,10 @@ const Auth = () => {
       setLoadingMessage({ text: '메일 전송 중' });
     }
   }, [isBlock]);
+
+  useEffect(() => {
+    if (auth.state === 200) navigate('/');
+  }, []);
 
   return (
     <Styled.AuthDiv>
