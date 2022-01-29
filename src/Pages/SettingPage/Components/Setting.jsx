@@ -20,16 +20,14 @@ const Setting = () => {
     });
   };
 
-  const handleDuplicateCheck = () => {
-    console.log(input.nickname, '중복 확인');
-  };
+  const handleDuplicateCheck = () => {};
 
   const handleCharacterClick = async value => {
     await UserService.updateUser({ character: value });
 
     setCharacter(value);
-
     window.alert('캐릭터 변경 완료');
+
   };
 
   return (

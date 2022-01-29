@@ -26,7 +26,6 @@ const Community = ({
           );
         })}
       </Styled.StyledList>
-
       <Styled.ListDivider margin="0.4rem" />
       <Styled.StyledList
         disablePadding="true"

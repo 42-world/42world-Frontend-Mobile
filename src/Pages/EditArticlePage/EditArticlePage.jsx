@@ -58,7 +58,7 @@ const EditArticlePage = () => {
     const getArticle = async () => {
       const response = await ArticleService.getArticlesById(pathArray[2]);
       const article = response;
-      console.log('article', article);
+
       setTitle(article.title);
       setContent(article.content);
       articleId.current = article.categoryId;

@@ -26,6 +26,13 @@ const HeaderStyleDiv = styled.div`
   div {
     width: 100%;
     flex-grow: 1;
+    img {
+      width: 100%;
+    }
+  }
+  div:nth-child(2) {
+    display: flex;
+    align-items: center;
   }
   div:nth-child(3) {
     flex-direction: row-reverse;

@@ -31,7 +31,6 @@ const CreateArticleBody = () => {
   };
 
   const handleClickSubmit = async () => {
-    console.log('submit');
     if (title === '') {
       alert('제목을 입력하세요!');
       return;

@@ -29,6 +29,7 @@ const Home = ({ notiArticles }) => {
   useEffect(() => {
     const getCheckInStatus = async () => {
       const response = await CheckInService.curCheckInStatus();
+
       setCheckInStatus(response);
     };
     getCheckInStatus();

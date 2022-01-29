@@ -10,9 +10,9 @@ const Info = () => {
   const navigate = useNavigate();
   const auth = useContext(AuthContext);
   const curUser = auth.curUser;
-
   const [nickname, setNickName] = useState(curUser ? curUser.nickname : '');
   const [character, _] = useState(curUser ? curUser.character : 0);
+
 
   const handleSettingClick = () => {
     navigate('/profile/setting');

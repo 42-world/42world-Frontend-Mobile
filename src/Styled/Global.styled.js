@@ -7,6 +7,7 @@ const theme = {
   text: '#000',
   textSecondary: '#666',
   textLightSecondary: '#ccc',
+  disabled: '#c4c4c4',
 
   textColor: '#000',
   textColorSecondary: '#666',
@@ -41,7 +42,7 @@ const theme = {
 };
 
 const assets = {
-  headerLogo: '/assets/headerLogo.svg',
+  headerLogo: '/assets/42mainlogo.png',
   sidebar: {
     '80000co': '/assets/Sidebar/80000co.png',
     humansof42: '/assets/Sidebar/humansof42.png',
@@ -69,7 +70,7 @@ const ProfileBackgroundDiv = styled.div`
   flex-direction: column;
   margin: 0px;
   padding: 0px;
-  padding-top: 0.7rem;
+  /* padding-top: 0.7rem; */
 
   // size
   width: 100%;
