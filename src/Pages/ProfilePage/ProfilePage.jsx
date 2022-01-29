@@ -5,6 +5,7 @@ import {
   SignOut,
   Authenticate,
   Articles,
+  GithubLink,
 } from './Components';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../App';
@@ -38,6 +39,9 @@ const ProfilePage = () => {
         </Styled.CustomBox>
         <Styled.CustomBox marginBottom="8px">
           <Authenticate />
+        </Styled.CustomBox>
+        <Styled.CustomBox marginBottom="8px">
+          <GithubLink />
         </Styled.CustomBox>
         <Styled.CustomBox>
           <SignOut />
