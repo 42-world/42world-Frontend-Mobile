@@ -49,6 +49,11 @@ const assets = {
     '42swim': '/assets/Sidebar/42swim.png',
     '42psychic': '/assets/Sidebar/42psychic.png',
   },
+  footer: {
+    github: '/assets/Footer/github.svg',
+    mail: '/assets/Footer/mail.svg',
+    article: '/assets/Footer/article.svg',
+  },
 };
 
 const ProfileBackgroundDiv = styled.div`
