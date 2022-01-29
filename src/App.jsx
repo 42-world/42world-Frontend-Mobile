@@ -61,16 +61,17 @@ const PrivateRouteCheckAuth = ({ children }) => {
   if (auth.isLoading) {
     return <Loading />;
   } else {
-    if (auth.state !== 401) return children;
-    else return <Navigate to="/login" />;
+    return children;
+    // if (auth.state !== 401) return children;
+    // else return <Navigate to="/login" />;
   }
 };
 
 const PrivateRouteCheckFtAuth = ({ children }) => {
   const auth = useContext(AuthContext);
-
-  if (auth.state === 200) return children;
-  else return <Navigate to="/profile" />;
+  return children;
+  // if (auth.state === 200) return children;
+  // else return <Navigate to="/profile" />;
 };
 
 // 글 보기 : 모드view?글id=12 or view/글id
