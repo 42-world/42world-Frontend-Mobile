@@ -16,7 +16,6 @@ const Community = ({
         component="nav"
         aria-label="mailbox folders"
       >
-        {/* famousArticles 대신 freeArticles로 */}
         {bestArticles &&
           bestArticles.slice(0, 3).map(article => {
             return (
@@ -25,7 +24,6 @@ const Community = ({
                 article={article}
                 onClickArticle={() => moveArticles(article.id)}
               />
-              // 인기글 가져오기, 지금은 보류.
             );
           })}
       </Styled.StyledList>
