@@ -14,10 +14,10 @@ const ErrorPage = () => {
         </div>
         <div>
           <h3>요청하신 페이지가 존재하지 않습니다.</h3>
-          <h3>아래 로고를 눌러 홈으로 돌아가 주세요</h3>
+          <h3>아래 로고를 눌러 홈으로 돌아가 주세요.</h3>
         </div>
       </Styled.ErrorBox>
-      <img id="button" src="/assets/headerLogo.svg" onClick={() => navi('/')} />
+      <img id="button" src="/assets/42mainlogo.png" style={{ width: '100px' }} onClick={() => navi('/')} />
     </Styled.ErrorBackground>
   );
 };
