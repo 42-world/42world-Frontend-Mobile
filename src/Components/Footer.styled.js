@@ -6,18 +6,23 @@ const Footer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0.5rem;
+  padding: 1rem;
   margin-top: auto;
   div {
     margin-top: auto;
     display: flex;
     flex-direction: row;
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.1rem;
 
     img {
       width: 1.5rem;
       margin: 0.3rem;
     }
+  }
+  h6 {
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: ${GlobalStyled.theme.textColorGray};
   }
 `;
 
