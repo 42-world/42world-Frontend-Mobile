@@ -4,13 +4,15 @@ import Styled from './Info.styled';
 import { useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../App';
+import { getProfileImg } from '../../../Utils/profileList';
 
 const Info = () => {
   const navigate = useNavigate();
   const auth = useContext(AuthContext);
-  const [nickname, setNickName] = useState(
-    auth.curUser.nickname ? auth.curUser.nickname : '',
-  );
+  const curUser = auth.curUser;
+
+  const [nickname, setNickName] = useState(curUser ? curUser.nickname : '');
+  const [character, _] = useState(curUser ? curUser.character : 0);
 
   const handleSettingClick = () => {
     navigate('/profile/setting');
@@ -29,8 +31,12 @@ const Info = () => {
   return (
     <Styled.InfoBox onClick={handleSettingClick}>
       <div style={{ display: 'flex', alignItems: 'center' }}>
-        <div style={{ margin: '4px' }}>
-          <Person fontSize="large" />
+        <div style={{ margin: '4px 12px 4px 4px', width: '36px' }}>
+          <img
+            src={getProfileImg(character)}
+            alt="profile_img"
+            style={{ width: '100%' }}
+          />
         </div>
         <div>
           <Styled.NameDiv>{nickname}</Styled.NameDiv>

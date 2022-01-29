@@ -1,14 +1,8 @@
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../../App';
 import UserService from '../../../Network/UserService';
+import { PROFILE_LIST } from '../../../Utils/profileList';
 import Styled from './Setting.styled';
-
-const profileList = [
-  { id: 0, image: '../assets/CharacterWhiteBG/bbo.png' },
-  { id: 1, image: '../assets/CharacterWhiteBG/bora.png' },
-  { id: 2, image: '../assets/CharacterWhiteBG/ddub.png' },
-  { id: 3, image: '../assets/CharacterWhiteBG/nana.png' },
-];
 
 const Setting = () => {
   const auth = useContext(AuthContext);
@@ -42,7 +36,7 @@ const Setting = () => {
     <Styled.SettingDiv>
       <div className="setting_container_title">캐릭터 선택</div>
       <div className="profile_image_div">
-        {profileList.map(profile => (
+        {PROFILE_LIST.map(profile => (
           <button
             key={profile.id}
             onClick={() => handleCharacterClick(profile.id)}
