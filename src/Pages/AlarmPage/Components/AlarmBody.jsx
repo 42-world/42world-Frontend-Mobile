@@ -4,6 +4,7 @@ import dayjs from 'dayjs';
 
 import Styled from './AlarmArticle.styled.js';
 import NotificationService from '../../../Network/NotificationService';
+import { Alarm } from '@mui/icons-material';
 
 const getCategoryName = id => {
   switch (id) {
@@ -37,7 +38,8 @@ const AlarmBody = () => {
   const mainTextLen = 10;
 
   const moveArticles = articleId => {
-    navi(`/article/${articleId}`);
+    alert('구현 중입니다!');
+    // navi(`/article/${articleId}`);
   };
 
   const previewMainText = article => {
@@ -51,14 +53,12 @@ const AlarmBody = () => {
   const getArticleTime = time => dayjs(time).format('MM/DD HH:mm');
 
   const categoryName = article => {
-    console.log('art:', article);
     return getCategoryName(article.userId);
   };
 
   useEffect(() => {
     const getArticles = async () => {
       const response = await NotificationService.getNotifications(); // 알람 API 필요
-      console.log(response);
       setAlarmArticles(response);
     };
     getArticles();
@@ -80,7 +80,8 @@ const AlarmBody = () => {
               className="article"
               onClick={() => moveArticles(article.userId)}
             >
-              <div className="left">{categoryName(article)}</div>
+              {/* <div className="left">{categoryName(article)}</div> */}
+              <div className="left">새 댓글</div>
               <div className="middle">{previewMainText(article)}</div>
               <div className="right">{getArticleTime(article.createdAt)}</div>
             </Styled.AlramArticleDiv>

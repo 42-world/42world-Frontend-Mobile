@@ -14,24 +14,19 @@ const AlramArticleDiv = styled.div`
   align-items: center;
   padding: 0.2rem 0.45rem;
   border-bottom: 1px solid #e6e6e6;
-  background-color: #aaa;
+  background-color: #fff;
 
-  .article_board {
+  .left {
     font-size: 0.9rem;
-    font-weight: 700;
-    width: 40%;
-    display: inline-block;
+    font-weight: 300;
   }
-  .article_title {
+  .middle {
     font-size: 0.9rem;
-    font-weight: 400;
-    display: inline-block;
-    width: 100%;
+    font-weight: 500;
   }
-  div {
-    display: flex;
-    align-items: center;
-    margin-right: 0.3rem;
+  .right {
+    font-size: 0.9rem;
+    font-weight: 300;
   }
 `;
 
