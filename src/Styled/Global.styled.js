@@ -39,6 +39,10 @@ const theme = {
   headerBackgroundColor: 'rgba(42, 45, 56, 1)',
   headerIconColor: '#fff',
 
+  mainPageCheckInInfoBackgroundColor: '#e4f3f3',
+  mainPageCheckInInfoProgressBarColorGaepo: '#53b7ba',
+  mainPageCheckInInfoProgressBarColorSeocho: '#387E9C',
+
   categoryNameBackgroundColor: '#4C5A66',
   categoryNameTextColor: '#FFF',
 

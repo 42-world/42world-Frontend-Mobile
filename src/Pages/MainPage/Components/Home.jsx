@@ -11,8 +11,14 @@ import 'react-circular-progressbar/dist/styles.css';
 
 const Home = ({ notiArticles }) => {
   const [checkInStatus, setCheckInStatus] = useState({
-    gaepo: 0,
-    seocho: 0,
+    max: {
+      gaepo: 1,
+      seocho: 1,
+    },
+    now: {
+      gaepo: 0,
+      seocho: 0,
+    },
   });
   const navi = useNavigate();
 
@@ -23,7 +29,6 @@ const Home = ({ notiArticles }) => {
   useEffect(() => {
     const getCheckInStatus = async () => {
       const response = await CheckInService.curCheckInStatus();
-
       setCheckInStatus(response);
     };
     getCheckInStatus();
@@ -38,25 +43,25 @@ const Home = ({ notiArticles }) => {
         </a>
       </Styled.CheckInHeader>
       <Styled.CheckInBody>
-        <div>
+        <div className="circular_progress_bar_div gaepo">
           <h2>개포</h2>
-          <div style={{ width: 100, height: 100 }}>
+          <div className="circular_progress_bar">
             <CircularProgressbar
-              maxValue={225}
-              text={checkInStatus.gaepo + '명'}
-              value={checkInStatus.gaepo}
-              strokeWidth={10}
+              maxValue={checkInStatus.max.gaepo ? checkInStatus.max.gaepo : 1}
+              text={checkInStatus.now.gaepo + ' / ' + checkInStatus.max.gaepo}
+              value={checkInStatus.now.gaepo}
+              strokeWidth={12}
             />
           </div>
         </div>
-        <div>
+        <div className="circular_progress_bar_div seocho">
           <h2>서초</h2>
-          <div style={{ width: 100, height: 100 }}>
+          <div className="circular_progress_bar">
             <CircularProgressbar
-              maxValue={225}
-              text={checkInStatus.seocho + '명'}
-              value={checkInStatus.seocho}
-              strokeWidth={10}
+              maxValue={checkInStatus.max.seocho ? checkInStatus.max.seocho : 1}
+              text={checkInStatus.now.seocho + ' / ' + checkInStatus.max.seocho}
+              value={checkInStatus.now.seocho}
+              strokeWidth={12}
             />
           </div>
         </div>
