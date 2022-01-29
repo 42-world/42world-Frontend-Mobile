@@ -16,7 +16,7 @@ const SettingDiv = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    wrap: wrap;
+
     padding: 0.5rem;
     button {
       cursor: pointer;
@@ -60,6 +60,7 @@ const SettingDiv = styled.div`
 
 const OutlineImage = styled.img`
   border: 4px solid #53b7ba;
+  border-radius: 10px;
 `;
 
 const Styled = { SettingDiv, OutlineImage };
