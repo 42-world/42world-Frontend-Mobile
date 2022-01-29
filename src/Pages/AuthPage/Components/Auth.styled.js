@@ -1,5 +1,14 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import GlobalStyled from '../../../Styled/Global.styled';
+
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+`;
 
 const AuthDiv = styled.div`
   display: flex;
@@ -15,25 +24,33 @@ const AuthDiv = styled.div`
   .input_div {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1.7rem;
     align-items: center;
-    justify-content: center;
-    margin-bottom: 0.7rem;
+    .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
+      flex: 2 2 40%;
+      .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+        transition: border-color 500ms ease-in-out 0ms;
+      }
+      .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
+        transform: translate(14px, 12px) scale(1);
+      }
 
-    input {
-      width: 100%;
-      font-size: 0.8rem;
-      padding: 0.3rem 0.7rem;
-      border-radius: 0.3rem;
-      border: none;
-      outline: none;
-      margin-right: 0.5rem;
+      input {
+        padding: 10px 12px;
+      }
+      * {
+        color: ${GlobalStyled.theme.textColorLight};
+      }
     }
 
     .domain {
+      flex: 4 4 60%;
+      top: 50%;
+      /* transform: translateY(-50%); */
       color: ${GlobalStyled.theme.textColorLight};
-      &::after {
-        content: '@student.42seoul.kr';
-      }
+      font-weight: 600;
+      content: '@student.42seoul.kr';
     }
   }
 
@@ -43,11 +60,12 @@ const AuthDiv = styled.div`
     color: ${GlobalStyled.theme.textColorWhite};
     background-color: ${GlobalStyled.theme.primary};
     &:hover {
-      color: ${GlobalStyled.theme.textColorWhite};
+      /* color: ${GlobalStyled.theme.textColorWhite}; */
       background-color: ${GlobalStyled.theme.primary};
+      /* background-color: #0000001f; */
     }
     &:active {
-      color: ${GlobalStyled.theme.textColorWhite};
+      /* color: ${GlobalStyled.theme.textColorWhite}; */
       background-color: ${GlobalStyled.theme.primary};
     }
     &:focus {
@@ -72,6 +90,7 @@ const AuthDiv = styled.div`
         font-weight: 400;
       }
     }
+    animation: ${fadeIn} 500ms ease-out 0ms;
   }
 
   .error_info {
@@ -100,6 +119,8 @@ const AuthDiv = styled.div`
       outline: none;
       cursor: pointer;
     }
+    animation: ${fadeIn} 500ms ease-out 1000ms;
+    animation-fill-mode: backwards;
   }
 `;
 
