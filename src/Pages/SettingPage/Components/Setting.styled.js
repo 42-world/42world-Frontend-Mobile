@@ -58,6 +58,10 @@ const SettingDiv = styled.div`
   }
 `;
 
-const Styled = { SettingDiv };
+const OutlineImage = styled.img`
+  border: 4px solid #53b7ba;
+`;
+
+const Styled = { SettingDiv, OutlineImage };
 
 export default Styled;

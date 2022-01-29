@@ -1,18 +1,22 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../../../App';
+import UserService from '../../../Network/UserService';
 import Styled from './Setting.styled';
 
+const profileList = [
+  { id: 0, image: '../assets/CharacterWhiteBG/bbo.png' },
+  { id: 1, image: '../assets/CharacterWhiteBG/bora.png' },
+  { id: 2, image: '../assets/CharacterWhiteBG/ddub.png' },
+  { id: 3, image: '../assets/CharacterWhiteBG/nana.png' },
+];
+
 const Setting = () => {
-  const [character, setCharacter] = useState(0);
+  const auth = useContext(AuthContext);
+  const curUser = auth.curUser;
+  const [character, setCharacter] = useState(curUser ? curUser.character : 0);
   const [input, setInput] = useState({
     nickname: '',
   });
-
-  let profile_list = [
-    '../assets/CharacterWhiteBG/bbo.png',
-    '../assets/CharacterWhiteBG/bora.png',
-    '../assets/CharacterWhiteBG/ddub.png',
-    '../assets/CharacterWhiteBG/nana.png',
-  ];
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -26,22 +30,32 @@ const Setting = () => {
     console.log(input.nickname, '중복 확인');
   };
 
-  const handleCharacterClick = value => {
+  const handleCharacterClick = async value => {
+    await UserService.updateUser({ character: value });
+
     setCharacter(value);
-    console.log(`${character}에서 ${value}로 캐릭터 변경`);
+
+    window.alert('캐릭터 변경 완료');
   };
 
   return (
     <Styled.SettingDiv>
       <div className="setting_container_title">캐릭터 선택</div>
       <div className="profile_image_div">
-        {profile_list.map(value => (
-          <button key={value} onClick={() => handleCharacterClick(value)}>
-            <img src={value} alt="profile" />
+        {profileList.map(profile => (
+          <button
+            key={profile.id}
+            onClick={() => handleCharacterClick(profile.id)}
+          >
+            {profile.id === character ? (
+              <Styled.OutlineImage src={profile.image} alt="profile" />
+            ) : (
+              <img src={profile.image} alt="profile" />
+            )}
           </button>
         ))}
       </div>
-      <div className="setting_container_title">정보 변경</div>
+      {/* <div className="setting_container_title">정보 변경</div>
       <div className="profile_name_div">
         <label htmlFor="nickname">닉네임</label>
         <div>
@@ -54,7 +68,7 @@ const Setting = () => {
           />
           <button onClick={handleDuplicateCheck}>중복 확인</button>
         </div>
-      </div>
+      </div> */}
     </Styled.SettingDiv>
   );
 };
