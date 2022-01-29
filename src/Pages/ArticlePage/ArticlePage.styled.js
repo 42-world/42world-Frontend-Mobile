@@ -7,6 +7,8 @@ const ProfileImage = styled.div`
       ? `background-image: url(${props.imagePath});`
       : 'background: #ddd;'}
   ${props => (props.width ? `width: ${props.width};` : 'width: 2.5rem;')}
+  ${props =>
+    props.width ? `min-width: ${props.width};` : 'min-width: 2.5rem;'}
   ${props => (props.width ? `height: ${props.width};` : 'height: 2.5rem;')}
   border-radius: 10%;
 `;
@@ -221,24 +223,28 @@ const ArticlePageDiv = styled.div`
     .content_top {
       display: flex;
       flex-direction: row;
+      align-items: flex-end;
       padding: 0.7rem;
+      width: 100%;
       border-bottom: 1px solid ${GlobalStyled.theme.borderColor};
 
       .title {
         display: flex;
         flex-direction: column;
-        margin-right: auto;
+        width: 100%;
 
         h1 {
           font-size: 1rem;
           font-weight: 600;
           color: ${GlobalStyled.theme.textColor};
           margin-bottom: 0.2rem;
+          padding-right: 0.5rem;
         }
 
         .info {
           display: flex;
           flex-direction: row;
+          align-items: center;
 
           h2 {
             color: ${GlobalStyled.theme.textColorGray};
@@ -246,23 +252,25 @@ const ArticlePageDiv = styled.div`
             font-weight: 300;
             margin-right: 0.8rem;
           }
-        }
-      }
 
-      .edit_article {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-end;
-        margin: 0 0.5rem;
+          .edit_article {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+            margin: 0 0.5rem;
+            margin-left: auto;
 
-        button {
-          padding: 0;
-          border: none;
-          background: none;
-          cursor: pointer;
-          margin: 0.25rem;
-          font-size: 0.7rem;
-          font-weight: 400;
+            button {
+              padding: 0;
+              border: none;
+              width: max-content;
+              background: none;
+              cursor: pointer;
+              margin: 0 0.3rem;
+              font-size: 0.7rem;
+              font-weight: 400;
+            }
+          }
         }
       }
     }
