@@ -108,7 +108,7 @@ const ContactUs = () => {
         </div>
       </div>
       <h3>
-        team<span>heyinsa</span>
+        © 2022.<span> Team 42world</span>
       </h3>
     </Styled.ContactUsDiv>
   );
