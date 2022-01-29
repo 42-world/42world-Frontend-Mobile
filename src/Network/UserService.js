@@ -167,14 +167,14 @@ const UserService = {
    */
   updateUser: async changedProfile => {
     const method = 'PUT';
-    const url = userUrl('/profile');
+    const url = userUrl('/');
     const body = changedProfile;
 
     let response;
     try {
       response = await API.AXIOS({
         method,
-        body,
+        data: body,
         url,
       });
     } catch (error) {
