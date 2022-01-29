@@ -6,21 +6,20 @@ import { Header } from '../../Components';
 import Styled from './ArticlePage.styled';
 
 const ArticlePage = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const handleClick = () => {
-    setIsLoading(true);
-    setIsLoading(false);
-  };
   const { id } = useParams();
-  useEffect(() => {
-    console.log('re render!');
-  }, []);
+
+  // const [isLoading, setIsLoading] = useState(false);
+  // const handleClick = () => {
+  //   setIsLoading(true);
+  //   setIsLoading(false);
+  // };
+
   return (
     <>
       <Header />
       <Styled.ArticlePageDiv>
         <Body articleId={id} />
-        <Comment articleId={id} handleClick={handleClick} />
+        <Comment articleId={id} />
       </Styled.ArticlePageDiv>
     </>
   );
