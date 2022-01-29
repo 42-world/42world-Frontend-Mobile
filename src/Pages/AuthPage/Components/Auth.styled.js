@@ -17,6 +17,7 @@ const AuthDiv = styled.div`
   flex-direction: column;
   text-align: center;
   height: 100%;
+  gap: 10px;
 
   color: ${GlobalStyled.theme.textColorWhite};
   fill: ${GlobalStyled.theme.textColorWhite};
@@ -25,10 +26,11 @@ const AuthDiv = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 1.7rem;
+    margin-bottom: 0.7rem;
+    gap: 10px;
     align-items: center;
     .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
-      flex: 2 2 40%;
+      flex: 1 1 40%;
       .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
         transition: border-color 500ms ease-in-out 0ms;
       }
@@ -45,7 +47,7 @@ const AuthDiv = styled.div`
     }
 
     .domain {
-      flex: 4 4 60%;
+      flex: 1 1 40%;
       top: 50%;
       /* transform: translateY(-50%); */
       color: ${GlobalStyled.theme.textColorLight};
@@ -70,6 +72,9 @@ const AuthDiv = styled.div`
     }
     &:focus {
       color: ${GlobalStyled.theme.textColorWhite};
+      background-color: ${GlobalStyled.theme.primary};
+    }
+    &:disabled {
       background-color: ${GlobalStyled.theme.primary};
     }
   }

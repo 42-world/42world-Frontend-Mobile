@@ -55,6 +55,7 @@ const Auth = () => {
     });
   };
   const handleAuthenticate = () => {
+    console.log('here');
     if (input.email === '') {
       setIsError(true);
       setTimeout(() => {
@@ -63,8 +64,8 @@ const Auth = () => {
       return;
     }
     FtAuthService.createFtAuth(input.email);
-    setIsSend(true);
     setIsBlock(true);
+    setIsSend(true);
     setAuthInfo({
       email: input.email,
     });
@@ -113,12 +114,12 @@ const Auth = () => {
       <LoadingButton
         className="send_button"
         onClick={handleAuthenticate}
-        endIcon={<SendIcon />}
         loading={isBlock}
         loadingIndicator={loadingMessage.text}
         variant="contained"
+        disabled={isBlock}
       >
-        인증
+        인증메일 전송하기
       </LoadingButton>
       {isSend && <AuthRequestInformation intraId={authInfo.email} />}
       {isSend && <AuthRequestCheckStep handleSendReset={handleSendReset} />}
