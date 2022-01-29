@@ -133,13 +133,13 @@ const Header = () => {
             sx={{ color: GlobalStyled.theme.headerIconColor }}
             onClick={handleToggleSearch}
           />*/}
-          <NotificationsIcon
-            sx={{ color: GlobalStyled.theme.headerIconColor }}
-            onClick={() => navi('/alarm')}
-          />
           <AccountCircleIcon
             sx={{ color: GlobalStyled.theme.headerIconColor }}
             onClick={() => navi('/profile')}
+          />
+          <NotificationsIcon
+            sx={{ color: GlobalStyled.theme.headerIconColor }}
+            onClick={() => navi('/alarm')}
           />
         </div>
         {/*{isSearch && <SearchBar />}*/}
