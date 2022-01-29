@@ -22,21 +22,24 @@ const MyComment = () => {
   return (
     <>
       <Styled.MyCommentsDiv>
-        {comments.map((comment, idx) => (
-          <Styled.MyCommentDiv
-            key={idx}
-            onClick={() => handleClick(comment.article.id)}
-          >
-            {/* 내가 쓴 댓글의 게시글의 카테고리 */}
-            <span className="article_board">
-              {comment.article.category.name}
-            </span>
-            {/* 내가 쓴 댓글의 게시글의 제목 */}
-            <span className="article_title">{comment.article.title}</span>
-            {/* 내가 쓴 댓글 내용 */}
-            <span>{comment.content}</span>
-          </Styled.MyCommentDiv>
-        ))}
+        {comments.map(
+          (comment, idx) =>
+            comment.article && (
+              <Styled.MyCommentDiv
+                key={idx}
+                onClick={() => handleClick(comment.article.id)}
+              >
+                {/* 내가 쓴 댓글의 게시글의 카테고리 */}
+                <span className="article_board">
+                  {comment.article.category.name}
+                </span>
+                {/* 내가 쓴 댓글의 게시글의 제목 */}
+                <span className="article_title">{comment.article.title}</span>
+                {/* 내가 쓴 댓글 내용 */}
+                <span>{comment.content}</span>
+              </Styled.MyCommentDiv>
+            ),
+        )}
       </Styled.MyCommentsDiv>
     </>
   );

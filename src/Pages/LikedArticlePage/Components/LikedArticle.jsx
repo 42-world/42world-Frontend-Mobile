@@ -16,7 +16,7 @@ const LikedArticle = () => {
   useEffect(() => {
     const fetch = async () => {
       const data = await UserService.getLikeArticles();
-      setArticles(data);
+      setArticles(data.map(data => data.article));
     };
 
     fetch();
@@ -26,22 +26,26 @@ const LikedArticle = () => {
     <>
       <Styled.LikedArticlesDiv>
         {articles &&
-          articles.map((article, idx) => (
-            <Styled.LikedArticleDiv
-              key={idx}
-              article={article}
-              onClick={() => handleClick(article.id)}
-            >
-              <span className="article_board">{article.category.name}</span>
-              <span className="article_title">{article.title}</span>
-              <div className="liked_icon">
-                <FavoriteBorder />
-              </div>
-              <div className="comment_icon">
-                <SmsOutlined />
-              </div>
-            </Styled.LikedArticleDiv>
-          ))}
+          articles.map(
+            (article, idx) =>
+              article.category &&
+              article.category.name && (
+                <Styled.LikedArticleDiv
+                  key={idx}
+                  article={article}
+                  onClick={() => handleClick(article.id)}
+                >
+                  <span className="article_board">{article.category.name}</span>
+                  <span className="article_title">{article.title}</span>
+                  <div className="liked_icon">
+                    <FavoriteBorder />
+                  </div>
+                  <div className="comment_icon">
+                    <SmsOutlined />
+                  </div>
+                </Styled.LikedArticleDiv>
+              ),
+          )}
       </Styled.LikedArticlesDiv>
     </>
   );
