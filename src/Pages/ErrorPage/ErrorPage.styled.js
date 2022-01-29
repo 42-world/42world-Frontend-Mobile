@@ -6,7 +6,7 @@ const ErrorBackground = styled.div`
   background: #2a2d38;
   #logo {
     z-index: 0;
-    position: relative;
+    position: fixed;
     top: 20%;
     left: 50%;
     transform: translateX(-50%);
