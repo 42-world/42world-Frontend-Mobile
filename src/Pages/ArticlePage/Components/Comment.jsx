@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import Fab from '@mui/material/Fab';
 import ArrowUpwardRoundedIcon from '@mui/icons-material/ArrowUpwardRounded';
@@ -10,33 +10,29 @@ import Styled from '../ArticlePage.styled';
 import dayjs from 'dayjs';
 
 const Comment = ({ articleId }) => {
+  const lastComment = useRef();
   const [comments, setComments] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+
   const handleCreateComment = newComment => {
-    setIsLoading(true);
     setComments(prev => prev.concat(newComment));
-    setIsLoading(false);
-    console.log(comments);
-    // 임시 방편
-    // window.location.replace(`/article/${articleId}`);
+    lastComment.current.scrollIntoView();
+    fetchComment();
+  };
+
+  const fetchComment = async () => {
+    const res = await ArticleService.getArticlesCommentsById(articleId);
+    setComments(res);
   };
 
   useEffect(() => {
-    const fetch = async () => {
-      console.log('Change!');
-      const res = await ArticleService.getArticlesCommentsById(articleId);
-      setComments(res);
-    };
-    fetch();
-  }, [isLoading]);
+    fetchComment();
+  }, []);
 
   const getArticleTime = time =>
     dayjs(time).isSame(dayjs(), 'day')
       ? dayjs(time).format('HH:mm')
       : dayjs(time).format('MM/DD');
 
-  if (!comments) return <></>;
-  // articleId로 패칭 fetching
   return (
     <div className="comment_list_div">
       <Styled.ArticleCommentDiv
@@ -45,41 +41,40 @@ const Comment = ({ articleId }) => {
       >
         <SmsOutlined />
       </Styled.ArticleCommentDiv>
-      {!isLoading &&
-        comments.map((comment, idx) => {
-          return (
-            comment.writer && (
-              <>
-                <div className="comment_div" key={idx}>
-                  <div className="info">
-                    <Styled.ProfileImage width="2.4rem" imagePath="" />
-                    <div className="picture"></div>
-                    <div className="text">
-                      <h1>{comment.writer.nickname}</h1>
-                      <h2>{getArticleTime(comment.updatedAt)}</h2>
-                    </div>
+      {comments.map((comment, idx) => {
+        return (
+          comment.writer && (
+            <>
+              <div className="comment_div" key={idx}>
+                <div className="info">
+                  <Styled.ProfileImage width="2.4rem" imagePath="" />
+                  <div className="picture"></div>
+                  <div className="text">
+                    <h1>{comment.writer.nickname}</h1>
+                    <h2>{getArticleTime(comment.updatedAt)}</h2>
                   </div>
-                  <Styled.CommentContent
-                    className="content"
-                    liked_count={comment.liked_count}
-                  >
-                    <div className="text">{comment.content}</div>
-                    <span className="liked_count">
-                      <FavoriteBorder />
-                    </span>
-                  </Styled.CommentContent>
                 </div>
-              </>
-            )
-          );
-        })}
-
+                <Styled.CommentContent
+                  className="content"
+                  liked_count={comment.liked_count}
+                >
+                  <div className="text">{comment.content}</div>
+                  <span className="liked_count">
+                    <FavoriteBorder />
+                  </span>
+                </Styled.CommentContent>
+              </div>
+            </>
+          )
+        );
+      })}
       <Styled.CreateCommentDiv>
         <CreateComment
           articleId={articleId}
           handleCreateComment={handleCreateComment}
         />
       </Styled.CreateCommentDiv>
+      <div ref={lastComment}></div>
     </div>
   );
 };
@@ -87,12 +82,13 @@ const Comment = ({ articleId }) => {
 const CreateComment = ({ articleId, handleCreateComment }) => {
   const [input, setInput] = useState('');
   const handleChange = e => {
-    setInput(e.target.value);
+    if (e.target.value.length < 420) {
+      setInput(e.target.value);
+    }
   };
   const handleClickSubmit = async e => {
     e.preventDefault();
     if (input === '') {
-      alert('내용을 입력하세요!');
       return;
     }
 
@@ -101,7 +97,6 @@ const CreateComment = ({ articleId, handleCreateComment }) => {
       articleId: +articleId,
     });
     if (res) {
-      console.log('submit!');
       handleCreateComment(res);
       setInput('');
     }
