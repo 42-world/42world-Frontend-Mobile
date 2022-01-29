@@ -22,13 +22,10 @@ const Setting = () => {
     });
   };
 
-  const handleDuplicateCheck = () => {
-    console.log(input.nickname, '중복 확인');
-  };
+  const handleDuplicateCheck = () => {};
 
   const handleCharacterClick = value => {
     setCharacter(value);
-    console.log(`${character}에서 ${value}로 캐릭터 변경`);
   };
 
   return (

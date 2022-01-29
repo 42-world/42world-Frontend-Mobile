@@ -17,8 +17,6 @@ const Community = ({
         aria-label="mailbox folders"
       >
         {bestArticles.map(article => {
-          console.log('best');
-          console.log(article);
           return (
             <PreviewArticle
               id={article.id}
@@ -45,7 +43,6 @@ const Community = ({
 
         {freeArticles &&
           freeArticles.slice(0, 3).map(article => {
-            console.log('free');
             return (
               <PreviewArticle
                 id={article.id}
@@ -73,7 +70,6 @@ const Community = ({
 
         {anonyArticles &&
           anonyArticles.slice(0, 3).map(article => {
-            console.log('anony');
             return (
               <PreviewArticle
                 id={article.id}
