@@ -31,6 +31,7 @@ const CreateArticleBody = () => {
   };
 
   const handleClickSubmit = async () => {
+    console.log('submit');
     if (title === '') {
       alert('제목을 입력하세요!');
       return;
@@ -39,7 +40,6 @@ const CreateArticleBody = () => {
       alert('내용을 입력하세요!');
       return;
     }
-
     // 이동한 뒤에 API 실행됨
     setIsSending(true);
     const result = await ArticleService.createArticles({
@@ -49,6 +49,11 @@ const CreateArticleBody = () => {
     });
     setIsSending(false);
     navi(-1);
+  };
+
+  const handleFormSubmit = e => {
+    e.preventDefault();
+    handleClickSubmit();
   };
 
   useEffect(() => {
@@ -78,18 +83,19 @@ const CreateArticleBody = () => {
         <GlobalStyled.BoardTitleDiv>
           <div className="board_name">{curCate}</div>
         </GlobalStyled.BoardTitleDiv>
-        {/*<div className="category">{curCate}</div>*/}
-        <input
-          placeholder="제목을 입력하세요"
-          onChange={handleChangeTitle}
-          maxLength={42}
-        />
-        <textarea
-          placeholder="내용을 입력하세요"
-          onChange={handleChangeContent}
-          maxLength={4200}
-        />
-        <div>{content.length}/4200</div>
+        <form onSubmit={handleFormSubmit}>
+          <input
+            placeholder="제목을 입력하세요"
+            onChange={handleChangeTitle}
+            maxLength={42}
+          />
+          <textarea
+            placeholder="내용을 입력하세요"
+            onChange={handleChangeContent}
+            maxLength={4200}
+          />
+          <div>{content.length}/4200</div>
+        </form>
       </div>
     </>
   );

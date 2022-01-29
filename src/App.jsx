@@ -68,7 +68,6 @@ const PrivateRouteCheckAuth = ({ children }) => {
 
 const PrivateRouteCheckFtAuth = ({ children }) => {
   const auth = useContext(AuthContext);
-
   if (auth.state === 200) return children;
   else return <Navigate to="/profile" />;
 };

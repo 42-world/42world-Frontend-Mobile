@@ -79,6 +79,7 @@ const EditArticlePage = () => {
         title={title}
         onChangeContent={handleChangeContent}
         content={content}
+        onSubmit={handleClickSubmit}
       />
     </Styled.EditArticlePage>
   );
