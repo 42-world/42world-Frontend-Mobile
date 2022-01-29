@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-import { Button } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Styled from './ProfileHeader.styled';
 
@@ -10,11 +9,9 @@ const ProfileHeader = ({ title }) => {
   };
   return (
     <Styled.ProfileHeaderDiv>
-      <Button onClick={handleBackButtonClick}>
-        <ArrowBackIcon />
-      </Button>
+      <ArrowBackIcon onClick={handleBackButtonClick} />
       <Styled.ProfileHeaderTitleDiv>{title}</Styled.ProfileHeaderTitleDiv>
-      <Button disabled></Button>
+      <ArrowBackIcon id="unvisible" />
     </Styled.ProfileHeaderDiv>
   );
 };

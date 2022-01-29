@@ -33,22 +33,22 @@ const ProfilePage = () => {
     <ThemeProvider theme={theme}>
       <GlobalStyled.ProfileBackgroundDiv>
         <ProfileHeader title={'내 정보'} />
-        <Styled.CustomBox marginBottom="8px">
+        <Styled.CustomBox marginBottom="16px">
           <Info />
           <Articles />
         </Styled.CustomBox>
-        <Styled.CustomBox marginBottom="8px">
+        <Styled.CustomBox marginBottom="16px">
           <Authenticate />
         </Styled.CustomBox>
-        <Styled.CustomBox marginBottom="8px">
+        <Styled.CustomBox marginBottom="16px">
           <GithubLink />
         </Styled.CustomBox>
         <Styled.CustomBox>
           <SignOut />
         </Styled.CustomBox>
-        <Styled.CustomBox>
+        {/* <Styled.CustomBox>
           <Withdrawal />
-        </Styled.CustomBox>
+        </Styled.CustomBox> */}
       </GlobalStyled.ProfileBackgroundDiv>
     </ThemeProvider>
   );
