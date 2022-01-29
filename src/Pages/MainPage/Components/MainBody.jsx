@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
+import BestService from '../../../Network/BestService';
 import BodyPreView from './BodyPreView';
 import Community from './Community';
 import Home from './Home';
@@ -17,10 +18,10 @@ const MainBody = () => {
   });
   const [highlight, setHighlight] = useState(queryData.category || 'home');
   const [searchParams, setSearchParams] = useSearchParams();
-  const [famousArticles, setFamousArticles] = useState([]);
   const [freeArticles, setFreeArticles] = useState([]);
   const [anonyArticles, setAnonyArticles] = useState([]);
   const [notiArticles, setNotiArticles] = useState([]);
+  const [bestArticles, setBestArticles] = useState([]);
 
   const handleChangeTab = clicked => {
     setHighlight(clicked);
@@ -46,6 +47,12 @@ const MainBody = () => {
       const response = await ArticleService.getArticles(3);
       setNotiArticles(response);
     };
+
+    const getBestArticles = async () => {
+      const response = await BestService.getBestArticle();
+      setBestArticles(response);
+    };
+    getBestArticles();
     getFreeArticles();
     getAnonyArticles();
     getNotiArticles();
@@ -67,7 +74,7 @@ const MainBody = () => {
           <Home notiArticles={notiArticles} />
         ) : (
           <Community
-            famousArticles={famousArticles}
+            famousArticles={bestArticles}
             freeArticles={freeArticles}
             anonyArticles={anonyArticles}
             moveArticles={moveArticles}

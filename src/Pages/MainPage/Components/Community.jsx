@@ -3,7 +3,7 @@ import { PreviewArticle } from '../../../Components';
 import Styled from './Body.styled';
 
 const Community = ({
-  famousArticles,
+  bestArticles,
   freeArticles,
   anonyArticles,
   moveArticles,
@@ -16,16 +16,14 @@ const Community = ({
         component="nav"
         aria-label="mailbox folders"
       >
-        {/* famousArticles 대신 freeArticles로 */}
-        {freeArticles &&
-          freeArticles.slice(0, 3).map(article => {
+        {bestArticles &&
+          bestArticles.slice(0, 3).map(article => {
             return (
               <PreviewArticle
                 id={article.id}
                 article={article}
                 onClickArticle={() => moveArticles(article.id)}
               />
-              // 인기글 가져오기, 지금은 보류.
             );
           })}
       </Styled.StyledList>
