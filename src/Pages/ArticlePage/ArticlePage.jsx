@@ -7,6 +7,13 @@ import Styled from './ArticlePage.styled';
 
 const ArticlePage = () => {
   const { id } = useParams();
+
+  // const [isLoading, setIsLoading] = useState(false);
+  // const handleClick = () => {
+  //   setIsLoading(true);
+  //   setIsLoading(false);
+  // };
+
   return (
     <>
       <Header />
