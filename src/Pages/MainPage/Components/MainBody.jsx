@@ -35,22 +35,22 @@ const MainBody = () => {
   useEffect(() => {
     const getFreeArticles = async () => {
       const response = await ArticleService.getArticles(1);
-      setFreeArticles(response);
+      setFreeArticles(response.data);
     };
 
     const getAnonyArticles = async () => {
       const response = await ArticleService.getArticles(2);
-      setAnonyArticles(response);
+      setAnonyArticles(response.data);
     };
 
     const getNotiArticles = async () => {
       const response = await ArticleService.getArticles(3);
-      setNotiArticles(response);
+      setNotiArticles(response.data);
     };
 
     const getBestArticles = async () => {
       const response = await BestService.getBestArticle(3);
-      setBestArticles(response);
+      setBestArticles(response.data);
     };
     getBestArticles();
     getFreeArticles();
