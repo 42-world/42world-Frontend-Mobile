@@ -51,6 +51,7 @@ const PreviewArticleDiv = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
+      margin-top: 0.3rem;
       svg {
         width: 1.4rem;
         margin-right: 0.1rem;
