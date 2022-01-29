@@ -63,7 +63,7 @@ const AuthDiv = styled.div`
     background-color: ${GlobalStyled.theme.primary};
     &:hover {
       /* color: ${GlobalStyled.theme.textColorWhite}; */
-      background-color: ${GlobalStyled.theme.primary};
+      background-color: ${GlobalStyled.theme.disabled};
       /* background-color: #0000001f; */
     }
     &:active {
@@ -75,7 +75,7 @@ const AuthDiv = styled.div`
       background-color: ${GlobalStyled.theme.primary};
     }
     &:disabled {
-      background-color: ${GlobalStyled.theme.primary};
+      background-color: ${GlobalStyled.theme.disabled};
     }
   }
 
