@@ -46,14 +46,14 @@ const Body = ({ articleId }) => {
             <h2>{article.writer.nickname}</h2>
             <h2>{getArticleTime(article.createdAt)}</h2>
             <h2>조회수 {article.viewCount}</h2>
+            {article.writer.Id === userId && (
+              <div className="edit_article">
+                <button onClick={handleClickEdit}>수정</button>
+                <button onClick={handleClickDelete}>삭제</button>
+              </div>
+            )}
           </div>
         </div>
-        {article.writer.Id === userId && (
-          <div className="edit_article">
-            <button onClick={handleClickEdit}>수정</button>
-            <button onClick={handleClickDelete}>삭제</button>
-          </div>
-        )}
         <Styled.ProfileImage width="2.5rem" imagePath=""></Styled.ProfileImage>
       </div>
       <div className="content_middle">{article.content}</div>

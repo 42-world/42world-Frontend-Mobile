@@ -21,6 +21,12 @@ const Comment = ({ articleId }) => {
     };
     fetch();
   }, []);
+
+  const getArticleTime = time =>
+    dayjs(time).isSame(dayjs(), 'day')
+      ? dayjs(time).format('HH:mm')
+      : dayjs(time).format('MM/DD');
+
   if (!comments) return <></>;
   // articleId로 패칭 fetching
   return (
@@ -38,7 +44,7 @@ const Comment = ({ articleId }) => {
             <div className="picture"></div>
             <div className="text">
               <h1>{comment.writer.nickname}</h1>
-              <h2>{dayjs(comment.updatedAt).format('MM/DD HH:mm')}</h2>
+              <h2>{getArticleTime(comment.updatedAt)}</h2>
             </div>
           </div>
           <Styled.CommentContent

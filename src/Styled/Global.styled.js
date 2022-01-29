@@ -1,18 +1,4 @@
-import styled, { keyframes } from 'styled-components';
-
-const slideIn = keyframes`
-  0% {
-    // transform: translateX(100%);
-    transform: scale(1);
-    opacity: 0.9;
-    border-radius: 15px;
-  }
-  100% {
-    // transform: translateX(0);
-    transform: scale(1);
-    border-radius: 0;
-  }
-`;
+import styled from 'styled-components';
 
 const theme = {
   primary: '#53b7ba',
@@ -39,6 +25,11 @@ const theme = {
   headerBackgroundColor: 'rgba(42, 45, 56, 1)',
   headerIconColor: '#fff',
 
+  mainPageCheckInInfoBackgroundColor: '#e4f3f3',
+  mainPageCheckInInfoProgressBarColorGaepo: '#53b7ba',
+  mainPageCheckInInfoProgressBarColorSeocho: '#387E9C',
+  mainPageCheckInInfoProgressBarBackgroundColor: '#B4B4B4',
+
   categoryNameBackgroundColor: '#4C5A66',
   categoryNameTextColor: '#FFF',
 
@@ -52,12 +43,17 @@ const theme = {
 const assets = {
   headerLogo: '/assets/headerLogo.svg',
   sidebar: {
-    '80000co': '/assets/sidebar/80000co.png',
-    humansof42: '/assets/sidebar/humansof42.png',
-    giggle: '/assets/sidebar/giggle.png',
-    '42doproject': '/assets/sidebar/42doproject.png',
-    '42swim': '/assets/sidebar/42swim.png',
-    '42psychic': '/assets/sidebar/42psychic.png',
+    '80000co': '/assets/Sidebar/80000co.png',
+    humansof42: '/assets/Sidebar/humansof42.png',
+    giggle: '/assets/Sidebar/giggle.png',
+    '42doproject': '/assets/Sidebar/42doproject.png',
+    '42swim': '/assets/Sidebar/42swim.png',
+    '42psychic': '/assets/Sidebar/42psychic.png',
+  },
+  footer: {
+    github: '/assets/Footer/github.svg',
+    mail: '/assets/Footer/mail.svg',
+    article: '/assets/Footer/article.svg',
   },
 };
 
@@ -80,8 +76,6 @@ const ProfileBackgroundDiv = styled.div`
 
   // color
   background-color: #2a2d38;
-
-  animation: ${slideIn} 1000ms ease-in-out 0ms;
 `;
 
 const BoardTitleDiv = styled.div`
