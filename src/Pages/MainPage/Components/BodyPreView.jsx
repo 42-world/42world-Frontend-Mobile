@@ -9,7 +9,7 @@ const BodyPreView = ({ onChangeTab, highlight }) => {
 
   return (
     <>
-      <ListItem className="preview" disablePadding="true">
+      <ListItem className="preview" disablePadding={true}>
         <ListItemText>
           <Styled.StyledTabs
             value={highlight}

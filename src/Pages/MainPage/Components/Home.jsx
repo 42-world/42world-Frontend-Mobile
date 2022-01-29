@@ -29,6 +29,7 @@ const Home = ({ notiArticles }) => {
   useEffect(() => {
     const getCheckInStatus = async () => {
       const response = await CheckInService.curCheckInStatus();
+
       setCheckInStatus(response);
     };
     getCheckInStatus();
@@ -37,7 +38,7 @@ const Home = ({ notiArticles }) => {
   return (
     <Box>
       <Styled.CheckInHeader>
-        <text>클러스터 현황</text>
+        <p>클러스터 현황</p>
         <a href="https://cluster.42seoul.io/submit">
           <Button variant="contained">체크인</Button>
         </a>
@@ -67,7 +68,7 @@ const Home = ({ notiArticles }) => {
         </div>
       </Styled.CheckInBody>
       <Styled.StyledList
-        disablePadding="true"
+        disablePadding={true}
         component="nav"
         aria-label="mailbox folders"
       >

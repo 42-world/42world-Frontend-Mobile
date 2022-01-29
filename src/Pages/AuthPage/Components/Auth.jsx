@@ -1,12 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Styled from './Auth.styled';
 import FtAuthService from '../../../Network/FtAuthService';
 import { LoadingButton } from '@mui/lab';
 import { TextField } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
-import GlobalStyled from '../../../Styled/Global.styled';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../App';
 
-const authRequestInformation = intraId => {
+const AuthRequestInformation = ({ intraId }) => {
   return (
     <div className="send_info">
       <div>
@@ -21,7 +22,7 @@ const authRequestInformation = intraId => {
   );
 };
 
-const authRequestCheckStep = handleSendReset => {
+const AuthRequestCheckStep = ({ handleSendReset }) => {
   return (
     <div className="error_info">
       <h4>혹시 메일을 받지 못하셨나요?</h4>
@@ -34,14 +35,21 @@ const authRequestCheckStep = handleSendReset => {
 };
 
 const Auth = () => {
+  const navigate = useNavigate();
+  const auth = useContext(AuthContext);
   const [isSend, setIsSend] = useState(false);
   const [isBlock, setIsBlock] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [loadingMessage, setLoadingMessage] = useState({
+    text: '',
+  });
   const [input, setInput] = useState({
     email: '',
   });
   const [authInfo, setAuthInfo] = useState({
     email: '',
   });
+  let saveId;
 
   const onChange = e => {
     const { name, value } = e.target;
@@ -49,53 +57,80 @@ const Auth = () => {
       ...input,
       [name]: value,
     });
-    console.log(value);
   };
   const handleAuthenticate = () => {
-    setAuthInfo({
-      ...input,
-    });
-    FtAuthService.createFtAuth(authInfo.email);
-    setIsSend(true);
+    if (input.email === '') {
+      setIsError(true);
+      setTimeout(() => {
+        setIsError(false);
+      }, 1000);
+      return;
+    }
+    FtAuthService.createFtAuth(input.email);
     setIsBlock(true);
-
-    console.log(input.email, '로 인증 시도');
-    setTimeout(() => {
-      setIsBlock(false);
-    }, 3000);
+    setIsSend(true);
+    setAuthInfo({
+      email: input.email,
+    });
+    // setTimeout(() => {
+    //   setIsBlock(false);
+    // }, 3000);
   };
   const handleSendReset = () => {
+    setIsBlock(false);
     setIsSend(false);
     setInput({
       email: '',
     });
   };
 
+  const handleMessage = () => {
+    let intervalId = setInterval(() => {
+      setLoadingMessage(prevState => ({ text: prevState.text + '.' }));
+    }, 1000);
+    setTimeout(() => {
+      clearInterval(intervalId);
+    }, 3000);
+  };
+
+  useEffect(() => {
+    if (isBlock) handleMessage();
+    else {
+      setLoadingMessage({ text: '메일 전송 중' });
+    }
+  }, [isBlock]);
+
+  useEffect(() => {
+    if (auth.state === 200) navigate('/');
+  }, []);
+
   return (
     <Styled.AuthDiv>
       <div className="input_div">
-        <input
+        <TextField
+          className={input}
           name="email"
+          error={isError}
           value={input.email}
           onChange={onChange}
-          label="인트라 아이디"
-          type="text"
-          placeholder="Intra ID"
+          id="filled-error-helper-text"
+          label="Intra ID"
+          variant="outlined"
         />
-        <h5 className="domain"></h5>
+        <p className="domain">@student.42seoul.kr</p>
       </div>
       <LoadingButton
         className="send_button"
         onClick={handleAuthenticate}
-        endIcon={<SendIcon />}
         loading={isBlock}
-        loadingPosition="end"
+        loadingIndicator={loadingMessage.text}
         variant="contained"
+        disabled={isBlock}
       >
-        인증
+        인증메일 전송하기
       </LoadingButton>
-      {isSend && authRequestInformation(authInfo.email)}
-      {isSend && authRequestCheckStep(handleSendReset)}
+      {isSend && <AuthRequestInformation intraId={authInfo.email} />}
+      {isSend && <AuthRequestCheckStep handleSendReset={handleSendReset} />}
     </Styled.AuthDiv>
   );
 };

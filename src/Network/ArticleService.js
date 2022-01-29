@@ -91,10 +91,10 @@ const ArticleService = {
    * `200` : success \
    * `401` : fail
    */
-  getArticles: async categoryId => {
+  getArticles: async (categoryId, page) => {
     const method = 'GET';
     const url = articleUrl('');
-    const params = { categoryId };
+    const params = { categoryId, page };
 
     let response;
     try {
@@ -106,7 +106,7 @@ const ArticleService = {
     } catch (error) {
       alert(error);
     }
-    return response.data;
+    return response.data.data;
   },
   /**
    * **GET** One Articles By Articles ID

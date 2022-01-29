@@ -49,7 +49,7 @@ const CheckInHeader = styled.div`
   flex-direction: row;
   align-items: center;
   padding: 0.5rem 1.2rem;
-  text {
+  p {
     font-size: 1rem;
     font-weight: 600;
   }
@@ -99,7 +99,8 @@ const CheckInBody = styled.div`
 
   .gaepo {
     .CircularProgressbar-trail {
-      stroke: ${GlobalStyled.theme.mainPageCheckInInfoProgressBarBackgroundColor}80;
+      stroke: ${GlobalStyled.theme
+        .mainPageCheckInInfoProgressBarBackgroundColor}80;
     }
     .CircularProgressbar-path {
       stroke: ${GlobalStyled.theme.mainPageCheckInInfoProgressBarColorGaepo};
@@ -112,7 +113,8 @@ const CheckInBody = styled.div`
 
   .seocho {
     .CircularProgressbar-trail {
-      stroke: ${GlobalStyled.theme.mainPageCheckInInfoProgressBarBackgroundColor}80;
+      stroke: ${GlobalStyled.theme
+        .mainPageCheckInInfoProgressBarBackgroundColor}80;
     }
     .CircularProgressbar-path {
       stroke: ${GlobalStyled.theme.mainPageCheckInInfoProgressBarColorSeocho};

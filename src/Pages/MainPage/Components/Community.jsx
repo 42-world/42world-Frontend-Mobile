@@ -12,24 +12,24 @@ const Community = ({
   return (
     <>
       <Styled.StyledList
-        disablePadding="true"
+        disablePadding={true}
         component="nav"
         aria-label="mailbox folders"
       >
-        {bestArticles.map(article => {
-          return (
-            <PreviewArticle
-              id={article.id}
-              article={article}
-              onClickArticle={() => moveArticles(article.id)}
-            />
-          );
-        })}
+        {bestArticles &&
+          bestArticles.map(article => {
+            return (
+              <PreviewArticle
+                id={article.id}
+                article={article}
+                onClickArticle={() => moveArticles(article.id)}
+              />
+            );
+          })}
       </Styled.StyledList>
-
       <Styled.ListDivider margin="0.4rem" />
       <Styled.StyledList
-        disablePadding="true"
+        disablePadding={true}
         component="nav"
         aria-label="mailbox folders"
       >
@@ -56,7 +56,7 @@ const Community = ({
 
       <Styled.ListDivider margin="0.4rem" />
       <Styled.StyledList
-        disablePadding="true"
+        disablePadding={true}
         component="nav"
         aria-label="mailbox folders"
       >
