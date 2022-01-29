@@ -27,7 +27,7 @@ const Setting = () => {
 
     setCharacter(value);
     window.alert('캐릭터 변경 완료');
-
+    auth.setIsLoading(true);
   };
 
   return (
