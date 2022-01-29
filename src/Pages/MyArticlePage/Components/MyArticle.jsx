@@ -7,7 +7,7 @@ import Styled from './MyArticle.styled';
 
 const MyArticle = () => {
   const navigate = useNavigate();
-  const [articles, setArticles] = useState();
+  const [articles, setArticles] = useState([]);
 
   const handleClick = id => {
     navigate(`/article/${id}`);
@@ -17,30 +17,27 @@ const MyArticle = () => {
       const data = await UserService.getMyArticles();
       setArticles(data);
     };
-
     fetch();
   }, []);
-  if (!articles) return <></>;
   return (
     <>
       <Styled.MyArticlesDiv>
-        {articles &&
-          articles.map((article, idx) => (
-            <Styled.MyArticleDiv
-              key={idx}
-              article={article}
-              onClick={() => handleClick(article.id)}
-            >
-              <span className="article_board">{article.board}</span>
-              <span className="article_title">{article.title}</span>
-              <div className="liked_icon">
-                <FavoriteBorder />
-              </div>
-              <div className="comment_icon">
-                <SmsOutlined />
-              </div>
-            </Styled.MyArticleDiv>
-          ))}
+        {articles.map((article, idx) => (
+          <Styled.MyArticleDiv
+            key={idx}
+            article={article}
+            onClick={() => handleClick(article.id)}
+          >
+            <span className="article_board">{article.board}</span>
+            <span className="article_title">{article.title}</span>
+            <div className="liked_icon">
+              <FavoriteBorder />
+            </div>
+            <div className="comment_icon">
+              <SmsOutlined />
+            </div>
+          </Styled.MyArticleDiv>
+        ))}
       </Styled.MyArticlesDiv>
     </>
   );
