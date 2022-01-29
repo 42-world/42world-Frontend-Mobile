@@ -1,5 +1,4 @@
 import * as API from './APIType';
-import axios from 'axios';
 
 const commentUrl = path => {
   return `${API.url('/comments')}${path}`;

@@ -1,5 +1,4 @@
 import * as API from './APIType';
-import axios from 'axios';
 
 const authUrl = path => {
   return `${API.url('/auth')}${path}`;

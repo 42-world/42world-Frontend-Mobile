@@ -1,5 +1,4 @@
 import * as API from './APIType';
-import axios from 'axios';
 
 const bestUrl = path => {
   return `${API.url('/best')}${path}`;

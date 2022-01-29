@@ -1,5 +1,4 @@
 import * as API from './APIType';
-import axios from 'axios';
 
 const checkInUrl = path => {
   return `${API.url('/ft-checkin')}${path}`;
