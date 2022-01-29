@@ -42,6 +42,7 @@ const CategoryBody = () => {
     setInitalArticles();
   }, []);
 
+
   // 무한 스크롤 임시 정지
 
   // const getMoreItem = async () => {

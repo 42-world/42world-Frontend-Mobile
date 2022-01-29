@@ -1,14 +1,25 @@
 import { ArrowForwardIos, Person } from '@mui/icons-material';
 import Styled from './Info.styled';
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import UserService from '../../../Network/UserService';
 
 const Info = () => {
-  const email = 'euimin3070@gmail.com';
   const navigate = useNavigate();
+  const [nickname, setNickname] = useState();
 
   const handleSettingClick = () => {
     navigate('/profile/setting');
   };
+  useEffect(() => {
+    const fetch = async () => {
+      const { nickname } = await UserService.getMe();
+      setNickname(nickname);
+    };
+
+    fetch();
+  }, []);
+  if (!nickname) return <></>;
   return (
     <Styled.InfoBox onClick={handleSettingClick}>
       <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -16,8 +27,7 @@ const Info = () => {
           <Person fontSize="large" />
         </div>
         <div>
-          <Styled.NameDiv>{email.slice(0, email.indexOf('@'))}</Styled.NameDiv>
-          <Styled.EmailDiv>{email}</Styled.EmailDiv>
+          <Styled.NameDiv>{nickname}</Styled.NameDiv>
         </div>
       </div>
       <ArrowForwardIos />

@@ -19,13 +19,13 @@ const Home = ({ notiArticles }) => {
   const moveArticles = articleId => {
     navi(`/article/${articleId}`);
   };
-  const getCheckInStatus = useCallback(async () => {
-    const response = await CheckInService.curCheckInStatus();
-
-    setCheckInStatus(response);
-  }, [setCheckInStatus]);
 
   useEffect(() => {
+    const getCheckInStatus = async () => {
+      const response = await CheckInService.curCheckInStatus();
+
+      setCheckInStatus(response);
+    };
     getCheckInStatus();
   }, []);
 

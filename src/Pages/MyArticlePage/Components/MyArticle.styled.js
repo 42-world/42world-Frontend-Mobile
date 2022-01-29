@@ -34,7 +34,7 @@ const MyArticleDiv = styled.div`
     margin-right: 0.3rem;
   }
 
-  .favorite_icon {
+  .liked_icon {
     &::after {
       content: '${props => {
         if (props.article.liked_count > 0) return props.article.liked_count;

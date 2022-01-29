@@ -1,5 +1,4 @@
 import * as API from './APIType';
-import axios from 'axios';
 
 const userUrl = path => {
   return `${API.url('/users')}${path}`;
@@ -8,17 +7,17 @@ const userUrl = path => {
 const UserService = {
   /**
    * **GET** Signed in User Information
-   * @returns {{ \
-   * id: number, \
-   * nickname: string, \
-   * oauthToken: string, \
-   * isAuthenticated: boolean, \
-   * lastLogin: Date, \
-   * role: CADET, \
-   * character: 5, \
-   * deletedAt: Date, \
-   * createdAt: Date, \
-   * updatedAt: Date }} \
+   * @returns {Promise<{
+   * id: number,
+   * nickname: string,
+   * oauthToken: string,
+   * isAuthenticated: boolean,
+   * lastLogin: Date,
+   * role: CADET,
+   * character: 5,
+   * deletedAt: Date,
+   * createdAt: Date,
+   * updatedAt: Date }>}
    * user \
    * `200` : success \
    * `401` : fail
@@ -29,15 +28,20 @@ const UserService = {
 
     let response;
     try {
-      response = await axios({
+      response = await API.AXIOS({
         method,
         url,
-        withCredentials: true,
       });
     } catch (error) {
-      console.log('service : ', error);
+      return {
+        data: null,
+        state: error.response.status,
+      };
     }
-    return response.data;
+    return {
+      data: response.data,
+      state: 200,
+    };
   },
   /**
    * **DELETE** Signed in User
@@ -51,10 +55,9 @@ const UserService = {
 
     let response;
     try {
-      response = await axios({
+      response = await API.AXIOS({
         method,
         url,
-        withCredentials: true,
       });
     } catch (error) {
       alert(error);
@@ -85,10 +88,9 @@ const UserService = {
 
     let response;
     try {
-      response = await axios({
+      response = await API.AXIOS({
         method,
         url,
-        withCredentials: true,
       });
     } catch (error) {
       alert(error);
@@ -115,10 +117,9 @@ const UserService = {
 
     let response;
     try {
-      response = await axios({
+      response = await API.AXIOS({
         method,
         url,
-        withCredentials: true,
       });
     } catch (error) {
       alert(error);
@@ -137,10 +138,9 @@ const UserService = {
 
     let response;
     try {
-      response = await axios({
+      response = await API.AXIOS({
         method,
         url,
-        withCredentials: true,
       });
     } catch (error) {
       alert(error);
@@ -172,14 +172,82 @@ const UserService = {
 
     let response;
     try {
-      response = await axios({
+      response = await API.AXIOS({
         method,
         body,
         url,
-        withCredentials: true,
       });
     } catch (error) {
       alert(error);
+    }
+    return response.data;
+  },
+  // 내 정보 가져오기 추가
+  getMe: async () => {
+    const method = 'GET';
+    const url = userUrl('/me');
+
+    let response;
+    try {
+      response = await API.AXIOS({
+        method,
+        url,
+
+        headers: {
+          Authorization:
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJSb2xlIjoiQ0FERVQiLCJpYXQiOjE2NDI4Mzk2NDMsImV4cCI6MTY3NDM3NTY0M30.njfNsxkeFymN-WC7BS3h26yEWl2ftWrNe--8GGkzsJ4',
+        },
+      });
+    } catch (error) {
+      console.log('service : ', error);
+    }
+    return { nickname: 'asdf' };
+    // return response.data;
+  },
+
+  // 내 글, 내 댓글, 좋아요한 글 불러오기 추가
+  getLikeArticles: async () => {
+    const method = 'GET';
+    const url = userUrl('/me/like-articles');
+
+    let response;
+    try {
+      response = await API.AXIOS({
+        method,
+        url,
+      });
+    } catch (error) {
+      console.log('service : ', error);
+    }
+    return response.data;
+  },
+  getMyArticles: async () => {
+    const method = 'GET';
+    const url = userUrl('/me/articles');
+
+    let response;
+    try {
+      response = await API.AXIOS({
+        method,
+        url,
+      });
+    } catch (error) {
+      console.log('service : ', error);
+    }
+    return response.data;
+  },
+  getMyComments: async () => {
+    const method = 'GET';
+    const url = userUrl('/me/comments');
+
+    let response;
+    try {
+      response = await API.AXIOS({
+        method,
+        url,
+      });
+    } catch (error) {
+      console.log('service : ', error);
     }
     return response.data;
   },

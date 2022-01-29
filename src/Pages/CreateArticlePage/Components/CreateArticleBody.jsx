@@ -6,6 +6,7 @@ import ArticleService from '../../../Network/ArticleService';
 import Button from '@mui/material/Button';
 import LoadingButton from '@mui/lab/LoadingButton';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import GlobalStyled from '../../../Styled/Global.styled';
 
 const CreateArticleBody = () => {
   const [title, setTitle] = useState('');
@@ -52,7 +53,7 @@ const CreateArticleBody = () => {
 
   useEffect(() => {
     setCurCate(getCurCategory(loca));
-  }, []);
+  }, [loca]);
   return (
     <>
       <div className="header">
@@ -74,7 +75,10 @@ const CreateArticleBody = () => {
         </div>
       </div>
       <div className="body">
-        <div className="category">{curCate}</div>
+        <GlobalStyled.BoardTitleDiv>
+          <div className="board_name">{curCate}</div>
+        </GlobalStyled.BoardTitleDiv>
+        {/*<div className="category">{curCate}</div>*/}
         <input
           placeholder="제목을 입력하세요"
           onChange={handleChangeTitle}

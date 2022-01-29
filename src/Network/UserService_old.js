@@ -60,12 +60,11 @@ const UserService = {
         const headers = {};
         const body = {};
         const url = API.url('path');
-        const response = await axios({
+        const response = await API.AXIOS({
           method,
           headers,
           body,
           url,
-          withCredentials: true,
         });
       } catch (error) {
         console.log('error');

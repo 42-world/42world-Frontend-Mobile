@@ -95,10 +95,12 @@ const Header = () => {
     if (queryData.mode === 'menu') {
       setIsMenuModal(true);
     }
+  }, [queryData.mode]);
+  useEffect(() => {
     if (loca.pathname.includes('article')) {
       setIsArticle(true);
     }
-  }, []);
+  }, [loca]);
 
   const navi = useNavigate();
 
@@ -108,13 +110,13 @@ const Header = () => {
         <div>
           {!isArticle && (
             <MenuIcon
-              sx={{ color: GlobalStyled.theme.textLight }}
+              sx={{ color: GlobalStyled.theme.headerIconColor }}
               onClick={handleOpenMenu}
             />
           )}
           {isArticle && (
             <ArrowBackIosRoundedIcon
-              sx={{ color: GlobalStyled.theme.textLight }}
+              sx={{ color: GlobalStyled.theme.headerIconColor }}
               onClick={handleBackButton}
             />
           )}
@@ -128,15 +130,15 @@ const Header = () => {
         </div>
         <div>
           {/*<SearchIcon
-            sx={{ color: GlobalStyled.theme.textLight }}
+            sx={{ color: GlobalStyled.theme.headerIconColor }}
             onClick={handleToggleSearch}
           />*/}
           <NotificationsIcon
-            sx={{ color: GlobalStyled.theme.textLight }}
+            sx={{ color: GlobalStyled.theme.headerIconColor }}
             onClick={() => navi('/alarm')}
           />
           <AccountCircleIcon
-            sx={{ color: GlobalStyled.theme.textLight }}
+            sx={{ color: GlobalStyled.theme.headerIconColor }}
             onClick={() => navi('/profile')}
           />
         </div>
@@ -148,7 +150,7 @@ const Header = () => {
           height: GlobalStyled.theme.headerHeight,
         }}
       ></div>
-      {/* <SearchIcon sx={{ color: GlobalStyled.theme.textLight }} onClick={() => navi('/search')} /> */}
+      {/* <SearchIcon sx={{ color: GlobalStyled.theme.headerIconColor }} onClick={() => navi('/search')} /> */}
       <SwipeableDrawer
         anchor="left"
         open={isMenuModal}

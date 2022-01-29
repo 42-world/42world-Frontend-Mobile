@@ -22,7 +22,6 @@ const LoginPage = ({ isCallback }) => {
     window.location.href = GithubLoginUrl;
   };
   useEffect(() => {
-    console.log('login auth : ', auth);
     const getAuth = async () => {
       if (isCallback) {
         const github_code = queryData.code;
@@ -31,7 +30,7 @@ const LoginPage = ({ isCallback }) => {
           navi('/login');
         }
         const result = await AuthService.getAuthAccessToken(github_code);
-        auth.setState(true);
+        auth.setIsLoading(true);
         navi('/');
       }
     };
@@ -39,8 +38,9 @@ const LoginPage = ({ isCallback }) => {
   }, []);
 
   useEffect(() => {
-    if (auth.state) navi('/');
-  }, [auth]);
+    if (!isCallback && (auth.state === 200 || auth.state === 403)) navi('/');
+  }, [auth.state]);
+
 
   return (
     <Styled.LoginPageBackground>

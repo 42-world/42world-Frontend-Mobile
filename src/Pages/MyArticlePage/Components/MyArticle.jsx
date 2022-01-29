@@ -1,36 +1,26 @@
 import { FavoriteBorder, SmsOutlined } from '@mui/icons-material';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import UserService from '../../../Network/UserService';
 
 import Styled from './MyArticle.styled';
 
 const MyArticle = () => {
-  const navi = useNavigate();
-  const articles = [
-    {
-      id: '1',
-      board: '자유게시판',
-      title: '글제목1',
-      liked_count: '1',
-      comment_count: '1',
-    },
-    {
-      id: '2',
-      board: '자유게시판',
-      title: '글제목2',
-      liked_count: '2',
-      comment_count: '2',
-    },
-    {
-      id: '3',
-      board: '익명게시판',
-      title: '글제목3',
-      liked_count: '3',
-      comment_count: '3',
-    },
-  ];
+  const navigate = useNavigate();
+  const [articles, setArticles] = useState();
+
   const handleClick = id => {
-    navi(`/article/${id}`);
+    navigate(`/article/${id}`);
   };
+  useEffect(() => {
+    const fetch = async () => {
+      const data = await UserService.getMyArticles();
+      setArticles(data);
+    };
+
+    fetch();
+  }, []);
+  if (!articles) return <></>;
   return (
     <>
       <Styled.MyArticlesDiv>
@@ -43,7 +33,7 @@ const MyArticle = () => {
             >
               <span className="article_board">{article.board}</span>
               <span className="article_title">{article.title}</span>
-              <div className="favorite_icon">
+              <div className="liked_icon">
                 <FavoriteBorder />
               </div>
               <div className="comment_icon">

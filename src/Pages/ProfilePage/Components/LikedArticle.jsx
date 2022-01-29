@@ -15,7 +15,7 @@ const LikedArticle = () => {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          width: '60px',
+          width: '70px',
         }}
       >
         <FavoriteBorder />

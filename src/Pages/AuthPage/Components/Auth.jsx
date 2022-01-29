@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import Styled from './Auth.styled';
 import FtAuthService from '../../../Network/FtAuthService';
+import { LoadingButton } from '@mui/lab';
+import { TextField } from '@mui/material';
+import SendIcon from '@mui/icons-material/Send';
 
 const authRequestInformation = intraId => {
   return (
@@ -67,17 +70,25 @@ const Auth = () => {
   return (
     <Styled.AuthDiv>
       <div>
-        <input
+        <TextField
           name="email"
           value={input.email}
           onChange={onChange}
-          placeholder="인트라 아이디"
+          id="standard-basic"
+          label="인트라 아이디"
+          variant="standard"
         />
-        <span></span>
+        <span id="domain"></span>
       </div>
-      <button disabled={isBlock} onClick={handleAuthenticate}>
+      <LoadingButton
+        onClick={handleAuthenticate}
+        endIcon={<SendIcon />}
+        loading={isBlock}
+        loadingPosition="end"
+        variant="contained"
+      >
         인증
-      </button>
+      </LoadingButton>
       {isSend && authRequestInformation('echung')}
       {isSend && authRequestCheckStep(handleSendReset)}
     </Styled.AuthDiv>
