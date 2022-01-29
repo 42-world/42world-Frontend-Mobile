@@ -29,8 +29,6 @@ const Home = ({ notiArticles }) => {
   useEffect(() => {
     const getCheckInStatus = async () => {
       const response = await CheckInService.curCheckInStatus();
-      console.log(response);
-
       setCheckInStatus(response);
     };
     getCheckInStatus();
@@ -45,25 +43,25 @@ const Home = ({ notiArticles }) => {
         </a>
       </Styled.CheckInHeader>
       <Styled.CheckInBody>
-        <div>
+        <div className="circular_progress_bar_div gaepo">
           <h2>개포</h2>
-          <div style={{ width: 100, height: 100 }}>
+          <div className="circular_progress_bar">
             <CircularProgressbar
-              maxValue={checkInStatus.max.gaepo}
-              text={checkInStatus.now.gaepo + '명'}
+              maxValue={checkInStatus.max.gaepo ? checkInStatus.max.gaepo : 1}
+              text={checkInStatus.now.gaepo + ' / ' + checkInStatus.max.gaepo}
               value={checkInStatus.now.gaepo}
-              strokeWidth={10}
+              strokeWidth={12}
             />
           </div>
         </div>
-        <div>
+        <div className="circular_progress_bar_div seocho">
           <h2>서초</h2>
-          <div style={{ width: 100, height: 100 }}>
+          <div className="circular_progress_bar">
             <CircularProgressbar
-              maxValue={checkInStatus.max.seocho}
-              text={checkInStatus.now.seocho + '명'}
+              maxValue={checkInStatus.max.seocho ? checkInStatus.max.seocho : 1}
+              text={checkInStatus.now.seocho + ' / ' + checkInStatus.max.seocho}
               value={checkInStatus.now.seocho}
-              strokeWidth={10}
+              strokeWidth={12}
             />
           </div>
         </div>
