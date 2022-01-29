@@ -34,7 +34,7 @@ const AuthRequestCheckStep = ({ handleSendReset }) => {
 
 const Auth = () => {
   const [isSend, setIsSend] = useState(false);
-  const [isBlock, setIsBlock] = useState(true);
+  const [isBlock, setIsBlock] = useState(false);
   const [isError, setIsError] = useState(false);
   const [loadingMessage, setLoadingMessage] = useState({
     text: '',
@@ -111,28 +111,16 @@ const Auth = () => {
         />
         <p className="domain">@student.42seoul.kr</p>
       </div>
-      {isSend ? (
-        <LoadingButton
-          className="send_button"
-          onClick={handleAuthenticate}
-          loading={isBlock}
-          loadingIndicator={loadingMessage.text}
-          variant="contained"
-          disabled={isBlock}
-        >
-          인증메일 전송하기
-        </LoadingButton>
-      ) : (
-        <LoadingButton
-          className="send_button"
-          loading={isBlock}
-          loadingIndicator={loadingMessage.text}
-          variant="contained"
-          disabled={isBlock}
-        >
-          인증메일 전송하기
-        </LoadingButton>
-      )}
+      <LoadingButton
+        className="send_button"
+        onClick={handleAuthenticate}
+        loading={isBlock}
+        loadingIndicator={loadingMessage.text}
+        variant="contained"
+        disabled={isBlock}
+      >
+        인증메일 전송하기
+      </LoadingButton>
       {isSend && <AuthRequestInformation intraId={authInfo.email} />}
       {isSend && <AuthRequestCheckStep handleSendReset={handleSendReset} />}
     </Styled.AuthDiv>
