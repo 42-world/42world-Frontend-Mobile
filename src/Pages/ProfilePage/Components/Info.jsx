@@ -9,7 +9,7 @@ const Info = () => {
   const navigate = useNavigate();
   const auth = useContext(AuthContext);
   const [nickname, setNickName] = useState(
-    auth.curUser.nickname ? auth.curUser.nickname : '',
+    auth.curUser ? auth.curUser.nickname : '',
   );
 
   const handleSettingClick = () => {

@@ -7,6 +7,7 @@ const theme = {
   text: '#000',
   textSecondary: '#666',
   textLightSecondary: '#ccc',
+  disabled: '#c4c4c4',
 
   textColor: '#000',
   textColorSecondary: '#666',
