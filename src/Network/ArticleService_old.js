@@ -1,7 +1,6 @@
 // # 게시글 /articles
 import { Article, Comment } from '../Entities';
 import * as API from './APIType';
-import axios from 'axios';
 
 const authUrl = path => {
   return `${API.url('/artiles')}path`;

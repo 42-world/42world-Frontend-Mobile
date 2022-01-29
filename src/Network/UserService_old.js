@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { User, Notification } from '../Entities';
 import * as API from './APIType';
 // # 유저 /users
