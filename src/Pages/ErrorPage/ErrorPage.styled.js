@@ -41,7 +41,7 @@ const ErrorBox = styled.div`
   h3 {
     color: #aaaaaa;
     font-size: 0.8rem;
-	font-weight: 300;
+    font-weight: 300;
   }
 `;
 
