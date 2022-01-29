@@ -17,7 +17,7 @@ const Comment = ({ articleId }) => {
   useEffect(() => {
     const fetch = async () => {
       const res = await ArticleService.getArticlesCommentsById(articleId);
-      setComments(res);
+      setComments(res.data);
     };
     fetch();
   }, []);
