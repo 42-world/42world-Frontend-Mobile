@@ -1,5 +1,4 @@
 import * as API from './APIType';
-import axios from 'axios';
 
 const categoryUrl = path => {
   return `${API.url('/categories')}${path}`;

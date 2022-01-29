@@ -1,5 +1,4 @@
 import * as API from './APIType';
-import axios from 'axios';
 
 const articleUrl = path => {
   return `${API.url('/articles')}${path}`;
