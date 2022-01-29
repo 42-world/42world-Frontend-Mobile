@@ -41,33 +41,30 @@ const Comment = ({ articleId }) => {
       >
         <SmsOutlined />
       </Styled.ArticleCommentDiv>
-      {comments.map((comment, idx) => {
-        return (
-          comment.writer && (
-            <>
-              <div className="comment_div" key={idx}>
-                <div className="info">
-                  <Styled.ProfileImage width="2.4rem" imagePath="" />
-                  <div className="picture"></div>
-                  <div className="text">
-                    <h1>{comment.writer.nickname}</h1>
-                    <h2>{getArticleTime(comment.updatedAt)}</h2>
-                  </div>
-                </div>
-                <Styled.CommentContent
-                  className="content"
-                  liked_count={comment.liked_count}
-                >
-                  <div className="text">{comment.content}</div>
-                  <span className="liked_count">
-                    <FavoriteBorder />
-                  </span>
-                </Styled.CommentContent>
+      {comments.map((comment, idx) => (
+        <>
+          <div className="comment_div" key={idx}>
+            <div className="info">
+              <Styled.ProfileImage width="2.4rem" imagePath="" />
+              <div className="picture"></div>
+              <div className="text">
+                <h1>{comment.writer.nickname}</h1>
+                <h2>{getArticleTime(comment.updatedAt)}</h2>
               </div>
-            </>
-          )
-        );
-      })}
+            </div>
+            <Styled.CommentContent
+              className="content"
+              liked_count={comment.liked_count}
+            >
+              <div className="text">{comment.content}</div>
+              <span className="liked_count">
+                <FavoriteBorder />
+              </span>
+            </Styled.CommentContent>
+          </div>
+        </>
+      ))}
+
       <Styled.CreateCommentDiv>
         <CreateComment
           articleId={articleId}
