@@ -1,8 +1,17 @@
 import Styled from './PreviewArticle.styled';
+import dayjs from 'dayjs';
 
 const PreviewArticleNoti = ({ article, onClickArticle }) => {
-  const previewMainText = article.content.substr(0, 30);
-  const created = article.createdAt.substr(0, 10);
+  const mainTextLen = 70;
+  const previewMainText =
+    article.content.length > mainTextLen
+      ? article.content.substr(0, mainTextLen) + '...'
+      : article.content;
+
+  const getArticleTime = time =>
+    dayjs(time).isSame(dayjs(), 'day')
+      ? dayjs(time).format('HH:mm')
+      : dayjs(time).format('MM/DD');
 
   return (
     <Styled.PreviewArticleDiv
@@ -16,7 +25,7 @@ const PreviewArticleNoti = ({ article, onClickArticle }) => {
       <div className="middle">{previewMainText}</div>
       <div className="bottom">
         <text>{article.writer.nickname}</text>
-        <text>{created}</text>
+        <h2>{getArticleTime(article.createdAt)}</h2>
         <text>조회수 {article.viewCount}</text>
       </div>
     </Styled.PreviewArticleDiv>
