@@ -22,7 +22,7 @@ const ProfileHeaderDiv = styled.div`
 const ProfileHeaderTitleDiv = styled.div`
   font-weight: 500;
   color: white;
-  font-size: 30px;
+  font-size: 2.2rem;
   line-height: 20px;
   // 매직 넘버
   /* margin: 16px; */
