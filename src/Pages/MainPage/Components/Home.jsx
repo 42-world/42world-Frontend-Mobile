@@ -11,8 +11,14 @@ import 'react-circular-progressbar/dist/styles.css';
 
 const Home = ({ notiArticles }) => {
   const [checkInStatus, setCheckInStatus] = useState({
-    gaepo: 0,
-    seocho: 0,
+    max: {
+      gaepo: 1,
+      seocho: 1,
+    },
+    now: {
+      gaepo: 0,
+      seocho: 0,
+    },
   });
   const navi = useNavigate();
 
@@ -23,6 +29,7 @@ const Home = ({ notiArticles }) => {
   useEffect(() => {
     const getCheckInStatus = async () => {
       const response = await CheckInService.curCheckInStatus();
+      console.log(response);
 
       setCheckInStatus(response);
     };
@@ -42,9 +49,9 @@ const Home = ({ notiArticles }) => {
           <h2>개포</h2>
           <div style={{ width: 100, height: 100 }}>
             <CircularProgressbar
-              maxValue={225}
-              text={checkInStatus.gaepo + '명'}
-              value={checkInStatus.gaepo}
+              maxValue={checkInStatus.max.gaepo}
+              text={checkInStatus.now.gaepo + '명'}
+              value={checkInStatus.now.gaepo}
               strokeWidth={10}
             />
           </div>
@@ -53,9 +60,9 @@ const Home = ({ notiArticles }) => {
           <h2>서초</h2>
           <div style={{ width: 100, height: 100 }}>
             <CircularProgressbar
-              maxValue={225}
-              text={checkInStatus.seocho + '명'}
-              value={checkInStatus.seocho}
+              maxValue={checkInStatus.max.seocho}
+              text={checkInStatus.now.seocho + '명'}
+              value={checkInStatus.now.seocho}
               strokeWidth={10}
             />
           </div>
