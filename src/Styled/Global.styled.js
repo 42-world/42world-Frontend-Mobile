@@ -42,7 +42,7 @@ const theme = {
 };
 
 const assets = {
-  headerLogo: '/assets/42mainlogo.png',
+  headerLogo: '/assets/42mainlogo2.svg',
   sidebar: {
     '80000co': '/assets/Sidebar/80000co.png',
     humansof42: '/assets/Sidebar/humansof42.png',
