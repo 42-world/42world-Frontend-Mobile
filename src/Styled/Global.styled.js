@@ -28,6 +28,7 @@ const theme = {
   mainPageCheckInInfoBackgroundColor: '#e4f3f3',
   mainPageCheckInInfoProgressBarColorGaepo: '#53b7ba',
   mainPageCheckInInfoProgressBarColorSeocho: '#387E9C',
+  mainPageCheckInInfoProgressBarBackgroundColor: '#B4B4B4',
 
   categoryNameBackgroundColor: '#4C5A66',
   categoryNameTextColor: '#FFF',
