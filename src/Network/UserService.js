@@ -230,7 +230,7 @@ const UserService = {
   },
   getNoviceProfile: async () => {
     const method = 'GET';
-    const url = userUrl('/novice-profile');
+    const url = userUrl('/profile');
 
     let response;
     try {
