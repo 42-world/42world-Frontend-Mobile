@@ -1,25 +1,17 @@
 import { ArrowForwardIos, Person } from '@mui/icons-material';
 import Styled from './Info.styled';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import UserService from '../../../Network/UserService';
+import { useContext } from 'react';
+import { AuthContext } from '../../../App';
 
 const Info = () => {
   const navigate = useNavigate();
-  const [nickname, setNickname] = useState();
+  const auth = useContext(AuthContext);
 
   const handleSettingClick = () => {
     navigate('/profile/setting');
   };
-  useEffect(() => {
-    const fetch = async () => {
-      const { nickname } = await UserService.getMe();
-      setNickname(nickname);
-    };
 
-    fetch();
-  }, []);
-  if (!nickname) return <></>;
   return (
     <Styled.InfoBox onClick={handleSettingClick}>
       <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -27,7 +19,7 @@ const Info = () => {
           <Person fontSize="large" />
         </div>
         <div>
-          <Styled.NameDiv>{nickname}</Styled.NameDiv>
+          <Styled.NameDiv>{auth.curUser.nickname}</Styled.NameDiv>
         </div>
       </div>
       <ArrowForwardIos />
