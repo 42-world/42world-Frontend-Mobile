@@ -69,11 +69,12 @@ const Auth = () => {
     setAuthInfo({
       email: input.email,
     });
-    setTimeout(() => {
-      setIsBlock(false);
-    }, 3000);
+    // setTimeout(() => {
+    //   setIsBlock(false);
+    // }, 3000);
   };
   const handleSendReset = () => {
+    setIsBlock(false);
     setIsSend(false);
     setInput({
       email: '',
