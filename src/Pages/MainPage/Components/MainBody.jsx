@@ -61,7 +61,7 @@ const MainBody = () => {
   return (
     <div className="mainpage-body">
       <Styled.StyledList
-        disablePadding="true"
+        disablePadding={true}
         component="nav"
         aria-label="mailbox folders"
       >

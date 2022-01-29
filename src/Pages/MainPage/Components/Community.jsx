@@ -12,7 +12,7 @@ const Community = ({
   return (
     <>
       <Styled.StyledList
-        disablePadding="true"
+        disablePadding={true}
         component="nav"
         aria-label="mailbox folders"
       >
@@ -28,7 +28,7 @@ const Community = ({
       </Styled.StyledList>
       <Styled.ListDivider margin="0.4rem" />
       <Styled.StyledList
-        disablePadding="true"
+        disablePadding={true}
         component="nav"
         aria-label="mailbox folders"
       >
@@ -55,7 +55,7 @@ const Community = ({
 
       <Styled.ListDivider margin="0.4rem" />
       <Styled.StyledList
-        disablePadding="true"
+        disablePadding={true}
         component="nav"
         aria-label="mailbox folders"
       >

@@ -68,7 +68,7 @@ const Home = ({ notiArticles }) => {
         </div>
       </Styled.CheckInBody>
       <Styled.StyledList
-        disablePadding="true"
+        disablePadding={true}
         component="nav"
         aria-label="mailbox folders"
       >
