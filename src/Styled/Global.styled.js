@@ -49,6 +49,7 @@ const assets = {
     '42doproject': '/assets/Sidebar/42doproject.png',
     '42swim': '/assets/Sidebar/42swim.png',
     '42psychic': '/assets/Sidebar/42psychic.png',
+    '42blind': '/assets/Sidebar/42blind.png',
   },
   footer: {
     github: '/assets/Footer/github.svg',

@@ -47,6 +47,12 @@ const siteMap = [
     desc: '당신의 평가자를 점쳐보세요...',
     icon: GlobalStyled.assets.sidebar['42psychic'],
   },
+  {
+    name: '42Blind',
+    link: 'https://42blind.com',
+    desc: '42카뎃들을 위한 익명 소통공간',
+    icon: GlobalStyled.assets.sidebar['42blind'],
+  },
 ];
 
 const MenuItem = ({ item, index }) => {
