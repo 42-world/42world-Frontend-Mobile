@@ -205,16 +205,7 @@ const App = () => {
               </PrivateRouteCheckAuth>
             }
           />
-          <Route
-            path="/*"
-            element={
-              <PrivateRouteCheckAuth>
-                <PrivateRouteCheckFtAuth>
-                  <ErrorPage />
-                </PrivateRouteCheckFtAuth>
-              </PrivateRouteCheckAuth>
-            }
-          />
+          <Route path="/*" element={<ErrorPage />} />
         </Routes>
       </Router>
     </AuthProvider>
