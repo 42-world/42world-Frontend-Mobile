@@ -3,7 +3,7 @@ import { PreviewArticle } from '../../../Components';
 import Styled from './Body.styled';
 
 const Community = ({
-  famousArticles,
+  bestArticles,
   freeArticles,
   anonyArticles,
   moveArticles,
@@ -17,8 +17,8 @@ const Community = ({
         aria-label="mailbox folders"
       >
         {/* famousArticles 대신 freeArticles로 */}
-        {freeArticles &&
-          freeArticles.slice(0, 3).map(article => {
+        {bestArticles &&
+          bestArticles.slice(0, 3).map(article => {
             return (
               <PreviewArticle
                 id={article.id}

@@ -15,7 +15,7 @@ const ErrorBackground = styled.div`
     position: fixed;
     bottom: 10%;
     left: 50%;
-	transform: translateX(-50%);s
+    transform: translateX(-50%);
   }
 `;
 
