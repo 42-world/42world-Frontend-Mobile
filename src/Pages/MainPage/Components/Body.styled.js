@@ -99,27 +99,27 @@ const CheckInBody = styled.div`
 
   .gaepo {
     .CircularProgressbar-trail {
-      stroke: ${GlobalStyled.theme.mainPageCheckInInfoProgressBarColorGaepo}60;
+      stroke: ${GlobalStyled.theme.mainPageCheckInInfoProgressBarBackgroundColor}80;
     }
     .CircularProgressbar-path {
       stroke: ${GlobalStyled.theme.mainPageCheckInInfoProgressBarColorGaepo};
     }
     .CircularProgressbar-text {
-      //fill: ${GlobalStyled.theme.textColor};
-      fill: ${GlobalStyled.theme.mainPageCheckInInfoProgressBarColorGaepo};
+      fill: ${GlobalStyled.theme.textColor};
+      //fill: ${GlobalStyled.theme.mainPageCheckInInfoProgressBarColorGaepo};
     }
   }
 
   .seocho {
     .CircularProgressbar-trail {
-      stroke: ${GlobalStyled.theme.mainPageCheckInInfoProgressBarColorSeocho}60;
+      stroke: ${GlobalStyled.theme.mainPageCheckInInfoProgressBarBackgroundColor}80;
     }
     .CircularProgressbar-path {
       stroke: ${GlobalStyled.theme.mainPageCheckInInfoProgressBarColorSeocho};
     }
     .CircularProgressbar-text {
-      //fill: ${GlobalStyled.theme.textColor};
-      fill: ${GlobalStyled.theme.mainPageCheckInInfoProgressBarColorSeocho};
+      fill: ${GlobalStyled.theme.textColor};
+      //fill: ${GlobalStyled.theme.mainPageCheckInInfoProgressBarColorSeocho};
     }
   }
 `;
