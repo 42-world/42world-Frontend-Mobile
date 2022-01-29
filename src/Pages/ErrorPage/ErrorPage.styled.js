@@ -36,11 +36,12 @@ const ErrorBox = styled.div`
   h2 {
     position: relative;
     text-align: center;
-    color: #53b7ba;
+    color: #FFFFFF;
   }
   h3 {
     color: #aaaaaa;
-    font-size: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 300;
   }
 `;
 
