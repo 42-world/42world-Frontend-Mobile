@@ -182,29 +182,6 @@ const UserService = {
     }
     return response.data;
   },
-  // 내 정보 가져오기 추가
-  getMe: async () => {
-    const method = 'GET';
-    const url = userUrl('/me');
-
-    let response;
-    try {
-      response = await API.AXIOS({
-        method,
-        url,
-
-        headers: {
-          Authorization:
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJSb2xlIjoiQ0FERVQiLCJpYXQiOjE2NDI4Mzk2NDMsImV4cCI6MTY3NDM3NTY0M30.njfNsxkeFymN-WC7BS3h26yEWl2ftWrNe--8GGkzsJ4',
-        },
-      });
-    } catch (error) {
-      console.log('service : ', error);
-    }
-    return { nickname: 'asdf' };
-    // return response.data;
-  },
-
   // 내 글, 내 댓글, 좋아요한 글 불러오기 추가
   getLikeArticles: async () => {
     const method = 'GET';
@@ -239,6 +216,21 @@ const UserService = {
   getMyComments: async () => {
     const method = 'GET';
     const url = userUrl('/me/comments');
+
+    let response;
+    try {
+      response = await API.AXIOS({
+        method,
+        url,
+      });
+    } catch (error) {
+      console.log('service : ', error);
+    }
+    return response.data;
+  },
+  getNoviceProfile: async () => {
+    const method = 'GET';
+    const url = userUrl('/novice-profile');
 
     let response;
     try {
