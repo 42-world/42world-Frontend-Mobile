@@ -20,9 +20,11 @@ const HeaderStyleDiv = styled.div`
   position: fixed;
   top: 0;
 
-  svg {
+  svg,
+  .header-logo {
     cursor: pointer;
   }
+
   div {
     width: 100%;
     flex-grow: 1;
