@@ -119,6 +119,7 @@ const ContactUsDiv = styled.div`
       justify-content: center;
       align-items: center;
       cursor: pointer;
+
       svg {
         width: 2.4rem;
         height: 2.4rem;
