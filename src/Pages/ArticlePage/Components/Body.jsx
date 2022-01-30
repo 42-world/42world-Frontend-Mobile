@@ -9,7 +9,7 @@ import dayjs from 'dayjs';
 import Styled from '../ArticlePage.styled';
 import ReactionService from 'Network/ReactionService';
 
-const Body = ({ articleId }) => {
+const Body = ({ articleId, categoryId }) => {
   // articleId로 패칭 fetching
   const [article, setArticle] = useState();
   const [isLike, setIsLike] = useState(false);
@@ -20,6 +20,8 @@ const Body = ({ articleId }) => {
   };
   const handleClickDelete = () => {
     ArticleService.deleteArticles(articleId);
+    // navi(`/category/${categoryId}`);
+    navi(-1);
   };
   const { userId } = useContext(AuthContext);
   useEffect(() => {
