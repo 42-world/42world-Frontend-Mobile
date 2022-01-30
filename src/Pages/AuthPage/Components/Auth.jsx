@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState, useMemo } from 'react';
 import Styled from './Auth.styled';
 import FtAuthService from '../../../Network/FtAuthService';
 import { LoadingButton } from '@mui/lab';
@@ -34,6 +34,15 @@ const AuthRequestCheckStep = ({ handleSendReset }) => {
   );
 };
 
+function checkKor(str) {
+  const regExp = /[ㄱ-ㅎㅏ-ㅣ가-힣]/g;
+  if (regExp.test(str)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 const Auth = () => {
   const navigate = useNavigate();
   const auth = useContext(AuthContext);
@@ -59,13 +68,14 @@ const Auth = () => {
     });
   };
   const handleAuthenticate = () => {
-    if (input.email === '') {
+    if (input.email === '' || checkKor(input.email)) {
       setIsError(true);
       setTimeout(() => {
         setIsError(false);
       }, 1000);
       return;
     }
+
     FtAuthService.createFtAuth(input.email);
     setIsBlock(true);
     setIsSend(true);
@@ -93,6 +103,11 @@ const Auth = () => {
     }, 3000);
   };
 
+  const errorMessage = useMemo(() => {
+    if (input.email === '') return '아이디를 입력하세요';
+    else return '영어/숫자/특수문자만 가능합니다';
+  }, [input.email]);
+
   useEffect(() => {
     if (isBlock) handleMessage();
     else {
@@ -100,9 +115,9 @@ const Auth = () => {
     }
   }, [isBlock]);
 
-  useEffect(() => {
-    if (auth.state === 200) navigate('/');
-  }, []);
+  // useEffect(() => {
+  //   if (auth.state === 200) navigate('/');
+  // }, []);
 
   return (
     <Styled.AuthDiv>
@@ -118,6 +133,7 @@ const Auth = () => {
           variant="outlined"
         />
         <p className="domain">@student.42seoul.kr</p>
+        <Styled.ErrorSpan isError={isError}>{errorMessage}</Styled.ErrorSpan>
       </div>
       <LoadingButton
         className="send_button"
