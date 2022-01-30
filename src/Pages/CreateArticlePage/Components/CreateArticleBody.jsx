@@ -87,7 +87,7 @@ const CreateArticleBody = () => {
           <input
             placeholder="제목을 입력하세요"
             onChange={handleChangeTitle}
-            maxLength={42}
+            maxLength={30}
           />
           <TextareaAutosize
             placeholder="내용을 입력하세요"
