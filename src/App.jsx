@@ -44,7 +44,6 @@ const AuthProvider = ({ children }) => {
       setCurUser(response.data);
       setState(response.state);
       setIsLoading(false);
-      console.log(state);
     };
     initState();
   }, [isLoading]);
