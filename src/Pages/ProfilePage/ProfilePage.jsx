@@ -31,7 +31,7 @@ const theme = createTheme({
 const ProfilePage = () => {
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyled.ProfileBackgroundDiv>
+      <GlobalStyled.ProfileBackgroundDiv isProfile={true}>
         <ProfileHeader title={'내 정보'} />
         <Styled.CustomBox marginBottom="16px">
           <Info />
@@ -46,9 +46,6 @@ const ProfilePage = () => {
         <Styled.CustomBox>
           <SignOut />
         </Styled.CustomBox>
-        {/* <Styled.CustomBox>
-          <Withdrawal />
-        </Styled.CustomBox> */}
       </GlobalStyled.ProfileBackgroundDiv>
     </ThemeProvider>
   );

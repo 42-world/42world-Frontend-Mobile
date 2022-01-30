@@ -11,6 +11,7 @@ const PreviewArticleDiv = styled.div`
   align-items: center;
   padding: 0.5rem 0.9rem 0.3rem 0.9rem;
   border-bottom: 1px solid #e6e6e6;
+  background-color: ${GlobalStyled.theme.previewArticleBackgroundColor};
 
   .top {
     display: flex;

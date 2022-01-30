@@ -31,6 +31,11 @@ const theme = {
   mainPageCheckInInfoProgressBarColorSeocho: '#387E9C',
   mainPageCheckInInfoProgressBarBackgroundColor: '#B4B4B4',
 
+  previewArticleBackgroundColor: '#fff',
+
+  profilePageMyInfoBackgroundColor: '#2a2d38',
+  profilePageBackgroundColor: '#f9f9f9',
+
   categoryNameBackgroundColor: '#4C5A66',
   categoryNameTextColor: '#FFF',
 
@@ -60,11 +65,6 @@ const assets = {
 };
 
 const ProfileBackgroundDiv = styled.div`
-  // position
-  //position: absolute;
-  //top: 0px;
-  //left: 0px;
-
   // layout
   display: flex;
   flex-direction: column;
@@ -77,7 +77,10 @@ const ProfileBackgroundDiv = styled.div`
   height: 100%;
 
   // color
-  background-color: #2a2d38;
+  background-color: ${props =>
+    props.isProfile
+      ? theme.profilePageMyInfoBackgroundColor
+      : theme.profilePageBackgroundColor};
 `;
 
 const BoardTitleDiv = styled.div`

@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 const LikedArticlesDiv = styled.div`
-  padding: 1rem 0;
+  padding: 0.5rem 0;
+  max-height: 80%;
+  overflow-y: auto;
 `;
 
 const LikedArticleDiv = styled.div`
@@ -14,7 +16,6 @@ const LikedArticleDiv = styled.div`
   align-items: center;
   padding: 0.2rem 0.45rem;
   border-bottom: 1px solid #e6e6e6;
-  background-color: #fff;
 
   .article_board {
     font-size: 0.9rem;

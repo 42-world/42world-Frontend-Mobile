@@ -1,4 +1,4 @@
-import { ArrowForwardIos, Person } from '@mui/icons-material';
+import { ArrowForwardIos } from '@mui/icons-material';
 import UserService from '../../../Network/UserService';
 import Styled from './Info.styled';
 import { useNavigate } from 'react-router-dom';
@@ -12,7 +12,6 @@ const Info = () => {
   const curUser = auth.curUser;
   const [nickname, setNickName] = useState(curUser ? curUser.nickname : '');
   const [character, _] = useState(curUser ? curUser.character : 0);
-
 
   const handleSettingClick = () => {
     navigate('/profile/setting');
@@ -29,7 +28,7 @@ const Info = () => {
   }, []);
 
   return (
-    <Styled.InfoBox onClick={handleSettingClick}>
+    <Styled.InfoDiv onClick={handleSettingClick}>
       <div style={{ display: 'flex', alignItems: 'center' }}>
         <div style={{ margin: '4px 12px 4px 4px', width: '36px' }}>
           <img
@@ -38,12 +37,13 @@ const Info = () => {
             style={{ width: '100%' }}
           />
         </div>
-        <div>
-          <Styled.NameDiv>{nickname}</Styled.NameDiv>
+        <div className="middle">
+          <div className="name">{nickname}</div>
+          <div className="welcome-message"> 님, 안녕하세요!</div>
         </div>
       </div>
       <ArrowForwardIos />
-    </Styled.InfoBox>
+    </Styled.InfoDiv>
   );
 };
 

@@ -1,14 +1,14 @@
 import { ProfileHeader } from 'Components';
 import GlobalStyled from 'Styled/Global.styled';
-import { LikedArticle } from './Components';
+import { MyComment } from './Components';
 
-const LikedArticlePage = () => {
+const MyCommentPage = () => {
   return (
     <GlobalStyled.ProfileBackgroundDiv>
-      <ProfileHeader title={'좋아요 누른 글'} />
-      <LikedArticle />
+      <ProfileHeader title={'내 댓글'} />
+      <MyComment />
     </GlobalStyled.ProfileBackgroundDiv>
   );
 };
 
-export default LikedArticlePage;
+export default MyCommentPage;

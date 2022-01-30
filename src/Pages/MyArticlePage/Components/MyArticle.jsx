@@ -1,7 +1,8 @@
 import { FavoriteBorder, SmsOutlined } from '@mui/icons-material';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import UserService from '../../../Network/UserService';
+import { Footer, PreviewArticle } from 'Components';
+import UserService from 'Network/UserService';
 
 import Styled from './MyArticle.styled';
 
@@ -9,36 +10,29 @@ const MyArticle = () => {
   const navigate = useNavigate();
   const [articles, setArticles] = useState([]);
 
-  const handleClick = id => {
+  const handleClickArticle = id => {
     navigate(`/article/${id}`);
   };
   useEffect(() => {
-    const fetch = async () => {
+    const fetchMyArticles = async () => {
       const data = await UserService.getMyArticles();
       setArticles(data);
     };
-    fetch();
+    fetchMyArticles();
   }, []);
   return (
     <>
       <Styled.MyArticlesDiv>
-        {articles.map((article, idx) => (
-          <Styled.MyArticleDiv
-            key={idx}
-            article={article}
-            onClick={() => handleClick(article.id)}
-          >
-            <span className="article_board">{article.board}</span>
-            <span className="article_title">{article.title}</span>
-            <div className="liked_icon">
-              <FavoriteBorder />
-            </div>
-            <div className="comment_icon">
-              <SmsOutlined />
-            </div>
-          </Styled.MyArticleDiv>
-        ))}
+        {articles &&
+          articles.map(article => (
+            <PreviewArticle
+              key={article.id}
+              article={article}
+              onClickArticle={() => handleClickArticle(article.id)}
+            />
+          ))}
       </Styled.MyArticlesDiv>
+      <Footer />
     </>
   );
 };
