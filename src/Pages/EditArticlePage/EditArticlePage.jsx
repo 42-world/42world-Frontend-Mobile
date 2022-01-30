@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import ArticleService from '../../Network/ArticleService';
 import { AuthContext } from '../../App';
-import { getCurCategory } from '../../Utils';
+import { getCategoryByUrl } from '../../Utils';
 
 import { EditArticlePageHeader, EditArticlePageBody } from './Conponents';
 import Styled from './EditArticlePage.styled';

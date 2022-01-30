@@ -1,4 +1,4 @@
-const getCurCategory = loca => {
+const getCategoryByUrl = loca => {
   const pathArray = loca.pathname.split('/');
   switch (pathArray[2]) {
     case '1':
@@ -12,4 +12,4 @@ const getCurCategory = loca => {
   }
 };
 
-export default getCurCategory;
+export default getCategoryByUrl;
