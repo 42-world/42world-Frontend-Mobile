@@ -100,6 +100,7 @@ const CategoryBody = () => {
           articles.map(article => {
             return (
               <PreviewArticle
+                key={article.id}
                 article={article}
                 onClickArticle={() => handleClickArticles(article.id)}
               />
