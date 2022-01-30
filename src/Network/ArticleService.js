@@ -240,6 +240,7 @@ const ArticleService = {
       response = await API.AXIOS({
         method,
         url,
+        params: { order: 'ASC' },
       });
     } catch (error) {
       alert(error);
