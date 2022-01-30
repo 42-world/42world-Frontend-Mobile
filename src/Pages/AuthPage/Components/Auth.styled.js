@@ -59,7 +59,7 @@ const AuthDiv = styled.div`
       }
 
       input {
-        padding: 10px 12px;
+        padding: 10px 12px !important;
       }
       * {
         color: ${GlobalStyled.theme.textColorLight};
