@@ -2,6 +2,7 @@ import { FavoriteBorder, SmsOutlined } from '@mui/icons-material';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import UserService from '../../../Network/UserService';
+import { PreviewArticle, Footer } from '../../../Components';
 
 import Styled from './LikedArticle.styled';
 
@@ -9,44 +10,37 @@ const LikedArticle = () => {
   const navigate = useNavigate();
   const [articles, setArticles] = useState();
 
-  const handleClick = id => {
+  const handleClickArticle = id => {
     navigate(`/article/${id}`);
   };
 
   useEffect(() => {
-    const fetch = async () => {
+    const fetchLikeArticles = async () => {
       const data = await UserService.getLikeArticles();
       setArticles(data.map(data => data.article));
     };
 
-    fetch();
+    fetchLikeArticles();
   }, []);
   if (!articles) return <></>;
+  console.log(articles);
   return (
     <>
       <Styled.LikedArticlesDiv>
         {articles &&
           articles.map(
-            (article, idx) =>
+            article =>
               article.category &&
               article.category.name && (
-                <Styled.LikedArticleDiv
-                  key={idx}
+                <PreviewArticle
+                  key={article.id}
                   article={article}
-                  onClick={() => handleClick(article.id)}
-                >
-                  <span className="article_board">{article.category.name}</span>
-                  <span className="article_title">{article.title}</span>
-                  <div className="liked_icon">
-                    <FavoriteBorder />
-                  </div>
-                  <div className="comment_icon">
-                    <SmsOutlined />
-                  </div>
-                </Styled.LikedArticleDiv>
+                  onClickArticle={() => handleClickArticle(article.id)}
+                />
               ),
           )}
       </Styled.LikedArticlesDiv>
+      <Footer />
     </>
   );
 };

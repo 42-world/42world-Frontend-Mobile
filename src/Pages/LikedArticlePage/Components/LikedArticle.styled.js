@@ -14,7 +14,6 @@ const LikedArticleDiv = styled.div`
   align-items: center;
   padding: 0.2rem 0.45rem;
   border-bottom: 1px solid #e6e6e6;
-  background-color: #fff;
 
   .article_board {
     font-size: 0.9rem;

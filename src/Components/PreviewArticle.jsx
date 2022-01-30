@@ -27,7 +27,7 @@ const PreviewArticle = ({ article, onClickArticle }) => {
       <div className="top">{article.title}</div>
       <div className="middle">{previewMainText}</div>
       <div className="bottom">
-        <h2>{article.writer.nickname}</h2>
+        {article.writer && <h2>{article.writer.nickname}</h2>}
         <h2>{getArticleTime(article.createdAt)}</h2>
         <h2>조회수 {article.viewCount}</h2>
 
