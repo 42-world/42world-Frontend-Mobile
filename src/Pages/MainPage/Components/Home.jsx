@@ -26,10 +26,11 @@ const Home = ({ notiArticles }) => {
     navi(`/article/${articleId}`);
   };
 
+  const getCheckInText = (now, max) => (now ? now + '/' + max : 'No Data');
+
   useEffect(() => {
     const getCheckInStatus = async () => {
       const response = await CheckInService.curCheckInStatus();
-
       setCheckInStatus(response);
     };
     getCheckInStatus();
@@ -49,7 +50,10 @@ const Home = ({ notiArticles }) => {
           <div className="circular_progress_bar">
             <CircularProgressbar
               maxValue={checkInStatus.max.gaepo ? checkInStatus.max.gaepo : 1}
-              text={checkInStatus.now.gaepo + ' / ' + checkInStatus.max.gaepo}
+              text={getCheckInText(
+                checkInStatus.now.gaepo,
+                checkInStatus.max.gaepo,
+              )}
               value={checkInStatus.now.gaepo}
               strokeWidth={12}
             />
@@ -60,7 +64,10 @@ const Home = ({ notiArticles }) => {
           <div className="circular_progress_bar">
             <CircularProgressbar
               maxValue={checkInStatus.max.seocho ? checkInStatus.max.seocho : 1}
-              text={checkInStatus.now.seocho + ' / ' + checkInStatus.max.seocho}
+              text={getCheckInText(
+                checkInStatus.now.seocho,
+                checkInStatus.max.seocho,
+              )}
               value={checkInStatus.now.seocho}
               strokeWidth={12}
             />
