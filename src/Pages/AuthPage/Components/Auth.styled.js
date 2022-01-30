@@ -1,6 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 import GlobalStyled from '../../../Styled/Global.styled';
 
+import { TextField } from '@mui/material';
 const fadeIn = keyframes`
   0% {
     opacity: 0;
@@ -30,6 +31,23 @@ const ErrorSpan = styled.span`
   }};
 `;
 
+const Input = styled(TextField)`
+  && {
+    * {
+      color: ${GlobalStyled.theme.textColorLight};
+    }
+    #filled-error-helper-text {
+      padding: 10px 12px;
+    }
+    #filled-error-helper-text-label {
+      transform: translate(14px, 12px) scale(1);
+    }
+    .css-igs3ac {
+      transition: border-color 500ms ease-in-out 0ms;
+    }
+  }
+`;
+
 const AuthDiv = styled.div`
   display: flex;
   padding: 2rem;
@@ -49,22 +67,6 @@ const AuthDiv = styled.div`
     margin-bottom: 0.7rem;
     gap: 10px;
     align-items: center;
-    .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
-      flex: 1 1 40%;
-      .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
-        transition: border-color 500ms ease-in-out 0ms;
-      }
-      .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
-        transform: translate(14px, 12px) scale(1);
-      }
-
-      input {
-        padding: 10px 12px !important;
-      }
-      * {
-        color: ${GlobalStyled.theme.textColorLight};
-      }
-    }
 
     .domain {
       flex: 1 1 40%;
@@ -149,6 +151,6 @@ const AuthDiv = styled.div`
   }
 `;
 
-const Styled = { AuthDiv, ErrorSpan };
+const Styled = { AuthDiv, ErrorSpan, Input };
 
 export default Styled;
