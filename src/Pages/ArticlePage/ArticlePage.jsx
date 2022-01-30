@@ -10,18 +10,11 @@ const ArticlePage = () => {
   const [categoryId, setCategoryId] = useState(0);
   const getCate = async () => {
     const result = await ArticleService.getArticlesById(id);
-    console.log(result);
     setCategoryId(result.categoryId);
   };
   useEffect(() => {
     getCate();
   }, []);
-
-  // const [isLoading, setIsLoading] = useState(false);
-  // const handleClick = () => {
-  //   setIsLoading(true);
-  //   setIsLoading(false);
-  // };
 
   return (
     <>
