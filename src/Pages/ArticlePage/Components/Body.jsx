@@ -69,7 +69,7 @@ const Body = ({ articleId }) => {
             {article.writer.id === curUser.id && (
               <div className="edit_article">
                 <button onClick={handleClickEdit}>수정</button>
-                <button onClick={handleClickDelete}>삭제</button>
+                {/* <button onClick={handleClickDelete}>삭제</button> */}
               </div>
             )}
           </div>
