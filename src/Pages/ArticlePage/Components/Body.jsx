@@ -72,7 +72,7 @@ const Body = ({ articleId }) => {
         </div>
         <Styled.ProfileImage
           width="2.5rem"
-          src={getProfileImg(curUser.character)}
+          src={getProfileImg(article.writer.character)}
         ></Styled.ProfileImage>
       </div>
       <div className="content_middle">{article.content}</div>

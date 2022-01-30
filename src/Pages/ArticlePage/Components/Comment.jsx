@@ -30,7 +30,7 @@ const Comment = ({ articleId, comment, isLikeInitial, likeCountInitial }) => {
         <div className="info">
           <Styled.ProfileImage
             width="2.4rem"
-            src={getProfileImg(auth.curUser.character)}
+            src={getProfileImg(comment?.writer?.character)}
           />
           <div className="picture"></div>
           <div className="text">
