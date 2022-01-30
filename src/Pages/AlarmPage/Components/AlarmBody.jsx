@@ -62,6 +62,7 @@ const AlarmBody = () => {
         alarmArticles.map(article => {
           return (
             <Styled.AlramArticleDiv
+              key={article.id}
               button
               divider
               className="article"
