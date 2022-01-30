@@ -106,7 +106,7 @@ const ArticleService = {
     } catch (error) {
       alert(error);
     }
-    return response.data.data;
+    return response.data;
   },
   /**
    * **GET** One Articles By Articles ID

@@ -21,7 +21,7 @@ const Comment = ({ articleId }) => {
 
   const fetchComment = async () => {
     const res = await ArticleService.getArticlesCommentsById(articleId);
-    setComments(res);
+    setComments(res?.data || []);
   };
 
   useEffect(() => {
@@ -37,33 +37,34 @@ const Comment = ({ articleId }) => {
     <div className="comment_list_div">
       <Styled.ArticleCommentDiv
         className="comment_count"
-        commentCount={comments.length}
+        commentCount={comments?.length}
       >
         <SmsOutlined />
       </Styled.ArticleCommentDiv>
-      {comments.map((comment, idx) => (
-        <>
-          <div className="comment_div" key={idx}>
-            <div className="info">
-              <Styled.ProfileImage width="2.4rem" imagePath="" />
-              <div className="picture"></div>
-              <div className="text">
-                <h1>{comment.writer.nickname}</h1>
-                <h2>{getArticleTime(comment.updatedAt)}</h2>
+      {comments &&
+        comments.map(comment => (
+          <>
+            <div className="comment_div" key={comment?.id}>
+              <div className="info">
+                <Styled.ProfileImage width="2.4rem" imagePath="" />
+                <div className="picture"></div>
+                <div className="text">
+                  <h1>{comment?.writer?.nickname}</h1>
+                  <h2>{getArticleTime(comment?.updatedAt)}</h2>
+                </div>
               </div>
+              <Styled.CommentContent
+                className="content"
+                liked_count={comment?.liked_count}
+              >
+                <div className="text">{comment.content}</div>
+                <span className="liked_count">
+                  <FavoriteBorder />
+                </span>
+              </Styled.CommentContent>
             </div>
-            <Styled.CommentContent
-              className="content"
-              liked_count={comment.liked_count}
-            >
-              <div className="text">{comment.content}</div>
-              <span className="liked_count">
-                <FavoriteBorder />
-              </span>
-            </Styled.CommentContent>
-          </div>
-        </>
-      ))}
+          </>
+        ))}
 
       <Styled.CreateCommentDiv>
         <CreateComment
