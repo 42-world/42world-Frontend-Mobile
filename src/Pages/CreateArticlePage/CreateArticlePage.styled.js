@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 const CreateArticlePage = styled.div`
   .header {
+    position: fixed;
     box-sizing: border-box;
     width: 100%;
     display: flex;
@@ -44,6 +45,7 @@ const CreateArticlePage = styled.div`
   }
 
   .body {
+    margin-top: 4.5rem;
     display: flex;
     flex-direction: column;
     justify-content: stretch;
@@ -68,6 +70,8 @@ const CreateArticlePage = styled.div`
       flex-direction: column;
       flex-grow: 1;
       input {
+        position: sticky;
+        top: 4.5rem;
         flex-grow: 0;
         box-sizing: border-box;
         width: 100%;

@@ -12,6 +12,7 @@ body {
   display: flex;
   width: 100%;
   justify-content: center;
+  /* scroll-behavior: smooth !important; */
 }
 
 #root {
