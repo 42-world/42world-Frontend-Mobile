@@ -89,7 +89,8 @@ const BoardTitleDiv = styled.div`
   display: flex;
   background-color: ${theme.categoryNameBackgroundColor};
   color: ${theme.categoryNameTextColor};
-  padding: 0.65rem 1.2rem;
+  // padding: 0.65rem 1.2rem;
+  padding: 0.65rem 1rem;
   align-items: center;
   justify-content: space-between;
 
