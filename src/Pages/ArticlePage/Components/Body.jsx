@@ -79,7 +79,7 @@ const Body = ({ articleId, categoryId }) => {
           src={getProfileImg(article.writer.character)}
         ></Styled.ProfileImage>
       </div>
-      <pre className="content_middle">{article.content}</pre>
+      <div className="content_middle">{article.content}</div>
       <div className="content_bottom">
         {categoryId !== 3 && (
           <Styled.ArticleLikedDiv likedCount={likeCount || 0}>
