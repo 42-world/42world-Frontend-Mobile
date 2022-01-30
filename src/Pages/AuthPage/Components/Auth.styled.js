@@ -39,8 +39,6 @@ const Input = styled(TextField)`
     #filled-error-helper-text {
       padding: 10px 12px;
     }
-    #filled-error-helper-text-label {
-    }
     .css-p0rm37 {
       transform: translate(14px, 12px) scale(1);
     }
