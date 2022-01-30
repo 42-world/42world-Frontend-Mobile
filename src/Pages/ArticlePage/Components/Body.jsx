@@ -52,7 +52,12 @@ const Body = ({ articleId }) => {
   if (!article) return <></>;
   return (
     <div className="content_div">
-      <GlobalStyled.BoardTitleDiv>
+      <GlobalStyled.BoardTitleDiv
+        onClick={() => {
+          console.log('asdfasf');
+          navi(`/category/${article.categoryId}`);
+        }}
+      >
         <div className="board_name">{getCategoryById(article.categoryId)}</div>
       </GlobalStyled.BoardTitleDiv>
       <div className="content_top">
