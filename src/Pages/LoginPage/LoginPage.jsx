@@ -55,7 +55,7 @@ const LoginPage = ({ isCallback }) => {
           ) : (
             <>
               <GitHubIcon />
-              <span>깃허브 계정으로 로그인 하기</span>
+              <span>GitHub 계정으로 로그인 하기</span>
             </>
           )}
         </Button>
