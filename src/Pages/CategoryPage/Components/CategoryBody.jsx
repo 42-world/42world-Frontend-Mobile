@@ -43,6 +43,10 @@ const CategoryBody = () => {
   };
 
   useEffect(() => {
+    if (categoryId === '2') {
+      alert('준비 중입니다!');
+      navi('/');
+    }
     setCurCate(getCurCategory(loca));
     setInitalArticles();
   }, []);
