@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import ReactionService from 'Network/ReactionService';
 import Styled from '../ArticlePage.styled';
 import { FavoriteBorder } from '@mui/icons-material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 import dayjs from 'dayjs';
+import { AuthContext } from 'App';
+import { getProfileImg } from 'Utils/profileList';
 
 const Comment = ({ articleId, comment, isLikeInitial, likeCountInitial }) => {
   const [isLike, setIsLike] = useState(isLikeInitial);
   const [likeCount, setLikeCount] = useState(likeCountInitial);
+  const auth = useContext(AuthContext);
 
   const getArticleTime = time =>
     dayjs(time).isSame(dayjs(), 'day')
@@ -25,7 +28,10 @@ const Comment = ({ articleId, comment, isLikeInitial, likeCountInitial }) => {
     <>
       <div className="comment_div" key={comment?.id}>
         <div className="info">
-          <Styled.ProfileImage width="2.4rem" imagePath="" />
+          <Styled.ProfileImage
+            width="2.4rem"
+            src={getProfileImg(auth.curUser.character)}
+          />
           <div className="picture"></div>
           <div className="text">
             <h1>{comment?.writer?.nickname}</h1>

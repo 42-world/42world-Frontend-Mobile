@@ -1,10 +1,10 @@
 import { ArrowForwardIos } from '@mui/icons-material';
-import UserService from '../../../Network/UserService';
+import UserService from 'Network/UserService';
 import Styled from './Info.styled';
 import { useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../../App';
-import { getProfileImg } from '../../../Utils/profileList';
+import { AuthContext } from 'App';
+import { getProfileImg } from 'Utils/profileList';
 
 const Info = () => {
   const navigate = useNavigate();
