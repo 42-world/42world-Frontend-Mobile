@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { getCategoryByUrl } from '../../../Utils';
 import { useLocation, useNavigate } from 'react-router-dom';
+import TextareaAutosize from 'react-textarea-autosize';
+
 import ArticleService from '../../../Network/ArticleService';
 
-import Button from '@mui/material/Button';
 import LoadingButton from '@mui/lab/LoadingButton';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import GlobalStyled from '../../../Styled/Global.styled';
@@ -88,7 +89,7 @@ const CreateArticleBody = () => {
             onChange={handleChangeTitle}
             maxLength={42}
           />
-          <textarea
+          <TextareaAutosize
             placeholder="내용을 입력하세요"
             onChange={handleChangeContent}
             maxLength={4200}

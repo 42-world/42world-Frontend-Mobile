@@ -44,6 +44,7 @@ const AuthProvider = ({ children }) => {
       setCurUser(response.data);
       setState(response.state);
       setIsLoading(false);
+      console.log(state);
     };
     initState();
   }, [isLoading]);
@@ -79,7 +80,7 @@ const App = () => {
     <AuthProvider>
       <Router>
         <Routes>
-          <Route path="login" element={<LoginPage isCallback={false} />} />
+          <Route path="/login" element={<LoginPage isCallback={false} />} />
           <Route
             path="/auth/github/callback"
             element={<LoginPage isCallback={true} />}
