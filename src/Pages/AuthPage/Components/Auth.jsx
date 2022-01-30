@@ -115,9 +115,9 @@ const Auth = () => {
     }
   }, [isBlock]);
 
-  // useEffect(() => {
-  //   if (auth.state === 200) navigate('/');
-  // }, []);
+  useEffect(() => {
+    if (auth.state === 200) navigate('/');
+  }, []);
 
   return (
     <Styled.AuthDiv>
