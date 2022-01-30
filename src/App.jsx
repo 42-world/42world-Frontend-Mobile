@@ -199,9 +199,9 @@ const App = () => {
           <Route
             path="/profile/auth"
             element={
-              // <PrivateRouteCheckAuth>
-              <AuthPage />
-              // </PrivateRouteCheckAuth>
+              <PrivateRouteCheckAuth>
+                <AuthPage />
+              </PrivateRouteCheckAuth>
             }
           />
           <Route path="/*" element={<ErrorPage />} />
