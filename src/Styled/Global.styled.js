@@ -94,6 +94,8 @@ const BoardTitleDiv = styled.div`
   align-items: center;
   justify-content: space-between;
 
+  cursor: pointer;
+
   .board_name {
     font-size: 1.1rem;
     font-weight: 700;
