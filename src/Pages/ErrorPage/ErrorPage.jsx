@@ -17,7 +17,12 @@ const ErrorPage = () => {
           <h3>아래 로고를 눌러 홈으로 돌아가 주세요.</h3>
         </div>
       </Styled.ErrorBox>
-      <img id="button" src="/assets/42mainlogo.png" style={{ width: '100px' }} onClick={() => navi('/')} />
+      <img
+        id="button"
+        src="/assets/42mainlogo.png"
+        style={{ width: '100px' }}
+        onClick={() => navi('/')}
+      />
     </Styled.ErrorBackground>
   );
 };
