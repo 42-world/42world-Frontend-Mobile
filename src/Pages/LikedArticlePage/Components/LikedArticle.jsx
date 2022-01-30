@@ -1,8 +1,8 @@
 import { FavoriteBorder, SmsOutlined } from '@mui/icons-material';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import UserService from '../../../Network/UserService';
-import { PreviewArticle, Footer } from '../../../Components';
+import UserService from 'Network/UserService';
+import { PreviewArticle, Footer } from 'Components';
 
 import Styled from './LikedArticle.styled';
 

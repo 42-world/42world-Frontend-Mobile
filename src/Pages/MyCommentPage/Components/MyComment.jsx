@@ -1,11 +1,11 @@
 import { ArrowForwardIos } from '@mui/icons-material';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import UserService from '../../../Network/UserService';
+import UserService from 'Network/UserService';
 
 import Styled from './MyComment.styled';
 import dayjs from 'dayjs';
-import { Footer } from '../../../Components';
+import { Footer } from 'Components';
 
 const MyComment = () => {
   const navi = useNavigate();
