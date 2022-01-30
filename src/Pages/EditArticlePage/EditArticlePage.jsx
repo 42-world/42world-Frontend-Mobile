@@ -11,8 +11,8 @@ import Styled from './EditArticlePage.styled';
 const EditArticlePage = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const cateId = useRef(null);
-  const articleId = useRef(null);
+  const [categoryId, setCategoryId] = useState(0);
+
   const auth = useContext(AuthContext);
 
   const loca = useLocation();
@@ -45,26 +45,21 @@ const EditArticlePage = () => {
     const result = await ArticleService.editArticles(+pathArray[2], {
       title: title,
       content: content,
-      categoryId: articleId.current, // + 붙이면 number 타입
+      categoryId: categoryId, // + 붙이면 number 타입
     });
     navi(-1);
   };
 
   useEffect(() => {
-    cateId.current = getCurCategory(loca);
-  }, [cateId, loca, getCurCategory]);
-
-  useEffect(() => {
     const getArticle = async () => {
       const response = await ArticleService.getArticlesById(pathArray[2]);
       const article = response;
-
       setTitle(article.title);
       setContent(article.content);
-      articleId.current = article.categoryId;
+      setCategoryId(article.categoryId);
     };
     getArticle();
-  }, [setTitle, setContent, articleId]);
+  }, [setTitle, setContent, categoryId]);
 
   return (
     <Styled.EditArticlePage>
@@ -73,7 +68,7 @@ const EditArticlePage = () => {
         onClickSubmit={handleClickSubmit}
       />
       <EditArticlePageBody
-        cateId={cateId.current}
+        categoryId={categoryId}
         curLength={content.length}
         onChangeTitle={handleChangeTitle}
         title={title}

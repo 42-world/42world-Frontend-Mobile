@@ -1,5 +1,18 @@
+import GlobalStyled from '../../../Styled/Global.styled';
+
+const getCategoryName = id => {
+  switch (id) {
+    case 1:
+      return '자유 게시판';
+    case 2:
+      return '익명 게시판';
+    default:
+      return '';
+  }
+};
+
 const EditArticlePageBody = ({
-  cateId,
+  categoryId,
   curLength,
   onChangeTitle,
   title,
@@ -13,7 +26,10 @@ const EditArticlePageBody = ({
   };
   return (
     <div className="body">
-      <div className="category">{cateId}</div>
+      <GlobalStyled.BoardTitleDiv>
+        <div className="board_name">{getCategoryName(categoryId)}</div>
+      </GlobalStyled.BoardTitleDiv>
+
       <form onSubmit={handleFormSubmit}>
         <input
           placeholder="제목을 입력하세요"

@@ -9,7 +9,18 @@ import dayjs from 'dayjs';
 import Styled from '../ArticlePage.styled';
 import ReactionService from 'Network/ReactionService';
 
-const Body = ({ articleId }) => {
+const getCategoryName = id => {
+  switch (id) {
+    case 1:
+      return '자유 게시판';
+    case 2:
+      return '익명 게시판';
+    default:
+      return '';
+  }
+};
+
+const Body = ({ articleId, categoryId }) => {
   // articleId로 패칭 fetching
   const [article, setArticle] = useState();
   const [isLike, setIsLike] = useState(false);
@@ -20,6 +31,8 @@ const Body = ({ articleId }) => {
   };
   const handleClickDelete = () => {
     ArticleService.deleteArticles(articleId);
+    // navi(`/category/${categoryId}`);
+    navi(-1);
   };
   const { userId } = useContext(AuthContext);
   useEffect(() => {
@@ -50,7 +63,7 @@ const Body = ({ articleId }) => {
   return (
     <div className="content_div">
       <GlobalStyled.BoardTitleDiv>
-        <div className="board_name">{article.category.name}</div>
+        <div className="board_name">{getCategoryName(article.categoryId)}</div>
       </GlobalStyled.BoardTitleDiv>
       <div className="content_top">
         <div className="title">
