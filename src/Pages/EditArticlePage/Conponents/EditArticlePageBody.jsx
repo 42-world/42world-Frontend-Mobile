@@ -35,7 +35,7 @@ const EditArticlePageBody = ({
           value={content}
         />
       </form>
-      <div>{curLength}/4200</div>
+      <p>{curLength}/4200</p>
     </div>
   );
 };
