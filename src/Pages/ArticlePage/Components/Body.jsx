@@ -13,7 +13,7 @@ import Styled from '../ArticlePage.styled';
 import ReactionService from 'Network/ReactionService';
 import { getProfileImg } from 'Utils/profileList';
 
-const Body = ({ articleId }) => {
+const Body = ({ articleId, categoryId }) => {
   const [article, setArticle] = useState();
   const [isLike, setIsLike] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
@@ -81,11 +81,13 @@ const Body = ({ articleId }) => {
       </div>
       <div className="content_middle">{article.content}</div>
       <div className="content_bottom">
-        <Styled.ArticleLikedDiv likedCount={likeCount || 0}>
-          <span onClick={handleClickLike}>
-            {isLike ? <FavoriteIcon /> : <FavoriteBorder />}
-          </span>
-        </Styled.ArticleLikedDiv>
+        {categoryId !== 3 && (
+          <Styled.ArticleLikedDiv likedCount={likeCount || 0}>
+            <span onClick={handleClickLike}>
+              {isLike ? <FavoriteIcon /> : <FavoriteBorder />}
+            </span>
+          </Styled.ArticleLikedDiv>
+        )}
       </div>
     </div>
   );
