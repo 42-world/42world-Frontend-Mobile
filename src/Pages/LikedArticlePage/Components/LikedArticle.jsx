@@ -28,8 +28,7 @@ const LikedArticle = () => {
         {articles &&
           articles.map(
             article =>
-              article.category &&
-              article.category.name && (
+              article && (
                 <PreviewArticle
                   key={article.id}
                   article={article}
