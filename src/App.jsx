@@ -44,7 +44,6 @@ const AuthProvider = ({ children }) => {
       setCurUser(response.data);
       setState(response.state);
       setIsLoading(false);
-      console.log(state);
     };
     initState();
   }, [isLoading]);
@@ -95,7 +94,7 @@ const App = () => {
               </PrivateRouteCheckAuth>
             }
           />
-          <Route
+          {/* <Route
             path="/alarm"
             element={
               <PrivateRouteCheckAuth>
@@ -104,7 +103,7 @@ const App = () => {
                 </PrivateRouteCheckFtAuth>
               </PrivateRouteCheckAuth>
             }
-          />
+          /> */}
 
           <Route
             path="/category/:id"
