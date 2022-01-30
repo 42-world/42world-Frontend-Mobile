@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import GlobalStyled from '../../../Styled/Global.styled';
 
 const MyCommentsDiv = styled.div`
   padding: 1rem 0;
@@ -9,30 +10,36 @@ const MyCommentDiv = styled.div`
   box-sizing: border-box;
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
   padding: 0.2rem 0.45rem;
   border-bottom: 1px solid #e6e6e6;
   background-color: #fff;
-  min-height: 1.96rem;
+  min-height: 6rem;
 
-  .article_board {
-    font-size: 0.9rem;
-    font-weight: 700;
-    width: 35%;
-    display: inline-block;
+  .top {
+    color: ${GlobalStyled.theme.textColorGray};
   }
-  .article_title {
-    font-size: 0.9rem;
-    font-weight: 400;
-    display: inline-block;
-    width: 100%;
+  .middle {
+    // 쌍따옴표 없으면 previewText 안 쓰고 css로만 해결 가능
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
-  div {
+  .bottom {
+    width: 80%;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    margin-right: 0.3rem;
+    font-size: 0.9rem;
+    color: ${GlobalStyled.theme.textColorGray};
+
+    *:nth-child(2) {
+      width: 60%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
   }
 `;
 
