@@ -5,12 +5,14 @@ import dayjs from 'dayjs';
 import Styled from './PreviewArticle.styled';
 
 const PreviewArticle = ({ article, onClickArticle }) => {
-  const mainTextLen = 70;
+  const mainTextLen = 30;
   const previewMainText =
     article.content.length > mainTextLen
       ? article.content.substr(0, mainTextLen) + '...'
       : article.content;
 
+  console.log(article);
+  console.log(previewMainText);
   const getArticleTime = time =>
     dayjs(time).isSame(dayjs(), 'day')
       ? dayjs(time).format('HH:mm')

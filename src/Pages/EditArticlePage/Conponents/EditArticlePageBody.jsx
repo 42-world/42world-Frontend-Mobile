@@ -1,3 +1,4 @@
+import TextareaAutosize from 'react-textarea-autosize';
 import GlobalStyled from '../../../Styled/Global.styled';
 import { getCategoryById } from '../../../Utils';
 
@@ -28,7 +29,7 @@ const EditArticlePageBody = ({
           type="text"
           value={title}
         />
-        <textarea
+        <TextareaAutosize
           placeholder="내용을 입력하세요"
           onChange={onChangeContent}
           maxLength={4200}

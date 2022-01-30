@@ -8,9 +8,9 @@ const SignOut = () => {
   const auth = useContext(AuthContext);
   const navi = useNavigate();
   const handleSignOut = async () => {
-    console.log('클릭!');
-    auth.setIsLoading(true);
     const result = await AuthService.signOut();
+    auth.setIsLoading(true);
+
     navi('/login');
   };
   return (

@@ -280,6 +280,7 @@ const ArticlePageDiv = styled.div`
       padding: 0.7rem;
       font-size: 0.85rem;
       font-weight: 400;
+      word-break: break-all;
       color: ${GlobalStyled.theme.textColor};
     }
   }

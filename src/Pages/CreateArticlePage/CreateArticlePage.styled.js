@@ -42,8 +42,8 @@ const CreateArticlePage = styled.div`
   .body {
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 4.5rem);
-
+    // height: calc(100vh - 4.5rem);
+    height: 100%;
     .category {
       box-sizing: border-box;
       width: 100%;
@@ -75,11 +75,12 @@ const CreateArticlePage = styled.div`
     textarea {
       box-sizing: border-box;
       width: 100%;
+      overflow: hidden;
+
       display: flex;
       background-color: #fff;
       padding: 0.9rem 1rem;
       border: 1px solid #ccc;
-      height: 100%;
       resize: none;
       &:focus {
         outline: none;
