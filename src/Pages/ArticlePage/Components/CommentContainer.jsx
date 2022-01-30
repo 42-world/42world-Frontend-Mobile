@@ -12,6 +12,7 @@ import Comment from './Comment';
 const CommentContainer = ({ articleId }) => {
   const lastComment = useRef();
   const [comments, setComments] = useState([]);
+  const [metadata, setMetadata] = useState();
 
   const handleCreateComment = newComment => {
     setComments(prev => prev.concat(newComment));
@@ -22,23 +23,27 @@ const CommentContainer = ({ articleId }) => {
   const fetchComment = async () => {
     const res = await ArticleService.getArticlesCommentsById(articleId);
     setComments(res?.data || []);
+    setMetadata(res?.meta);
   };
 
   useEffect(() => {
     fetchComment();
   }, []);
 
+  useEffect(() => {}, [lastComment]);
+
   return (
     <div className="comment_list_div">
       <Styled.ArticleCommentDiv
         className="comment_count"
-        commentCount={comments?.length}
+        commentCount={metadata?.totalCount}
       >
         <SmsOutlined />
       </Styled.ArticleCommentDiv>
       {comments &&
         comments.map(comment => (
           <Comment
+            key={comment.id}
             articleId={articleId}
             comment={comment}
             isLikeInitial={comment.isLike}
