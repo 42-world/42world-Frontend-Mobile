@@ -14,21 +14,29 @@ const PreviewArticleDiv = styled.div`
   background-color: ${GlobalStyled.theme.previewArticleBackgroundColor};
 
   .top {
-    display: flex;
+    display: inline-block;
     font-size: 0.95rem;
     font-weight: 700;
     align-items: left;
     margin-bottom: 0.15rem;
     width: 100%;
-  }
 
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
   .middle {
-    display: flex;
+    display: inline-block;
     font-size: 0.75rem;
     font-weight: 400;
     align-items: left;
     width: 100%;
+
     word-break: break-all;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
   .bottom {
