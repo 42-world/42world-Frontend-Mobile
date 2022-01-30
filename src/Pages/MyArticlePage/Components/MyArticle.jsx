@@ -1,7 +1,7 @@
 import { FavoriteBorder, SmsOutlined } from '@mui/icons-material';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Footer, PreviewArticle } from 'Components';
+import { PreviewArticle } from 'Components';
 import UserService from 'Network/UserService';
 
 import Styled from './MyArticle.styled';
@@ -16,7 +16,8 @@ const MyArticle = () => {
   useEffect(() => {
     const fetchMyArticles = async () => {
       const data = await UserService.getMyArticles();
-      setArticles(data);
+      // TODO: 나중에 페이지네이션 적용
+      setArticles(data.reverse());
     };
     fetchMyArticles();
   }, []);
@@ -32,7 +33,6 @@ const MyArticle = () => {
             />
           ))}
       </Styled.MyArticlesDiv>
-      <Footer />
     </>
   );
 };

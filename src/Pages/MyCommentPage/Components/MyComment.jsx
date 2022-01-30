@@ -5,7 +5,6 @@ import UserService from 'Network/UserService';
 
 import Styled from './MyComment.styled';
 import dayjs from 'dayjs';
-import { Footer } from 'Components';
 
 const MyComment = () => {
   const navi = useNavigate();
@@ -27,36 +26,34 @@ const MyComment = () => {
   };
 
   useEffect(() => {
+    // TODO: 나중에 페이지네이션 적용
     const fetchComments = async () => {
       const data = await UserService.getMyComments();
-      setComments(data);
+      setComments(data.reverse());
     };
 
     fetchComments();
   }, []);
   return (
-    <>
-      <Styled.MyCommentsDiv>
-        {comments.map(
-          (comment, idx) =>
-            comment.article && (
-              <Styled.MyCommentDiv
-                key={idx}
-                onClick={() => handleClick(comment.article.id)}
-              >
-                <div className="top">{getCommentTime(comment.createdAt)}</div>
-                <div className="middle">"{previewText(comment.content)}"</div>
-                <div className="bottom">
-                  <div>{comment.article.category.name}</div>
-                  <div>{comment.article.title}</div>
-                  <ArrowForwardIos style={{ fontSize: '10px' }} />
-                </div>
-              </Styled.MyCommentDiv>
-            ),
-        )}
-      </Styled.MyCommentsDiv>
-      <Footer />
-    </>
+    <Styled.MyCommentsDiv>
+      {comments.map(
+        (comment, idx) =>
+          comment.article && (
+            <Styled.MyCommentDiv
+              key={idx}
+              onClick={() => handleClick(comment.article.id)}
+            >
+              <div className="top">{getCommentTime(comment.createdAt)}</div>
+              <div className="middle">"{previewText(comment.content)}"</div>
+              <div className="bottom">
+                <div>{comment.article.category.name}</div>
+                <div>{comment.article.title}</div>
+                <ArrowForwardIos style={{ fontSize: '10px' }} />
+              </div>
+            </Styled.MyCommentDiv>
+          ),
+      )}
+    </Styled.MyCommentsDiv>
   );
 };
 

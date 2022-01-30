@@ -2,7 +2,7 @@ import { FavoriteBorder, SmsOutlined } from '@mui/icons-material';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import UserService from 'Network/UserService';
-import { PreviewArticle, Footer } from 'Components';
+import { PreviewArticle } from 'Components';
 
 import Styled from './LikedArticle.styled';
 
@@ -15,9 +15,10 @@ const LikedArticle = () => {
   };
 
   useEffect(() => {
+    // TODO: 나중에 페이지네이션 적용
     const fetchLikeArticles = async () => {
       const data = await UserService.getLikeArticles();
-      setArticles(data.map(data => data.article));
+      setArticles(data.map(data => data.article).reverse());
     };
 
     fetchLikeArticles();
@@ -37,7 +38,6 @@ const LikedArticle = () => {
               ),
           )}
       </Styled.LikedArticlesDiv>
-      <Footer />
     </>
   );
 };
