@@ -25,7 +25,7 @@ const NotiModal = ({ open, onClickCloseModal }) => {
         <List component="nav" aria-label="mailbox folders">
           {notiArticles.map(article => {
             return (
-              <ListItem button divider className="article">
+              <ListItem button divider className="article" key={article.id}>
                 <ListItemText>
                   <text>{article.type} </text>
                   <text> {article.content} </text>

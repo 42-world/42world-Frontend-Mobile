@@ -2,7 +2,7 @@ import Styled from './PreviewArticle.styled';
 import dayjs from 'dayjs';
 
 const PreviewArticleNoti = ({ article, onClickArticle }) => {
-  const mainTextLen = 70;
+  const mainTextLen = 30;
   const previewMainText =
     article.content.length > mainTextLen
       ? article.content.substr(0, mainTextLen) + '...'

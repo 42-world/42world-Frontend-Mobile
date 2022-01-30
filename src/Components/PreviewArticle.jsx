@@ -5,12 +5,6 @@ import dayjs from 'dayjs';
 import Styled from './PreviewArticle.styled';
 
 const PreviewArticle = ({ article, onClickArticle }) => {
-  const mainTextLen = 70;
-  const previewMainText =
-    article.content.length > mainTextLen
-      ? article.content.substr(0, mainTextLen) + '...'
-      : article.content;
-
   const getArticleTime = time =>
     dayjs(time).isSame(dayjs(), 'day')
       ? dayjs(time).format('HH:mm')
@@ -25,7 +19,7 @@ const PreviewArticle = ({ article, onClickArticle }) => {
       article={article}
     >
       <div className="top">{article.title}</div>
-      <div className="middle">{previewMainText}</div>
+      <div className="middle">{article.content}</div>
       <div className="bottom">
         {article.writer && <h2>{article.writer.nickname}</h2>}
         <h2>{getArticleTime(article.createdAt)}</h2>

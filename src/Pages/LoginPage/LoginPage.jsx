@@ -41,7 +41,6 @@ const LoginPage = ({ isCallback }) => {
     if (!isCallback && (auth.state === 200 || auth.state === 403)) navi('/');
   }, [auth.state]);
 
-
   return (
     <Styled.LoginPageBackground>
       <Styled.LoginPageBox>

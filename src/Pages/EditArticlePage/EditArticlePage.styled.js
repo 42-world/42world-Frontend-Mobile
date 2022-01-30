@@ -75,6 +75,8 @@ const EditArticlePage = styled.div`
     textarea {
       box-sizing: border-box;
       width: 100%;
+      overflow: hidden;
+
       display: flex;
       background-color: #fff;
       padding: 0.9rem 1rem;

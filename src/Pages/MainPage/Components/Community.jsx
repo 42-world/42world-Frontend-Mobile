@@ -20,6 +20,7 @@ const Community = ({
           bestArticles.map(article => {
             return (
               <PreviewArticle
+                key={article.id}
                 id={article.id}
                 article={article}
                 onClickArticle={() => moveArticles(article.id)}
@@ -46,6 +47,7 @@ const Community = ({
           freeArticles.slice(0, 3).map(article => {
             return (
               <PreviewArticle
+                key={article.id}
                 id={article.id}
                 article={article}
                 onClickArticle={() => moveArticles(article.id)}
