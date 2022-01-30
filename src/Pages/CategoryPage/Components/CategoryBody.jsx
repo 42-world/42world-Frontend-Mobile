@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { PreviewArticle } from '../../../Components';
+import { PreviewArticleNoti, PreviewArticle } from '../../../Components';
 import { getCategoryByUrl } from '../../../Utils';
 
 import ArticleService from '../../../Network/ArticleService';
@@ -98,13 +98,22 @@ const CategoryBody = () => {
 
         {articles &&
           articles.map(article => {
-            return (
-              <PreviewArticle
-                key={article.id}
-                article={article}
-                onClickArticle={() => handleClickArticles(article.id)}
-              />
-            );
+            if (categoryId === '3')
+              return (
+                <PreviewArticleNoti
+                  key={article.id}
+                  article={article}
+                  onClickArticle={() => handleClickArticles(article.id)}
+                />
+              );
+            else
+              return (
+                <PreviewArticle
+                  key={article.id}
+                  article={article}
+                  onClickArticle={() => handleClickArticles(article.id)}
+                />
+              );
           })}
 
         <div ref={setTarget} className="scroll_loading_progress">
