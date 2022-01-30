@@ -37,7 +37,7 @@ const BoardTitleDiv = styled.div`
     font-size: 0.9rem;
     font-weight: 400;
     &::after {
-      content: '${props => props.boardArticleCount} 개의 글';
+      content: '${props => props && props.boardArticleCount} 개의 글';
     }
   }
 `;

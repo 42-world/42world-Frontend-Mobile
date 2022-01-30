@@ -36,7 +36,7 @@ const Community = ({
         <Styled.BoardTitleDiv
           className="article"
           onClick={() => navi('/category/1')}
-          boardArticleCount={freeArticles.length}
+          boardArticleCount={freeArticles?.length}
         >
           <div className="board_name">자유게시판</div>
           <div className="board_count"></div>
@@ -63,7 +63,7 @@ const Community = ({
         <Styled.BoardTitleDiv
           className="article"
           onClick={() => navi('/category/2')}
-          boardArticleCount={anonyArticles.length}
+          boardArticleCount={anonyArticles?.length}
         >
           <div className="board_name">익명게시판</div>
           <div className="board_count"></div>
