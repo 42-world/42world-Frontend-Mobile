@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getCurCategory } from '../../../Utils';
+import { getCategoryByUrl } from '../../../Utils';
 import { useLocation, useNavigate } from 'react-router-dom';
 import ArticleService from '../../../Network/ArticleService';
 
@@ -56,7 +56,7 @@ const CreateArticleBody = () => {
   };
 
   useEffect(() => {
-    setCurCate(getCurCategory(loca));
+    setCurCate(getCategoryByUrl(loca));
   }, [loca]);
   return (
     <>
