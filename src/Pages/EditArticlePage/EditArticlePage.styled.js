@@ -99,6 +99,12 @@ const EditArticlePage = styled.div`
         }
       }
     }
+    p {
+      position: fixed;
+      color: rgba(0, 0, 0, 30%);
+      bottom: 10px;
+      right: 10px;
+    }
   }
 `;
 
