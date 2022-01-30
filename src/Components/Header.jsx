@@ -137,10 +137,10 @@ const Header = () => {
             sx={{ color: GlobalStyled.theme.headerIconColor }}
             onClick={() => navi('/profile')}
           />
-          <NotificationsIcon
+          {/* <NotificationsIcon
             sx={{ color: GlobalStyled.theme.headerIconColor }}
             onClick={() => navi('/alarm')}
-          />
+          /> */}
         </div>
         {/*{isSearch && <SearchBar />}*/}
       </Styled.HeaderStyleDiv>
