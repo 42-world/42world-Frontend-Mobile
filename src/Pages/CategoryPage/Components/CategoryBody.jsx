@@ -112,9 +112,12 @@ const CategoryBody = () => {
         </div>
 
         {+categoryId !== 3 && (
-          <Fab className="fab_button" onClick={handleClickWrite}>
+          <Styled.CreateButton
+            className="fab_button"
+            onClick={handleClickWrite}
+          >
             <CreateIcon />
-          </Fab>
+          </Styled.CreateButton>
         )}
       </Styled.StyledList>
     </>
