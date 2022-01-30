@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import GlobalStyled from '../Styled/Global.styled';
 
 const Footer = styled.div`
+  background: ${props =>
+    props.isProfile && GlobalStyled.theme.profilePageMyInfoBackgroundColor};
   width: 100%;
   display: flex;
   flex-direction: column;

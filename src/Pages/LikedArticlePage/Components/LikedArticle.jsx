@@ -2,7 +2,7 @@ import { FavoriteBorder, SmsOutlined } from '@mui/icons-material';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import UserService from 'Network/UserService';
-import { PreviewArticle, Footer } from 'Components';
+import { PreviewArticle } from 'Components';
 
 import Styled from './LikedArticle.styled';
 
@@ -37,7 +37,6 @@ const LikedArticle = () => {
               ),
           )}
       </Styled.LikedArticlesDiv>
-      <Footer />
     </>
   );
 };
