@@ -94,7 +94,7 @@ const CreateArticleBody = () => {
             onChange={handleChangeContent}
             maxLength={4200}
           />
-          <div>{content.length}/4200</div>
+          <p>{content.length}/4200</p>
         </form>
       </div>
     </>
