@@ -1,15 +1,15 @@
 import PreviewArticle from './PreviewArticle';
 import PreviewArticleNoti from './PreviewArticleNoti';
-import PreviewArticleAlarm from './PreviewArticleAlarm';
 import Header from './Header';
 import MenuModal from './MenuModal';
 import NotiModal from './NotiModal';
 import ProfileHeader from './ProfileHeader';
+import Footer from './Footer';
 
 export {
+  Footer,
   PreviewArticle,
   PreviewArticleNoti,
-  PreviewArticleAlarm,
   Header,
   MenuModal,
   NotiModal,

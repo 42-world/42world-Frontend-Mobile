@@ -49,7 +49,8 @@ const CreateArticlePage = styled.div`
       width: 100%;
       display: flex;
       background-color: #53b7ba;
-      padding: 0.65rem 1.2rem;
+      // padding: 0.65rem 1.2rem;
+      padding: 0.65rem 1rem;
       align-items: center;
       cursor: pointer;
       justify-content: space-between;

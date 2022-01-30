@@ -1,57 +1,38 @@
 import { FavoriteBorder, SmsOutlined } from '@mui/icons-material';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Footer, PreviewArticle } from 'Components';
+import UserService from 'Network/UserService';
 
 import Styled from './MyArticle.styled';
 
 const MyArticle = () => {
-  const navi = useNavigate();
-  const articles = [
-    {
-      id: '1',
-      board: '자유게시판',
-      title: '글제목1',
-      liked_count: '1',
-      comment_count: '1',
-    },
-    {
-      id: '2',
-      board: '자유게시판',
-      title: '글제목2',
-      liked_count: '2',
-      comment_count: '2',
-    },
-    {
-      id: '3',
-      board: '익명게시판',
-      title: '글제목3',
-      liked_count: '3',
-      comment_count: '3',
-    },
-  ];
-  const handleClick = id => {
-    navi(`/article/${id}`);
+  const navigate = useNavigate();
+  const [articles, setArticles] = useState([]);
+
+  const handleClickArticle = id => {
+    navigate(`/article/${id}`);
   };
+  useEffect(() => {
+    const fetchMyArticles = async () => {
+      const data = await UserService.getMyArticles();
+      setArticles(data);
+    };
+    fetchMyArticles();
+  }, []);
   return (
     <>
       <Styled.MyArticlesDiv>
         {articles &&
-          articles.map((article, idx) => (
-            <Styled.MyArticleDiv
-              key={idx}
+          articles.map(article => (
+            <PreviewArticle
+              key={article.id}
               article={article}
-              onClick={() => handleClick(article.id)}
-            >
-              <span className="article_board">{article.board}</span>
-              <span className="article_title">{article.title}</span>
-              <div className="favorite_icon">
-                <FavoriteBorder />
-              </div>
-              <div className="comment_icon">
-                <SmsOutlined />
-              </div>
-            </Styled.MyArticleDiv>
+              onClickArticle={() => handleClickArticle(article.id)}
+            />
           ))}
       </Styled.MyArticlesDiv>
+      <Footer />
     </>
   );
 };

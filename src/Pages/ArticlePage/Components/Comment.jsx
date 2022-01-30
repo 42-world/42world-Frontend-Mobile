@@ -1,64 +1,49 @@
-import { useEffect, useState } from 'react';
-import ArticleService from '../../../Network/ArticleService';
-import CommentService from '../../../Network/CommentService';
+import React, { useState } from 'react';
+import ReactionService from 'Network/ReactionService';
+import Styled from '../ArticlePage.styled';
+import { FavoriteBorder } from '@mui/icons-material';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
-const Comment = ({ articleId }) => {
-  // articleId로 패칭 fetching
-  const [comments, setComments] = useState();
-  const handleCreateComment = newComment => {
-    setComments(comments => comments.concat(newComment));
+import dayjs from 'dayjs';
+
+const Comment = ({ articleId, comment, isLikeInitial, likeCountInitial }) => {
+  const [isLike, setIsLike] = useState(isLikeInitial);
+  const [likeCount, setLikeCount] = useState(likeCountInitial);
+
+  const getArticleTime = time =>
+    dayjs(time).isSame(dayjs(), 'day')
+      ? dayjs(time).format('HH:mm')
+      : dayjs(time).format('MM/DD');
+
+  const handleClickLike = async id => {
+    const res = await ReactionService.createCommentReactionHeart(articleId, id);
+
+    setIsLike(res.isLike);
+    setLikeCount(res.likeCount);
   };
-
-  useEffect(() => {
-    const fetch = async () => {
-      const res = await ArticleService.getArticlesCommentsById(articleId);
-      setComments(res.data);
-    };
-    fetch();
-  }, []);
-  if (!comments) return <></>;
   return (
     <>
-      {/* 글쓰기 버튼처럼 고정된 위치에 떠있게? */}
-      <CreateComment
-        articleId={articleId}
-        handleCreateComment={handleCreateComment}
-      />
-      <div style={{ background: 'skyblue' }}>
-        {comments.map((comment, idx) => (
-          <div key={idx}>
-            <img src={'#'} />
-            <div>{comment.writer.nickname}</div>
-            <div>{comment.updatedAt}</div>
-            <div>{comment.content}</div>
+      <div className="comment_div" key={comment?.id}>
+        <div className="info">
+          <Styled.ProfileImage width="2.4rem" imagePath="" />
+          <div className="picture"></div>
+          <div className="text">
+            <h1>{comment?.writer?.nickname}</h1>
+            <h2>{getArticleTime(comment?.updatedAt)}</h2>
           </div>
-        ))}
+        </div>
+        <Styled.CommentContent
+          onClick={() => handleClickLike(comment?.id)}
+          className="content"
+          liked_count={likeCount}
+        >
+          <div className="text">{comment.content}</div>
+          <span className="liked_count">
+            {isLike ? <FavoriteIcon /> : <FavoriteBorder />}
+          </span>
+        </Styled.CommentContent>
       </div>
     </>
-  );
-};
-
-const CreateComment = ({ articleId, handleCreateComment }) => {
-  const [input, setInput] = useState('');
-  const handleChange = e => {
-    setInput(e.target.value);
-  };
-  const handleClickSubmit = async e => {
-    e.preventDefault();
-    const res = await CommentService.createComments({
-      content: input,
-      articleId: +articleId,
-    });
-    if (res.data) {
-      console.log(res.data);
-      // handleCreateComment(res.data);
-    }
-  };
-  return (
-    <form onSubmit={handleClickSubmit}>
-      <input value={input} onChange={handleChange} />
-      <button type="submit">제출</button>
-    </form>
   );
 };
 

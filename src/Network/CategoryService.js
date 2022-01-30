@@ -1,5 +1,4 @@
 import * as API from './APIType';
-import axios from 'axios';
 
 const categoryUrl = path => {
   return `${API.url('/categories')}${path}`;
@@ -23,15 +22,14 @@ const CategoryService = {
 
     let response;
     try {
-      response = await axios({
+      response = await API.AXIOS({
         method,
         url,
-        withCredentials: true,
       });
     } catch (error) {
       alert(error);
     }
-    return response;
+    return response.data;
   },
 };
 

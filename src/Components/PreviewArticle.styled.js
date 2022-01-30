@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import GlobalStyled from '../Styled/Global.styled';
 
 const PreviewArticleDiv = styled.div`
   cursor: pointer;
@@ -10,7 +11,9 @@ const PreviewArticleDiv = styled.div`
   align-items: center;
   padding: 0.5rem 0.9rem 0.3rem 0.9rem;
   border-bottom: 1px solid #e6e6e6;
+  background-color: ${GlobalStyled.theme.previewArticleBackgroundColor};
 
+  padding-left: 25px;
   .top {
     display: flex;
     font-size: 0.95rem;
@@ -50,16 +53,17 @@ const PreviewArticleDiv = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
+      margin-top: 0.3rem;
       svg {
         width: 1.4rem;
         margin-right: 0.1rem;
       }
     }
 
-    .favorite_icon {
+    .liked_icon {
       margin-left: auto;
       margin-bottom: 0.1rem;
-      color: #df867d;
+      color: ${GlobalStyled.theme.likedIconColor};
       &::after {
         content: '${props => {
           if (props.article.likeCount > 0) return props.article.likeCount;
@@ -69,7 +73,7 @@ const PreviewArticleDiv = styled.div`
     }
 
     .comment_icon {
-      color: #53b7ba;
+      color: ${GlobalStyled.theme.commentIconColor};
       &::after {
         content: '${props => {
           if (props.article.commentCount > 0) return props.article.commentCount;

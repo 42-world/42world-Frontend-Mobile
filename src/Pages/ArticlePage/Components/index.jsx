@@ -1,5 +1,4 @@
-import Header from './Header';
 import Body from './Body';
-import Comment from './Comment';
+import CommentContainer from './CommentContainer';
 
-export { Header, Body, Comment };
+export { Body, CommentContainer };

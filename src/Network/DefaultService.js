@@ -1,5 +1,4 @@
 import * as API from './APIType';
-import axios from 'axios';
 
 const bestUrl = path => {
   return `${API.url('/best')}${path}`;
@@ -21,15 +20,14 @@ const DefaultService = {
 
       let response;
       try {
-        response = await axios({
+        response = await API.AXIOS({
           method,
           url,
-          withCredentials: true,
         });
       } catch (error) {
         return error;
       }
-      return response;
+      return response.data;
     },
   },
   reaction: {
@@ -45,15 +43,14 @@ const DefaultService = {
 
       let response;
       try {
-        response = await axios({
+        response = await API.AXIOS({
           method,
           url,
-          withCredentials: true,
         });
       } catch (error) {
         return error;
       }
-      return response;
+      return response.data;
     },
   },
 };

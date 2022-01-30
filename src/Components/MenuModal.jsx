@@ -47,6 +47,12 @@ const siteMap = [
     desc: '당신의 평가자를 점쳐보세요...',
     icon: GlobalStyled.assets.sidebar['42psychic'],
   },
+  {
+    name: '42Blind',
+    link: 'https://42blind.com',
+    desc: '42카뎃들을 위한 익명 소통공간',
+    icon: GlobalStyled.assets.sidebar['42blind'],
+  },
 ];
 
 const MenuItem = ({ item, index }) => {
@@ -82,9 +88,9 @@ const QuickLink = () => {
   );
 };
 
-const githubLink = '깃링크';
-const emailLink = 'mailto:이메일링크';
-const articleLink = '블로그링크';
+const githubLink = 'https://github.com/42-world';
+const emailLink = 'mailto:42world.official@gmail.com';
+const articleLink = 'https://euimin.notion.site/42WORLD-925997bb2e7245b48fca5afeb298db76';
 
 const ContactUs = () => {
   const handleClick = useCallback(link => {
@@ -108,7 +114,7 @@ const ContactUs = () => {
         </div>
       </div>
       <h3>
-        team<span>heyinsa</span>
+        © 2022.<span> Team 42world</span>
       </h3>
     </Styled.ContactUsDiv>
   );

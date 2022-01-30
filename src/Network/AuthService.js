@@ -1,5 +1,4 @@
 import * as API from './APIType';
-import axios from 'axios';
 
 const authUrl = path => {
   return `${API.url('/auth')}${path}`;
@@ -27,16 +26,15 @@ const AuthService = {
 
     let response;
     try {
-      response = await axios({
+      response = await API.AXIOS({
         params,
         method,
         url,
-        withCredentials: true,
       });
     } catch (error) {
       alert(error);
     }
-    return response;
+    return response.data;
   },
   /**
    * **GET** User Sign Out
@@ -50,15 +48,14 @@ const AuthService = {
 
     let response;
     try {
-      response = await axios({
+      response = await API.AXIOS({
         method,
         url,
-        withCredentials: true,
       });
     } catch (error) {
       alert(error);
     }
-    return response;
+    return response.data;
   },
 };
 

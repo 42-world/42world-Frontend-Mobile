@@ -1,42 +1,82 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { PreviewArticleAlarm } from '../../../Components';
+import dayjs from 'dayjs';
 
-import ArticleService from '../../../Network/ArticleService';
+import { getCategoryById } from '../../../Utils';
+import Styled from './AlarmArticle.styled.js';
+import NotificationService from '../../../Network/NotificationService';
+
+const alarmType = (context, type) => {
+  let message;
+  switch (type) {
+    case 'NEW_COMMENT': {
+      message = '글에 답글이 달렸어요.';
+      break;
+    }
+    default:
+      message = '글을 확인해보세요.';
+  }
+  return '"' + context + '"' + message;
+};
 
 const AlarmBody = () => {
   const [alarmArticles, setAlarmArticles] = useState();
   const navi = useNavigate();
+  const mainTextLen = 10;
 
   const moveArticles = articleId => {
-    navi(`/article/${articleId}`);
+    alert('구현 중입니다!');
+    // navi(`/article/${articleId}`);
   };
 
-  useEffect(async () => {
-    let articles = await ArticleService.getArticles(1); // 알람 API 필요
-    setAlarmArticles(articles);
+  const previewMainText = article => {
+    const context =
+      article.content.length > mainTextLen
+        ? article.content.substr(0, mainTextLen) + '...'
+        : article.content;
+    return alarmType(context, article.type);
+  };
+
+  const getArticleTime = time => dayjs(time).format('MM/DD HH:mm');
+
+  const categoryName = article => {
+    return getCategoryById(article.userId);
+  };
+
+  useEffect(() => {
+    const getArticles = async () => {
+      const response = await NotificationService.getNotifications(); // 알람 API 필요
+      setAlarmArticles(response);
+    };
+    getArticles();
   }, []);
 
   return (
-    <>
-      <div className="alarm">
+    <Styled.AlramArticlesDiv>
+      <Styled.AlramArticleDiv>
         <div className="left">공지</div>
         <div className="middle">42월드 많이 이용해주세요!</div>
-        <div className="right">2022-01-26</div>
-      </div>
-      <div>
-        {alarmArticles &&
-          alarmArticles.map(article => {
-            return (
-              <PreviewArticleAlarm
-                article={article}
-                onClickArticle={() => moveArticles(article.id)}
-              />
-              // 인기글 가져오기, 지금은 보류.
-            );
-          })}
-      </div>
-    </>
+        <div className="right">01/30 00:00</div>
+      </Styled.AlramArticleDiv>
+      {alarmArticles &&
+        alarmArticles.map(article => {
+          return (
+            <Styled.AlramArticleDiv
+              button
+              divider
+              className="article"
+              onClick={() => moveArticles(article.userId)}
+            >
+              {/* <div className="left">{categoryName(article)}</div> */}
+              <div className="left">새 댓글</div>
+              <div className="middle">{previewMainText(article)}</div>
+              <div className="right">{getArticleTime(article.createdAt)}</div>
+            </Styled.AlramArticleDiv>
+
+            // 인기글 가져오기, 지금은 보류.
+          );
+        })}
+    </Styled.AlramArticlesDiv>
   );
 };
 

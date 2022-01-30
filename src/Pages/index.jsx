@@ -4,7 +4,7 @@ import AuthPage from './AuthPage';
 import LikedArticlePage from './LikedArticlePage';
 import MyArticlePage from './MyArticlePage';
 import SettingPage from './SettingPage';
-import MyCommentPage from './MyComment';
+import MyCommentPage from './MyCommentPage';
 
 import CategoryPage from './CategoryPage';
 import ArticlePage from './ArticlePage';

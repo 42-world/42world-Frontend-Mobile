@@ -22,8 +22,8 @@ const StyledList = styled(List)`
     bottom: 1.8rem;
     right: 1.5rem;
     z-index: 100;
-    background-color: ${GlobalStyled.theme.primary};
-    color: ${GlobalStyled.theme.textLight};
+    background-color: ${GlobalStyled.theme.secondary};
+    color: ${GlobalStyled.theme.headerIconColor};
     border-radius: 40%;
     cursor: 'pointer';
     @media (min-width: ${GlobalStyled.theme.mobileMinWidth}) {
@@ -31,26 +31,11 @@ const StyledList = styled(List)`
       left: calc(50% + 7rem);
     }
     &:hover {
-      background-color: ${GlobalStyled.theme.secondary};
+      background-color: ${GlobalStyled.theme.primary};
     }
   }
 `;
 
-const BoardTitleDiv = styled.div`
-  box-sizing: border-box;
-  width: 100%;
-  display: flex;
-  background-color: ${GlobalStyled.theme.primary};
-  padding: 0.65rem 1.2rem;
-  align-items: center;
-  justify-content: space-between;
-
-  .board_name {
-    font-size: 1.1rem;
-    font-weight: 700;
-  }
-`;
-
-const Styled = { BoardTitleDiv, StyledList };
+const Styled = { StyledList };
 
 export default Styled;

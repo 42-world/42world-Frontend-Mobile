@@ -1,5 +1,4 @@
 import * as API from './APIType';
-import axios from 'axios';
 
 const ftauthUrl = path => {
   return `${API.url('/ft-auth')}${path}`;
@@ -20,16 +19,15 @@ const FtAuthService = {
 
     let response;
     try {
-      response = await axios({
+      response = await API.AXIOS({
         method,
         data: data,
         url,
-        withCredentials: true,
       });
     } catch (error) {
       alert(error);
     }
-    return response;
+    return response.data;
   },
 };
 

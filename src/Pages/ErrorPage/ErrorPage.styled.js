@@ -15,7 +15,7 @@ const ErrorBackground = styled.div`
     position: fixed;
     bottom: 10%;
     left: 50%;
-	transform: translateX(-50%);s
+    transform: translateX(-50%);
   }
 `;
 
@@ -27,7 +27,7 @@ const ErrorBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 70px;
   h1 {
     z-index: 1;
     font-size: 6rem;
@@ -36,11 +36,12 @@ const ErrorBox = styled.div`
   h2 {
     position: relative;
     text-align: center;
-    color: #53b7ba;
+    color: #FFFFFF;
   }
   h3 {
     color: #aaaaaa;
-    font-size: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 300;
   }
 `;
 

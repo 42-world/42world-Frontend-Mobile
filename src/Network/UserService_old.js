@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { User, Notification } from '../Entities';
 import * as API from './APIType';
 // # 유저 /users
@@ -60,12 +59,11 @@ const UserService = {
         const headers = {};
         const body = {};
         const url = API.url('path');
-        const response = await axios({
+        const response = await API.AXIOS({
           method,
           headers,
           body,
           url,
-          withCredentials: true,
         });
       } catch (error) {
         console.log('error');

@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
+import BestService from '../../../Network/BestService';
 import BodyPreView from './BodyPreView';
 import Community from './Community';
 import Home from './Home';
@@ -17,10 +18,10 @@ const MainBody = () => {
   });
   const [highlight, setHighlight] = useState(queryData.category || 'home');
   const [searchParams, setSearchParams] = useSearchParams();
-  const [famousArticles, setFamousArticles] = useState([]);
   const [freeArticles, setFreeArticles] = useState([]);
   const [anonyArticles, setAnonyArticles] = useState([]);
   const [notiArticles, setNotiArticles] = useState([]);
+  const [bestArticles, setBestArticles] = useState([]);
 
   const handleChangeTab = clicked => {
     setHighlight(clicked);
@@ -31,19 +32,36 @@ const MainBody = () => {
     navi(`/article/${articleId}`);
   };
 
-  useEffect(async () => {
-    let articles = await ArticleService.getArticles(1);
-    setFreeArticles(articles);
-    articles = await ArticleService.getArticles(2);
-    setAnonyArticles(articles);
-    articles = await ArticleService.getArticles(3);
-    setNotiArticles(articles);
+  useEffect(() => {
+    const getFreeArticles = async () => {
+      const response = await ArticleService.getArticles(1);
+      setFreeArticles(response.data);
+    };
+
+    const getAnonyArticles = async () => {
+      const response = await ArticleService.getArticles(2);
+      setAnonyArticles(response.data);
+    };
+
+    const getNotiArticles = async () => {
+      const response = await ArticleService.getArticles(3);
+      setNotiArticles(response.data);
+    };
+
+    const getBestArticles = async () => {
+      const response = await BestService.getBestArticle(3);
+      setBestArticles(response.data);
+    };
+    getBestArticles();
+    getFreeArticles();
+    getAnonyArticles();
+    getNotiArticles();
   }, []);
 
   return (
     <div className="mainpage-body">
       <Styled.StyledList
-        disablePadding="true"
+        disablePadding={true}
         component="nav"
         aria-label="mailbox folders"
       >
@@ -56,7 +74,7 @@ const MainBody = () => {
           <Home notiArticles={notiArticles} />
         ) : (
           <Community
-            famousArticles={famousArticles}
+            bestArticles={bestArticles}
             freeArticles={freeArticles}
             anonyArticles={anonyArticles}
             moveArticles={moveArticles}

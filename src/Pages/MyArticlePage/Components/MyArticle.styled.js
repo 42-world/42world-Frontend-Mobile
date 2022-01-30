@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 const MyArticlesDiv = styled.div`
-  padding: 1rem 0;
+  padding: 0.5rem 0;
+  max-height: 80%;
+  overflow-y: auto;
 `;
 
 const MyArticleDiv = styled.div`
@@ -34,7 +36,7 @@ const MyArticleDiv = styled.div`
     margin-right: 0.3rem;
   }
 
-  .favorite_icon {
+  .liked_icon {
     &::after {
       content: '${props => {
         if (props.article.liked_count > 0) return props.article.liked_count;

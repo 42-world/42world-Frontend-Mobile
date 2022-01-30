@@ -30,7 +30,7 @@ const LoginPage = ({ isCallback }) => {
           navi('/login');
         }
         const result = await AuthService.getAuthAccessToken(github_code);
-        auth.setState(true);
+        auth.setIsLoading(true);
         navi('/');
       }
     };
@@ -38,9 +38,9 @@ const LoginPage = ({ isCallback }) => {
   }, []);
 
   useEffect(() => {
-    console.log(auth.userId);
-    if (auth.state) navi('/');
-  }, [auth]);
+    if (!isCallback && (auth.state === 200 || auth.state === 403)) navi('/');
+  }, [auth.state]);
+
 
   return (
     <Styled.LoginPageBackground>

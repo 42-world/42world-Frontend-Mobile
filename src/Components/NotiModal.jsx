@@ -7,8 +7,6 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 
-import globalStyled from '../Utils/global.styled';
-
 const NotiModal = ({ open, onClickCloseModal }) => {
   const [notiArticles, setNotiArticles] = useState([]);
   useEffect(() => {
@@ -22,7 +20,7 @@ const NotiModal = ({ open, onClickCloseModal }) => {
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <globalStyled.CusBox>
+      <div>
         <CloseIcon onClick={onClickCloseModal} />
         <List component="nav" aria-label="mailbox folders">
           {notiArticles.map(article => {
@@ -37,7 +35,7 @@ const NotiModal = ({ open, onClickCloseModal }) => {
             );
           })}
         </List>
-      </globalStyled.CusBox>
+      </div>
     </Modal>
   );
 };

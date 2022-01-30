@@ -20,6 +20,8 @@ body {
   height: 100vh;
   overflow: scroll;
   scrollbar-width: none;
+  display: flex;
+  flex-direction: column;
 }
 
 @media screen and (min-width: 28rem) {
