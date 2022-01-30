@@ -10,6 +10,26 @@ const fadeIn = keyframes`
   }
 `;
 
+const ErrorSpan = styled.span`
+  position: absolute;
+  font-size: 0.5rem;
+  color: #f00;
+  transform: translateY(25px);
+  ${props => {
+    if (!props.isError)
+      return `
+      opacity: 0;
+      transition: transform 300ms ease-in-out 0ms, opacity 500ms;
+      `;
+    else
+      return `
+      opacity: 1;
+      transition: transform 200ms ease-in-out 0ms, opacity 500ms;
+      transform: translateY(30px);
+      `;
+  }};
+`;
+
 const AuthDiv = styled.div`
   display: flex;
   padding: 2rem;
@@ -129,6 +149,6 @@ const AuthDiv = styled.div`
   }
 `;
 
-const Styled = { AuthDiv };
+const Styled = { AuthDiv, ErrorSpan };
 
 export default Styled;
