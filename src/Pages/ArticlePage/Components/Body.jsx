@@ -77,11 +77,10 @@ const Body = ({ articleId }) => {
       </div>
       <div className="content_middle">{article.content}</div>
       <div className="content_bottom">
-        <Styled.ArticleLikedDiv
-          onClick={handleClickLike}
-          likedCount={likeCount || 0}
-        >
-          {isLike ? <FavoriteIcon /> : <FavoriteBorder />}
+        <Styled.ArticleLikedDiv likedCount={likeCount || 0}>
+          <span onClick={handleClickLike}>
+            {isLike ? <FavoriteIcon /> : <FavoriteBorder />}
+          </span>
         </Styled.ArticleLikedDiv>
       </div>
     </div>

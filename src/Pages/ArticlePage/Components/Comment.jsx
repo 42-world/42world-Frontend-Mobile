@@ -38,13 +38,12 @@ const Comment = ({ articleId, comment, isLikeInitial, likeCountInitial }) => {
             <h2>{getArticleTime(comment?.updatedAt)}</h2>
           </div>
         </div>
-        <Styled.CommentContent
-          onClick={() => handleClickLike(comment?.id)}
-          className="content"
-          liked_count={likeCount}
-        >
+        <Styled.CommentContent className="content" liked_count={likeCount}>
           <div className="text">{comment.content}</div>
-          <span className="liked_count">
+          <span
+            className="liked_count"
+            onClick={() => handleClickLike(comment?.id)}
+          >
             {isLike ? <FavoriteIcon /> : <FavoriteBorder />}
           </span>
         </Styled.CommentContent>
