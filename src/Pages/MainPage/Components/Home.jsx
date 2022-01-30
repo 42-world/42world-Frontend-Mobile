@@ -89,7 +89,7 @@ const Home = ({ notiArticles }) => {
         </Styled.BoardTitleDiv>
 
         {notiArticles &&
-          notiArticles.map(article => {
+          notiArticles.slice(0, 3).map(article => {
             return (
               <PreviewArticleNoti
                 article={article}
