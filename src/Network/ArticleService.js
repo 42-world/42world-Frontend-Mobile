@@ -94,7 +94,8 @@ const ArticleService = {
   getArticles: async (categoryId, page) => {
     const method = 'GET';
     const url = articleUrl('');
-    const params = { categoryId, page };
+    const take = 1000;
+    const params = { categoryId, page, take };
 
     let response;
     try {
