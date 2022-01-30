@@ -26,7 +26,7 @@ const Body = ({ articleId, categoryId }) => {
     // navi(`/category/${categoryId}`);
     navi(-1);
   };
-  const { userId } = useContext(AuthContext);
+  const { curUser } = useContext(AuthContext);
   useEffect(() => {
     const fetch = async () => {
       const res = await ArticleService.getArticlesById(articleId);
@@ -49,7 +49,6 @@ const Body = ({ articleId, categoryId }) => {
     setLikeCount(data.likeCount);
   };
 
-  // 로딩 중 어떻게 처리할지
   if (!article) return <></>;
 
   return (
@@ -64,7 +63,7 @@ const Body = ({ articleId, categoryId }) => {
             <h2>{article.writer.nickname}</h2>
             <h2>{getArticleTime(article.createdAt)}</h2>
             <h2>조회수 {article.viewCount}</h2>
-            {article.writer.Id === userId && (
+            {article.writer.id === curUser.id && (
               <div className="edit_article">
                 <button onClick={handleClickEdit}>수정</button>
                 <button onClick={handleClickDelete}>삭제</button>
