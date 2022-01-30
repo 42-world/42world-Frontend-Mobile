@@ -122,7 +122,7 @@ const Auth = () => {
   return (
     <Styled.AuthDiv>
       <div className="input_div">
-        <TextField
+        <Styled.Input
           className={input}
           name="email"
           error={isError}
