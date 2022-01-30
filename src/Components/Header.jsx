@@ -123,6 +123,7 @@ const Header = () => {
         </div>
         <div>
           <img
+            className="header-logo"
             src={GlobalStyled.assets.headerLogo}
             alt="header-logo"
             onClick={() => navi('/')}
