@@ -8,5 +8,5 @@ export const PROFILE_LIST = [
 export const getProfileImg = id => {
   const profile = PROFILE_LIST.find(profile => profile.id === id);
 
-  return profile ? profile.image : PROFILE_LIST[0].image;
+  return profile?.image;
 };
