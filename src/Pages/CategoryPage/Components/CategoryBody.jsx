@@ -42,7 +42,7 @@ const CategoryBody = () => {
   };
 
   useEffect(() => {
-    if (categoryId === '2') {
+    if (categoryId !== '1' || categoryId !== '3') {
       alert('준비 중입니다!');
       navi('/');
     }
