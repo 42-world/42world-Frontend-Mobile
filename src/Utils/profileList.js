@@ -1,8 +1,8 @@
 export const PROFILE_LIST = [
-  { id: 0, image: '../assets/CharacterWhiteBG/bbo.png' },
-  { id: 1, image: '../assets/CharacterWhiteBG/bora.png' },
-  { id: 2, image: '../assets/CharacterWhiteBG/ddub.png' },
-  { id: 3, image: '../assets/CharacterWhiteBG/nana.png' },
+  { id: 0, image: '/assets/CharacterWhiteBG/bbo.png' },
+  { id: 1, image: '/assets/CharacterWhiteBG/bora.png' },
+  { id: 2, image: '/assets/CharacterWhiteBG/ddub.png' },
+  { id: 3, image: '/assets/CharacterWhiteBG/nana.png' },
 ];
 
 export const getProfileImg = id => {

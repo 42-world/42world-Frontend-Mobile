@@ -1,4 +1,3 @@
-import { useContext, useEffect } from 'react';
 import {
   Info,
   Withdrawal,
@@ -7,8 +6,6 @@ import {
   Articles,
   GithubLink,
 } from './Components';
-import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../App';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Styled from './ProfilePage.styled';
