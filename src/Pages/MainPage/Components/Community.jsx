@@ -27,7 +27,7 @@ const Community = ({
             );
           })}
       </Styled.StyledList>
-      <Styled.ListDivider margin="0.4rem" />
+      <Styled.ListDivider /> {/*  margin="0.4rem"  */}
       <Styled.StyledList
         disablePadding={true}
         component="nav"
@@ -53,8 +53,7 @@ const Community = ({
             );
           })}
       </Styled.StyledList>
-
-      <Styled.ListDivider margin="0.4rem" />
+      <Styled.ListDivider /> {/*  margin="0.4rem"  */}
       <Styled.StyledList
         disablePadding={true}
         component="nav"

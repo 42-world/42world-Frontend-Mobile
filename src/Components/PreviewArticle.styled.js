@@ -13,6 +13,7 @@ const PreviewArticleDiv = styled.div`
   border-bottom: 1px solid #e6e6e6;
   background-color: ${GlobalStyled.theme.previewArticleBackgroundColor};
 
+  padding-left: 25px;
   .top {
     display: flex;
     font-size: 0.95rem;

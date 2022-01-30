@@ -20,7 +20,8 @@ const BoardTitleDiv = styled.div`
   background-color: ${GlobalStyled.theme.background};
   color: ${GlobalStyled.theme.text};
   border-bottom: 1px solid ${GlobalStyled.theme.borderColor};
-  padding: 0.65rem 1.2rem;
+  // padding: 0.65rem 1.2rem;
+  padding: 0.65rem 1rem;
   align-items: center;
   cursor: pointer;
   justify-content: space-between;
@@ -29,7 +30,8 @@ const BoardTitleDiv = styled.div`
     font-size: 1.1rem;
     font-weight: 700;
     &::after {
-      content: ' >';
+      margin-left: 10px;
+      content: '>';
     }
   }
 
