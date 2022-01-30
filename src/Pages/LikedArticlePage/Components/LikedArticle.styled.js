@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const LikedArticlesDiv = styled.div`
-  padding: 1rem 0;
+  padding: 0.5rem 0;
   max-height: 80%;
   overflow-y: auto;
 `;
