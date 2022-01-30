@@ -1,16 +1,13 @@
 import styled from 'styled-components';
-import GlobalStyled from '../../Styled/Global.styled';
+import GlobalStyled from 'Styled/Global.styled';
 
-const ProfileImage = styled.div`
-  ${props =>
-    props.imagePath
-      ? `background-image: url(${props.imagePath});`
-      : 'background: #ddd;'}
+const ProfileImage = styled.img`
   ${props => (props.width ? `width: ${props.width};` : 'width: 2.5rem;')}
   ${props =>
     props.width ? `min-width: ${props.width};` : 'min-width: 2.5rem;'}
   ${props => (props.width ? `height: ${props.width};` : 'height: 2.5rem;')}
   border-radius: 10%;
+  border: 0px;
 `;
 
 const CommentContent = styled.div`
