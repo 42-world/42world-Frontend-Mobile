@@ -65,7 +65,7 @@ const MenuItem = ({ item, index }) => {
       icon={item.icon}
     >
       <div className="menu_item_icon_bg">
-        <div className="menu_item_icon" icon={item.icon}></div>
+        <div className="menu_item_icon"></div>
       </div>
       <div className="menu_item_text">
         <h2>{item.name}</h2>
