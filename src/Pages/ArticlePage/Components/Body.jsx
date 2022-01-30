@@ -9,6 +9,17 @@ import dayjs from 'dayjs';
 import Styled from '../ArticlePage.styled';
 import ReactionService from 'Network/ReactionService';
 
+const getCategoryName = id => {
+  switch (id) {
+    case 1:
+      return '자유 게시판';
+    case 2:
+      return '익명 게시판';
+    default:
+      return '';
+  }
+};
+
 const Body = ({ articleId, categoryId }) => {
   // articleId로 패칭 fetching
   const [article, setArticle] = useState();
@@ -52,7 +63,7 @@ const Body = ({ articleId, categoryId }) => {
   return (
     <div className="content_div">
       <GlobalStyled.BoardTitleDiv>
-        <div className="board_name">{article.category.name}</div>
+        <div className="board_name">{getCategoryName(article.categoryId)}</div>
       </GlobalStyled.BoardTitleDiv>
       <div className="content_top">
         <div className="title">
