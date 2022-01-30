@@ -54,7 +54,6 @@ const Body = ({ articleId }) => {
     <div className="content_div">
       <GlobalStyled.BoardTitleDiv
         onClick={() => {
-          console.log('asdfasf');
           navi(`/category/${article.categoryId}`);
         }}
       >

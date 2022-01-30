@@ -44,8 +44,7 @@ const PreviewArticleDiv = styled.div`
     width: 100%;
     align-items: center;
     justify-content: left;
-    width: 100%;
-
+    height: 2em;
     h2 {
       font-size: 0.6rem;
       font-weight: 400;
