@@ -7,10 +7,10 @@ import { useNavigate } from 'react-router-dom';
 const SignOut = () => {
   const auth = useContext(AuthContext);
   const navi = useNavigate();
-  const handleSignOut = () => {
+  const handleSignOut = async () => {
     console.log('클릭!');
     auth.setIsLoading(true);
-    AuthService.signOut();
+    const result = await AuthService.signOut();
     navi('/login');
   };
   return (
