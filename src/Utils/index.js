@@ -1,3 +1,3 @@
-import getCurCategory from './getCurCategory';
-
-export { getCurCategory };
+import getCategoryByUrl from './getCategoryByUrl';
+import getCategoryById from './getCategoryById';
+export { getCategoryByUrl, getCategoryById };

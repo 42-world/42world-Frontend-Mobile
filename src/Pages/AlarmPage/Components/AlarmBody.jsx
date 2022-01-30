@@ -2,22 +2,9 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import dayjs from 'dayjs';
 
+import { getCategoryById } from '../../../Utils';
 import Styled from './AlarmArticle.styled.js';
 import NotificationService from '../../../Network/NotificationService';
-import { Alarm } from '@mui/icons-material';
-
-const getCategoryName = id => {
-  switch (id) {
-    case 1:
-      return '자유 게시판';
-    case 2:
-      return '익명 게시판';
-    case 3:
-      return '42born2code 공지';
-    default:
-      return '';
-  }
-};
 
 const alarmType = (context, type) => {
   let message;
@@ -53,7 +40,7 @@ const AlarmBody = () => {
   const getArticleTime = time => dayjs(time).format('MM/DD HH:mm');
 
   const categoryName = article => {
-    return getCategoryName(article.userId);
+    return getCategoryById(article.userId);
   };
 
   useEffect(() => {

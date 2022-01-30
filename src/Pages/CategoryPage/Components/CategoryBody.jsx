@@ -1,17 +1,16 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import ArticleService from '../../../Network/ArticleService';
-
 import { PreviewArticle } from '../../../Components';
-import { getCurCategory } from '../../../Utils';
+import { getCategoryByUrl } from '../../../Utils';
+
+import ArticleService from '../../../Network/ArticleService';
+import Styled from './Body.styled';
+import GlobalStyled from '../../../Styled/Global.styled';
 
 import CircularProgress from '@mui/material/CircularProgress';
 import CreateIcon from '@mui/icons-material/Create';
 import Fab from '@mui/material/Fab';
-
-import Styled from './Body.styled';
-import GlobalStyled from '../../../Styled/Global.styled';
 
 const CategoryBody = () => {
   const [articles, setArticles] = useState([]);
@@ -43,7 +42,11 @@ const CategoryBody = () => {
   };
 
   useEffect(() => {
-    setCurCate(getCurCategory(loca));
+    if (categoryId === '2') {
+      alert('준비 중입니다!');
+      navi('/');
+    }
+    setCurCate(getCategoryByUrl(loca));
     setInitalArticles();
   }, []);
 
