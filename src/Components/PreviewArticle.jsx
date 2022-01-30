@@ -9,7 +9,6 @@ const PreviewArticle = ({ article, onClickArticle }) => {
     dayjs(time).isSame(dayjs(), 'day')
       ? dayjs(time).format('HH:mm')
       : dayjs(time).format('MM/DD');
-
   return (
     <Styled.PreviewArticleDiv
       button
