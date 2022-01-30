@@ -29,6 +29,7 @@ const PreviewArticleDiv = styled.div`
     font-weight: 400;
     align-items: left;
     width: 100%;
+    word-break: break-all;
   }
 
   .bottom {
