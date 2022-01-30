@@ -1,4 +1,5 @@
 import { FavoriteBorder, SmsOutlined } from '@mui/icons-material';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ArticleService from '../../../Network/ArticleService';
@@ -6,10 +7,13 @@ import { AuthContext } from '../../../App';
 import GlobalStyled from '../../../Styled/Global.styled';
 import dayjs from 'dayjs';
 import Styled from '../ArticlePage.styled';
+import ReactionService from 'Network/ReactionService';
 
 const Body = ({ articleId }) => {
   // articleId로 패칭 fetching
   const [article, setArticle] = useState();
+  const [isLike, setIsLike] = useState(false);
+  const [likeCount, setLikeCount] = useState(0);
   const navi = useNavigate();
   const handleClickEdit = () => {
     navi(`/article/${articleId}/edit`);
@@ -22,7 +26,10 @@ const Body = ({ articleId }) => {
     const fetch = async () => {
       const res = await ArticleService.getArticlesById(articleId);
       setArticle(res);
+      setIsLike(res.isLike);
+      setLikeCount(res.likeCount);
     };
+
     fetch();
   }, []);
 
@@ -30,6 +37,12 @@ const Body = ({ articleId }) => {
     dayjs(time).isSame(dayjs(), 'day')
       ? dayjs(time).format('HH:mm')
       : dayjs(time).format('MM/DD');
+
+  const handleClickLike = async () => {
+    const data = await ReactionService.createArticleReactionHeart(articleId);
+    setIsLike(data.isLike);
+    setLikeCount(data.likeCount);
+  };
 
   // 로딩 중 어떻게 처리할지
   if (!article) return <></>;
@@ -58,8 +71,11 @@ const Body = ({ articleId }) => {
       </div>
       <div className="content_middle">{article.content}</div>
       <div className="content_bottom">
-        <Styled.ArticleLikedDiv likedCount={article.likedCount || 1}>
-          <FavoriteBorder />
+        <Styled.ArticleLikedDiv
+          onClick={handleClickLike}
+          likedCount={likeCount || 0}
+        >
+          {isLike ? <FavoriteIcon /> : <FavoriteBorder />}
         </Styled.ArticleLikedDiv>
       </div>
     </div>
