@@ -13,6 +13,7 @@ const ProfileHeaderDiv = styled.div`
 
   svg {
     color: ${GlobalStyled.theme.headerIconColor};
+    cursor: pointer;
   }
   #unvisible {
     color: transparent;

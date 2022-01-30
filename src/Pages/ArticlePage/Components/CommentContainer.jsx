@@ -15,8 +15,9 @@ const CommentContainer = ({ articleId }) => {
   const [totalCount, setTotalCount] = useState();
 
   const handleCreateComment = newComment => {
-    fetchComment();
+    setComments(prev => prev.concat(newComment));
     lastComment.current.scrollIntoView();
+    fetchComment();
   };
 
   const fetchComment = async () => {
@@ -52,7 +53,6 @@ const CommentContainer = ({ articleId }) => {
             likeCountInitial={comment.likeCount}
           />
         ))}
-
       <Styled.CreateCommentDiv>
         <CreateComment
           articleId={articleId}

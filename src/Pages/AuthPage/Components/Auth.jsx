@@ -115,14 +115,14 @@ const Auth = () => {
     }
   }, [isBlock]);
 
-  useEffect(() => {
-    if (auth.state === 200) navigate('/');
-  }, []);
+  // useEffect(() => {
+  //   if (auth.state === 200) navigate('/');
+  // }, []);
 
   return (
     <Styled.AuthDiv>
       <div className="input_div">
-        <TextField
+        <Styled.Input
           className={input}
           name="email"
           error={isError}

@@ -13,6 +13,10 @@ const EditArticlePage = styled.div`
     background-color: rgba(42, 45, 56, 1);
     color: #fff;
 
+    svg {
+      cursor: pointer;
+    }
+
     div {
       flex-grow: 1;
       width: 100%;

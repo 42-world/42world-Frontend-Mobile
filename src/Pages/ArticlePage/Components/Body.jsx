@@ -13,7 +13,7 @@ import Styled from '../ArticlePage.styled';
 import ReactionService from 'Network/ReactionService';
 import { getProfileImg } from 'Utils/profileList';
 
-const Body = ({ articleId }) => {
+const Body = ({ articleId, categoryId }) => {
   const [article, setArticle] = useState();
   const [isLike, setIsLike] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
@@ -52,7 +52,11 @@ const Body = ({ articleId }) => {
   if (!article) return <></>;
   return (
     <div className="content_div">
-      <GlobalStyled.BoardTitleDiv>
+      <GlobalStyled.BoardTitleDiv
+        onClick={() => {
+          navi(`/category/${article.categoryId}`);
+        }}
+      >
         <div className="board_name">{getCategoryById(article.categoryId)}</div>
       </GlobalStyled.BoardTitleDiv>
       <div className="content_top">
@@ -65,7 +69,7 @@ const Body = ({ articleId }) => {
             {article.writer.id === curUser.id && (
               <div className="edit_article">
                 <button onClick={handleClickEdit}>수정</button>
-                <button onClick={handleClickDelete}>삭제</button>
+                {/* <button onClick={handleClickDelete}>삭제</button> */}
               </div>
             )}
           </div>
@@ -75,13 +79,15 @@ const Body = ({ articleId }) => {
           src={getProfileImg(article.writer.character)}
         ></Styled.ProfileImage>
       </div>
-      <div className="content_middle">{article.content}</div>
+      <pre className="content_middle">{article.content}</pre>
       <div className="content_bottom">
-        <Styled.ArticleLikedDiv likedCount={likeCount || 0}>
-          <span onClick={handleClickLike}>
-            {isLike ? <FavoriteIcon /> : <FavoriteBorder />}
-          </span>
-        </Styled.ArticleLikedDiv>
+        {categoryId !== 3 && (
+          <Styled.ArticleLikedDiv likedCount={likeCount || 0}>
+            <span onClick={handleClickLike}>
+              {isLike ? <FavoriteIcon /> : <FavoriteBorder />}
+            </span>
+          </Styled.ArticleLikedDiv>
+        )}
       </div>
     </div>
   );
