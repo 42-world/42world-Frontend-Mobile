@@ -1,8 +1,9 @@
 import styled from 'styled-components';
-
+import GlobalStyled from 'Styled/Global.styled';
 const CreateArticlePage = styled.div`
   .header {
     position: fixed;
+
     box-sizing: border-box;
     width: 100%;
     display: flex;
@@ -13,6 +14,9 @@ const CreateArticlePage = styled.div`
     padding: 0.25rem 0.8rem;
     background-color: rgba(42, 45, 56, 1);
     color: #fff;
+    @media (min-width: ${GlobalStyled.theme.mobileMinWidth}) {
+      width: ${GlobalStyled.theme.desktopWidth};
+    }
 
     svg {
       cursor: pointer;
