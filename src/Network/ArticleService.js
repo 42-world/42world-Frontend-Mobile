@@ -231,10 +231,10 @@ const ArticleService = {
    * `200` : success \
    * `401` : fail
    */
-  getArticlesCommentsById: async (articlesId, page, order, take) => {
+  getArticlesCommentsById: async (articlesId, order, page, take) => {
     const method = 'GET';
     const url = articleUrl(`/${articlesId}/comments`);
-    const params = { page, order, take };
+    const params = { order, page, take };
 
     let response;
     try {
