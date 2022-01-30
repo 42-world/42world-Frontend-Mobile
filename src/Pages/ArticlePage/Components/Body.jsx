@@ -11,9 +11,9 @@ import GlobalStyled from '../../../Styled/Global.styled';
 import dayjs from 'dayjs';
 import Styled from '../ArticlePage.styled';
 import ReactionService from 'Network/ReactionService';
+import { getProfileImg } from 'Utils/profileList';
 
-const Body = ({ articleId, categoryId }) => {
-  // articleId로 패칭 fetching
+const Body = ({ articleId }) => {
   const [article, setArticle] = useState();
   const [isLike, setIsLike] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
@@ -50,7 +50,6 @@ const Body = ({ articleId, categoryId }) => {
   };
 
   if (!article) return <></>;
-
   return (
     <div className="content_div">
       <GlobalStyled.BoardTitleDiv>
@@ -71,7 +70,10 @@ const Body = ({ articleId, categoryId }) => {
             )}
           </div>
         </div>
-        <Styled.ProfileImage width="2.5rem" imagePath=""></Styled.ProfileImage>
+        <Styled.ProfileImage
+          width="2.5rem"
+          src={getProfileImg(curUser.character)}
+        ></Styled.ProfileImage>
       </div>
       <div className="content_middle">{article.content}</div>
       <div className="content_bottom">

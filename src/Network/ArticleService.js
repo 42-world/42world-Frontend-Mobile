@@ -231,16 +231,17 @@ const ArticleService = {
    * `200` : success \
    * `401` : fail
    */
-  getArticlesCommentsById: async articlesId => {
+  getArticlesCommentsById: async (articlesId, order, page, take) => {
     const method = 'GET';
     const url = articleUrl(`/${articlesId}/comments`);
+    const params = { order, page, take };
 
     let response;
     try {
       response = await API.AXIOS({
         method,
         url,
-        params: { order: 'ASC' },
+        params,
       });
     } catch (error) {
       alert(error);
