@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import { useLocation, useParams, useSearchParams } from 'react-router-dom';
-import { Body, Comment } from './Components';
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import { Body, CommentContainer } from './Components';
 import { Header } from '../../Components';
 
 import Styled from './ArticlePage.styled';
@@ -19,7 +19,7 @@ const ArticlePage = () => {
       <Header />
       <Styled.ArticlePageDiv>
         <Body articleId={id} />
-        <Comment articleId={id} />
+        <CommentContainer articleId={id} />
       </Styled.ArticlePageDiv>
     </>
   );
