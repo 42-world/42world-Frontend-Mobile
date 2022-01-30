@@ -22,8 +22,6 @@ const LikedArticle = () => {
 
     fetchLikeArticles();
   }, []);
-  if (!articles) return <></>;
-  console.log(articles);
   return (
     <>
       <Styled.LikedArticlesDiv>
