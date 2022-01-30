@@ -12,31 +12,34 @@ import Comment from './Comment';
 const CommentContainer = ({ articleId }) => {
   const lastComment = useRef();
   const [comments, setComments] = useState([]);
-  const [metadata, setMetadata] = useState();
+  const [totalCount, setTotalCount] = useState();
 
   const handleCreateComment = newComment => {
     setComments(prev => prev.concat(newComment));
     lastComment.current.scrollIntoView();
-    fetchComment();
+    setTotalCount(totalCount => (totalCount += 1));
   };
 
   const fetchComment = async () => {
-    const res = await ArticleService.getArticlesCommentsById(articleId);
+    const res = await ArticleService.getArticlesCommentsById(
+      articleId,
+      'ASC',
+      1,
+      1000, // 한번에 1000개 긁어옴. 어떻게 할 지 결정 후 바꿔야 함.
+    );
     setComments(res?.data || []);
-    setMetadata(res?.meta);
+    setTotalCount(res?.meta.totalCount);
   };
 
   useEffect(() => {
     fetchComment();
   }, []);
 
-  useEffect(() => {}, [lastComment]);
-
   return (
     <div className="comment_list_div">
       <Styled.ArticleCommentDiv
         className="comment_count"
-        commentCount={metadata?.totalCount}
+        commentCount={totalCount}
       >
         <SmsOutlined />
       </Styled.ArticleCommentDiv>
