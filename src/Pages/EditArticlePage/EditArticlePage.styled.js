@@ -63,32 +63,40 @@ const EditArticlePage = styled.div`
       font-weight: 700;
     }
 
-    input {
-      box-sizing: border-box;
-      width: 100%;
+    form {
       display: flex;
-      background-color: #fff;
-      padding: 0.9rem 1rem;
-      border: 1px solid #ccc;
-      font-size: 1rem;
-      &:focus {
-        outline: none;
+      flex-direction: column;
+      flex-grow: 1;
+      input {
+        position: sticky;
+        top: 4.5rem;
+        flex-grow: 0;
+        box-sizing: border-box;
+        width: 100%;
+        display: flex;
+        background-color: #fff;
+        padding: 0.9rem 1rem;
+        border: 1px solid #ccc;
+        font-size: 1rem;
+        &:focus {
+          outline: none;
+        }
       }
-    }
 
-    textarea {
-      box-sizing: border-box;
-      width: 100%;
-      overflow: hidden;
+      textarea {
+        flex-grow: 1;
+        box-sizing: border-box;
+        width: 100%;
+        overflow: hidden;
 
-      display: flex;
-      background-color: #fff;
-      padding: 0.9rem 1rem;
-      border: 1px solid #ccc;
-      height: 100%;
-      resize: none;
-      &:focus {
-        outline: none;
+        display: flex;
+        background-color: #fff;
+        padding: 0.9rem 1rem;
+        border: 1px solid #ccc;
+        resize: none;
+        &:focus {
+          outline: none;
+        }
       }
     }
   }

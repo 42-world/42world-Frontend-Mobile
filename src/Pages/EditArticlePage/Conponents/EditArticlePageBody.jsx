@@ -26,7 +26,6 @@ const EditArticlePageBody = ({
           placeholder="제목을 입력하세요"
           onChange={onChangeTitle}
           maxLength={42}
-          type="text"
           value={title}
         />
         <TextareaAutosize
