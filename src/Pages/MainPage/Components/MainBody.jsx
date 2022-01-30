@@ -1,12 +1,14 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
-import BestService from '../../../Network/BestService';
+import qs from 'qs';
+
 import BodyPreView from './BodyPreView';
 import Community from './Community';
 import Home from './Home';
-import Styled from './Body.styled';
+
+import BestService from '../../../Network/BestService';
 import ArticleService from '../../../Network/ArticleService';
-import qs from 'qs';
+import Styled from './Body.styled';
 
 import Divider from '@mui/material/Divider';
 
@@ -50,7 +52,7 @@ const MainBody = () => {
 
     const getBestArticles = async () => {
       const response = await BestService.getBestArticle(3);
-      setBestArticles(response.data);
+      setBestArticles(response);
     };
     getBestArticles();
     getFreeArticles();
