@@ -79,7 +79,7 @@ const Body = ({ articleId }) => {
           src={getProfileImg(article.writer.character)}
         ></Styled.ProfileImage>
       </div>
-      <div className="content_middle">{article.content}</div>
+      <pre className="content_middle">{article.content}</pre>
       <div className="content_bottom">
         <Styled.ArticleLikedDiv likedCount={likeCount || 0}>
           <span onClick={handleClickLike}>
