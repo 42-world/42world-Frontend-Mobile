@@ -30,14 +30,14 @@ const Info = () => {
   return (
     <Styled.InfoDiv onClick={handleSettingClick}>
       <div style={{ display: 'flex', alignItems: 'center' }}>
-        <div style={{ margin: '4px 12px 4px 4px', width: '36px' }}>
+        <div style={{ width: '36px', display: 'flex', alignItems: 'center' }}>
           <img
             src={getProfileImg(character)}
             alt="profile_img"
             style={{ width: '100%' }}
           />
         </div>
-        <div className="middle">
+        <div className="middle" style={{ marginLeft: '10px' }}>
           <div className="name">{nickname}</div>
           <div className="welcome-message"> 님, 안녕하세요!</div>
         </div>
