@@ -2,6 +2,16 @@ import styled from 'styled-components';
 import List from '@mui/material/List';
 import GlobalStyled from '../../../Styled/Global.styled';
 
+import Fab from '@mui/material/Fab';
+
+const CreateButton = styled(Fab)`
+  .fiVBwH {
+    && {
+      background-color: #53b7ba;
+    }
+  }
+`;
+
 const StyledList = styled(List)`
   && {
     padding: 0;
@@ -36,6 +46,6 @@ const StyledList = styled(List)`
   }
 `;
 
-const Styled = { StyledList };
+const Styled = { StyledList, CreateButton };
 
 export default Styled;
