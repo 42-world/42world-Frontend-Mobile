@@ -12,7 +12,17 @@ const ListDivider = styled.div`
 const StyledList = styled(List)`
   padding: 0;
 `;
-
+const BestStyledList = styled(List)`
+  padding: 0;
+  img {
+    position: absolute;
+    margin-left: 1em;
+    margin-top: 0.7em;
+  }
+  .top {
+    padding-left: 2.2em;
+  }
+`;
 const BoardTitleDiv = styled.div`
   box-sizing: border-box;
   width: 100%;
@@ -130,6 +140,7 @@ const CheckInBody = styled.div`
 
 const Styled = {
   BoardTitleDiv,
+  BestStyledList,
   StyledList,
   ListDivider,
   CheckInHeader,

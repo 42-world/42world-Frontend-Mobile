@@ -46,14 +46,14 @@ const CreateArticlePage = styled.div`
   .body {
     display: flex;
     flex-direction: column;
-    // height: calc(100vh - 4.5rem);
-    height: 100%;
+    justify-content: stretch;
+    min-height: calc(100vh - 4.5rem);
+
     .category {
       box-sizing: border-box;
       width: 100%;
       display: flex;
       background-color: #53b7ba;
-      // padding: 0.65rem 1.2rem;
       padding: 0.65rem 1rem;
       align-items: center;
       cursor: pointer;
@@ -63,32 +63,45 @@ const CreateArticlePage = styled.div`
       font-weight: 700;
     }
 
-    input {
-      box-sizing: border-box;
-      width: 100%;
+    form {
       display: flex;
-      background-color: #fff;
-      padding: 0.9rem 1rem;
-      border: 1px solid #ccc;
-      font-size: 1rem;
-      &:focus {
-        outline: none;
+      flex-direction: column;
+      flex-grow: 1;
+      input {
+        flex-grow: 0;
+        box-sizing: border-box;
+        width: 100%;
+        display: flex;
+        background-color: #fff;
+        padding: 0.9rem 1rem;
+        border: 1px solid #ccc;
+        font-size: 1rem;
+        &:focus {
+          outline: none;
+        }
+      }
+
+      textarea {
+        flex-grow: 1;
+        box-sizing: border-box;
+        width: 100%;
+        overflow: hidden;
+
+        display: flex;
+        background-color: #fff;
+        padding: 0.9rem 1rem;
+        border: 1px solid #ccc;
+        resize: none;
+        &:focus {
+          outline: none;
+        }
       }
     }
-
-    textarea {
-      box-sizing: border-box;
-      width: 100%;
-      overflow: hidden;
-
-      display: flex;
-      background-color: #fff;
-      padding: 0.9rem 1rem;
-      border: 1px solid #ccc;
-      resize: none;
-      &:focus {
-        outline: none;
-      }
+    p {
+      position: fixed;
+      color: rgba(0, 0, 0, 30%);
+      bottom: 10px;
+      right: 10px;
     }
   }
 `;
