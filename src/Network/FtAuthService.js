@@ -25,7 +25,7 @@ const FtAuthService = {
         url,
       });
     } catch (error) {
-      alert(error);
+      alert(error.response.data.message);
     }
     return response.data;
   },
