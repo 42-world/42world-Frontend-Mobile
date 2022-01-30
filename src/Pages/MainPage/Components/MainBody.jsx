@@ -50,7 +50,7 @@ const MainBody = () => {
 
     const getBestArticles = async () => {
       const response = await BestService.getBestArticle(3);
-      setBestArticles(response.data);
+      setBestArticles(response);
     };
     getBestArticles();
     getFreeArticles();

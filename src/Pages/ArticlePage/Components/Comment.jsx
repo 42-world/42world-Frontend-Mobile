@@ -26,7 +26,7 @@ const Comment = ({ articleId, comment, isLikeInitial, likeCountInitial }) => {
   };
   return (
     <>
-      <div className="comment_div" key={comment?.id}>
+      <div className="comment_div">
         <div className="info">
           <Styled.ProfileImage
             width="2.4rem"
