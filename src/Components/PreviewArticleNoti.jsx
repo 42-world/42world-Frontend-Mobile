@@ -18,9 +18,9 @@ const PreviewArticleNoti = ({ article, onClickArticle }) => {
       <div className="top">{article.title}</div>
       <div className="middle">{article.content}</div>
       <div className="bottom">
-        <text>{article.writer.nickname}</text>
+        {article.writer && <h2>{article.writer.nickname}</h2>}
         <h2>{getArticleTime(article.createdAt)}</h2>
-        <text>조회수 {article.viewCount}</text>
+        <h2>조회수 {article.viewCount}</h2>
       </div>
     </Styled.PreviewArticleDiv>
   );
