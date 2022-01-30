@@ -15,9 +15,8 @@ const CommentContainer = ({ articleId }) => {
   const [totalCount, setTotalCount] = useState();
 
   const handleCreateComment = newComment => {
-    setComments(prev => prev.concat(newComment));
+    fetchComment();
     lastComment.current.scrollIntoView();
-    setTotalCount(totalCount => (totalCount += 1));
   };
 
   const fetchComment = async () => {
