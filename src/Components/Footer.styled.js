@@ -19,6 +19,8 @@ const Footer = styled.div`
     img {
       width: 1.5rem;
       margin: 0.3rem;
+
+      cursor: pointer;
     }
   }
   h6 {

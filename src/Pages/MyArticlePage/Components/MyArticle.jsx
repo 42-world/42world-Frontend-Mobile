@@ -16,7 +16,8 @@ const MyArticle = () => {
   useEffect(() => {
     const fetchMyArticles = async () => {
       const data = await UserService.getMyArticles();
-      setArticles(data);
+      // TODO: 나중에 페이지네이션 적용
+      setArticles(data.reverse());
     };
     fetchMyArticles();
   }, []);

@@ -26,9 +26,10 @@ const MyComment = () => {
   };
 
   useEffect(() => {
+    // TODO: 나중에 페이지네이션 적용
     const fetchComments = async () => {
       const data = await UserService.getMyComments();
-      setComments(data);
+      setComments(data.reverse());
     };
 
     fetchComments();

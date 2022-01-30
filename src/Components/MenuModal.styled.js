@@ -11,6 +11,7 @@ const MenuModalDiv = styled.div`
   img {
     width: 43%;
     height: auto;
+    cursor: pointer;
   }
 `;
 
@@ -117,6 +118,7 @@ const ContactUsDiv = styled.div`
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      cursor: pointer;
       svg {
         width: 2.4rem;
         height: 2.4rem;
