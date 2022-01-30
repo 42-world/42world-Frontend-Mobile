@@ -8,8 +8,8 @@ const SettingDiv = styled.div`
     font-weight: 700;
     width: calc(100% - 1rem);
     background-color: #ccc;
-    padding: 0.3rem 0.5rem;
-    margin: 0.2rem 0.5rem;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
   }
   .profile_image_div {
     display: flex;
@@ -62,7 +62,10 @@ const OutlineImage = styled.img`
   border: 4px solid #53b7ba;
   border-radius: 10px;
 `;
+const Image = styled.img`
+  filter: brightness(50%);
+`;
 
-const Styled = { SettingDiv, OutlineImage };
+const Styled = { SettingDiv, OutlineImage, Image };
 
 export default Styled;

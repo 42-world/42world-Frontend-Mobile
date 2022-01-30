@@ -42,7 +42,7 @@ const Setting = () => {
             {profile.id === character ? (
               <Styled.OutlineImage src={profile.image} alt="profile" />
             ) : (
-              <img src={profile.image} alt="profile" />
+              <Styled.Image src={profile.image} alt="profile" />
             )}
           </button>
         ))}
