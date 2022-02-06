@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { PreviewArticle } from '../../../Components';
 
 import Styled from './Body.styled';
@@ -19,7 +20,7 @@ const Community = ({
         {bestArticles &&
           bestArticles.map(article => {
             return (
-              <>
+              <Fragment key={article.id}>
                 <img src="/assets/hot.svg" />
                 <PreviewArticle
                   key={article.id}
@@ -27,7 +28,7 @@ const Community = ({
                   article={article}
                   onClickArticle={() => moveArticles(article.id)}
                 />
-              </>
+              </Fragment>
             );
           })}
       </Styled.BestStyledList>
