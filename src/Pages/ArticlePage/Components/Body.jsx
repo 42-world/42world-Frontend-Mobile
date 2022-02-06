@@ -20,7 +20,7 @@ const Body = ({ articleId, categoryId }) => {
   const [likeCount, setLikeCount] = useState(0);
   const navi = useNavigate();
   const handleClickEdit = () => {
-    navi(`/article/${articleId}/edit`);
+    navi(`/article/${articleId}/edit`, { state: { article } });
   };
   const handleClickDelete = () => {
     ArticleService.deleteArticles(articleId);

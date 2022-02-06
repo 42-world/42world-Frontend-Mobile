@@ -1,9 +1,8 @@
-import { useState, useEffect, useContext, useRef } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useState, useEffect, useContext } from 'react';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
-import ArticleService from '../../Network/ArticleService';
-import { AuthContext } from '../../App';
-import { getCategoryByUrl } from '../../Utils';
+import ArticleService from 'Network/ArticleService';
+import { AuthContext } from 'App';
 
 import { EditArticlePageHeader, EditArticlePageBody } from './Conponents';
 import Styled from './EditArticlePage.styled';
@@ -13,11 +12,9 @@ const EditArticlePage = () => {
   const [content, setContent] = useState('');
   const [categoryId, setCategoryId] = useState(0);
 
-  const auth = useContext(AuthContext);
-
   const loca = useLocation();
   const navi = useNavigate();
-  const pathArray = loca.pathname.split('/');
+  const { id } = useParams();
 
   const handleChangeTitle = e => {
     setTitle(e.target.value);
@@ -42,7 +39,7 @@ const EditArticlePage = () => {
     }
     // 수정하려고 카테고리 아이디 API 받는 게 조회로 인식.
     // 이동한 뒤에 API 실행됨
-    const result = await ArticleService.editArticles(+pathArray[2], {
+    const result = await ArticleService.editArticles(id, {
       title: title,
       content: content,
       categoryId: categoryId, // + 붙이면 number 타입
@@ -51,16 +48,16 @@ const EditArticlePage = () => {
   };
 
   useEffect(() => {
-    const getArticle = async () => {
-      const response = await ArticleService.getArticlesById(pathArray[2]);
-      const article = response;
+    if (loca.state) {
+      const { article } = loca.state;
       setTitle(article.title);
       setContent(article.content);
       setCategoryId(article.categoryId);
-    };
-    getArticle();
-  }, [setTitle, setContent, categoryId]);
-
+    } else {
+      alert('없는 페이지입니다');
+      navi('/');
+    }
+  }, []);
   return (
     <Styled.EditArticlePage>
       <EditArticlePageHeader
