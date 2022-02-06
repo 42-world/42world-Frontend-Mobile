@@ -34,8 +34,8 @@ const AuthRequestCheckStep = ({ handleSendReset }) => {
   );
 };
 
-function checkKor(str) {
-  const regExp = /[ㄱ-ㅎㅏ-ㅣ가-힣]/g;
+function checkIntraId(str) {
+  const regExp = /[A-Za-z0-9-]/g;
   if (regExp.test(str)) {
     return true;
   } else {
@@ -68,7 +68,7 @@ const Auth = () => {
     });
   };
   const handleAuthenticate = () => {
-    if (input.email === '' || checkKor(input.email)) {
+    if (input.email === '' || !checkIntraId(input.email)) {
       setIsError(true);
       setTimeout(() => {
         setIsError(false);
