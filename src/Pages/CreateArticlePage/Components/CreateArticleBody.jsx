@@ -10,9 +10,7 @@ import GlobalStyled from '../../../Styled/Global.styled';
 import LoadingButton from '@mui/lab/LoadingButton';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
+import Popover from '@mui/material/Popover';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import List from '@mui/material/List';
@@ -23,11 +21,16 @@ const CreateArticleBody = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [curCate, setCurCate] = useState(0);
-
   const cateList = ['자유 게시판', '익명 게시판'];
   const [isSending, setIsSending] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
 
   const navi = useNavigate();
+  const open = Boolean(anchorEl);
+
+  const handleClickPopper = event => {
+    setAnchorEl(event.currentTarget);
+  };
 
   const handleChangeTitle = e => {
     setTitle(e.target.value);
@@ -92,29 +95,38 @@ const CreateArticleBody = () => {
       </div>
       <div className="body">
         <GlobalStyled.BoardTitleDiv>
-          <Accordion>
-            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-              <div className="board_name">{curCate}</div>
-            </AccordionSummary>
-            <AccordionDetails>
-              <List>
-                {cateList.map(cate => {
-                  if (cate !== curCate)
-                    return (
-                      <ListItem disablePadding>
-                        <ListItemButton
-                          onClick={() => {
-                            setCurCate(cate);
-                          }}
-                        >
-                          {cate}
-                        </ListItemButton>
-                      </ListItem>
-                    );
-                })}
-              </List>
-            </AccordionDetails>
-          </Accordion>
+          <div className="board_name" onClick={handleClickPopper}>
+            {curCate}
+            <ExpandMoreIcon />
+          </div>
+          <Popover
+            open={open}
+            anchorEl={anchorEl}
+            onClose={() => {
+              setAnchorEl(null);
+            }}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'left',
+            }}
+          >
+            <List>
+              {cateList.map(cate => {
+                if (cate !== curCate)
+                  return (
+                    <ListItem disablePadding>
+                      <ListItemButton
+                        onClick={() => {
+                          setCurCate(cate);
+                        }}
+                      >
+                        {cate}
+                      </ListItemButton>
+                    </ListItem>
+                  );
+              })}
+            </List>
+          </Popover>
         </GlobalStyled.BoardTitleDiv>
         <form onSubmit={handleFormSubmit}>
           <input
