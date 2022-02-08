@@ -11,6 +11,24 @@ const ListDivider = styled.div`
 
 const StyledList = styled(List)`
   padding: 0;
+
+  .fab_button {
+    position: fixed;
+    bottom: 1.8rem;
+    right: 1.5rem;
+    z-index: 100;
+    background-color: ${GlobalStyled.theme.secondary};
+    color: ${GlobalStyled.theme.headerIconColor};
+    border-radius: 40%;
+    cursor: 'pointer';
+    @media (min-width: ${GlobalStyled.theme.mobileMinWidth}) {
+      bottom: 1.8rem;
+      left: calc(50% + 7rem);
+    }
+    &:hover {
+      background-color: ${GlobalStyled.theme.primary};
+    }
+  }
 `;
 const BestStyledList = styled(List)`
   padding: 0;
