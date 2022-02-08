@@ -1,23 +1,33 @@
 import { useState, useEffect } from 'react';
-import { getCategoryByUrl } from '../../../Utils';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { getCategoryId } from '../../../Utils';
+import { useNavigate } from 'react-router-dom';
 import TextareaAutosize from 'react-textarea-autosize';
 
 import ArticleService from '../../../Network/ArticleService';
 
+import GlobalStyled from '../../../Styled/Global.styled';
+
 import LoadingButton from '@mui/lab/LoadingButton';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import GlobalStyled from '../../../Styled/Global.styled';
+
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
 
 const CreateArticleBody = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [curCate, setCurCate] = useState('');
+  const [curCate, setCurCate] = useState(0);
+
+  const cateList = ['자유 게시판', '익명 게시판'];
   const [isSending, setIsSending] = useState(false);
 
-  const loca = useLocation();
   const navi = useNavigate();
-  const pathArray = loca.pathname.split('/');
 
   const handleChangeTitle = e => {
     setTitle(e.target.value);
@@ -42,10 +52,11 @@ const CreateArticleBody = () => {
     }
     // 이동한 뒤에 API 실행됨
     setIsSending(true);
+    const categoryId = getCategoryId(curCate);
     const result = await ArticleService.createArticles({
       title: title,
       content: content,
-      categoryId: +pathArray[2], // + 붙이면 number 타입
+      categoryId: categoryId, // + 붙이면 number 타입
     });
     setIsSending(false);
     navi(-1);
@@ -57,8 +68,8 @@ const CreateArticleBody = () => {
   };
 
   useEffect(() => {
-    setCurCate(getCategoryByUrl(loca));
-  }, [loca]);
+    setCurCate(cateList[0]);
+  }, []);
   return (
     <>
       <div className="header">
@@ -81,7 +92,29 @@ const CreateArticleBody = () => {
       </div>
       <div className="body">
         <GlobalStyled.BoardTitleDiv>
-          <div className="board_name">{curCate}</div>
+          <Accordion>
+            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+              <div className="board_name">{curCate}</div>
+            </AccordionSummary>
+            <AccordionDetails>
+              <List>
+                {cateList.map(cate => {
+                  if (cate !== curCate)
+                    return (
+                      <ListItem disablePadding>
+                        <ListItemButton
+                          onClick={() => {
+                            setCurCate(cate);
+                          }}
+                        >
+                          {cate}
+                        </ListItemButton>
+                      </ListItem>
+                    );
+                })}
+              </List>
+            </AccordionDetails>
+          </Accordion>
         </GlobalStyled.BoardTitleDiv>
         <form onSubmit={handleFormSubmit}>
           <input
