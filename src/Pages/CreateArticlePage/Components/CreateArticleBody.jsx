@@ -99,11 +99,12 @@ const CreateArticleBody = () => {
             <NativeSelect
               defaultValue={0}
               onChange={e => {
-                setCurCate(cateList[e.target.value]);
+                setCurCate(cateList[e.value]);
               }}
             >
-              <option value={0}>자유 게시판</option>
-              <option value={1}>익명 게시판</option>
+              {cateList.map((cate, idx) => {
+                return <option value={idx}>{cate}</option>;
+              })}
             </NativeSelect>
           </FormControl>
         </GlobalStyled.BoardTitleDiv>
