@@ -112,18 +112,18 @@ const CreateArticleBody = () => {
           >
             <List>
               {cateList.map(cate => {
-                if (cate !== curCate)
-                  return (
-                    <ListItem disablePadding>
-                      <ListItemButton
-                        onClick={() => {
-                          setCurCate(cate);
-                        }}
-                      >
-                        {cate}
-                      </ListItemButton>
-                    </ListItem>
-                  );
+                //if (cate !== curCate)
+                return (
+                  <ListItem>
+                    <ListItemButton
+                      onClick={() => {
+                        setCurCate(cate);
+                      }}
+                    >
+                      {cate}
+                    </ListItemButton>
+                  </ListItem>
+                );
               })}
             </List>
           </Popover>
