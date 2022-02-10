@@ -120,15 +120,15 @@ const CategoryBody = () => {
           {isLoaded && <CircularProgress />}
         </div>
 
-        {/* {+categoryId !== 3 && ( */}
-        <Fab
-          className="fab_button"
-          onClick={handleClickWrite}
-          style={{ backgroundColor: '#53b7ba' }}
-        >
-          <CreateIcon />
-        </Fab>
-        {/* )} */}
+        {+categoryId !== 3 && (
+          <Fab
+            className="fab_button"
+            onClick={handleClickWrite}
+            style={{ backgroundColor: '#53b7ba' }}
+          >
+            <CreateIcon />
+          </Fab>
+        )}
       </Styled.StyledList>
     </>
   );
