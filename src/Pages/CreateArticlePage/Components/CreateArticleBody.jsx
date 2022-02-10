@@ -1,23 +1,36 @@
 import { useState, useEffect } from 'react';
-import { getCategoryByUrl } from '../../../Utils';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { getCategoryId } from '../../../Utils';
+import { useNavigate } from 'react-router-dom';
 import TextareaAutosize from 'react-textarea-autosize';
 
 import ArticleService from '../../../Network/ArticleService';
 
+import GlobalStyled from '../../../Styled/Global.styled';
+
 import LoadingButton from '@mui/lab/LoadingButton';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import GlobalStyled from '../../../Styled/Global.styled';
+
+import Popover from '@mui/material/Popover';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
 
 const CreateArticleBody = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [curCate, setCurCate] = useState('');
+  const [curCate, setCurCate] = useState(0);
+  const cateList = ['자유 게시판', '익명 게시판'];
   const [isSending, setIsSending] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
 
-  const loca = useLocation();
   const navi = useNavigate();
-  const pathArray = loca.pathname.split('/');
+  const open = Boolean(anchorEl);
+
+  const handleClickPopper = event => {
+    setAnchorEl(event.currentTarget);
+  };
 
   const handleChangeTitle = e => {
     setTitle(e.target.value);
@@ -42,10 +55,11 @@ const CreateArticleBody = () => {
     }
     // 이동한 뒤에 API 실행됨
     setIsSending(true);
+    const categoryId = getCategoryId(curCate);
     const result = await ArticleService.createArticles({
       title: title,
       content: content,
-      categoryId: +pathArray[2], // + 붙이면 number 타입
+      categoryId: categoryId, // + 붙이면 number 타입
     });
     setIsSending(false);
     navi(-1);
@@ -57,8 +71,8 @@ const CreateArticleBody = () => {
   };
 
   useEffect(() => {
-    setCurCate(getCategoryByUrl(loca));
-  }, [loca]);
+    setCurCate(cateList[0]);
+  }, []);
   return (
     <>
       <div className="header">
@@ -81,7 +95,38 @@ const CreateArticleBody = () => {
       </div>
       <div className="body">
         <GlobalStyled.BoardTitleDiv>
-          <div className="board_name">{curCate}</div>
+          <div className="board_name" onClick={handleClickPopper}>
+            {curCate}
+            <ExpandMoreIcon />
+          </div>
+          <Popover
+            open={open}
+            anchorEl={anchorEl}
+            onClose={() => {
+              setAnchorEl(null);
+            }}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'left',
+            }}
+          >
+            <List>
+              {cateList.map(cate => {
+                if (cate !== curCate)
+                  return (
+                    <ListItem disablePadding>
+                      <ListItemButton
+                        onClick={() => {
+                          setCurCate(cate);
+                        }}
+                      >
+                        {cate}
+                      </ListItemButton>
+                    </ListItem>
+                  );
+              })}
+            </List>
+          </Popover>
         </GlobalStyled.BoardTitleDiv>
         <form onSubmit={handleFormSubmit}>
           <input

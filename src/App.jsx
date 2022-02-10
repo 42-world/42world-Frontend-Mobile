@@ -117,7 +117,7 @@ const App = () => {
             }
           />
           <Route
-            path="/category/:id/create"
+            path="/create"
             element={
               <PrivateRouteCheckAuth>
                 <PrivateRouteCheckFtAuth>

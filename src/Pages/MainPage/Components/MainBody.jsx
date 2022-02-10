@@ -11,6 +11,8 @@ import ArticleService from '../../../Network/ArticleService';
 import Styled from './Body.styled';
 
 import Divider from '@mui/material/Divider';
+import CreateIcon from '@mui/icons-material/Create';
+import Fab from '@mui/material/Fab';
 
 const MainBody = () => {
   const navi = useNavigate();
@@ -32,6 +34,10 @@ const MainBody = () => {
 
   const moveArticles = articleId => {
     navi(`/article/${articleId}`);
+  };
+
+  const handleClickWrite = () => {
+    navi('/create');
   };
 
   useEffect(() => {
@@ -68,22 +74,29 @@ const MainBody = () => {
         aria-label="mailbox folders"
       >
         <BodyPreView onChangeTab={handleChangeTab} highlight={highlight} />
+        <Divider />
+        {/*<Styled.ListDivider margin="0.7rem" />*/}
+        <div className="articles">
+          {highlight === 'home' ? (
+            <Home notiArticles={notiArticles} />
+          ) : (
+            <Community
+              bestArticles={bestArticles}
+              freeArticles={freeArticles}
+              anonyArticles={anonyArticles}
+              moveArticles={moveArticles}
+              navi={navi}
+            />
+          )}
+        </div>
+        <Fab
+          className="fab_button"
+          onClick={handleClickWrite}
+          style={{ backgroundColor: '#53b7ba' }}
+        >
+          <CreateIcon />
+        </Fab>
       </Styled.StyledList>
-      <Divider />
-      {/*<Styled.ListDivider margin="0.7rem" />*/}
-      <div className="articles">
-        {highlight === 'home' ? (
-          <Home notiArticles={notiArticles} />
-        ) : (
-          <Community
-            bestArticles={bestArticles}
-            freeArticles={freeArticles}
-            anonyArticles={anonyArticles}
-            moveArticles={moveArticles}
-            navi={navi}
-          />
-        )}
-      </div>
     </div>
   );
 };

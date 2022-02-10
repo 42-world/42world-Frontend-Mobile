@@ -24,7 +24,7 @@ const CategoryBody = () => {
   const categoryId = loca.pathname.split('/')[2];
 
   const handleClickWrite = () => {
-    navi(`${loca.pathname}/create`);
+    navi('/create');
   };
 
   const handleClickArticles = id => {
@@ -42,7 +42,7 @@ const CategoryBody = () => {
   };
 
   useEffect(() => {
-    if (categoryId !== '1' && categoryId !== '3') {
+    if (categoryId > 3) {
       alert('준비 중입니다!');
       navi('/');
     }
@@ -120,15 +120,15 @@ const CategoryBody = () => {
           {isLoaded && <CircularProgress />}
         </div>
 
-        {+categoryId !== 3 && (
-          <Fab
-            className="fab_button"
-            onClick={handleClickWrite}
-            style={{ backgroundColor: '#53b7ba' }}
-          >
-            <CreateIcon />
-          </Fab>
-        )}
+        {/* {+categoryId !== 3 && ( */}
+        <Fab
+          className="fab_button"
+          onClick={handleClickWrite}
+          style={{ backgroundColor: '#53b7ba' }}
+        >
+          <CreateIcon />
+        </Fab>
+        {/* )} */}
       </Styled.StyledList>
     </>
   );
