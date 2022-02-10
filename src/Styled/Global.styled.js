@@ -97,6 +97,9 @@ const BoardTitleDiv = styled.div`
   cursor: pointer;
 
   .board_name {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     font-size: 1.1rem;
     font-weight: 700;
   }
