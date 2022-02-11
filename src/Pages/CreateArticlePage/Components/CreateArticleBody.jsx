@@ -99,7 +99,7 @@ const CreateArticleBody = () => {
             <NativeSelect
               defaultValue={0}
               onChange={e => {
-                setCurCate(cateList[e.value]);
+                setCurCate(cateList[e.target.value]);
               }}
             >
               {cateList.map((cate, idx) => {
