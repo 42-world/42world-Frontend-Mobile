@@ -10,8 +10,8 @@ import GlobalStyled from '../../../Styled/Global.styled';
 import LoadingButton from '@mui/lab/LoadingButton';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
-import Popover from '@mui/material/Popover';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import FormControl from '@mui/material/FormControl';
+import NativeSelect from '@mui/material/NativeSelect';
 
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -95,38 +95,18 @@ const CreateArticleBody = () => {
       </div>
       <div className="body">
         <GlobalStyled.BoardTitleDiv>
-          <div className="board_name" onClick={handleClickPopper}>
-            {curCate}
-            <ExpandMoreIcon />
-          </div>
-          <Popover
-            open={open}
-            anchorEl={anchorEl}
-            onClose={() => {
-              setAnchorEl(null);
-            }}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'left',
-            }}
-          >
-            <List>
-              {cateList.map(cate => {
-                if (cate !== curCate)
-                  return (
-                    <ListItem disablePadding>
-                      <ListItemButton
-                        onClick={() => {
-                          setCurCate(cate);
-                        }}
-                      >
-                        {cate}
-                      </ListItemButton>
-                    </ListItem>
-                  );
+          <FormControl className="category_form" fullWidth>
+            <NativeSelect
+              defaultValue={0}
+              onChange={e => {
+                setCurCate(cateList[e.target.value]);
+              }}
+            >
+              {cateList.map((cate, idx) => {
+                return <option value={idx}>{cate}</option>;
               })}
-            </List>
-          </Popover>
+            </NativeSelect>
+          </FormControl>
         </GlobalStyled.BoardTitleDiv>
         <form onSubmit={handleFormSubmit}>
           <input
