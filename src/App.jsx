@@ -64,6 +64,7 @@ const PrivateRouteCheckAuth = ({ children }) => {
   } else {
     if (auth.state !== 401) return children;
     else return <Navigate to="/login" />;
+    // return children;
   }
 };
 
@@ -71,6 +72,7 @@ const PrivateRouteCheckFtAuth = ({ children }) => {
   const auth = useContext(AuthContext);
   if (auth.state === 200) return children;
   else return <Navigate to="/profile" />;
+  // return children;
 };
 
 // 글 보기 : 모드view?글id=12 or view/글id
@@ -95,7 +97,7 @@ const App = () => {
               </PrivateRouteCheckAuth>
             }
           />
-          {/* <Route
+          <Route
             path="/alarm"
             element={
               <PrivateRouteCheckAuth>
@@ -104,7 +106,7 @@ const App = () => {
                 </PrivateRouteCheckFtAuth>
               </PrivateRouteCheckAuth>
             }
-          /> */}
+          />
 
           <Route
             path="/category/:id"
@@ -221,9 +223,3 @@ export default App;
 //    42world.kr/board/free
 //    42world.kr/board/anony
 //  42world.kr/profile
-
-// const isLogin = () => {
-//   const response = UserService.getUser();
-//   if (response) return true;
-//   return false;
-// };

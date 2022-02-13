@@ -60,7 +60,6 @@ const Header = () => {
   const handleOpenMenu = (anchor, open) => {
     if (!queryData.mode) {
       setSearchParams({ ...queryData, mode: 'menu' });
-      // searchParams.append('mode', 'menu');
       setIsMenuModal(true);
     } else {
       delete queryData.mode;
@@ -78,19 +77,11 @@ const Header = () => {
   const handleBackButton = () => {
     navi(-1);
   };
-  // const handleOpenNoti = () => {
-  //   if (loca.search === '') {
-  //     setSearchParams('mode=noti');
-  //     setIsNotiModal(true);
-  //   } else {
-  //     setSearchParams('');
-  //     setIsNotiModal(false);
-  //   }
+
+  // const handleToggleSearch = () => {
+  //   setIsSearch(!isSearch);
   // };
 
-  const handleToggleSearch = () => {
-    setIsSearch(!isSearch);
-  };
   useEffect(() => {
     if (queryData.mode === 'menu') {
       setIsMenuModal(true);
@@ -138,10 +129,10 @@ const Header = () => {
             sx={{ color: GlobalStyled.theme.headerIconColor }}
             onClick={() => navi('/profile')}
           />
-          {/* <NotificationsIcon
+          <NotificationsIcon
             sx={{ color: GlobalStyled.theme.headerIconColor }}
             onClick={() => navi('/alarm')}
-          /> */}
+          />
         </div>
         {/*{isSearch && <SearchBar />}*/}
       </Styled.HeaderStyleDiv>
@@ -160,10 +151,6 @@ const Header = () => {
       >
         <MenuModal open={isMenuModal} onClickCloseModal={handleOpenMenu} />
       </SwipeableDrawer>
-      {/*<Styled.MenuModal>*/}
-      {/*<MenuModal open={isMenuModal} onClickCloseModal={handleOpenMenu} />*/}
-      {/*<NotiModal open={isNotiModal} onClickCloseModal={handleOpenNoti} />*/}
-      {/*</Styled.MenuModal>*/}
     </div>
   );
 };
