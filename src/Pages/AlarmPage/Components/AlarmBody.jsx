@@ -51,21 +51,27 @@ const AlarmBody = () => {
 
   const getArticleTime = time => dayjs(time).format('MM/DD HH:mm');
 
+  const changePageArticles = () => {
+    const pageIndex = (curPage - 1) * pageMaxArticles;
+    // console.log('pageIndex : ', pageIndex);
+    // console.log(alarmArticles.slice(pageIndex, pageIndex + pageMaxArticles));
+    setCurPageArticles(
+      alarmArticles.slice(pageIndex, pageIndex + pageMaxArticles),
+    );
+  };
+
   useEffect(() => {
     const getArticles = async () => {
       const response = await NotificationService.getNotifications(); // 알람 API 필요
       setAlarmArticles(response.reverse());
     };
     getArticles();
+    changePageArticles();
   }, []);
 
   useEffect(() => {
-    const pageIndex = (curPage - 1) * pageMaxArticles;
-    // console.log(alarmArticles.slice(pageIndex, pageIndex + pageMaxArticles));
-    setCurPageArticles(
-      alarmArticles.slice(pageIndex, pageIndex + pageMaxArticles),
-    );
-  }, [curPage]);
+    changePageArticles();
+  }, [alarmArticles, curPage]);
 
   return (
     <Styled.AlramArticlesDiv>
