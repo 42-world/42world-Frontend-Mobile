@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 
 import Fab from '@mui/material/Fab';
 import ArrowUpwardRoundedIcon from '@mui/icons-material/ArrowUpwardRounded';
@@ -8,11 +8,13 @@ import CommentService from '../../../Network/CommentService';
 import { SmsOutlined } from '@mui/icons-material';
 import Styled from '../ArticlePage.styled';
 import Comment from './Comment';
+import { AuthContext } from 'App';
 
 const CommentContainer = ({ articleId }) => {
   const lastComment = useRef();
   const [comments, setComments] = useState([]);
   const [totalCount, setTotalCount] = useState();
+  const auth = useContext(AuthContext);
 
   const handleCreateComment = newComment => {
     setComments(prev => prev.concat(newComment));
@@ -46,6 +48,7 @@ const CommentContainer = ({ articleId }) => {
       {comments &&
         comments.map(comment => (
           <Comment
+            curUser={auth.curUser}
             key={comment.id}
             articleId={articleId}
             comment={comment}

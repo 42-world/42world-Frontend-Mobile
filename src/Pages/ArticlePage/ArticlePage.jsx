@@ -11,7 +11,6 @@ const ArticlePage = () => {
       <Header />
       <Styled.ArticlePageDiv>
         <Body articleId={id} />
-        {/* {categoryId !== 3 && <CommentContainer articleId={id} />} */}
       </Styled.ArticlePageDiv>
     </>
   );
