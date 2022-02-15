@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 
+import { AuthContext } from 'App';
 import { ArticleService, CommentService } from 'Network';
 
 import Comment from './Comment';
@@ -13,6 +14,7 @@ const CommentContainer = ({ articleId }) => {
   const lastComment = useRef();
   const [comments, setComments] = useState([]);
   const [totalCount, setTotalCount] = useState();
+  const auth = useContext(AuthContext);
 
   const handleCreateComment = newComment => {
     setComments(prev => prev.concat(newComment));
@@ -20,6 +22,10 @@ const CommentContainer = ({ articleId }) => {
     fetchComment();
   };
 
+  const handleDeleteComment = commentId => {
+    setComments(prev => prev.filter(comment => comment.id !== commentId));
+    fetchComment();
+  };
   const fetchComment = async () => {
     const res = await ArticleService.getArticlesCommentsById(
       articleId,
@@ -46,11 +52,13 @@ const CommentContainer = ({ articleId }) => {
       {comments &&
         comments.map(comment => (
           <Comment
+            curUser={auth.curUser}
             key={comment.id}
             articleId={articleId}
             comment={comment}
             isLikeInitial={comment.isLike}
             likeCountInitial={comment.likeCount}
+            onDeleteComment={handleDeleteComment}
           />
         ))}
       <Styled.CreateCommentDiv>

@@ -22,8 +22,8 @@ const Body = ({ articleId, categoryId }) => {
   const handleClickEdit = () => {
     navi(`/article/${articleId}/edit`, { state: { article } });
   };
-  const handleClickDelete = () => {
-    ArticleService.deleteArticles(articleId);
+  const handleClickDelete = async () => {
+    await ArticleService.deleteArticles(articleId);
     navi(-1);
   };
   const { curUser } = useContext(AuthContext);
@@ -72,7 +72,7 @@ const Body = ({ articleId, categoryId }) => {
               {article.writer.id === curUser.id && (
                 <div className="edit_article">
                   <button onClick={handleClickEdit}>수정</button>
-                  {/* <button onClick={handleClickDelete}>삭제</button> */}
+                  <button onClick={handleClickDelete}>삭제</button>
                 </div>
               )}
             </div>
