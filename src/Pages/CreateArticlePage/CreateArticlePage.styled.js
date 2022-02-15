@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import GlobalStyled from 'Styled/Global.styled';
 const CreateArticlePage = styled.div`
-  .header {
+  .page_header {
     position: fixed;
 
     box-sizing: border-box;

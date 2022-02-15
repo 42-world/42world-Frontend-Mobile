@@ -91,7 +91,7 @@ const CreateArticleBody = () => {
 
   return (
     <>
-      <div className="header">
+      <div className="page_header">
         <div>
           <ArrowBackIcon onClick={handleClickCancel} />
         </div>
