@@ -1,10 +1,13 @@
-import { ArrowForwardIos } from '@mui/icons-material';
-import UserService from 'Network/UserService';
-import Styled from './Info.styled';
-import { useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { AuthContext } from 'App';
 import { getProfile } from 'Utils';
+import { UserService } from 'Network';
+
+import { ArrowForwardIos } from '@mui/icons-material';
+
+import Styled from './Info.styled';
 
 const Info = () => {
   const navigate = useNavigate();

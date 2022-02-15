@@ -1,18 +1,17 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
+
+import { BestService, ArticleService } from 'Network';
 import qs from 'qs';
 
 import BodyPreView from './BodyPreView';
 import Community from './Community';
 import Home from './Home';
-
-import BestService from '../../../Network/BestService';
-import ArticleService from '../../../Network/ArticleService';
-import Styled from './Body.styled';
-
 import Divider from '@mui/material/Divider';
-import CreateIcon from '@mui/icons-material/Create';
 import Fab from '@mui/material/Fab';
+import CreateIcon from '@mui/icons-material/Create';
+
+import Styled from './Body.styled';
 
 const MainBody = () => {
   const navi = useNavigate();
@@ -75,7 +74,6 @@ const MainBody = () => {
       >
         <BodyPreView onChangeTab={handleChangeTab} highlight={highlight} />
         <Divider />
-        {/*<Styled.ListDivider margin="0.7rem" />*/}
         <div className="articles">
           {highlight === 'home' ? (
             <Home notiArticles={notiArticles} />

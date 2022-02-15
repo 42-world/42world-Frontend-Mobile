@@ -1,13 +1,15 @@
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { PreviewArticleNoti } from '../../../Components';
 
+import { CheckInService } from 'Network';
+
+import { PreviewArticleNoti } from 'Components';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Styled from './Body.styled';
-import CheckInService from '../../../Network/CheckInService';
-import { useCallback, useEffect, useState } from 'react';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+
+import Styled from './Body.styled';
 
 const Home = ({ notiArticles }) => {
   const [checkInStatus, setCheckInStatus] = useState({

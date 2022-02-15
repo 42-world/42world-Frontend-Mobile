@@ -5,6 +5,7 @@ import MenuModal from './MenuModal';
 import NotiModal from './NotiModal';
 import ProfileHeader from './ProfileHeader';
 import Footer from './Footer';
+import Loading from './Loading';
 
 export {
   Footer,
@@ -14,4 +15,5 @@ export {
   MenuModal,
   NotiModal,
   ProfileHeader,
+  Loading,
 };

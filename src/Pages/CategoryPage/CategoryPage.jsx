@@ -1,4 +1,4 @@
-import { Header } from '../../Components';
+import { Header } from 'Components';
 import CategoryBody from './Components';
 
 import Styled from './CategoryPage.styled.js';

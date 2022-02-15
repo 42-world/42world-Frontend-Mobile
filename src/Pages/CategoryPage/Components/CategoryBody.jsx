@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { PreviewArticleNoti, PreviewArticle } from '../../../Components';
-import { getCategoryByUrl } from '../../../Utils';
+import { getCategoryByUrl } from 'Utils';
+import { ArticleService } from 'Network';
 
-import ArticleService from '../../../Network/ArticleService';
-import Styled from './Body.styled';
-import GlobalStyled from '../../../Styled/Global.styled';
-
+import { PreviewArticleNoti, PreviewArticle } from 'Components';
 import CircularProgress from '@mui/material/CircularProgress';
-import CreateIcon from '@mui/icons-material/Create';
 import Fab from '@mui/material/Fab';
+import CreateIcon from '@mui/icons-material/Create';
+
+import GlobalStyled from 'Styled/Global.styled';
+import Styled from './Body.styled';
 
 const CategoryBody = () => {
   const [articles, setArticles] = useState([]);

@@ -1,5 +1,7 @@
 import styled from 'styled-components';
+
 import GlobalStyled from 'Styled/Global.styled';
+
 const CreateArticlePage = styled.div`
   .header {
     position: fixed;

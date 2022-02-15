@@ -1,12 +1,14 @@
-import React, { useContext, useState } from 'react';
-import ReactionService from 'Network/ReactionService';
-import Styled from '../ArticlePage.styled';
+import { useContext, useState } from 'react';
+
+import { AuthContext } from 'App';
+import { getProfile } from 'Utils';
+import { ReactionService } from 'Network';
+import dayjs from 'dayjs';
+
 import { FavoriteBorder } from '@mui/icons-material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-import dayjs from 'dayjs';
-import { AuthContext } from 'App';
-import { getProfile } from 'Utils';
+import Styled from '../ArticlePage.styled';
 
 const Comment = ({ articleId, comment, isLikeInitial, likeCountInitial }) => {
   const [isLike, setIsLike] = useState(isLikeInitial);

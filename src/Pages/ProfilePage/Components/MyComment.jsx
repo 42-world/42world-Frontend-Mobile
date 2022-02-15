@@ -1,6 +1,7 @@
+import { useNavigate } from 'react-router-dom';
+
 import { Button, Box } from '@mui/material';
 import { SmsOutlined } from '@mui/icons-material';
-import { useNavigate } from 'react-router-dom';
 
 const MyComment = () => {
   const navigate = useNavigate();

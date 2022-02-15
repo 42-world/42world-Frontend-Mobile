@@ -1,7 +1,9 @@
 import { useContext, useState } from 'react';
-import { AuthContext } from '../../../App';
-import UserService from '../../../Network/UserService';
+
+import { AuthContext } from 'App';
 import { getProfile } from 'Utils';
+import { UserService } from 'Network';
+
 import Styled from './Setting.styled';
 
 const Setting = () => {
