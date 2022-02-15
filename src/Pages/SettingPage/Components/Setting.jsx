@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../../App';
 import UserService from '../../../Network/UserService';
-import { PROFILE_LIST } from '../../../Utils/profileList';
+import { getProfile } from 'Utils';
 import Styled from './Setting.styled';
 
 const Setting = () => {
@@ -34,7 +34,7 @@ const Setting = () => {
     <Styled.SettingDiv>
       <div className="setting_container_title">캐릭터 선택</div>
       <div className="profile_image_div">
-        {PROFILE_LIST.map(profile => (
+        {getProfile.PROFILE_LIST.map(profile => (
           <button
             key={profile.id}
             onClick={() => handleCharacterClick(profile.id)}

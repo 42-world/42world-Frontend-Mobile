@@ -4,7 +4,7 @@ import Styled from './Info.styled';
 import { useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from 'App';
-import { getProfileImg } from 'Utils/profileList';
+import { getProfile } from 'Utils';
 
 const Info = () => {
   const navigate = useNavigate();
@@ -32,7 +32,7 @@ const Info = () => {
       <div style={{ display: 'flex', alignItems: 'center' }}>
         <div style={{ width: '36px', display: 'flex', alignItems: 'center' }}>
           <img
-            src={getProfileImg(character)}
+            src={getProfile.findProfileById(character)}
             alt="profile_img"
             style={{ width: '100%' }}
           />

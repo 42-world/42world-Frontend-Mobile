@@ -6,7 +6,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 
 import dayjs from 'dayjs';
 import { AuthContext } from 'App';
-import { getProfileImg } from 'Utils/profileList';
+import { getProfile } from 'Utils';
 
 const Comment = ({ articleId, comment, isLikeInitial, likeCountInitial }) => {
   const [isLike, setIsLike] = useState(isLikeInitial);
@@ -30,7 +30,7 @@ const Comment = ({ articleId, comment, isLikeInitial, likeCountInitial }) => {
         <div className="info">
           <Styled.ProfileImage
             width="2.4rem"
-            src={getProfileImg(comment?.writer?.character)}
+            src={getProfile.findProfileById(comment?.writer?.character)}
           />
           <div className="picture"></div>
           <div className="text">
