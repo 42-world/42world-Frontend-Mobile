@@ -36,6 +36,8 @@ const theme = {
   profilePageMyInfoBackgroundColor: '#2a2d38',
   profilePageBackgroundColor: '#f9f9f9',
 
+  createArticlePageInputBorderColor: '#dadde6',
+
   categoryNameBackgroundColor: '#4C5A66',
   categoryNameTextColor: '#FFF',
 

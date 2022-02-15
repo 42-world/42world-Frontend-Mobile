@@ -1,7 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { getCategoryId } from '../../../Utils';
 import { useNavigate } from 'react-router-dom';
 import TextareaAutosize from 'react-textarea-autosize';
+
+import '@toast-ui/editor/dist/toastui-editor.css';
+
+import { Editor } from '@toast-ui/react-editor';
 
 import ArticleService from '../../../Network/ArticleService';
 
@@ -28,6 +32,8 @@ const CreateArticleBody = () => {
   const navi = useNavigate();
   const open = Boolean(anchorEl);
 
+  const editorRef = useRef(null);
+
   const handleClickPopper = event => {
     setAnchorEl(event.currentTarget);
   };
@@ -45,34 +51,44 @@ const CreateArticleBody = () => {
   };
 
   const handleClickSubmit = async () => {
-    if (title === '') {
-      alert('제목을 입력하세요!');
-      return;
-    }
-    if (content === '') {
-      alert('내용을 입력하세요!');
-      return;
-    }
+    editorRef.current.getInstance().removeToolbarItem('heading');
+    console.log(editorRef.current.getInstance());
+    //if (title === '') {
+    //  alert('제목을 입력하세요!');
+    //  return;
+    //}
+    //if (content === '') {
+    //  alert('내용을 입력하세요!');
+    //  return;
+    //}
+
     // 이동한 뒤에 API 실행됨
-    setIsSending(true);
-    const categoryId = getCategoryId(curCate);
-    const result = await ArticleService.createArticles({
-      title: title,
-      content: content,
-      categoryId: categoryId, // + 붙이면 number 타입
-    });
-    setIsSending(false);
-    navi(-1);
+    //setIsSending(true);
+    //const categoryId = getCategoryId(curCate);
+    //const result = await ArticleService.createArticles({
+    //  title: title,
+    //  content: content,
+    //  categoryId: categoryId, // + 붙이면 number 타입
+    //});
+    //setIsSending(false);
+    //navi(-1);
   };
 
-  const handleFormSubmit = e => {
-    e.preventDefault();
-    handleClickSubmit();
+  const markdownEditorSetting = () => {
+    const editor = editorRef.current;
+    editor.getRootElement().classList.add('editor');
   };
 
   useEffect(() => {
     setCurCate(cateList[0]);
+
+    markdownEditorSetting();
   }, []);
+
+  const handleClick = () => {
+    console.log(editorRef.current.getInstance());
+  };
+
   return (
     <>
       <div className="header">
@@ -108,18 +124,20 @@ const CreateArticleBody = () => {
             </NativeSelect>
           </FormControl>
         </GlobalStyled.BoardTitleDiv>
-        <form onSubmit={handleFormSubmit}>
+        <form>
           <input
             placeholder="제목을 입력하세요"
             onChange={handleChangeTitle}
             maxLength={30}
           />
-          <TextareaAutosize
-            placeholder="내용을 입력하세요"
-            onChange={handleChangeContent}
-            maxLength={4200}
+
+          <Editor
+            className="editor"
+            previewStyle="vertical"
+            initialEditType="wysiwyg"
+            initialValue="hello"
+            ref={editorRef}
           />
-          <p>{content.length}/4200</p>
         </form>
       </div>
     </>
