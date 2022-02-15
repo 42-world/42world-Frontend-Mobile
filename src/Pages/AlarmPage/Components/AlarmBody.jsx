@@ -28,7 +28,7 @@ const AlarmBody = () => {
 
   const navi = useNavigate();
   const mainTextLen = 10;
-  const pageMaxArticles = 19;
+  const pageMaxArticles = 20;
   const maxPages = Math.ceil(alarmArticles.length / pageMaxArticles); // 소수점으로 떨어질 경우 올림.
   // console.log('총 개수 : ', alarmArticles.length, '페이지 개수 : ', maxPages);
 
