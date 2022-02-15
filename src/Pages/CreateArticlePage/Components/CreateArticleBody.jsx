@@ -51,27 +51,28 @@ const CreateArticleBody = () => {
   };
 
   const handleClickSubmit = async () => {
-    editorRef.current.getInstance().removeToolbarItem('heading');
-    console.log(editorRef.current.getInstance());
-    //if (title === '') {
-    //  alert('제목을 입력하세요!');
-    //  return;
-    //}
-    //if (content === '') {
-    //  alert('내용을 입력하세요!');
-    //  return;
-    //}
+    //console.log(editorRef.current.getInstance().getMarkdown());
+
+    setContent(editorRef.current.getInstance().getMarkdown());
+    if (title === '') {
+      alert('제목을 입력하세요!');
+      return;
+    }
+    if (content === '') {
+      alert('내용을 입력하세요!');
+      return;
+    }
 
     // 이동한 뒤에 API 실행됨
-    //setIsSending(true);
-    //const categoryId = getCategoryId(curCate);
-    //const result = await ArticleService.createArticles({
-    //  title: title,
-    //  content: content,
-    //  categoryId: categoryId, // + 붙이면 number 타입
-    //});
-    //setIsSending(false);
-    //navi(-1);
+    setIsSending(true);
+    const categoryId = getCategoryId(curCate);
+    const result = await ArticleService.createArticles({
+      title: title,
+      content: content,
+      categoryId: categoryId, // + 붙이면 number 타입
+    });
+    setIsSending(false);
+    navi(-1);
   };
 
   const markdownEditorSetting = () => {
