@@ -1,5 +1,6 @@
-import Styled from './PreviewArticle.styled';
 import dayjs from 'dayjs';
+
+import Styled from './PreviewArticle.styled';
 
 const PreviewArticleNoti = ({ article, onClickArticle }) => {
   const getArticleTime = time =>

@@ -1,4 +1,3 @@
-import React from 'react';
 import GlobalStyled from 'Styled/Global.styled';
 import Styled from './Footer.styled';
 

@@ -4,7 +4,6 @@ import qs from 'qs';
 
 import MenuModal from './MenuModal';
 // import NotiModal from './NotiModal';
-
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -12,8 +11,8 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 
-import Styled from './Header.styled';
 import GlobalStyled from 'Styled/Global.styled';
+import Styled from './Header.styled';
 
 // const SearchBar = () => {
 //   const [search, setSearch] = useState('');

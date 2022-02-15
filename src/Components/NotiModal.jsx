@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import UserService from '../Network/UserService';
+import UserService from 'Network/UserService';
 
 import Modal from '@mui/material/Modal';
 import CloseIcon from '@mui/icons-material/Close';
