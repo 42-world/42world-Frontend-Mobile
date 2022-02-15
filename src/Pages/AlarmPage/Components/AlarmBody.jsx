@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import dayjs from 'dayjs';
 
-import { getCategoryById } from '../../../Utils';
 import Styled from './AlarmArticle.styled.js';
 import NotificationService from '../../../Network/NotificationService';
+
+import Pagination from '@mui/material/Pagination';
 
 const alarmType = (context, type) => {
   let message;
@@ -20,9 +22,19 @@ const alarmType = (context, type) => {
 };
 
 const AlarmBody = () => {
-  const [alarmArticles, setAlarmArticles] = useState();
+  const [alarmArticles, setAlarmArticles] = useState([]);
+  const [curPage, setCurPage] = useState(1);
+  const [curPageArticles, setCurPageArticles] = useState([]);
+
   const navi = useNavigate();
   const mainTextLen = 10;
+  const pageMaxArticles = 20;
+  const maxPages = Math.ceil(alarmArticles.length / pageMaxArticles); // 소수점으로 떨어질 경우 올림.
+  // console.log('총 개수 : ', alarmArticles.length, '페이지 개수 : ', maxPages);
+
+  const handleChangePage = (event, value) => {
+    setCurPage(value);
+  };
 
   const moveArticles = articleId => {
     alert('구현 중입니다!');
@@ -39,17 +51,27 @@ const AlarmBody = () => {
 
   const getArticleTime = time => dayjs(time).format('MM/DD HH:mm');
 
-  const categoryName = article => {
-    return getCategoryById(article.userId);
+  const changePageArticles = () => {
+    const pageIndex = (curPage - 1) * pageMaxArticles;
+    // console.log('pageIndex : ', pageIndex);
+    // console.log(alarmArticles.slice(pageIndex, pageIndex + pageMaxArticles));
+    setCurPageArticles(
+      alarmArticles.slice(pageIndex, pageIndex + pageMaxArticles),
+    );
   };
 
   useEffect(() => {
     const getArticles = async () => {
       const response = await NotificationService.getNotifications(); // 알람 API 필요
-      setAlarmArticles(response);
+      setAlarmArticles(response.reverse());
     };
     getArticles();
+    changePageArticles();
   }, []);
+
+  useEffect(() => {
+    changePageArticles();
+  }, [alarmArticles, curPage]);
 
   return (
     <Styled.AlramArticlesDiv>
@@ -58,8 +80,8 @@ const AlarmBody = () => {
         <div className="middle">42월드 많이 이용해주세요!</div>
         <div className="right">01/30 00:00</div>
       </Styled.AlramArticleDiv>
-      {alarmArticles &&
-        alarmArticles.map(article => {
+      {curPageArticles &&
+        curPageArticles.map(article => {
           return (
             <Styled.AlramArticleDiv
               key={article.id}
@@ -68,15 +90,22 @@ const AlarmBody = () => {
               className="article"
               onClick={() => moveArticles(article.userId)}
             >
-              {/* <div className="left">{categoryName(article)}</div> */}
               <div className="left">새 댓글</div>
               <div className="middle">{previewMainText(article)}</div>
               <div className="right">{getArticleTime(article.createdAt)}</div>
             </Styled.AlramArticleDiv>
-
-            // 인기글 가져오기, 지금은 보류.
           );
         })}
+      <Pagination
+        count={maxPages}
+        page={curPage}
+        siblingCount={2}
+        onChange={handleChangePage}
+        showFirstButton
+        showLastButton
+        shape="rounded"
+        // size="small"
+      />
     </Styled.AlramArticlesDiv>
   );
 };
