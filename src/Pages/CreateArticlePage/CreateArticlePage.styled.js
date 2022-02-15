@@ -98,6 +98,11 @@ const CreateArticlePage = styled.div`
           height: auto;
           width: min-content;
         }
+        .toastui-editor-popup {
+          @media (max-width: 480px) {
+            margin-left: 0px;
+          }
+        }
       }
     }
 
