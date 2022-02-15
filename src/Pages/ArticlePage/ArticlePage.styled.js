@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import GlobalStyled from 'Styled/Global.styled';
 
 const ProfileImage = styled.img`
@@ -12,16 +12,42 @@ const ProfileImage = styled.img`
 
 const CommentContent = styled.div`
   display: flex;
-  flex-direction: row;
+  ${props =>
+    props.isMine
+      ? css`
+          flex-direction: row-reverse;
+        `
+      : css`
+          flex-direction: row;
+        `}
   align-items: flex-end;
 
   .text {
     padding: 0.5rem 0.8rem;
-    background: ${GlobalStyled.theme.textColorLightGray};
+    ${props =>
+      props.isMine
+        ? css`
+            background: ${GlobalStyled.theme.textColorMint};
+            color: white;
+          `
+        : css`
+            background: ${GlobalStyled.theme.textColorLightGray};
+          `}
     border-radius: 0.5rem;
     font-size: 0.75rem;
     font-weight: 300;
-    margin-right: 0.3rem;
+    margin: 0 0.3rem;
+  }
+
+  .delete_button {
+    background: none;
+    border: none;
+    font-size: 0.7rem;
+    white-space: nowrap;
+    margin-bottom: 0.2rem;
+    margin-left: 1rem;
+    margin-right: 0.2rem;
+    color: ${GlobalStyled.theme.textColorSecondary};
   }
 
   .liked_count {
@@ -172,43 +198,6 @@ const ArticlePageDiv = styled.div`
     flex-direction: column;
     align-items: center;
     width: 100%;
-
-    .comment_div {
-      border-top: 1px solid #e6e6e6;
-      padding: 0.5rem 0.8rem;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-
-      .info {
-        margin-bottom: 0.4rem;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-
-        .text {
-          margin-left: 0.7rem;
-          h1 {
-            color: ${GlobalStyled.theme.textColor};
-            font-size: 0.9rem;
-            font-weight: 600;
-            line-height: 1.1;
-          }
-          h2 {
-            color: ${GlobalStyled.theme.textColorGray};
-            font-size: 0.4rem;
-            font-weight: 400;
-          }
-        }
-      }
-
-      .text {
-        margin-left: 0.2rem;
-        word-break: break-all;
-      }
-    }
-
-    .comment_count {
     }
   }
 
@@ -288,6 +277,43 @@ const ArticlePageDiv = styled.div`
   }
 `;
 
+const CommentDiv = styled.div`
+  border-top: 1px solid #e6e6e6;
+  padding: 0.5rem 0.8rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .info {
+    margin-bottom: 0.4rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    ${props => props.isMine && `flex-direction: row-reverse;`}
+
+    .text {
+      margin: 0rem 0.7rem;
+      ${props => props.isMine && `text-align: right;`}
+      h1 {
+        color: ${GlobalStyled.theme.textColor};
+        font-size: 0.9rem;
+        font-weight: 600;
+        line-height: 1.1;
+      }
+      h2 {
+        color: ${GlobalStyled.theme.textColorGray};
+        font-size: 0.4rem;
+        font-weight: 400;
+      }
+    }
+  }
+
+  .text {
+    margin-left: 0.2rem;
+    word-break: break-all;
+  }
+`;
+
 const Styled = {
   ArticlePageDiv,
   ProfileImage,
@@ -295,6 +321,7 @@ const Styled = {
   ArticleLikedDiv,
   ArticleCommentDiv,
   CreateCommentDiv,
+  CommentDiv,
 };
 
 export default Styled;
