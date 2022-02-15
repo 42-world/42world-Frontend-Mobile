@@ -6,6 +6,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 
 import dayjs from 'dayjs';
 import { getProfileImg } from 'Utils/profileList';
+import CommentService from 'Network/CommentService';
 
 const Comment = ({
   curUser,
@@ -13,6 +14,7 @@ const Comment = ({
   comment,
   isLikeInitial,
   likeCountInitial,
+  onDeleteComment,
 }) => {
   const [isLike, setIsLike] = useState(isLikeInitial);
   const [likeCount, setLikeCount] = useState(likeCountInitial);
@@ -28,7 +30,11 @@ const Comment = ({
     setIsLike(res.isLike);
     setLikeCount(res.likeCount);
   };
-  console.log(curUser, comment.writer.id);
+
+  const handleClickDelete = async commentId => {
+    await CommentService.deleteComments(commentId);
+    onDeleteComment(commentId);
+  };
   return (
     <Styled.CommentDiv isMine={curUser.id === comment.writer.id}>
       <div className="info">
@@ -48,7 +54,12 @@ const Comment = ({
       >
         <div className="text">{comment.content}</div>
         {curUser.id === comment.writer.id ? (
-          <button className="delete_button">삭제</button>
+          <button
+            className="delete_button"
+            onClick={() => handleClickDelete(comment.id)}
+          >
+            삭제
+          </button>
         ) : (
           <span
             className="liked_count"
