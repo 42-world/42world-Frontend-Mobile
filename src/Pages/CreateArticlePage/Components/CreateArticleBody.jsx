@@ -43,7 +43,7 @@ const CreateArticleBody = () => {
   };
 
   const handleChangeContent = e => {
-    setContent(e.target.value);
+    setContent(editorRef.current.getInstance().getMarkdown());
   };
 
   const handleClickCancel = () => {
@@ -51,9 +51,8 @@ const CreateArticleBody = () => {
   };
 
   const handleClickSubmit = async () => {
-    //console.log(editorRef.current.getInstance().getMarkdown());
-
     setContent(editorRef.current.getInstance().getMarkdown());
+
     if (title === '') {
       alert('제목을 입력하세요!');
       return;
@@ -136,7 +135,8 @@ const CreateArticleBody = () => {
             className="editor"
             previewStyle="vertical"
             initialEditType="wysiwyg"
-            initialValue="hello"
+            placeholder="내용을 입력하세요"
+            onChange={handleChangeContent}
             ref={editorRef}
           />
         </form>
