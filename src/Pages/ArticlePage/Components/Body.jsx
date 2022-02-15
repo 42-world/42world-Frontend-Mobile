@@ -1,18 +1,20 @@
-import { FavoriteBorder } from '@mui/icons-material';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { getCategoryById } from 'Utils';
-
-import ArticleService from 'Network/ArticleService';
 import { AuthContext } from 'App';
-import GlobalStyled from 'Styled/Global.styled';
-import dayjs from 'dayjs';
-import Styled from '../ArticlePage.styled';
-import ReactionService from 'Network/ReactionService';
+import { getCategoryById } from 'Utils';
 import { getProfileImg } from 'Utils/profileList';
+import { ArticleService, ReactionService } from 'Network';
+
+import dayjs from 'dayjs';
+
 import { CommentContainer } from '.';
+
+import { FavoriteBorder } from '@mui/icons-material';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+
+import GlobalStyled from 'Styled/Global.styled';
+import Styled from '../ArticlePage.styled';
 
 const Body = ({ articleId, categoryId }) => {
   const [article, setArticle] = useState();

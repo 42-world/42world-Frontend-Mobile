@@ -13,7 +13,7 @@ import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 
 import Styled from './Header.styled';
-import GlobalStyled from '../Styled/Global.styled';
+import GlobalStyled from 'Styled/Global.styled';
 
 // const SearchBar = () => {
 //   const [search, setSearch] = useState('');
