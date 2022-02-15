@@ -2,8 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { AuthContext } from 'App';
-import { getCategoryById } from 'Utils';
-import { getProfile } from 'Utils';
+import { getCategoryById, getProfile } from 'Utils';
 import { ArticleService, ReactionService } from 'Network';
 import dayjs from 'dayjs';
 

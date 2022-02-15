@@ -40,7 +40,7 @@ const Comment = ({
       <div className="info">
         <Styled.ProfileImage
           width="2.4rem"
-          src={getProfile.getProfileImg(comment?.writer?.character)}
+          src={getProfile.findProfileById(comment?.writer?.character)}
         />
         <div className="picture"></div>
         <div className="text">
