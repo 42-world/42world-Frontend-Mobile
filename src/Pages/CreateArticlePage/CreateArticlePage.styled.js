@@ -93,6 +93,11 @@ const CreateArticlePage = styled.div`
         flex-grow: 1;
         box-sizing: border-box;
         width: 100%;
+        .toastui-editor-dropdown-toolbar {
+          flex-wrap: wrap;
+          height: auto;
+          width: min-content;
+        }
       }
     }
 
