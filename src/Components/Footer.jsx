@@ -1,10 +1,10 @@
-import React from 'react';
-import GlobalStyled from '../Styled/Global.styled';
+import GlobalStyled from 'Styled/Global.styled';
 import Styled from './Footer.styled';
 
 const githubLink = 'https://github.com/42-world';
 const emailLink = 'mailto:42world.official@gmail.com';
-const articleLink = 'https://euimin.notion.site/42WORLD-925997bb2e7245b48fca5afeb298db76';
+const articleLink =
+  'https://euimin.notion.site/42WORLD-925997bb2e7245b48fca5afeb298db76';
 
 const Footer = ({ isProfile }) => {
   return (

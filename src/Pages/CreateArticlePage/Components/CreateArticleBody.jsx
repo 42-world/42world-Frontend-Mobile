@@ -1,21 +1,16 @@
 import { useState, useEffect } from 'react';
-import { getCategoryId } from '../../../Utils';
 import { useNavigate } from 'react-router-dom';
+
+import { getCategoryId } from 'Utils';
+import { ArticleService } from 'Network';
 import TextareaAutosize from 'react-textarea-autosize';
-
-import ArticleService from '../../../Network/ArticleService';
-
-import GlobalStyled from '../../../Styled/Global.styled';
-
-import LoadingButton from '@mui/lab/LoadingButton';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 import FormControl from '@mui/material/FormControl';
 import NativeSelect from '@mui/material/NativeSelect';
+import LoadingButton from '@mui/lab/LoadingButton';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
+import GlobalStyled from 'Styled/Global.styled';
 
 const CreateArticleBody = () => {
   const [title, setTitle] = useState('');

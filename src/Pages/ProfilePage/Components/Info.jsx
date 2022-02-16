@@ -1,10 +1,13 @@
-import { ArrowForwardIos } from '@mui/icons-material';
-import UserService from 'Network/UserService';
-import Styled from './Info.styled';
-import { useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { AuthContext } from 'App';
-import { getProfileImg } from 'Utils/profileList';
+import { getProfile } from 'Utils';
+import { UserService } from 'Network';
+
+import { ArrowForwardIos } from '@mui/icons-material';
+
+import Styled from './Info.styled';
 
 const Info = () => {
   const navigate = useNavigate();
@@ -32,7 +35,7 @@ const Info = () => {
       <div style={{ display: 'flex', alignItems: 'center' }}>
         <div style={{ width: '36px', display: 'flex', alignItems: 'center' }}>
           <img
-            src={getProfileImg(character)}
+            src={getProfile.findProfileById(character)}
             alt="profile_img"
             style={{ width: '100%' }}
           />

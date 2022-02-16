@@ -1,6 +1,8 @@
 import styled from 'styled-components';
+
 import List from '@mui/material/List';
-import GlobalStyled from '../../../Styled/Global.styled';
+
+import GlobalStyled from 'Styled/Global.styled';
 
 const ListDivider = styled.div`
   box-sizing: border-box;

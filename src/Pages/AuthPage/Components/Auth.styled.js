@@ -1,7 +1,9 @@
 import styled, { keyframes } from 'styled-components';
-import GlobalStyled from '../../../Styled/Global.styled';
 
 import { TextField } from '@mui/material';
+
+import GlobalStyled from 'Styled/Global.styled';
+
 const fadeIn = keyframes`
   0% {
     opacity: 0;

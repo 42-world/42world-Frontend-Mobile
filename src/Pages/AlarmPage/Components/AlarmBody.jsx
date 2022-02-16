@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import NotificationService from 'Network/NotificationService';
 import dayjs from 'dayjs';
 
-import Styled from './AlarmArticle.styled.js';
-import NotificationService from '../../../Network/NotificationService';
-
 import Pagination from '@mui/material/Pagination';
+
+import Styled from './AlarmArticle.styled.js';
 
 const alarmType = (context, type) => {
   let message;

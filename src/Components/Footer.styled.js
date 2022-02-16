@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import GlobalStyled from '../Styled/Global.styled';
+
+import GlobalStyled from 'Styled/Global.styled';
 
 const Footer = styled.div`
   background: ${props =>

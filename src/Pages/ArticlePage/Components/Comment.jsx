@@ -1,13 +1,13 @@
-import React, { useContext, useState } from 'react';
-import ReactionService from 'Network/ReactionService';
-import Styled from '../ArticlePage.styled';
+import { useState } from 'react';
+
+import { getProfile } from 'Utils';
+import { ReactionService, CommentService } from 'Network';
+import dayjs from 'dayjs';
+
 import { FavoriteBorder } from '@mui/icons-material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-import dayjs from 'dayjs';
-import { getProfileImg } from 'Utils/profileList';
-import CommentService from 'Network/CommentService';
-
+import Styled from '../ArticlePage.styled';
 const Comment = ({
   curUser,
   articleId,
@@ -40,7 +40,7 @@ const Comment = ({
       <div className="info">
         <Styled.ProfileImage
           width="2.4rem"
-          src={getProfileImg(comment?.writer?.character)}
+          src={getProfile.findProfileById(comment?.writer?.character)}
         />
         <div className="picture"></div>
         <div className="text">

@@ -1,10 +1,11 @@
 import { useState, useEffect, useContext } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
-import ArticleService from 'Network/ArticleService';
 import { AuthContext } from 'App';
+import { ArticleService } from 'Network';
 
 import { EditArticlePageHeader, EditArticlePageBody } from './Conponents';
+
 import Styled from './EditArticlePage.styled';
 
 const EditArticlePage = () => {

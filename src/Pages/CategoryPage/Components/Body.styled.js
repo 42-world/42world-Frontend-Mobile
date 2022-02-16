@@ -1,8 +1,9 @@
 import styled from 'styled-components';
-import List from '@mui/material/List';
-import GlobalStyled from '../../../Styled/Global.styled';
 
+import List from '@mui/material/List';
 import Fab from '@mui/material/Fab';
+
+import GlobalStyled from 'Styled/Global.styled';
 
 const CreateButton = styled(Fab)`
   .fiVBwH {

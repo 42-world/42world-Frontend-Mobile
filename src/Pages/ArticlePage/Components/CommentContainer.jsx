@@ -1,14 +1,14 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 
+import { AuthContext } from 'App';
+import { ArticleService, CommentService } from 'Network';
+
+import Comment from './Comment';
 import Fab from '@mui/material/Fab';
 import ArrowUpwardRoundedIcon from '@mui/icons-material/ArrowUpwardRounded';
-
-import ArticleService from '../../../Network/ArticleService';
-import CommentService from '../../../Network/CommentService';
 import { SmsOutlined } from '@mui/icons-material';
+
 import Styled from '../ArticlePage.styled';
-import Comment from './Comment';
-import { AuthContext } from 'App';
 
 const CommentContainer = ({ articleId }) => {
   const lastComment = useRef();
