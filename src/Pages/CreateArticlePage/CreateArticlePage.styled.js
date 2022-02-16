@@ -101,6 +101,13 @@ const CreateArticlePage = styled.div`
           width: min-content;
         }
         .toastui-editor-popup {
+          width: auto;
+          max-width: 400px;
+          .toastui-editor-file-select-button {
+            width: auto;
+            padding: 0 4px;
+            font-size: 0.7rem;
+          }
           @media (max-width: 480px) {
             margin-left: 0px;
           }
