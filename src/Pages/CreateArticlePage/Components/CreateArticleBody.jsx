@@ -1,23 +1,16 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import TextareaAutosize from 'react-textarea-autosize';
-
 import '@toast-ui/editor/dist/toastui-editor.css';
 
 import { Editor } from '@toast-ui/react-editor';
-
-import { getCategoryId } from 'Utils';
-import { ArticleService } from 'Network';
-
-
-import { getCategoryId } from 'Utils';
-import { ArticleService } from 'Network';
-import TextareaAutosize from 'react-textarea-autosize';
 
 import FormControl from '@mui/material/FormControl';
 import NativeSelect from '@mui/material/NativeSelect';
 import LoadingButton from '@mui/lab/LoadingButton';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+
+import { getCategoryId } from 'Utils';
+import { ArticleService } from 'Network';
 
 import GlobalStyled from 'Styled/Global.styled';
 
