@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '@toast-ui/editor/dist/toastui-editor.css';
 
+import '@toast-ui/editor/dist/toastui-editor.css';
 import { Editor } from '@toast-ui/react-editor';
 
 import FormControl from '@mui/material/FormControl';
@@ -125,7 +125,6 @@ const CreateArticleBody = () => {
           />
 
           <Editor
-            className="editor"
             previewStyle="vertical"
             initialEditType="wysiwyg"
             placeholder="내용을 입력하세요"

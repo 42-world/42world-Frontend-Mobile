@@ -1,6 +1,9 @@
 import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import '@toast-ui/editor/dist/toastui-editor.css';
+import { Viewer } from '@toast-ui/react-editor';
+
 import { AuthContext } from 'App';
 import { getCategoryById, getProfile } from 'Utils';
 import { ArticleService, ReactionService } from 'Network';
@@ -26,6 +29,7 @@ const Body = ({ articleId, categoryId }) => {
     navi(-1);
   };
   const { curUser } = useContext(AuthContext);
+
   useEffect(() => {
     const fetch = async () => {
       const res = await ArticleService.getArticlesById(articleId);
@@ -81,7 +85,8 @@ const Body = ({ articleId, categoryId }) => {
             src={getProfile.findProfileById(article.writer.character)}
           ></Styled.ProfileImage>
         </div>
-        <div className="content_middle">{article.content}</div>
+        {/*<div className="content_middle">{article.content}</div>*/}
+        <Viewer initialValue={article.content} />
         <div className="content_bottom">
           {categoryId !== 3 && (
             <Styled.ArticleLikedDiv likedCount={likeCount || 0}>
