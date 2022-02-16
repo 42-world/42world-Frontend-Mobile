@@ -261,18 +261,8 @@ const ArticlePageDiv = styled.div`
       }
     }
 
-    .content_middle {
+    .toastui-editor-contents {
       padding: 0.7rem;
-      font-size: 0.85rem;
-      font-weight: 400;
-
-      white-space: pre-wrap;
-      white-space: -moz-pre-wrap;
-      white-space: -pre-wrap;
-      white-space: -o-pre-wrap;
-      word-wrap: break-word;
-
-      color: ${GlobalStyled.theme.textColor};
     }
   }
 `;
