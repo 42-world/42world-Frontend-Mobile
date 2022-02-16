@@ -1,14 +1,15 @@
 import { useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Styled from './LoginPage.styled';
+
+import { AuthContext } from 'App';
+import { AuthService } from 'Network';
 import qs from 'qs';
 
-import AuthService from '../../Network/AuthService';
-
 import Button from '@mui/material/Button';
-import GitHubIcon from '@mui/icons-material/GitHub';
 import CircularProgress from '@mui/material/CircularProgress';
-import { AuthContext } from '../../App';
+import GitHubIcon from '@mui/icons-material/GitHub';
+
+import Styled from './LoginPage.styled';
 
 const LoginPage = ({ isCallback }) => {
   const auth = useContext(AuthContext);
@@ -55,7 +56,9 @@ const LoginPage = ({ isCallback }) => {
           ) : (
             <>
               <GitHubIcon />
-              <span style={{'text-transform': 'none'}}>GitHub 계정으로 로그인 하기</span>
+              <span style={{ 'text-transform': 'none' }}>
+                GitHub 계정으로 로그인 하기
+              </span>
             </>
           )}
         </Button>

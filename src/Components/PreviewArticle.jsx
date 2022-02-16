@@ -1,6 +1,7 @@
+import dayjs from 'dayjs';
+
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import SmsOutlined from '@mui/icons-material/SmsOutlined';
-import dayjs from 'dayjs';
 
 import Styled from './PreviewArticle.styled';
 

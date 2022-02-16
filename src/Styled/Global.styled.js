@@ -15,6 +15,7 @@ const theme = {
   textColorLightGray: '#ddd',
   textColorLight: '#eee',
   textColorWhite: '#fff',
+  textColorMint: '#54b7ba',
 
   likedIconColor: '#df867d',
   commentIconColor: '#53b7ba',

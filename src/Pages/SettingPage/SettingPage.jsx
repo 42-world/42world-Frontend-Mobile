@@ -1,7 +1,7 @@
-import { Footer } from 'Components';
-import { ProfileHeader } from '../../Components';
-import GlobalStyled from '../../Styled/Global.styled';
+import { Footer, ProfileHeader } from 'Components';
 import { Setting } from './Components';
+
+import GlobalStyled from 'Styled/Global.styled';
 
 const SettingPage = () => {
   return (

@@ -1,3 +1,4 @@
+import { Footer, ProfileHeader } from 'Components';
 import {
   Info,
   SignOut,
@@ -7,10 +8,9 @@ import {
 } from './Components';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+import GlobalStyled from 'Styled/Global.styled';
 import Styled from './ProfilePage.styled';
-import GlobalStyled from '../../Styled/Global.styled';
-import { ProfileHeader } from '../../Components';
-import { Footer } from 'Components';
 
 const theme = createTheme({
   // mui Button 컬러 적용

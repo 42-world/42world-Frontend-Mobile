@@ -7,7 +7,7 @@ import BookIcon from '@mui/icons-material/Book';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 
-import GlobalStyled from '../Styled/Global.styled';
+import GlobalStyled from 'Styled/Global.styled';
 import Styled from './MenuModal.styled';
 
 const siteMap = [

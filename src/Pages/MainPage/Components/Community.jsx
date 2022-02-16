@@ -1,5 +1,6 @@
 import { Fragment } from 'react';
-import { PreviewArticle } from '../../../Components';
+
+import { PreviewArticle } from 'Components';
 
 import Styled from './Body.styled';
 

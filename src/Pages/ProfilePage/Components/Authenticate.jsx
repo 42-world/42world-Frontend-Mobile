@@ -1,8 +1,11 @@
-import { ArrowForwardIos } from '@mui/icons-material';
-import CommonStyled from '../Common.styled';
-import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
-import { AuthContext } from '../../../App';
+import { useNavigate } from 'react-router-dom';
+
+import { AuthContext } from 'App';
+
+import { ArrowForwardIos } from '@mui/icons-material';
+
+import CommonStyled from '../Common.styled';
 
 const Authenticate = () => {
   const navigate = useNavigate();

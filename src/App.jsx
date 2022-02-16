@@ -1,12 +1,14 @@
 // 2022 1 30 1차 배포
-import * as React from 'react';
-import { useState, createContext } from 'react';
+import { useState, createContext, useEffect, useContext } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
 } from 'react-router-dom';
+
+import { UserService } from 'Network';
+
 import {
   MainPage,
   ProfilePage,
@@ -23,9 +25,7 @@ import {
   AlarmPage,
   ErrorPage,
 } from './Pages';
-import Loading from './Components/Loading';
-import { useContext } from 'react';
-import UserService from './Network/UserService';
+import { Loading } from 'Components';
 
 export const AuthContext = createContext();
 
@@ -34,7 +34,7 @@ const AuthProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [curUser, setCurUser] = useState(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const initState = async () => {
       let response;
       try {

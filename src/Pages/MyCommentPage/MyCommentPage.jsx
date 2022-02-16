@@ -1,7 +1,7 @@
-import { Footer } from 'Components';
-import { ProfileHeader } from 'Components';
-import GlobalStyled from 'Styled/Global.styled';
+import { Footer, ProfileHeader } from 'Components';
 import { MyComment } from './Components';
+
+import GlobalStyled from 'Styled/Global.styled';
 
 const MyCommentPage = () => {
   return (

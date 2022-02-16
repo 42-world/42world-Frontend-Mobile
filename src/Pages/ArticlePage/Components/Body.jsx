@@ -1,18 +1,17 @@
-import { FavoriteBorder } from '@mui/icons-material';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { getCategoryById } from 'Utils';
-
-import ArticleService from 'Network/ArticleService';
 import { AuthContext } from 'App';
-import GlobalStyled from 'Styled/Global.styled';
+import { getCategoryById, getProfile } from 'Utils';
+import { ArticleService, ReactionService } from 'Network';
 import dayjs from 'dayjs';
-import Styled from '../ArticlePage.styled';
-import ReactionService from 'Network/ReactionService';
-import { getProfileImg } from 'Utils/profileList';
+
 import { CommentContainer } from '.';
+import { FavoriteBorder } from '@mui/icons-material';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+
+import GlobalStyled from 'Styled/Global.styled';
+import Styled from '../ArticlePage.styled';
 
 const Body = ({ articleId, categoryId }) => {
   const [article, setArticle] = useState();
@@ -22,8 +21,8 @@ const Body = ({ articleId, categoryId }) => {
   const handleClickEdit = () => {
     navi(`/article/${articleId}/edit`, { state: { article } });
   };
-  const handleClickDelete = () => {
-    ArticleService.deleteArticles(articleId);
+  const handleClickDelete = async () => {
+    await ArticleService.deleteArticles(articleId);
     navi(-1);
   };
   const { curUser } = useContext(AuthContext);
@@ -72,14 +71,14 @@ const Body = ({ articleId, categoryId }) => {
               {article.writer.id === curUser.id && (
                 <div className="edit_article">
                   <button onClick={handleClickEdit}>수정</button>
-                  {/* <button onClick={handleClickDelete}>삭제</button> */}
+                  <button onClick={handleClickDelete}>삭제</button>
                 </div>
               )}
             </div>
           </div>
           <Styled.ProfileImage
             width="2.5rem"
-            src={getProfileImg(article.writer.character)}
+            src={getProfile.findProfileById(article.writer.character)}
           ></Styled.ProfileImage>
         </div>
         <div className="content_middle">{article.content}</div>

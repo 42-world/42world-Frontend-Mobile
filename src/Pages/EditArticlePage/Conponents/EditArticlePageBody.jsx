@@ -1,6 +1,7 @@
+import { getCategoryById } from 'Utils';
 import TextareaAutosize from 'react-textarea-autosize';
-import GlobalStyled from '../../../Styled/Global.styled';
-import { getCategoryById } from '../../../Utils';
+
+import GlobalStyled from 'Styled/Global.styled';
 
 const EditArticlePageBody = ({
   categoryId,

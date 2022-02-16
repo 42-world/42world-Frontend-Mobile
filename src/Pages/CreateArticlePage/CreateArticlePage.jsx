@@ -1,5 +1,7 @@
 import { CreateArticleBody } from './Components';
+
 import Styled from './CreateArticlePage.styled';
+
 const CreateArticlePage = () => {
   return (
     <>

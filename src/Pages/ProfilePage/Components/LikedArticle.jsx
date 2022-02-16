@@ -1,6 +1,7 @@
+import { useNavigate } from 'react-router-dom';
+
 import { Button, Box } from '@mui/material';
 import { FavoriteBorder } from '@mui/icons-material';
-import { useNavigate } from 'react-router-dom';
 
 const LikedArticle = () => {
   const navigate = useNavigate();
