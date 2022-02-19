@@ -99,11 +99,28 @@ const EditArticlePage = styled.div`
         }
       }
     }
-    p {
-      position: fixed;
-      color: rgba(0, 0, 0, 30%);
-      bottom: 10px;
-      right: 10px;
+
+    .editor {
+      flex-grow: 1;
+      box-sizing: border-box;
+      width: 100%;
+      .toastui-editor-dropdown-toolbar {
+        flex-wrap: wrap;
+        height: auto;
+        width: min-content;
+      }
+      .toastui-editor-popup {
+        width: auto;
+        max-width: 400px;
+        .toastui-editor-file-select-button {
+          width: auto;
+          padding: 0 4px;
+          font-size: 0.7rem;
+        }
+        @media (max-width: 480px) {
+          margin-left: 0px;
+        }
+      }
     }
   }
 `;
