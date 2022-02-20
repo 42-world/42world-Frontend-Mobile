@@ -1,35 +1,28 @@
-import { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect, useContext, useRef } from 'react';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import '@toast-ui/editor/dist/toastui-editor.css';
 import { Editor } from '@toast-ui/react-editor';
 
-import FormControl from '@mui/material/FormControl';
-import NativeSelect from '@mui/material/NativeSelect';
-import LoadingButton from '@mui/lab/LoadingButton';
+import Button from '@mui/material/Button';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
-import { getCategoryId } from 'Utils';
+import { getCategoryById } from 'Utils';
+import { AuthContext } from 'App';
 import { ArticleService } from 'Network';
 
 import GlobalStyled from 'Styled/Global.styled';
 
-const CreateArticleBody = () => {
+const EditArticlePageBody = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [curCate, setCurCate] = useState(0);
-  const cateList = ['자유 게시판', '익명 게시판'];
-  const [isSending, setIsSending] = useState(false);
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [categoryId, setCategoryId] = useState(0);
 
+  const loca = useLocation();
   const navi = useNavigate();
-  const open = Boolean(anchorEl);
+  const { id } = useParams();
 
   const editorRef = useRef(null);
-
-  const handleClickPopper = event => {
-    setAnchorEl(event.currentTarget);
-  };
 
   const handleChangeTitle = e => {
     setTitle(e.target.value);
@@ -46,6 +39,7 @@ const CreateArticleBody = () => {
   const handleClickSubmit = async () => {
     setContent(editorRef.current.getInstance().getMarkdown());
 
+    console.log(content);
     if (title === '') {
       alert('제목을 입력하세요!');
       return;
@@ -54,81 +48,79 @@ const CreateArticleBody = () => {
       alert('내용을 입력하세요!');
       return;
     }
-
+    // 수정하려고 카테고리 아이디 API 받는 게 조회로 인식.
     // 이동한 뒤에 API 실행됨
-    setIsSending(true);
-    const categoryId = getCategoryId(curCate);
-    const result = await ArticleService.createArticles({
+    const result = await ArticleService.editArticles(id, {
       title: title,
       content: content,
       categoryId: categoryId, // + 붙이면 number 타입
     });
-    setIsSending(false);
     navi(-1);
+  };
+
+  const handleFormSubmit = e => {
+    e.preventDefault();
+    handleClickSubmit();
   };
 
   const markdownEditorSetting = () => {
     const editor = editorRef.current;
+    //console.log(editor);
     editor.getRootElement().classList.add('editor');
+    //console.log(editor.getInstance());
   };
 
   useEffect(() => {
-    setCurCate(cateList[0]);
-
+    if (loca.state) {
+      const { article } = loca.state;
+      setTitle(article.title);
+      setContent(article.content);
+      setCategoryId(article.categoryId);
+      editorRef.current.getInstance().setMarkdown(article.content);
+    } else {
+      alert('없는 페이지입니다');
+      navi('/');
+    }
     markdownEditorSetting();
   }, []);
-
-  const handleClick = () => {
-    console.log(editorRef.current.getInstance());
-  };
-
   return (
     <>
-      <div className="page_header">
+      <div className="header">
         <div>
           <ArrowBackIcon onClick={handleClickCancel} />
         </div>
         <div>
-          <span>글 작성하기</span>
+          <span>글 수정하기</span>
         </div>
         <div>
-          <LoadingButton
-            loading={isSending}
+          <Button
             onClick={handleClickSubmit}
             variant="outlined"
             className="submit_button"
           >
             완료
-          </LoadingButton>
+          </Button>
         </div>
       </div>
+
       <div className="body">
         <GlobalStyled.BoardTitleDiv>
-          <FormControl className="category_form" fullWidth>
-            <NativeSelect
-              defaultValue={0}
-              onChange={e => {
-                setCurCate(cateList[e.target.value]);
-              }}
-            >
-              {cateList.map((cate, idx) => {
-                return <option value={idx}>{cate}</option>;
-              })}
-            </NativeSelect>
-          </FormControl>
+          <div className="board_name">{getCategoryById(categoryId)}</div>
         </GlobalStyled.BoardTitleDiv>
-        <form>
+
+        <form onSubmit={handleFormSubmit}>
           <input
             placeholder="제목을 입력하세요"
             onChange={handleChangeTitle}
             maxLength={30}
+            value={title}
           />
-
           <Editor
             previewStyle="vertical"
             initialEditType="wysiwyg"
             placeholder="내용을 입력하세요"
             onChange={handleChangeContent}
+            initialValue={content}
             ref={editorRef}
           />
         </form>
@@ -137,4 +129,4 @@ const CreateArticleBody = () => {
   );
 };
 
-export default CreateArticleBody;
+export default EditArticlePageBody;
