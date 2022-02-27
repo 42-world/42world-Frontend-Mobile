@@ -18,7 +18,7 @@ const LikedArticle = () => {
     // TODO: 나중에 페이지네이션 적용
     const fetchLikeArticles = async () => {
       const data = await UserService.getLikeArticles();
-      setArticles(data.map(data => data.article).reverse());
+      setArticles(data.reverse());
     };
 
     fetchLikeArticles();
