@@ -4,8 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import NotificationService from 'Network/NotificationService';
 import dayjs from 'dayjs';
 
-import Pagination from '@mui/material/Pagination';
-
 import Styled from './AlarmArticle.styled.js';
 
 const alarmType = (context, type) => {
@@ -23,18 +21,9 @@ const alarmType = (context, type) => {
 
 const AlarmBody = () => {
   const [alarmArticles, setAlarmArticles] = useState([]);
-  const [curPage, setCurPage] = useState(1);
-  const [curPageArticles, setCurPageArticles] = useState([]);
 
   const navi = useNavigate();
   const mainTextLen = 10;
-  const pageMaxArticles = 20;
-  const maxPages = Math.ceil(alarmArticles.length / pageMaxArticles); // 소수점으로 떨어질 경우 올림.
-  // console.log('총 개수 : ', alarmArticles.length, '페이지 개수 : ', maxPages);
-
-  const handleChangePage = (event, value) => {
-    setCurPage(value);
-  };
 
   const moveArticles = articleId => {
     alert('구현 중입니다!');
@@ -51,13 +40,8 @@ const AlarmBody = () => {
 
   const getArticleTime = time => dayjs(time).format('MM/DD HH:mm');
 
-  const changePageArticles = () => {
-    const pageIndex = (curPage - 1) * pageMaxArticles;
-    // console.log('pageIndex : ', pageIndex);
-    // console.log(alarmArticles.slice(pageIndex, pageIndex + pageMaxArticles));
-    setCurPageArticles(
-      alarmArticles.slice(pageIndex, pageIndex + pageMaxArticles),
-    );
+  const readAlarm = async () => {
+    const read = await NotificationService.readAllNotifications();
   };
 
   useEffect(() => {
@@ -66,28 +50,25 @@ const AlarmBody = () => {
       setAlarmArticles(response.reverse());
     };
     getArticles();
-    changePageArticles();
+    readAlarm(); // 글을 받아온 후 알림을 읽는다. 다음 번 불러올 때 이번에 읽어온 글의 isRead가 true가 된다.
   }, []);
 
-  useEffect(() => {
-    changePageArticles();
-  }, [alarmArticles, curPage]);
-
   return (
-    <Styled.AlramArticlesDiv>
+    <Styled.AlramArticlesDiv>      
       <Styled.AlramArticleDiv>
         <div className="left">공지</div>
         <div className="middle">42월드 많이 이용해주세요!</div>
         <div className="right">01/30 00:00</div>
       </Styled.AlramArticleDiv>
-      {curPageArticles &&
-        curPageArticles.map(article => {
+      {alarmArticles &&
+        alarmArticles.map(article => {
           return (
             <Styled.AlramArticleDiv
               key={article.id}
               button
               divider
               className="article"
+              isRead={article.isRead}
               onClick={() => moveArticles(article.userId)}
             >
               <div className="left">새 댓글</div>
@@ -96,16 +77,7 @@ const AlarmBody = () => {
             </Styled.AlramArticleDiv>
           );
         })}
-      <Pagination
-        count={maxPages}
-        page={curPage}
-        siblingCount={2}
-        onChange={handleChangePage}
-        showFirstButton
-        showLastButton
-        shape="rounded"
-        // size="small"
-      />
+      
     </Styled.AlramArticlesDiv>
   );
 };
