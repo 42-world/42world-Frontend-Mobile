@@ -58,7 +58,6 @@ const CategoryBody = () => {
   }, []);
 
   useEffect(() => {
-    console.log('category:' + categoryId);
     if (categoryId > 3) {
       alert('준비 중입니다!');
       navi('/');
