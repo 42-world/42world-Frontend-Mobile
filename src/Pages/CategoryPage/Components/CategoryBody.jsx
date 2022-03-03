@@ -14,9 +14,11 @@ import Styled from './Body.styled';
 
 const CategoryBody = () => {
   const [articles, setArticles] = useState([]);
-  const [isLoaded, setIsLoaded] = useState(true);
-  const [page, setPage] = useState(1);
-  const [hasNextPage, setHasNextPage] = useState(true);
+  const [isLoaded, setIsLoaded] = useState(false);
+  // const [page, setPage] = useState(1);
+  let page = 1;
+  // const [hasNextPage, setHasNextPage] = useState(true);
+  let hasNextPage = true;
   const [target, setTarget] = useState(null);
   const [curCate, setCurCate] = useState('');
   const loca = useLocation();
@@ -31,40 +33,35 @@ const CategoryBody = () => {
     navi(`/article/${id}`);
   };
 
-  const setInitalArticles = async () => {
-    setIsLoaded(true);
-    const result = await ArticleService.getArticles(categoryId);
-    const meta = result.meta;
+  // const setInitalArticles = async () => {
+  //   setIsLoaded(true);
+  //   const result = await ArticleService.getArticles(categoryId);
+  //   console.log('result ,', result);
+  //   const meta = result.meta;
 
-    setArticles(result.data);
-    setIsLoaded(false);
-    setHasNextPage(meta.hasNextPage);
-  };
+  //   setArticles(result.data);
+  //   setIsLoaded(false);
+  //   setHasNextPage(meta.hasNextPage);
+  //   hasNextPage = meta.hasNextPage;
 
-  useEffect(() => {
-    if (categoryId > 3) {
-      alert('준비 중입니다!');
-      navi('/');
-    }
-    setCurCate(getCategoryByUrl(loca));
-    setInitalArticles();
-  }, []);
+  // };
 
-  // 무한 스크롤 임시 정지
+  // 동기적으로 sleep하는 함수
+  // const sleep = delay => {
+  //   let start = new Date().getTime();
+  //   while (new Date().getTime() < start + delay);
+  // };
 
   const getMoreItem = async () => {
     if (!hasNextPage) return;
-
     setIsLoaded(true);
-    // 실제 API 통신처럼 비동기로 받아오는 것을 구현하기 위해 1.5 초 뒤에 데이터를 갱신한다.
-    // resolve, reject는 각각 성공 시, 실패 시의 동작을 의미. reject를 생략하니 reslove의 경우만 익명함수로 처리해주었다.
-    // (categoryId);
     const result = await ArticleService.getArticles(categoryId, page);
     const newData = result.data;
     const meta = result.meta;
-
-    setPage(prevPage => prevPage + 1);
-    setHasNextPage(meta.hasNextPage);
+    // setPage(prevPage => prevPage + 1);
+    page += 1;
+    // setHasNextPage(meta.hasNextPage);
+    hasNextPage = meta.hasNextPage;
     setArticles(prevList => prevList.concat(newData));
     setIsLoaded(false);
   };
@@ -76,6 +73,14 @@ const CategoryBody = () => {
       observer.observe(entry.target);
     }
   };
+
+  useEffect(() => {
+    if (categoryId > 3) {
+      alert('준비 중입니다!');
+      navi('/');
+    }
+    setCurCate(getCategoryByUrl(loca));
+  }, []);
 
   useEffect(() => {
     let observer;
