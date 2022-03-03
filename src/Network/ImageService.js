@@ -28,7 +28,6 @@ const ImageService = {
       const uploadUrl = await ImageService.getUploadUrl(); // 이미지 업로드 할 url 생성
 
       const blobData = image;
-      console.log('upload url', uploadUrl);
 
       await axios.put(uploadUrl, blobData); // 이미지 업로드
 
