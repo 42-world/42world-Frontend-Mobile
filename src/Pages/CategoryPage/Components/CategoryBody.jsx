@@ -6,6 +6,8 @@ import { ArticleService } from 'Network';
 
 import { PreviewArticleNoti, PreviewArticle } from 'Components';
 import CircularProgress from '@mui/material/CircularProgress';
+import NativeSelect from '@mui/material/NativeSelect';
+import FormControl from '@mui/material/FormControl';
 import Fab from '@mui/material/Fab';
 import CreateIcon from '@mui/icons-material/Create';
 
@@ -21,6 +23,7 @@ const CategoryBody = () => {
   let hasNextPage = true;
   const [target, setTarget] = useState(null);
   const [curCate, setCurCate] = useState('');
+  const cateList = ['자유 게시판', '익명 게시판', '공지 게시판'];
   const loca = useLocation();
   const navi = useNavigate();
   const categoryId = loca.pathname.split('/')[2];
@@ -38,13 +41,23 @@ const CategoryBody = () => {
   //   const result = await ArticleService.getArticles(categoryId);
   //   console.log('result ,', result);
   //   const meta = result.meta;
-
   //   setArticles(result.data);
   //   setIsLoaded(false);
   //   setHasNextPage(meta.hasNextPage);
   //   hasNextPage = meta.hasNextPage;
-
   // };
+
+  const handleChangeCate = id => {
+    navi(`/category/${parseInt(id) + 1}`);
+  };
+  
+  useEffect(() => {
+    if (categoryId > 3) {
+      alert('준비 중입니다!');
+      navi('/');
+    }
+    setCurCate(getCategoryByUrl(loca));
+  }, [categoryId]);
 
   // 동기적으로 sleep하는 함수
   // const sleep = delay => {
@@ -98,9 +111,19 @@ const CategoryBody = () => {
     <>
       <Styled.StyledList component="nav" aria-label="mailbox folders">
         <GlobalStyled.BoardTitleDiv>
-          <div className="board_name">{curCate}</div>
+          <FormControl className="category_form" fullWidth>
+            <NativeSelect
+              defaultValue={categoryId - 1}
+              onChange={e => {
+                handleChangeCate(e.target.value);
+              }}
+            >
+              {cateList.map((cate, idx) => {
+                return <option value={idx}>{cate}</option>;
+              })}
+            </NativeSelect>
+          </FormControl>
         </GlobalStyled.BoardTitleDiv>
-
         {articles &&
           articles.map(article => {
             if (categoryId === '3')
