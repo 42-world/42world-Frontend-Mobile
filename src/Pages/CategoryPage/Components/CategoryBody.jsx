@@ -55,15 +55,6 @@ const CategoryBody = () => {
     }
     setCurCate(getCategoryByUrl(loca));
     setInitalArticles();
-  }, []);
-
-  useEffect(() => {
-    if (categoryId > 3) {
-      alert('준비 중입니다!');
-      navi('/');
-    }
-    setCurCate(getCategoryByUrl(loca));
-    setInitalArticles();
   }, [categoryId]);
 
   // 무한 스크롤 임시 정지
