@@ -21,7 +21,7 @@ const CategoryBody = () => {
   const [hasNextPage, setHasNextPage] = useState(true);
   const [target, setTarget] = useState(null);
   const [curCate, setCurCate] = useState('');
-  const cateList = ['자유 게시판', '익명 게시판', '고양이 게시판'];
+  const cateList = ['자유 게시판', '익명 게시판', '공지 게시판'];
   const loca = useLocation();
   const navi = useNavigate();
   const categoryId = loca.pathname.split('/')[2];
@@ -56,6 +56,16 @@ const CategoryBody = () => {
     setCurCate(getCategoryByUrl(loca));
     setInitalArticles();
   }, []);
+
+  useEffect(() => {
+    console.log('category:' + categoryId);
+    if (categoryId > 3) {
+      alert('준비 중입니다!');
+      navi('/');
+    }
+    setCurCate(getCategoryByUrl(loca));
+    setInitalArticles();
+  }, [categoryId]);
 
   // 무한 스크롤 임시 정지
 
