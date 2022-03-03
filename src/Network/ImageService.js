@@ -8,7 +8,7 @@ const imageUrl = () => {
 const ImageService = {
   getUploadUrl: async () => {
     try {
-      const method = 'POSt';
+      const method = 'POST';
       const url = imageUrl();
 
       const { data } = await API.AXIOS({
@@ -25,22 +25,14 @@ const ImageService = {
 
   uploadImage: async image => {
     try {
-      const method = 'PUT';
-      const uploadUrl = await ImageService.getUploadUrl();
-
-      //const array = await image.arrayBuffer();
-      //console.log(array);
-
-      //const blobData = new Blob([new Uint8Array(array)], {
-      //  // type: `image/${imageType}`, // type이 jpeg, png 둘중 어떤걸로 올려도 png로 올라감, 안적어줘도 마찬가지
-      //});
+      const uploadUrl = await ImageService.getUploadUrl(); // 이미지 업로드 할 url 생성
 
       const blobData = image;
       console.log('upload url', uploadUrl);
 
       await axios.put(uploadUrl, blobData); // 이미지 업로드
 
-      return uploadUrl.split('?')[0];
+      return uploadUrl.split('?')[0]; // 업로드 된 이미지 링크를 return
     } catch (err) {
       console.log('Error: ', err);
       console.error(err);
