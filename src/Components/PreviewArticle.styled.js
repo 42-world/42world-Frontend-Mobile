@@ -15,16 +15,19 @@ const PreviewArticleDiv = styled.div`
   background-color: ${GlobalStyled.theme.previewArticleBackgroundColor};
 
   .top {
-    display: inline-block;
+    display: flex;
     font-size: 0.95rem;
     font-weight: 700;
-    align-items: left;
+    align-items: center;
     margin-bottom: 0.15rem;
     width: 100%;
 
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+  }
+  .top>* {
+    padding-right: 0.3rem;
   }
   .middle {
     display: inline-block;

@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import { List } from '@mui/material';
 
 import { PreviewArticle } from 'Components';
 
@@ -13,7 +14,7 @@ const Community = ({
 }) => {
   return (
     <>
-      <Styled.BestStyledList
+      <List
         disablePadding={true}
         component="nav"
         aria-label="mailbox folders"
@@ -22,17 +23,17 @@ const Community = ({
           bestArticles.map(article => {
             return (
               <Fragment key={article.id}>
-                <img src="/assets/hot.svg" />
                 <PreviewArticle
                   key={article.id}
                   id={article.id}
                   article={article}
+                  isBestArticle={true}
                   onClickArticle={() => moveArticles(article.id)}
                 />
               </Fragment>
             );
           })}
-      </Styled.BestStyledList>
+      </List>
       <Styled.ListDivider /> {/*  margin="0.4rem"  */}
       <Styled.StyledList
         disablePadding={true}
