@@ -15,6 +15,7 @@ const AlramArticleDiv = styled.div`
   padding: 0.2rem 0.45rem;
   border-bottom: 1px solid #e6e6e6;
   background-color: #fff;
+  ${props => props.isRead && `color: gray;`}
 
   .left {
     font-size: 0.9rem;
