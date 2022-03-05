@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import GlobalStyled from 'Styled/Global.styled';
 
 const AlramArticlesDiv = styled.div`
   padding: 0;
@@ -12,10 +13,13 @@ const AlramArticleDiv = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0.7rem 0.5rem;
-  border-bottom: 1px solid #e6e6e6;
+  border-bottom: 1px solid #ddd;
   background-color: #fff;
   ${props => (props.isNotice ? `cursor: default;` : `cursor: pointer;`)}
-  ${props => props.isRead && `color: gray;`}
+  ${props =>
+    props.isRead && `background-color: ${GlobalStyled.theme.textColorLight};`}
+  ${props =>
+    props.isNotice && `background-color: ${GlobalStyled.theme.primary}99;`}
 
   .left {
     word-break: keep-all;
