@@ -34,7 +34,7 @@ const NotificationService = {
    */
   readAllNotifications: async () => {
     const method = 'PATCH';
-    const url = notificationUrl('');
+    const url = notificationUrl('/readall');
     let response;
     try {
       response = await API.AXIOS({
