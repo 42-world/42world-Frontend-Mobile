@@ -14,6 +14,7 @@ const AlramArticleDiv = styled.div`
   padding: 0.2rem 0.45rem;
   border-bottom: 1px solid #e6e6e6;
   background-color: #fff;
+  ${props => (props.isNotice ? `cursor: default;` : `cursor: pointer;`)}
   ${props => props.isRead && `color: gray;`}
 
   .left {
