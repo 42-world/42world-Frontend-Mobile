@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const AlramArticlesDiv = styled.div`
-  padding: 1rem 0;
+  padding: 0;
 `;
 
 const AlramArticleDiv = styled.div`
@@ -11,7 +11,7 @@ const AlramArticleDiv = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0.2rem 0.45rem;
+  padding: 0.7rem 0.5rem;
   border-bottom: 1px solid #e6e6e6;
   background-color: #fff;
   ${props => (props.isNotice ? `cursor: default;` : `cursor: pointer;`)}
@@ -20,18 +20,21 @@ const AlramArticleDiv = styled.div`
   .left {
     word-break: keep-all;
     white-space: nowrap;
-    font-size: 0.9rem;
-    font-weight: 300;
+    min-width: 2.5rem;
+    font-size: 0.7rem;
+    font-weight: 400;
   }
   .middle {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: 500;
-    margin: 0 0.8rem;
+    margin-left: 0.8rem;
+    margin-right: auto;
+    //margin: 0 0.8rem;
   }
   .right {
     word-break: keep-all;
     white-space: nowrap;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     font-weight: 300;
   }
 `;

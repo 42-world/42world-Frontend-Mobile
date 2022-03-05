@@ -10,11 +10,11 @@ const alarmType = (context, type) => {
   let message;
   switch (type) {
     case 'NEW_COMMENT': {
-      message = '글에 답글이 달렸어요.';
+      message = ' 글에 답글이 달렸어요.';
       break;
     }
     default:
-      message = '글을 확인해보세요.';
+      message = ' 글을 확인해보세요.';
   }
   return '"' + context + '"' + message;
 };
