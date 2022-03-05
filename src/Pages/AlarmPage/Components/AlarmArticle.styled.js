@@ -5,7 +5,6 @@ const AlramArticlesDiv = styled.div`
 `;
 
 const AlramArticleDiv = styled.div`
-  cursor: pointer;
   box-sizing: border-box;
   width: 100%;
   display: flex;
@@ -18,14 +17,19 @@ const AlramArticleDiv = styled.div`
   ${props => props.isRead && `color: gray;`}
 
   .left {
+    word-break: keep-all;
+    white-space: nowrap;
     font-size: 0.9rem;
     font-weight: 300;
   }
   .middle {
     font-size: 0.9rem;
     font-weight: 500;
+    margin: 0 0.8rem;
   }
   .right {
+    word-break: keep-all;
+    white-space: nowrap;
     font-size: 0.9rem;
     font-weight: 300;
   }
