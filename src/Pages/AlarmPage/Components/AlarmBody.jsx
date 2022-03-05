@@ -54,8 +54,8 @@ const AlarmBody = () => {
   }, []);
 
   return (
-    <Styled.AlramArticlesDiv>      
-      <Styled.AlramArticleDiv>
+    <Styled.AlramArticlesDiv>
+      <Styled.AlramArticleDiv isNotice={true}>
         <div className="left">공지</div>
         <div className="middle">42월드 많이 이용해주세요!</div>
         <div className="right">01/30 00:00</div>
@@ -65,10 +65,9 @@ const AlarmBody = () => {
           return (
             <Styled.AlramArticleDiv
               key={article.id}
-              button
-              divider
               className="article"
               isRead={article.isRead}
+              isNotice={false}
               onClick={() => moveArticles(article.userId)}
             >
               <div className="left">새 댓글</div>
@@ -77,7 +76,6 @@ const AlarmBody = () => {
             </Styled.AlramArticleDiv>
           );
         })}
-      
     </Styled.AlramArticlesDiv>
   );
 };
