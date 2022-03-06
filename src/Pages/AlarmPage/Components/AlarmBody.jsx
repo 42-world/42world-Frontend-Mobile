@@ -26,8 +26,7 @@ const AlarmBody = () => {
   const mainTextLen = 10;
 
   const moveArticles = articleId => {
-    alert('구현 중입니다!');
-    // navi(`/article/${articleId}`);
+    navi(`/article/${articleId}`);
   };
 
   const previewMainText = article => {
@@ -68,7 +67,7 @@ const AlarmBody = () => {
               className="article"
               isRead={article.isRead}
               isNotice={false}
-              onClick={() => moveArticles(article.userId)}
+              onClick={() => moveArticles(article.articleId)}
             >
               <div className="left">새 댓글</div>
               <div className="middle">{previewMainText(article)}</div>
