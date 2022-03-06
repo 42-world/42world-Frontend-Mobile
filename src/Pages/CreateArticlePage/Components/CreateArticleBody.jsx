@@ -10,7 +10,7 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 import { getCategoryId } from 'Utils';
-import { ArticleService } from 'Network';
+import { ArticleService, ImageService } from 'Network';
 
 import GlobalStyled from 'Styled/Global.styled';
 
@@ -70,13 +70,23 @@ const CreateArticleBody = () => {
   const markdownEditorSetting = () => {
     const editor = editorRef.current;
     editor.getRootElement().classList.add('editor');
+    editor.getInstance().removeHook('addImageBlobHook');
+    editor.getInstance().addHook('addImageBlobHook', (blob, callback) => {
+      (async () => {
+        ImageService.uploadImage(blob).then(res => {
+          callback(res);
+        });
+      })();
+    });
   };
 
   useEffect(() => {
     setCurCate(cateList[0]);
 
-    markdownEditorSetting();
-  }, []);
+    if (editorRef.current) {
+      markdownEditorSetting();
+    }
+  }, [editorRef]);
 
   const handleClick = () => {
     console.log(editorRef.current.getInstance());

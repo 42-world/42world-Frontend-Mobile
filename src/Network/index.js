@@ -8,6 +8,7 @@ import FtAuthService from './FtAuthService';
 import NotificationService from './NotificationService';
 import ReactionService from './ReactionService';
 import UserService from './UserService';
+import ImageService from './ImageService';
 
 export {
   ArticleService,
@@ -20,4 +21,5 @@ export {
   NotificationService,
   ReactionService,
   UserService,
+  ImageService,
 };
