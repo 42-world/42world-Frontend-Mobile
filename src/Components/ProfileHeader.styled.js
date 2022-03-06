@@ -7,7 +7,7 @@ const ProfileHeaderDiv = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: ${GlobalStyled.theme.headerHeight};
+  min-height: ${GlobalStyled.theme.headerHeight};
   background-color: ${GlobalStyled.theme.secondary};
   padding: 0.25rem 0.8rem;
   box-sizing: border-box;
