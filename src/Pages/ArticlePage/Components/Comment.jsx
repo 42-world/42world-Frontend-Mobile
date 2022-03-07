@@ -35,12 +35,12 @@ const Comment = ({
       <div className="info">
         <Styled.ProfileImage
           width="2.4rem"
-          src={getProfile.findProfileById(comment?.writer?.character)}
+          src={getProfile.findProfileById(comment.writer.character)}
         />
         <div className="picture"></div>
         <div className="text">
-          <h1>{comment?.writer?.nickname}</h1>
-          <h2>{getArticleTime(comment?.updatedAt)}</h2>
+          <h1>{comment.writer.nickname}</h1>
+          <h2>{getArticleTime(comment.updatedAt)}</h2>
         </div>
       </div>
       <Styled.CommentContent
@@ -58,7 +58,7 @@ const Comment = ({
         ) : (
           <span
             className="liked_count"
-            onClick={() => handleClickLike(comment?.id)}
+            onClick={() => handleClickLike(comment.id)}
           >
             {isLike ? <FavoriteIcon /> : <FavoriteBorder />}
           </span>

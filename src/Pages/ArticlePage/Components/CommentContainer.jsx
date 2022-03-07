@@ -34,6 +34,7 @@ const CommentContainer = ({ articleId }) => {
       1000, // 한번에 1000개 긁어옴. 어떻게 할 지 결정 후 바꿔야 함.
     );
     setComments(res?.data || []);
+    console.log(res?.data);
     setTotalCount(res?.meta.totalCount);
   };
 

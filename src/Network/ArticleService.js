@@ -145,20 +145,15 @@ const ArticleService = {
    * `200` : success
    * `401` : fail
    */
-  getArticlesById: async articlesId => {
+  getArticleById: async articlesId => {
     const method = 'GET';
     const url = articleUrl(`/${articlesId}`);
 
-    let response;
-    try {
-      response = await API.AXIOS({
-        method,
-        url,
-      });
-    } catch (error) {
-      alert(error);
-    }
-    return response.data;
+    const res = await API.AXIOS({
+      method,
+      url,
+    });
+    return res.data;
   },
   /**
    * **UPDATE** One Articles By Articles ID
