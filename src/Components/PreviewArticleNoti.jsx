@@ -1,13 +1,8 @@
-import dayjs from 'dayjs';
+import { getArticleTime } from 'Utils/dayjsUtils';
 
 import Styled from './PreviewArticle.styled';
 
 const PreviewArticleNoti = ({ article, onClickArticle }) => {
-  const getArticleTime = time =>
-    dayjs(time).isSame(dayjs(), 'day')
-      ? dayjs(time).format('HH:mm')
-      : dayjs(time).format('MM/DD');
-
   return (
     <Styled.PreviewArticleDiv
       button

@@ -7,7 +7,7 @@ import { Viewer } from '@toast-ui/react-editor';
 import { AuthContext } from 'App';
 import { getCategoryById, getProfile } from 'Utils';
 import { ArticleService, ReactionService } from 'Network';
-import dayjs from 'dayjs';
+import { getArticleTime } from 'Utils/dayjsUtils';
 
 import { CommentContainer } from '.';
 import { FavoriteBorder } from '@mui/icons-material';
@@ -40,11 +40,6 @@ const Body = ({ articleId, categoryId }) => {
 
     fetch();
   }, []);
-
-  const getArticleTime = time =>
-    dayjs(time).isSame(dayjs(), 'day')
-      ? dayjs(time).format('HH:mm')
-      : dayjs(time).format('MM/DD');
 
   const handleClickLike = async () => {
     const data = await ReactionService.createArticleReactionHeart(articleId);

@@ -1,4 +1,4 @@
-import dayjs from 'dayjs';
+import { getArticleTime, isNewArticle } from 'Utils/dayjsUtils';
 
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import SmsOutlined from '@mui/icons-material/SmsOutlined';
@@ -6,12 +6,6 @@ import SmsOutlined from '@mui/icons-material/SmsOutlined';
 import Styled from './PreviewArticle.styled';
 
 const PreviewArticle = ({ article, isBestArticle, onClickArticle }) => {
-  const getArticleTime = time =>
-  dayjs(time).isSame(dayjs(), 'day')
-  ? dayjs(time).format('HH:mm')
-  : dayjs(time).format('MM/DD');
-  const isNewArticle = time => dayjs().isBefore(dayjs(time).add(12, "hour"));
-  isNewArticle(article.createdAt);
   return (
     <Styled.PreviewArticleDiv
       button

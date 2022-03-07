@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
 import { getProfile } from 'Utils';
+import { getArticleTime } from 'Utils/dayjsUtils';
 import { ReactionService, CommentService } from 'Network';
-import dayjs from 'dayjs';
 
 import { FavoriteBorder } from '@mui/icons-material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -18,11 +18,6 @@ const Comment = ({
 }) => {
   const [isLike, setIsLike] = useState(isLikeInitial);
   const [likeCount, setLikeCount] = useState(likeCountInitial);
-
-  const getArticleTime = time =>
-    dayjs(time).isSame(dayjs(), 'day')
-      ? dayjs(time).format('HH:mm')
-      : dayjs(time).format('MM/DD');
 
   const handleClickLike = async id => {
     const res = await ReactionService.createCommentReactionHeart(articleId, id);
