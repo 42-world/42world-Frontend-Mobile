@@ -1,8 +1,4 @@
-import { useState } from 'react';
-
-import { getProfile } from 'Utils';
-import { getArticleTime } from 'Utils/dayjsUtils';
-import { ReactionService, CommentService } from 'Network';
+import React from 'react';
 
 import { FavoriteBorder } from '@mui/icons-material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -10,58 +6,34 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import Styled from '../ArticlePage.styled';
 
 const CommentView = ({
-  curUser,
-  articleId,
-  comment,
-  isLikeInitial,
-  likeCountInitial,
-  onDeleteComment,
+  isMine,
+  profileSrc,
+  writer,
+  time,
+  likeCount,
+  content,
+  handleClickDelete,
+  handleClickLike,
+  isLike,
 }) => {
-  const [isLike, setIsLike] = useState(isLikeInitial);
-  const [likeCount, setLikeCount] = useState(likeCountInitial);
-
-  const handleClickLike = async id => {
-    const res = await ReactionService.createCommentReactionHeart(articleId, id);
-
-    console.log(res);
-    setIsLike(res.isLike);
-    setLikeCount(res.likeCount);
-  };
-
-  const handleClickDelete = async commentId => {
-    await CommentService.deleteComments(commentId);
-    onDeleteComment(commentId);
-  };
   return (
-    <Styled.CommentDiv isMine={curUser.id === comment.writer.id}>
+    <Styled.CommentDiv isMine={isMine}>
       <div className="info">
-        <Styled.ProfileImage
-          width="2.4rem"
-          src={getProfile.findProfileById(comment.writer.character)}
-        />
+        <Styled.ProfileImage width="2.4rem" src={profileSrc} />
         <div className="picture"></div>
         <div className="text">
-          <h1>{comment.writer.nickname}</h1>
-          <h2>{getArticleTime(comment.updatedAt)}</h2>
+          <h1>{writer}</h1>
+          <h2>{time}</h2>
         </div>
       </div>
-      <Styled.CommentContent
-        liked_count={likeCount}
-        isMine={curUser.id === comment.writer.id}
-      >
-        <div className="text">{comment.content}</div>
-        {curUser.id === comment.writer.id ? (
-          <button
-            className="delete_button"
-            onClick={() => handleClickDelete(comment.id)}
-          >
+      <Styled.CommentContent liked_count={likeCount} isMine={isMine}>
+        <div className="text">{content}</div>
+        {isMine ? (
+          <button className="delete_button" onClick={handleClickDelete}>
             삭제
           </button>
         ) : (
-          <span
-            className="liked_count"
-            onClick={() => handleClickLike(comment.id)}
-          >
+          <span className="liked_count" onClick={handleClickLike}>
             {isLike ? <FavoriteIcon /> : <FavoriteBorder />}
           </span>
         )}
@@ -70,4 +42,4 @@ const CommentView = ({
   );
 };
 
-export default CommentView;
+export default React.memo(CommentView);

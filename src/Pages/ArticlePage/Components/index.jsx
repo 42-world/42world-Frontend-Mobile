@@ -1,4 +1,4 @@
 import Article from './Article';
-import Comment from './Comment';
+import Comments from './Comments';
 
-export { Article, Comment };
+export { Article, Comments };

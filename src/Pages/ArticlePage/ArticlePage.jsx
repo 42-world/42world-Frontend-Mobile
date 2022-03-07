@@ -4,12 +4,13 @@ import { useParams } from 'react-router-dom';
 
 import { Header } from 'Components';
 import { Article } from './Components';
-import { Comment } from './Components';
+import { Comments } from './Components';
 import { Loading } from 'Components';
 
 import Styled from './ArticlePage.styled';
 import { ErrorPage } from 'Pages';
 import { AuthContext } from 'App';
+import CreateComment from './Components/CreateComment';
 
 const ArticlePage = () => {
   const { curUser } = useContext(AuthContext);
@@ -20,8 +21,9 @@ const ArticlePage = () => {
       <Header />
       <Suspense fallback={<Loading />}>
         <Styled.ArticlePageDiv>
-          <Article articleId={id} currentUser={curUser} />
-          <Comment articleId={id} currentUser={curUser} />
+          <Article articleId={id} currentUserId={curUser.id} />
+          <Comments articleId={id} currentUserId={curUser.id} />
+          <CreateComment articleId={id} />
         </Styled.ArticlePageDiv>
       </Suspense>
     </ErrorBoundary>

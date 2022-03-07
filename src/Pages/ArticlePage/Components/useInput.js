@@ -1,13 +1,13 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 function useInput() {
   const [input, setInput] = useState('');
 
-  const handleChange = e => {
+  const handleChange = useCallback(e => {
     if (e.target.value.length < 420) setInput(e.target.value);
-  };
+  }, []);
 
-  const reset = () => setInput('');
+  const reset = useCallback(() => setInput(''), []);
 
   return [input, handleChange, reset];
 }

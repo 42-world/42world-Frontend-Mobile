@@ -199,15 +199,10 @@ const ArticleService = {
     const method = 'DELETE';
     const url = articleUrl(`/${articlesId}`);
 
-    let response;
-    try {
-      response = await API.AXIOS({
-        method,
-        url,
-      });
-    } catch (error) {
-      alert(error);
-    }
+    const response = await API.AXIOS({
+      method,
+      url,
+    });
     return response.data;
   },
   /**

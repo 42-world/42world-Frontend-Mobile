@@ -7,7 +7,7 @@ import { useArticle, useLikeArticle, useDeleteArticle } from './hooks';
 import { getArticleTime } from 'Utils/dayjsUtils';
 import ArticleView from './ArticleView';
 
-const Article = ({ articleId, currentUser }) => {
+const Article = ({ articleId, currentUserId }) => {
   const navi = useNavigate();
   const { data } = useArticle(articleId);
   const likeArticle = useLikeArticle(articleId);
@@ -28,7 +28,7 @@ const Article = ({ articleId, currentUser }) => {
     writer: data.writer.nickname,
     time: getArticleTime(data.createdAt),
     viewCount: data.viewCount,
-    isModifiable: data.writer.id === currentUser.id,
+    isModifiable: data.writer.id === currentUserId,
     handleClickEdit,
     handleClickDelete: deleteArticle.mutate,
     profileSrc: getProfile.findProfileById(data.writer.character),
