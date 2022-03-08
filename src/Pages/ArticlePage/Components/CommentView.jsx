@@ -17,7 +17,7 @@ const CommentView = ({
   isLike,
 }) => {
   return (
-    <Styled.CommentDiv isMine={isMine}>
+    <Styled.CommentViewDiv isMine={isMine}>
       <div className="info">
         <Styled.ProfileImage width="2.4rem" src={profileSrc} />
         <div className="picture"></div>
@@ -38,7 +38,7 @@ const CommentView = ({
           </span>
         )}
       </Styled.CommentContent>
-    </Styled.CommentDiv>
+    </Styled.CommentViewDiv>
   );
 };
 

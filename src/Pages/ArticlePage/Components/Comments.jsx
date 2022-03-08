@@ -16,12 +16,12 @@ const Comments = ({ articleId, currentUserId }) => {
 
   return (
     <div className="comment_list_div">
-      <Styled.ArticleCommentDiv
+      <Styled.CommentsCountDiv
         className="comment_count"
         commentCount={meta.totalCount}
       >
         <SmsOutlined />
-      </Styled.ArticleCommentDiv>
+      </Styled.CommentsCountDiv>
       {categoryId !== 3 &&
         data.map(comment => (
           <Comment

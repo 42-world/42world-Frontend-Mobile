@@ -1,12 +1,8 @@
 import { useRef } from 'react';
 
+import CreateCommentView from './CreateCommentView';
 import useInput from './useInput';
 import { useArticle, useComments, useCreateComment } from './hooks';
-
-import Fab from '@mui/material/Fab';
-import ArrowUpwardRoundedIcon from '@mui/icons-material/ArrowUpwardRounded';
-
-import Styled from '../ArticlePage.styled';
 
 const CreateComment = ({ articleId }) => {
   const [input, handleChange, reset] = useInput();
@@ -18,24 +14,15 @@ const CreateComment = ({ articleId }) => {
     createComment.mutate();
     reset();
   };
-  return (
-    <>
-      <Styled.CreateCommentDiv>
-        <form onSubmit={handleClickSubmit}>
-          <input
-            required
-            value={input}
-            onChange={handleChange}
-            placeholder="댓글을 입력하세요"
-          />
-          <Fab className="fab_button" type="submit">
-            <ArrowUpwardRoundedIcon />
-          </Fab>
-        </form>
-      </Styled.CreateCommentDiv>
-      <div ref={lastComment}></div>
-    </>
-  );
+
+  const props = {
+    handleClickSubmit,
+    input,
+    handleChange,
+    placeholder: '댓글을 입력하세요',
+    lastComment,
+  };
+  return <CreateCommentView {...props} />;
 };
 
 export default CreateComment;

@@ -24,7 +24,7 @@ const ArticleView = ({
   isLike,
 }) => {
   return (
-    <div className="content_div">
+    <Styled.ArticleViewDiv>
       <GlobalStyled.BoardTitleDiv onClick={handleClickCategory}>
         <div className="board_name">{category}</div>
       </GlobalStyled.BoardTitleDiv>
@@ -49,16 +49,14 @@ const ArticleView = ({
         ></Styled.ProfileImage>
       </div>
       <Viewer initialValue={content} />
-      <div className="content_bottom">
-        {isReactionPossible && (
-          <Styled.ArticleLikedDiv likedCount={likeCount}>
-            <span onClick={handleClickLike}>
-              {isLike ? <FavoriteIcon /> : <FavoriteBorder />}
-            </span>
-          </Styled.ArticleLikedDiv>
-        )}
-      </div>
-    </div>
+      {isReactionPossible && (
+        <Styled.ArticleReactionDiv likedCount={likeCount}>
+          <span onClick={handleClickLike}>
+            {isLike ? <FavoriteIcon /> : <FavoriteBorder />}
+          </span>
+        </Styled.ArticleReactionDiv>
+      )}
+    </Styled.ArticleViewDiv>
   );
 };
 

@@ -38,11 +38,7 @@ const Article = ({ articleId, currentUserId }) => {
     handleClickLike: likeArticle.mutate,
     isLike: data.isLike,
   };
-  return (
-    <>
-      <ArticleView {...props} />
-    </>
-  );
+  return <ArticleView {...props} />;
 };
 
 export default Article;
