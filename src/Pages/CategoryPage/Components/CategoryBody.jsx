@@ -56,9 +56,7 @@ const CategoryBody = () => {
 
   const onIntersect = async ([entry], observer) => {
     if (entry.isIntersecting && !isLoaded) {
-      // console.log('page : ', page);
-      // console.log('cur article : ', articles);
-      // console.log('has nextPage : ', hasNextPage);
+      // if (page === 1 && hasNextPage) console.log("리렌더링 확인")
       observer.unobserve(entry.target);
       await getMoreArticles();
       observer.observe(entry.target);
@@ -71,8 +69,9 @@ const CategoryBody = () => {
       navi('/error');
     }
     setArticles([]);
-    page = 1;
-    hasNextPage = true;
+    // 리렌더링 되면서 let으로 선언한 page, hasNextPage가 자동으로 초기화 되므로 state만 초기화 주면 된다.
+    // page = 1;
+    // hasNextPage = true;
   }, [categoryId]);
 
   useEffect(() => {
