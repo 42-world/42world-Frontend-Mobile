@@ -1,8 +1,8 @@
 import dayjs from 'dayjs';
+import removeMarkdown from 'remove-markdown';
 
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import SmsOutlined from '@mui/icons-material/SmsOutlined';
-import removeMarkdown from 'remove-markdown';
 
 import Styled from './PreviewArticle.styled';
 
