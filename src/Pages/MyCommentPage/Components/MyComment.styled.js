@@ -21,7 +21,7 @@ const MyCommentDiv = styled.div`
   padding: 0.5rem 1rem;
 
   .top {
-    color: ${GlobalStyled.theme.textColorGray};
+    color: ${GlobalStyled.theme.textGray2};
     font-size: 0.6rem;
   }
   .middle {
@@ -37,7 +37,7 @@ const MyCommentDiv = styled.div`
     justify-content: space-between;
     align-items: center;
     font-size: 0.75rem;
-    color: ${GlobalStyled.theme.textColorGray};
+    color: ${GlobalStyled.theme.textGray2};
 
     *:nth-child(1) {
       font-weight: bold;

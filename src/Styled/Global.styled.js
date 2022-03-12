@@ -1,56 +1,61 @@
 import styled from 'styled-components';
 
 const theme = {
+  // Main Theme
   primary: '#53b7ba',
-  secondary: 'rgba(42, 45, 56, 1)',
-  background: '#f5f5f5',
-  text: '#000',
-  textSecondary: '#666',
-  textLightSecondary: '#ccc',
-  disabled: '#c4c4c4',
+  secondary: '#2a2d38',
+  primaryEcole: '#387e9c',
+  white: '#fff',
+  black: '#000',
 
-  textColor: '#000',
-  textColorSecondary: '#666',
-  textColorGray: '#979797',
-  textColorLightGray: '#ddd',
-  textColorLight: '#eee',
-  textColorWhite: '#fff',
-  textColorMint: '#54b7ba',
+  //Background Color
+  backgroundTheme1: '#696b72',
+  backgroundTheme2: '#40424c',
+  backgroundTheme3: '#2a2d38',
+  backgroundWhite: '#fff',
+  backgroundGray1: '#f9f9f9',
+  backgroundGray2: '#eaeaea',
+  backgroundGray3: '#c4c4c4',
+  backgroundBlack: '#000',
+  backgroundBlue1: '#e4f3f3',
+  backgroundBlue2: '#53b7ba',
+  backgroundBlue3: '#4c5a66',
 
-  likedIconColor: '#df867d',
-  commentIconColor: '#53b7ba',
+  //Text Color
+  textWhite: '#fff',
+  textGray1: '#eee',
+  textGray2: '#c4c4c4',
+  textGray3: '#979797',
+  textGray4: '#5f5f5f',
+  textBlack: '#000',
+  textBlue: '#53b7ba',
+  textRed: '#df867d',
 
-  borderColor: '#e6e6e6',
+  //Button Color
+  buttonWhite: '#fff',
+  buttonGray1: '#d8d8d8',
+  buttonGray2: '#b4b4b4',
+  buttonBlack: '#000',
+  buttonBlue1: '#bce0e1',
+  buttonBlue2: '#53b7ba',
+  buttonRed1: '#df867d',
+  buttonRed2: '#ad0000',
+
+  //Line Color
+  lineGray1: '#d8d8d8',
+  lineGray2: '#e6e6e6',
+  lineGray3: '#f9f9f9',
+  lineBlue1: '#dadde6',
+
+  //Length
   borderRadius: '0.25rem',
-
   headerHeight: '4.5rem',
-  headerBackgroundColor: 'rgba(42, 45, 56, 1)',
-  headerIconColor: '#fff',
-
-  mainPageCheckInInfoBackgroundColor: '#e4f3f3',
-  mainPageCheckInInfoProgressBarColorGaepo: '#53b7ba',
-  mainPageCheckInInfoProgressBarColorSeocho: '#387E9C',
-  mainPageCheckInInfoProgressBarBackgroundColor: '#B4B4B4',
-
-  previewArticleBackgroundColor: '#fff',
-
-  profilePageMyInfoBackgroundColor: '#2a2d38',
-  profilePageBackgroundColor: '#f9f9f9',
-
-  createArticlePageInputBorderColor: '#dadde6',
-
-  categoryNameBackgroundColor: '#4C5A66',
-  categoryNameTextColor: '#FFF',
-
   mobileMinWidth: '28rem',
   desktopWidth: '24.5rem',
-
-  likedCountColor: '#DF867D',
-  commentCountColor: '#53B7BA',
 };
 
 const assets = {
-  headerLogo: '/assets/42mainlogo2.svg',
+  headerLogo: '/assets/42mainlogo3.png',
   sidebar: {
     '80000co': '/assets/sidebar/80000co.png',
     humansof42: '/assets/sidebar/humansof42.png',
@@ -81,17 +86,15 @@ const ProfileBackgroundDiv = styled.div`
 
   // color
   background-color: ${props =>
-    props.isProfile
-      ? theme.profilePageMyInfoBackgroundColor
-      : theme.profilePageBackgroundColor};
+    props.isProfile ? theme.backgroundTheme3 : theme.backgroundGray1};
 `;
 
 const BoardTitleDiv = styled.div`
   box-sizing: border-box;
   width: 100%;
   display: flex;
-  background-color: ${theme.categoryNameBackgroundColor};
-  color: ${theme.categoryNameTextColor};
+  background-color: ${theme.backgroundBlue3};
+  color: ${theme.textWhite};
   // padding: 0.65rem 1.2rem;
   padding: 0.65rem 1rem;
   align-items: center;

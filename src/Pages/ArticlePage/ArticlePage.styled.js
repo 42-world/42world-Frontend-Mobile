@@ -190,11 +190,11 @@ const CommentContent = styled.div`
     ${props =>
       props.isMine
         ? css`
-            background: ${GlobalStyled.theme.textColorMint};
+            background: ${GlobalStyled.theme.backgroundBlue2};
             color: white;
           `
         : css`
-            background: ${GlobalStyled.theme.textColorLightGray};
+            background: ${GlobalStyled.theme.backgroundGray2};
           `}
     border-radius: 0.5rem;
     font-size: 0.75rem;
@@ -210,7 +210,7 @@ const CommentContent = styled.div`
     margin-bottom: 0.2rem;
     margin-left: 1rem;
     margin-right: 0.2rem;
-    color: ${GlobalStyled.theme.textColorSecondary};
+    color: ${GlobalStyled.theme.textGray4};
   }
 
   .liked_count {
@@ -221,7 +221,7 @@ const CommentContent = styled.div`
     margin-bottom: 0.2rem;
     margin-right: 1rem;
     font-size: 0.75rem;
-    color: ${GlobalStyled.theme.likedCountColor};
+    color: ${GlobalStyled.theme.buttonRed1};
 
     svg {
       width: 1rem;
@@ -258,7 +258,7 @@ const CreateCommentViewDiv = styled.div`
 
   form {
     width: 90%;
-    background-color: ${GlobalStyled.theme.textColorLight};
+    background-color: ${GlobalStyled.theme.textGray1};
     border-radius: 2rem;
     display: flex;
     flex-direction: row;
@@ -269,11 +269,11 @@ const CreateCommentViewDiv = styled.div`
 
     input {
       width: 90%;
-      color: ${GlobalStyled.theme.textColor};
+      color: ${GlobalStyled.theme.textBlack};
       background-color: rgba(0, 0, 0, 0);
       border: none;
       &::placeholder {
-        color: ${GlobalStyled.theme.textColorGray};
+        color: ${GlobalStyled.theme.textGray3};
       }
       &:focus {
         outline: none;
@@ -285,8 +285,8 @@ const CreateCommentViewDiv = styled.div`
       box-sizing: content-box;
       border: none;
       background: none;
-      background-color: ${GlobalStyled.theme.primary};
-      color: ${GlobalStyled.theme.textColorWhite};
+      background-color: ${GlobalStyled.theme.buttonBlue2};
+      color: ${GlobalStyled.theme.textWhite};
       width: 40px;
       height: 40px;
       margin-left: 0.5rem;
@@ -294,7 +294,7 @@ const CreateCommentViewDiv = styled.div`
       box-shadow: none;
 
       &:hover {
-        background-color: ${GlobalStyled.theme.primary};
+        background-color: ${GlobalStyled.theme.buttonBlue2};
       }
     }
   }

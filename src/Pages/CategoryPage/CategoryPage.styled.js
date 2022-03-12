@@ -48,14 +48,14 @@ const MainBody = styled.div`
     }
 
     select {
-      color: ${GlobalStyled.theme.categoryNameTextColor};
+      color: ${GlobalStyled.theme.textWhite};
       font-size: 1.1rem;
       font-weight: 700;
       padding-top: 0;
       padding-bottom: 0;
     }
     svg {
-      color: ${GlobalStyled.theme.categoryNameTextColor};
+      color: ${GlobalStyled.theme.textWhite};
     }
   }
 `;

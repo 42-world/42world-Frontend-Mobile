@@ -12,7 +12,7 @@ const PreviewArticleDiv = styled.div`
   align-items: center;
   padding: 0.5rem 0.9rem 0.3rem 0.9rem;
   border-bottom: 1px solid #e6e6e6;
-  background-color: ${GlobalStyled.theme.previewArticleBackgroundColor};
+  background-color: ${GlobalStyled.theme.white};
 
   .top {
     display: flex;
@@ -26,7 +26,7 @@ const PreviewArticleDiv = styled.div`
     white-space: nowrap;
     text-overflow: ellipsis;
   }
-  .top>* {
+  .top > * {
     padding-right: 0.3rem;
   }
   .middle {
@@ -74,7 +74,7 @@ const PreviewArticleDiv = styled.div`
     .liked_icon {
       margin-left: auto;
       margin-bottom: 0.1rem;
-      color: ${GlobalStyled.theme.likedIconColor};
+      color: ${GlobalStyled.theme.buttonRed1};
       &::after {
         content: '${props => {
           if (props.article.likeCount > 0) return props.article.likeCount;
@@ -84,7 +84,7 @@ const PreviewArticleDiv = styled.div`
     }
 
     .comment_icon {
-      color: ${GlobalStyled.theme.commentIconColor};
+      color: ${GlobalStyled.theme.buttonBlue2};
       &::after {
         content: '${props => {
           if (props.article.commentCount > 0) return props.article.commentCount;
