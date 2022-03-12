@@ -1,8 +1,10 @@
-import CommonStyled from '../Common.styled';
-import AuthService from '../../../Network/AuthService';
-import { AuthContext } from '../../../App';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import { AuthContext } from 'App';
+import { AuthService } from 'Network';
+
+import CommonStyled from '../Common.styled';
 
 const SignOut = () => {
   const auth = useContext(AuthContext);

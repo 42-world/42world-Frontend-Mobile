@@ -1,55 +1,27 @@
-import React, { useContext, useState } from 'react';
-import ReactionService from 'Network/ReactionService';
-import Styled from '../ArticlePage.styled';
-import { FavoriteBorder } from '@mui/icons-material';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import React from 'react';
 
-import dayjs from 'dayjs';
-import { AuthContext } from 'App';
-import { getProfileImg } from 'Utils/profileList';
+import { getProfile } from 'Utils';
+import { getArticleTime } from 'Utils/dayjsUtils';
+import CommentView from './CommentView';
 
-const Comment = ({ articleId, comment, isLikeInitial, likeCountInitial }) => {
-  const [isLike, setIsLike] = useState(isLikeInitial);
-  const [likeCount, setLikeCount] = useState(likeCountInitial);
-  const auth = useContext(AuthContext);
+import { useDeleteComment, useLikeComment } from './hooks';
 
-  const getArticleTime = time =>
-    dayjs(time).isSame(dayjs(), 'day')
-      ? dayjs(time).format('HH:mm')
-      : dayjs(time).format('MM/DD');
+const Comment = ({ currentUserId, articleId, comment }) => {
+  const likeComment = useLikeComment(comment.id, articleId);
+  const deleteComment = useDeleteComment(comment.id, articleId);
 
-  const handleClickLike = async id => {
-    const res = await ReactionService.createCommentReactionHeart(articleId, id);
-
-    setIsLike(res.isLike);
-    setLikeCount(res.likeCount);
+  const props = {
+    isMine: currentUserId === comment.writer.id,
+    profileSrc: getProfile.findProfileById(comment.writer.character),
+    writer: comment.writer.nickname,
+    time: getArticleTime(comment.createdAt),
+    likeCount: comment.likeCount,
+    content: comment.content,
+    handleClickDelete: deleteComment.mutate,
+    handleClickLike: likeComment.mutate,
+    isLike: comment.isLike,
   };
-  return (
-    <>
-      <div className="comment_div">
-        <div className="info">
-          <Styled.ProfileImage
-            width="2.4rem"
-            src={getProfileImg(comment?.writer?.character)}
-          />
-          <div className="picture"></div>
-          <div className="text">
-            <h1>{comment?.writer?.nickname}</h1>
-            <h2>{getArticleTime(comment?.updatedAt)}</h2>
-          </div>
-        </div>
-        <Styled.CommentContent className="content" liked_count={likeCount}>
-          <div className="text">{comment.content}</div>
-          <span
-            className="liked_count"
-            onClick={() => handleClickLike(comment?.id)}
-          >
-            {isLike ? <FavoriteIcon /> : <FavoriteBorder />}
-          </span>
-        </Styled.CommentContent>
-      </div>
-    </>
-  );
+  return <CommentView {...props} />;
 };
 
-export default Comment;
+export default React.memo(Comment);

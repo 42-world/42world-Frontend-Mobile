@@ -15,6 +15,7 @@ const theme = {
   textColorLightGray: '#ddd',
   textColorLight: '#eee',
   textColorWhite: '#fff',
+  textColorMint: '#54b7ba',
 
   likedIconColor: '#df867d',
   commentIconColor: '#53b7ba',
@@ -35,6 +36,8 @@ const theme = {
 
   profilePageMyInfoBackgroundColor: '#2a2d38',
   profilePageBackgroundColor: '#f9f9f9',
+
+  createArticlePageInputBorderColor: '#dadde6',
 
   categoryNameBackgroundColor: '#4C5A66',
   categoryNameTextColor: '#FFF',
@@ -97,6 +100,9 @@ const BoardTitleDiv = styled.div`
   cursor: pointer;
 
   .board_name {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     font-size: 1.1rem;
     font-weight: 700;
   }

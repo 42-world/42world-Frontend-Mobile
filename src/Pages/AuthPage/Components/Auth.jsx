@@ -1,11 +1,12 @@
 import { useContext, useEffect, useState, useMemo } from 'react';
-import Styled from './Auth.styled';
-import FtAuthService from '../../../Network/FtAuthService';
-import { LoadingButton } from '@mui/lab';
-import { TextField } from '@mui/material';
-import SendIcon from '@mui/icons-material/Send';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../../App';
+
+import { AuthContext } from 'App';
+import { FtAuthService } from 'Network';
+
+import { LoadingButton } from '@mui/lab';
+
+import Styled from './Auth.styled';
 
 const AuthRequestInformation = ({ intraId }) => {
   return (
@@ -34,8 +35,8 @@ const AuthRequestCheckStep = ({ handleSendReset }) => {
   );
 };
 
-function checkKor(str) {
-  const regExp = /[ㄱ-ㅎㅏ-ㅣ가-힣]/g;
+function checkIntraId(str) {
+  const regExp = /[A-Za-z0-9-]/g;
   if (regExp.test(str)) {
     return true;
   } else {
@@ -68,7 +69,7 @@ const Auth = () => {
     });
   };
   const handleAuthenticate = () => {
-    if (input.email === '' || checkKor(input.email)) {
+    if (input.email === '' || !checkIntraId(input.email)) {
       setIsError(true);
       setTimeout(() => {
         setIsError(false);

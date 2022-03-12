@@ -1,8 +1,11 @@
-import React, { useEffect, useState, useContext } from 'react';
+import { useEffect, useState, useContext } from 'react';
+
+import { AuthContext } from 'App';
+import { UserService } from 'Network';
+
 import { ArrowForwardIos } from '@mui/icons-material';
+
 import CommonStyled from '../Common.styled';
-import UserService from '../../../Network/UserService';
-import { AuthContext } from '../../../App';
 
 const githubLink = 'https://github.com';
 

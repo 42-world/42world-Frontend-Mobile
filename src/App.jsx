@@ -1,11 +1,15 @@
-import * as React from 'react';
-import { useState, createContext } from 'react';
+// 2022 1 30 1차 배포
+import { useState, createContext, useEffect, useContext } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
 } from 'react-router-dom';
+import { QueryClient, QueryClientProvider, QueryCache } from 'react-query';
+
+import { UserService } from 'Network';
+
 import {
   MainPage,
   ProfilePage,
@@ -22,9 +26,7 @@ import {
   AlarmPage,
   ErrorPage,
 } from './Pages';
-import Loading from './Components/Loading';
-import { useContext } from 'react';
-import UserService from './Network/UserService';
+import { Loading } from 'Components';
 
 export const AuthContext = createContext();
 
@@ -33,7 +35,7 @@ const AuthProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [curUser, setCurUser] = useState(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const initState = async () => {
       let response;
       try {
@@ -63,6 +65,7 @@ const PrivateRouteCheckAuth = ({ children }) => {
   } else {
     if (auth.state !== 401) return children;
     else return <Navigate to="/login" />;
+    // return children;
   }
 };
 
@@ -70,144 +73,159 @@ const PrivateRouteCheckFtAuth = ({ children }) => {
   const auth = useContext(AuthContext);
   if (auth.state === 200) return children;
   else return <Navigate to="/profile" />;
+  // return children;
 };
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    onError: () => {
+      console.log('시발');
+    },
+    queries: { retry: false, suspense: true },
+  },
+  // queryCache: new QueryCache({
+  //   onError: () => alert('시발'),
+  // }),
+});
 
 // 글 보기 : 모드view?글id=12 or view/글id
 // 글 작성 : free?mode=write
 const App = () => {
   return (
-    <AuthProvider>
-      <Router>
-        <Routes>
-          <Route path="/login" element={<LoginPage isCallback={false} />} />
-          <Route
-            path="/auth/github/callback"
-            element={<LoginPage isCallback={true} />}
-          />
-          <Route
-            path="/"
-            element={
-              <PrivateRouteCheckAuth>
-                <PrivateRouteCheckFtAuth>
-                  <MainPage />
-                </PrivateRouteCheckFtAuth>
-              </PrivateRouteCheckAuth>
-            }
-          />
-          {/* <Route
-            path="/alarm"
-            element={
-              <PrivateRouteCheckAuth>
-                <PrivateRouteCheckFtAuth>
-                  <AlarmPage />
-                </PrivateRouteCheckFtAuth>
-              </PrivateRouteCheckAuth>
-            }
-          /> */}
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <Router>
+          <Routes>
+            <Route path="/login" element={<LoginPage isCallback={false} />} />
+            <Route
+              path="/auth/github/callback"
+              element={<LoginPage isCallback={true} />}
+            />
+            <Route
+              path="/"
+              element={
+                <PrivateRouteCheckAuth>
+                  <PrivateRouteCheckFtAuth>
+                    <MainPage />
+                  </PrivateRouteCheckFtAuth>
+                </PrivateRouteCheckAuth>
+              }
+            />
+            <Route
+              path="/alarm"
+              element={
+                <PrivateRouteCheckAuth>
+                  <PrivateRouteCheckFtAuth>
+                    <AlarmPage />
+                  </PrivateRouteCheckFtAuth>
+                </PrivateRouteCheckAuth>
+              }
+            />
 
-          <Route
-            path="/category/:id"
-            element={
-              <PrivateRouteCheckAuth>
-                <PrivateRouteCheckFtAuth>
-                  <CategoryPage />
-                </PrivateRouteCheckFtAuth>
-              </PrivateRouteCheckAuth>
-            }
-          />
-          <Route
-            path="/category/:id/create"
-            element={
-              <PrivateRouteCheckAuth>
-                <PrivateRouteCheckFtAuth>
-                  <CreateArticlePage />
-                </PrivateRouteCheckFtAuth>
-              </PrivateRouteCheckAuth>
-            }
-          />
+            <Route
+              path="/category/:id"
+              element={
+                <PrivateRouteCheckAuth>
+                  <PrivateRouteCheckFtAuth>
+                    <CategoryPage />
+                  </PrivateRouteCheckFtAuth>
+                </PrivateRouteCheckAuth>
+              }
+            />
+            <Route
+              path="/create"
+              element={
+                <PrivateRouteCheckAuth>
+                  <PrivateRouteCheckFtAuth>
+                    <CreateArticlePage />
+                  </PrivateRouteCheckFtAuth>
+                </PrivateRouteCheckAuth>
+              }
+            />
 
-          <Route
-            path="/article/:id"
-            element={
-              <PrivateRouteCheckAuth>
-                <PrivateRouteCheckFtAuth>
-                  <ArticlePage />
-                </PrivateRouteCheckFtAuth>
-              </PrivateRouteCheckAuth>
-            }
-          />
+            <Route
+              path="/article/:id"
+              element={
+                <PrivateRouteCheckAuth>
+                  <PrivateRouteCheckFtAuth>
+                    <ArticlePage />
+                  </PrivateRouteCheckFtAuth>
+                </PrivateRouteCheckAuth>
+              }
+            />
 
-          <Route
-            path="/article/:id/edit"
-            element={
-              <PrivateRouteCheckAuth>
-                <PrivateRouteCheckFtAuth>
-                  <EditArticlePage />
-                </PrivateRouteCheckFtAuth>
-              </PrivateRouteCheckAuth>
-            }
-          />
+            <Route
+              path="/article/:id/edit"
+              element={
+                <PrivateRouteCheckAuth>
+                  <PrivateRouteCheckFtAuth>
+                    <EditArticlePage />
+                  </PrivateRouteCheckFtAuth>
+                </PrivateRouteCheckAuth>
+              }
+            />
 
-          <Route
-            path="/profile"
-            element={
-              <PrivateRouteCheckAuth>
-                <ProfilePage />
-              </PrivateRouteCheckAuth>
-            }
-          />
-          <Route
-            path="/profile/setting"
-            element={
-              <PrivateRouteCheckAuth>
-                <PrivateRouteCheckFtAuth>
-                  <SettingPage />
-                </PrivateRouteCheckFtAuth>
-              </PrivateRouteCheckAuth>
-            }
-          />
-          <Route
-            path="/profile/liked-article"
-            element={
-              <PrivateRouteCheckAuth>
-                <PrivateRouteCheckFtAuth>
-                  <LikedArticlePage />
-                </PrivateRouteCheckFtAuth>
-              </PrivateRouteCheckAuth>
-            }
-          />
-          <Route
-            path="/profile/my-article"
-            element={
-              <PrivateRouteCheckAuth>
-                <PrivateRouteCheckFtAuth>
-                  <MyArticlePage />
-                </PrivateRouteCheckFtAuth>
-              </PrivateRouteCheckAuth>
-            }
-          />
-          <Route
-            path="/profile/my-comment"
-            element={
-              <PrivateRouteCheckAuth>
-                <PrivateRouteCheckFtAuth>
-                  <MyCommentPage />
-                </PrivateRouteCheckFtAuth>
-              </PrivateRouteCheckAuth>
-            }
-          />
-          <Route
-            path="/profile/auth"
-            element={
-              <PrivateRouteCheckAuth>
-                <AuthPage />
-              </PrivateRouteCheckAuth>
-            }
-          />
-          <Route path="/*" element={<ErrorPage />} />
-        </Routes>
-      </Router>
-    </AuthProvider>
+            <Route
+              path="/profile"
+              element={
+                <PrivateRouteCheckAuth>
+                  <ProfilePage />
+                </PrivateRouteCheckAuth>
+              }
+            />
+            <Route
+              path="/profile/setting"
+              element={
+                <PrivateRouteCheckAuth>
+                  <PrivateRouteCheckFtAuth>
+                    <SettingPage />
+                  </PrivateRouteCheckFtAuth>
+                </PrivateRouteCheckAuth>
+              }
+            />
+            <Route
+              path="/profile/liked-article"
+              element={
+                <PrivateRouteCheckAuth>
+                  <PrivateRouteCheckFtAuth>
+                    <LikedArticlePage />
+                  </PrivateRouteCheckFtAuth>
+                </PrivateRouteCheckAuth>
+              }
+            />
+            <Route
+              path="/profile/my-article"
+              element={
+                <PrivateRouteCheckAuth>
+                  <PrivateRouteCheckFtAuth>
+                    <MyArticlePage />
+                  </PrivateRouteCheckFtAuth>
+                </PrivateRouteCheckAuth>
+              }
+            />
+            <Route
+              path="/profile/my-comment"
+              element={
+                <PrivateRouteCheckAuth>
+                  <PrivateRouteCheckFtAuth>
+                    <MyCommentPage />
+                  </PrivateRouteCheckFtAuth>
+                </PrivateRouteCheckAuth>
+              }
+            />
+            <Route
+              path="/profile/auth"
+              element={
+                <PrivateRouteCheckAuth>
+                  <AuthPage />
+                </PrivateRouteCheckAuth>
+              }
+            />
+            <Route path="/*" element={<ErrorPage />} />
+          </Routes>
+        </Router>
+      </AuthProvider>
+    </QueryClientProvider>
   );
 };
 
@@ -220,9 +238,3 @@ export default App;
 //    42world.kr/board/free
 //    42world.kr/board/anony
 //  42world.kr/profile
-
-// const isLogin = () => {
-//   const response = UserService.getUser();
-//   if (response) return true;
-//   return false;
-// };

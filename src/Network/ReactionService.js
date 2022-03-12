@@ -13,15 +13,10 @@ const ReactionService = {
   createArticleReactionHeart: async id => {
     const method = 'POST';
     const url = reactionUrl(`/${id}`);
-    let response;
-    try {
-      response = await API.AXIOS({
-        method,
-        url,
-      });
-    } catch (error) {
-      console.log('error');
-    }
+    const response = await API.AXIOS({
+      method,
+      url,
+    });
     return response.data;
   },
 
@@ -34,15 +29,10 @@ const ReactionService = {
   createCommentReactionHeart: async (articleId, commentId) => {
     const method = 'POST';
     const url = reactionUrl(`/${articleId}/comments/${commentId}`);
-    let response;
-    try {
-      response = await API.AXIOS({
-        method,
-        url,
-      });
-    } catch (error) {
-      console.log('error');
-    }
+    const response = await API.AXIOS({
+      method,
+      url,
+    });
     return response.data;
   },
 };

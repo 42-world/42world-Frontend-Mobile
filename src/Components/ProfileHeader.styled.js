@@ -1,12 +1,13 @@
 import styled from 'styled-components';
-import GlobalStyled from '../Styled/Global.styled';
+
+import GlobalStyled from 'Styled/Global.styled';
 
 const ProfileHeaderDiv = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: ${GlobalStyled.theme.headerHeight};
+  min-height: ${GlobalStyled.theme.headerHeight};
   background-color: ${GlobalStyled.theme.secondary};
   padding: 0.25rem 0.8rem;
   box-sizing: border-box;

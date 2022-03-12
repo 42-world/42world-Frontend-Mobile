@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import GlobalStyled from 'Styled/Global.styled';
+
 import ListItem from '@mui/material/ListItem';
 
 const MenuModal = styled.div`
@@ -25,6 +27,35 @@ const MainBody = styled.div`
         font-weight: bold;
         text-decoration: underline;
       }
+    }
+  }
+  .category_form {
+    * {
+      border: none !important;
+      border-bottom: none !important;
+    }
+    *:hover {
+      border: none !important;
+      border-bottom: none !important;
+    }
+    *::before {
+      border: none !important;
+      border-bottom: none !important;
+    }
+    *::after {
+      border: none !important;
+      border-bottom: none !important;
+    }
+
+    select {
+      color: ${GlobalStyled.theme.categoryNameTextColor};
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    svg {
+      color: ${GlobalStyled.theme.categoryNameTextColor};
     }
   }
 `;

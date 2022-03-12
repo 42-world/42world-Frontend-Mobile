@@ -1,6 +1,7 @@
-import { ProfileHeader } from '../../Components';
-import GlobalStyled from '../../Styled/Global.styled';
+import { ProfileHeader } from 'Components';
 import { AlarmBody } from './Components';
+
+import GlobalStyled from 'Styled/Global.styled';
 
 const AlarmPage = () => {
   return (

@@ -1,29 +1,32 @@
-import { useEffect, useState } from 'react';
+import { Suspense, useContext } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router-dom';
-import { Body, CommentContainer } from './Components';
-import { Header } from '../../Components';
+
+import { Header } from 'Components';
+import { Article } from './Components';
+import { Comments } from './Components';
+import { Loading } from 'Components';
 
 import Styled from './ArticlePage.styled';
-import ArticleService from 'Network/ArticleService';
+import { ErrorPage } from 'Pages';
+import { AuthContext } from 'App';
+import CreateComment from './Components/CreateComment';
+
 const ArticlePage = () => {
+  const { curUser } = useContext(AuthContext);
   const { id } = useParams();
-  const [categoryId, setCategoryId] = useState(0);
-  const getCate = async () => {
-    const result = await ArticleService.getArticlesById(id);
-    setCategoryId(result.categoryId);
-  };
-  useEffect(() => {
-    getCate();
-  }, []);
 
   return (
-    <>
+    <ErrorBoundary fallback={<ErrorPage />}>
       <Header />
-      <Styled.ArticlePageDiv>
-        <Body articleId={id} categoryId={categoryId} />
-        {categoryId !== 3 && <CommentContainer articleId={id} />}
-      </Styled.ArticlePageDiv>
-    </>
+      <Suspense fallback={<Loading />}>
+        <Styled.ArticlePageDiv>
+          <Article articleId={id} currentUserId={curUser.id} />
+          <Comments articleId={id} currentUserId={curUser.id} />
+          <CreateComment articleId={id} />
+        </Styled.ArticlePageDiv>
+      </Suspense>
+    </ErrorBoundary>
   );
 };
 

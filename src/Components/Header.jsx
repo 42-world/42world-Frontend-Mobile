@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
+
 import qs from 'qs';
 
 import MenuModal from './MenuModal';
 // import NotiModal from './NotiModal';
-
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -12,8 +12,8 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 
+import GlobalStyled from 'Styled/Global.styled';
 import Styled from './Header.styled';
-import GlobalStyled from '../Styled/Global.styled';
 
 // const SearchBar = () => {
 //   const [search, setSearch] = useState('');
@@ -60,7 +60,6 @@ const Header = () => {
   const handleOpenMenu = (anchor, open) => {
     if (!queryData.mode) {
       setSearchParams({ ...queryData, mode: 'menu' });
-      // searchParams.append('mode', 'menu');
       setIsMenuModal(true);
     } else {
       delete queryData.mode;
@@ -78,19 +77,11 @@ const Header = () => {
   const handleBackButton = () => {
     navi(-1);
   };
-  // const handleOpenNoti = () => {
-  //   if (loca.search === '') {
-  //     setSearchParams('mode=noti');
-  //     setIsNotiModal(true);
-  //   } else {
-  //     setSearchParams('');
-  //     setIsNotiModal(false);
-  //   }
+
+  // const handleToggleSearch = () => {
+  //   setIsSearch(!isSearch);
   // };
 
-  const handleToggleSearch = () => {
-    setIsSearch(!isSearch);
-  };
   useEffect(() => {
     if (queryData.mode === 'menu') {
       setIsMenuModal(true);
@@ -138,10 +129,10 @@ const Header = () => {
             sx={{ color: GlobalStyled.theme.headerIconColor }}
             onClick={() => navi('/profile')}
           />
-          {/* <NotificationsIcon
+          <NotificationsIcon
             sx={{ color: GlobalStyled.theme.headerIconColor }}
             onClick={() => navi('/alarm')}
-          /> */}
+          />
         </div>
         {/*{isSearch && <SearchBar />}*/}
       </Styled.HeaderStyleDiv>
@@ -160,10 +151,6 @@ const Header = () => {
       >
         <MenuModal open={isMenuModal} onClickCloseModal={handleOpenMenu} />
       </SwipeableDrawer>
-      {/*<Styled.MenuModal>*/}
-      {/*<MenuModal open={isMenuModal} onClickCloseModal={handleOpenMenu} />*/}
-      {/*<NotiModal open={isNotiModal} onClickCloseModal={handleOpenNoti} />*/}
-      {/*</Styled.MenuModal>*/}
     </div>
   );
 };

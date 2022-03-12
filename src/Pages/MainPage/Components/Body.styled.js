@@ -1,6 +1,8 @@
 import styled from 'styled-components';
+
 import List from '@mui/material/List';
-import GlobalStyled from '../../../Styled/Global.styled';
+
+import GlobalStyled from 'Styled/Global.styled';
 
 const ListDivider = styled.div`
   box-sizing: border-box;
@@ -11,16 +13,23 @@ const ListDivider = styled.div`
 
 const StyledList = styled(List)`
   padding: 0;
-`;
-const BestStyledList = styled(List)`
-  padding: 0;
-  img {
-    position: absolute;
-    margin-left: 1em;
-    margin-top: 0.7em;
-  }
-  .top {
-    padding-left: 2.2em;
+
+  .fab_button {
+    position: fixed;
+    bottom: 1.8rem;
+    right: 1.5rem;
+    z-index: 100;
+    background-color: ${GlobalStyled.theme.secondary};
+    color: ${GlobalStyled.theme.headerIconColor};
+    border-radius: 40%;
+    cursor: 'pointer';
+    @media (min-width: ${GlobalStyled.theme.mobileMinWidth}) {
+      bottom: 1.8rem;
+      left: calc(50% + 7rem);
+    }
+    &:hover {
+      background-color: ${GlobalStyled.theme.primary};
+    }
   }
 `;
 const BoardTitleDiv = styled.div`
@@ -140,7 +149,6 @@ const CheckInBody = styled.div`
 
 const Styled = {
   BoardTitleDiv,
-  BestStyledList,
   StyledList,
   ListDivider,
   CheckInHeader,

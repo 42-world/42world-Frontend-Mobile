@@ -1,11 +1,12 @@
-import { ProfileHeader } from "../../Components";
-import { Auth } from "./Components";
-import GlobalStyled from "../../Styled/Global.styled";
+import { ProfileHeader } from 'Components';
+import { Auth } from './Components';
+
+import GlobalStyled from 'Styled/Global.styled';
 
 const AuthPage = () => {
   return (
     <GlobalStyled.ProfileBackgroundDiv isProfile={true}>
-      <ProfileHeader title={"인증하기"} />
+      <ProfileHeader title={'인증하기'} />
       <Auth />
     </GlobalStyled.ProfileBackgroundDiv>
   );

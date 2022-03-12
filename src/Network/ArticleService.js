@@ -1,4 +1,5 @@
 import * as API from './APIType';
+import { useQuery } from 'react-query';
 
 const articleUrl = path => {
   return `${API.url('/articles')}${path}`;
@@ -91,10 +92,30 @@ const ArticleService = {
    * `200` : success \
    * `401` : fail
    */
-  getArticles: async (categoryId, page) => {
+  getAllArticles: async (categoryId, page) => {
     const method = 'GET';
     const url = articleUrl('');
     const take = 1000;
+    // const take = 3;
+    const params = { categoryId, page, take };
+
+    let response;
+    try {
+      response = await API.AXIOS({
+        params,
+        method,
+        url,
+      });
+    } catch (error) {
+      alert(error);
+    }
+    return response.data;
+  },
+  getArticles: async (categoryId, page) => {
+    const method = 'GET';
+    const url = articleUrl('');
+    // const take = 1000;
+    const take = 3;
     const params = { categoryId, page, take };
 
     let response;
@@ -144,21 +165,23 @@ const ArticleService = {
    * `200` : success
    * `401` : fail
    */
-  getArticlesById: async articlesId => {
+  getArticleById: async articleId => {
     const method = 'GET';
-    const url = articleUrl(`/${articlesId}`);
+    const url = articleUrl(`/${articleId}`);
 
-    let response;
-    try {
-      response = await API.AXIOS({
-        method,
-        url,
-      });
-    } catch (error) {
-      alert(error);
-    }
+    const response = await API.AXIOS({
+      method,
+      url,
+    });
     return response.data;
   },
+  // useArticle(articleId) {
+  //   return useQuery(
+  //     ['getArticleById', articleId],
+  //     async () => await this.getArticleById(articleId),
+  //     { suspense: true },
+  //   );
+  // },
   /**
    * **UPDATE** One Articles By Articles ID
    * @param {string} articlesId
@@ -195,15 +218,10 @@ const ArticleService = {
     const method = 'DELETE';
     const url = articleUrl(`/${articlesId}`);
 
-    let response;
-    try {
-      response = await API.AXIOS({
-        method,
-        url,
-      });
-    } catch (error) {
-      alert(error);
-    }
+    const response = await API.AXIOS({
+      method,
+      url,
+    });
     return response.data;
   },
   /**
@@ -237,18 +255,25 @@ const ArticleService = {
     const url = articleUrl(`/${articlesId}/comments`);
     const params = { order, page, take };
 
-    let response;
-    try {
-      response = await API.AXIOS({
-        method,
-        url,
-        params,
-      });
-    } catch (error) {
-      alert(error);
-    }
+    const response = await API.AXIOS({
+      method,
+      url,
+      params,
+    });
     return response.data;
   },
+  // useComments(articleId, order, page, take) {
+  //   return useQuery(
+  //     ['getCommentsById'],
+  //     async () =>
+  //       await ArticleService.getArticlesCommentsById(
+  //         articleId,
+  //         order,
+  //         page,
+  //         take,
+  //       ),
+  //   );
+  // },
   editArticles: async (articlesId, articles) => {
     const method = 'PUT';
     const url = articleUrl(`/${articlesId}`);

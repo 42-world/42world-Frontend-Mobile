@@ -1,7 +1,9 @@
 import styled from 'styled-components';
+
 import GlobalStyled from 'Styled/Global.styled';
+
 const CreateArticlePage = styled.div`
-  .header {
+  .page_header {
     position: fixed;
 
     box-sizing: border-box;
@@ -74,7 +76,6 @@ const CreateArticlePage = styled.div`
       flex-direction: column;
       flex-grow: 1;
       input {
-        position: sticky;
         top: 4.5rem;
         flex-grow: 0;
         box-sizing: border-box;
@@ -82,34 +83,66 @@ const CreateArticlePage = styled.div`
         display: flex;
         background-color: #fff;
         padding: 0.9rem 1rem;
-        border: 1px solid #ccc;
+        border: 1px solid
+          ${GlobalStyled.theme.createArticlePageInputBorderColor};
         font-size: 1rem;
         &:focus {
           outline: none;
         }
       }
 
-      textarea {
+      .editor {
         flex-grow: 1;
         box-sizing: border-box;
         width: 100%;
-        overflow: hidden;
-
-        display: flex;
-        background-color: #fff;
-        padding: 0.9rem 1rem;
-        border: 1px solid #ccc;
-        resize: none;
-        &:focus {
-          outline: none;
+        .toastui-editor-dropdown-toolbar {
+          flex-wrap: wrap;
+          height: auto;
+          width: min-content;
+        }
+        .toastui-editor-popup {
+          width: auto;
+          max-width: 400px;
+          .toastui-editor-file-select-button {
+            width: auto;
+            padding: 0 4px;
+            font-size: 0.7rem;
+          }
+          @media (max-width: 480px) {
+            margin-left: 0px;
+          }
         }
       }
     }
-    p {
-      position: fixed;
-      color: rgba(0, 0, 0, 30%);
-      bottom: 10px;
-      right: 10px;
+
+    .category_form {
+      * {
+        border: none !important;
+        border-bottom: none !important;
+      }
+      *:hover {
+        border: none !important;
+        border-bottom: none !important;
+      }
+      *::before {
+        border: none !important;
+        border-bottom: none !important;
+      }
+      *::after {
+        border: none !important;
+        border-bottom: none !important;
+      }
+
+      select {
+        color: ${GlobalStyled.theme.categoryNameTextColor};
+        font-size: 1.1rem;
+        font-weight: 700;
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+      svg {
+        color: ${GlobalStyled.theme.categoryNameTextColor};
+      }
     }
   }
 `;
