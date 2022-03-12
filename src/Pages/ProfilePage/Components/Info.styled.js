@@ -20,12 +20,12 @@ const InfoDiv = styled.div`
       font-size: 1.2rem;
       line-height: 20px;
 
-      color: ${GlobalStyled.theme.textColorWhite};
+      color: ${GlobalStyled.theme.textWhite};
     }
     .welcome-message {
       padding-left: 0.4rem;
       font-size: 0.5rem;
-      color: ${GlobalStyled.theme.textColorLightGray};
+      color: ${GlobalStyled.theme.textGray2};
     }
   }
 `;

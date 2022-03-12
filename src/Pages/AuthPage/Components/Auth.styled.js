@@ -36,7 +36,7 @@ const ErrorSpan = styled.span`
 const Input = styled(TextField)`
   && {
     * {
-      color: ${GlobalStyled.theme.textColorLight};
+      color: ${GlobalStyled.theme.textGray1};
     }
     #filled-error-helper-text {
       padding: 10px 12px;
@@ -59,8 +59,8 @@ const AuthDiv = styled.div`
   height: 100%;
   gap: 10px;
 
-  color: ${GlobalStyled.theme.textColorWhite};
-  fill: ${GlobalStyled.theme.textColorWhite};
+  color: ${GlobalStyled.theme.textWhite};
+  fill: ${GlobalStyled.theme.textWhite};
 
   .input_div {
     display: flex;
@@ -74,7 +74,7 @@ const AuthDiv = styled.div`
       flex: 1 1 40%;
       top: 50%;
       /* transform: translateY(-50%); */
-      color: ${GlobalStyled.theme.textColorLight};
+      color: ${GlobalStyled.theme.textGray1};
       font-weight: 600;
       content: '@student.42seoul.kr';
     }
@@ -83,23 +83,23 @@ const AuthDiv = styled.div`
   .send_button {
     width: 100%;
     margin-bottom: 1rem;
-    color: ${GlobalStyled.theme.textColorWhite};
+    color: ${GlobalStyled.theme.textWhite};
     background-color: ${GlobalStyled.theme.primary};
     &:hover {
-      /* color: ${GlobalStyled.theme.textColorWhite}; */
-      background-color: ${GlobalStyled.theme.disabled};
+      /* color: ${GlobalStyled.theme.textWhite}; */
+      background-color: ${GlobalStyled.theme.backgroundGray3};
       /* background-color: #0000001f; */
     }
     &:active {
-      /* color: ${GlobalStyled.theme.textColorWhite}; */
+      /* color: ${GlobalStyled.theme.textWhite}; */
       background-color: ${GlobalStyled.theme.primary};
     }
     &:focus {
-      color: ${GlobalStyled.theme.textColorWhite};
+      color: ${GlobalStyled.theme.textWhite};
       background-color: ${GlobalStyled.theme.primary};
     }
     &:disabled {
-      background-color: ${GlobalStyled.theme.disabled};
+      background-color: ${GlobalStyled.theme.backgroundGray3};
     }
   }
 
@@ -110,12 +110,12 @@ const AuthDiv = styled.div`
       margin-top: 2rem;
       h2 {
         font-size: 1.2rem;
-        color: ${GlobalStyled.theme.primary};
+        color: ${GlobalStyled.theme.textBlue};
         font-weight: 700;
       }
       h3 {
         font-size: 1rem;
-        color: ${GlobalStyled.theme.textColorLight};
+        color: ${GlobalStyled.theme.textGray1};
         font-weight: 400;
       }
     }
@@ -131,7 +131,7 @@ const AuthDiv = styled.div`
 
     h4 {
       font-size: 0.8rem;
-      color: ${GlobalStyled.theme.textColorLight};
+      color: ${GlobalStyled.theme.textGray1};
       font-weight: 400;
       &:first-child {
         margin-bottom: 0.5rem;
@@ -141,7 +141,7 @@ const AuthDiv = styled.div`
     button {
       margin-top: 1rem;
       width: max-content;
-      color: ${GlobalStyled.theme.textColorWhite};
+      color: ${GlobalStyled.theme.textWhite};
       text-decoration: underline;
       border: none;
       background: none;

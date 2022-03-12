@@ -27,11 +27,11 @@ const CommentContent = styled.div`
     ${props =>
       props.isMine
         ? css`
-            background: ${GlobalStyled.theme.textColorMint};
+            background: ${GlobalStyled.theme.backgroundBlue2};
             color: white;
           `
         : css`
-            background: ${GlobalStyled.theme.textColorLightGray};
+            background: ${GlobalStyled.theme.backgroundGray2};
           `}
     border-radius: 0.5rem;
     font-size: 0.75rem;
@@ -47,7 +47,7 @@ const CommentContent = styled.div`
     margin-bottom: 0.2rem;
     margin-left: 1rem;
     margin-right: 0.2rem;
-    color: ${GlobalStyled.theme.textColorSecondary};
+    color: ${GlobalStyled.theme.textGray4};
   }
 
   .liked_count {
@@ -58,7 +58,7 @@ const CommentContent = styled.div`
     margin-bottom: 0.2rem;
     margin-right: 1rem;
     font-size: 0.75rem;
-    color: ${GlobalStyled.theme.likedCountColor};
+    color: ${GlobalStyled.theme.buttonRed1};
 
     svg {
       width: 1rem;
@@ -93,7 +93,7 @@ const CreateCommentDiv = styled.div`
 
   form {
     width: 90%;
-    background-color: ${GlobalStyled.theme.textColorLight};
+    background-color: ${GlobalStyled.theme.textGray1};
     border-radius: 2rem;
     display: flex;
     flex-direction: row;
@@ -104,11 +104,11 @@ const CreateCommentDiv = styled.div`
 
     input {
       width: 90%;
-      color: ${GlobalStyled.theme.textColor};
+      color: ${GlobalStyled.theme.textBlack};
       background-color: rgba(0, 0, 0, 0);
       border: none;
       &::placeholder {
-        color: ${GlobalStyled.theme.textColorGray};
+        color: ${GlobalStyled.theme.textGray3};
       }
       &:focus {
         outline: none;
@@ -120,8 +120,8 @@ const CreateCommentDiv = styled.div`
       box-sizing: content-box;
       border: none;
       background: none;
-      background-color: ${GlobalStyled.theme.primary};
-      color: ${GlobalStyled.theme.textColorWhite};
+      background-color: ${GlobalStyled.theme.buttonBlue2};
+      color: ${GlobalStyled.theme.textWhite};
       width: 40px;
       height: 40px;
       margin-left: 0.5rem;
@@ -129,7 +129,7 @@ const CreateCommentDiv = styled.div`
       box-shadow: none;
 
       &:hover {
-        background-color: ${GlobalStyled.theme.primary};
+        background-color: ${GlobalStyled.theme.buttonBlue2};
       }
     }
   }
@@ -143,7 +143,7 @@ const ArticleLikedDiv = styled.div`
   margin-top: 1em;
   margin-bottom: 0.2rem;
   font-size: 0.95rem;
-  color: ${GlobalStyled.theme.likedCountColor};
+  color: ${GlobalStyled.theme.buttonRed1};
 
   svg {
     width: 2rem;
@@ -166,12 +166,12 @@ const ArticleCommentDiv = styled.div`
   width: 100%;
   align-items: center;
   justify-content: flex-start;
-  color: ${GlobalStyled.theme.commentIconColor};
+  color: ${GlobalStyled.theme.textBlue};
   font-size: 0.85rem;
 
   margin-top: 0.5rem;
   padding: 0.3rem 0.8rem 0.5rem 0.8rem;
-  border-top: 1.5px solid ${GlobalStyled.theme.borderColor};
+  border-top: 1.5px solid ${GlobalStyled.theme.lineGray2};
 
   svg {
     width: 1.3rem;
@@ -212,7 +212,7 @@ const ArticlePageDiv = styled.div`
       align-items: flex-end;
       padding: 0.7rem;
       width: 100%;
-      border-bottom: 1px solid ${GlobalStyled.theme.borderColor};
+      border-bottom: 1px solid ${GlobalStyled.theme.lineGray2};
 
       .title {
         display: flex;
@@ -222,7 +222,7 @@ const ArticlePageDiv = styled.div`
         h1 {
           font-size: 1rem;
           font-weight: 600;
-          color: ${GlobalStyled.theme.textColor};
+          color: ${GlobalStyled.theme.textBlack};
           margin-bottom: 0.2rem;
           padding-right: 0.5rem;
         }
@@ -233,7 +233,7 @@ const ArticlePageDiv = styled.div`
           align-items: center;
 
           h2 {
-            color: ${GlobalStyled.theme.textColorGray};
+            color: ${GlobalStyled.theme.textGray3};
             font-size: 0.7rem;
             font-weight: 300;
             margin-right: 0.8rem;
@@ -285,13 +285,13 @@ const CommentDiv = styled.div`
       margin: 0rem 0.7rem;
       ${props => props.isMine && `text-align: right;`}
       h1 {
-        color: ${GlobalStyled.theme.textColor};
+        color: ${GlobalStyled.theme.textBlack};
         font-size: 0.9rem;
         font-weight: 600;
         line-height: 1.1;
       }
       h2 {
-        color: ${GlobalStyled.theme.textColorGray};
+        color: ${GlobalStyled.theme.textGray3};
         font-size: 0.4rem;
         font-weight: 400;
       }

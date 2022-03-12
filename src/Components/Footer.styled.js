@@ -4,7 +4,7 @@ import GlobalStyled from 'Styled/Global.styled';
 
 const Footer = styled.div`
   background: ${props =>
-    props.isProfile && GlobalStyled.theme.profilePageMyInfoBackgroundColor};
+    props.isProfile && GlobalStyled.theme.backgroundTheme3};
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -27,7 +27,7 @@ const Footer = styled.div`
   h6 {
     font-size: 0.6rem;
     font-weight: 700;
-    color: ${GlobalStyled.theme.textColorGray};
+    color: ${GlobalStyled.theme.textGray3};
   }
 `;
 

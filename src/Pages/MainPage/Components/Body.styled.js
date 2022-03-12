@@ -8,7 +8,7 @@ const ListDivider = styled.div`
   box-sizing: border-box;
   padding: ${props => props.margin || '0'};
   background-color: ${props =>
-    props.backgroundColor || GlobalStyled.theme.borderColor};
+    props.backgroundColor || GlobalStyled.theme.lineGray2};
 `;
 
 const StyledList = styled(List)`
@@ -20,7 +20,7 @@ const StyledList = styled(List)`
     right: 1.5rem;
     z-index: 100;
     background-color: ${GlobalStyled.theme.secondary};
-    color: ${GlobalStyled.theme.headerIconColor};
+    color: ${GlobalStyled.theme.buttonWhite};
     border-radius: 40%;
     cursor: 'pointer';
     @media (min-width: ${GlobalStyled.theme.mobileMinWidth}) {
@@ -36,9 +36,9 @@ const BoardTitleDiv = styled.div`
   box-sizing: border-box;
   width: 100%;
   display: flex;
-  background-color: ${GlobalStyled.theme.background};
-  color: ${GlobalStyled.theme.text};
-  border-bottom: 1px solid ${GlobalStyled.theme.borderColor};
+  background-color: ${GlobalStyled.theme.backgroundGray1};
+  color: ${GlobalStyled.theme.textBlack};
+  border-bottom: 1px solid ${GlobalStyled.theme.lineGray2};
   // padding: 0.65rem 1.2rem;
   padding: 0.65rem 1rem;
   align-items: center;
@@ -66,7 +66,7 @@ const BoardTitleDiv = styled.div`
 const CheckInHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  background-color: ${GlobalStyled.theme.mainPageCheckInInfoBackgroundColor};
+  background-color: ${GlobalStyled.theme.backgroundBlue1};
   flex-direction: row;
   align-items: center;
   padding: 0.5rem 1.2rem;
@@ -81,7 +81,7 @@ const CheckInHeader = styled.div`
   }
   button {
     padding: 0.2rem 0.5rem;
-    background-color: ${GlobalStyled.theme.primary};
+    background-color: ${GlobalStyled.theme.buttonBlue2};
   }
 `;
 
@@ -89,7 +89,7 @@ const CheckInBody = styled.div`
   display: flex;
   justify-content: space-around;
   padding: 0.5rem 1.2rem 1.8rem;
-  background-color: ${GlobalStyled.theme.mainPageCheckInInfoBackgroundColor};
+  background-color: ${GlobalStyled.theme.backgroundBlue1};
 
   .circular_progress_bar_div {
     width: 7.3rem;
@@ -102,7 +102,7 @@ const CheckInBody = styled.div`
       font-size: 1.1rem;
       font-weight: 700;
       margin-bottom: 0.3rem;
-      color: ${GlobalStyled.theme.textColor};
+      color: ${GlobalStyled.theme.textBlack};
     }
 
     .circular_progress_bar {
@@ -120,29 +120,27 @@ const CheckInBody = styled.div`
 
   .gaepo {
     .CircularProgressbar-trail {
-      stroke: ${GlobalStyled.theme
-        .mainPageCheckInInfoProgressBarBackgroundColor}80;
+      stroke: ${GlobalStyled.theme.backgroundGray3}80;
     }
     .CircularProgressbar-path {
-      stroke: ${GlobalStyled.theme.mainPageCheckInInfoProgressBarColorGaepo};
+      stroke: ${GlobalStyled.theme.primary};
     }
     .CircularProgressbar-text {
-      fill: ${GlobalStyled.theme.textColor};
-      //fill: ${GlobalStyled.theme.mainPageCheckInInfoProgressBarColorGaepo};
+      fill: ${GlobalStyled.theme.textBlack};
+      //fill: ${GlobalStyled.theme.primary};
     }
   }
 
   .seocho {
     .CircularProgressbar-trail {
-      stroke: ${GlobalStyled.theme
-        .mainPageCheckInInfoProgressBarBackgroundColor}80;
+      stroke: ${GlobalStyled.theme.backgroundGray3}80;
     }
     .CircularProgressbar-path {
-      stroke: ${GlobalStyled.theme.mainPageCheckInInfoProgressBarColorSeocho};
+      stroke: ${GlobalStyled.theme.primaryEcole};
     }
     .CircularProgressbar-text {
-      fill: ${GlobalStyled.theme.textColor};
-      //fill: ${GlobalStyled.theme.mainPageCheckInInfoProgressBarColorSeocho};
+      fill: ${GlobalStyled.theme.textBlack};
+      //fill: ${GlobalStyled.theme.primaryEcole};
     }
   }
 `;

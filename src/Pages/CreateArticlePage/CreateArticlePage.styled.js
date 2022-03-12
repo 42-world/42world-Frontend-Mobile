@@ -83,8 +83,7 @@ const CreateArticlePage = styled.div`
         display: flex;
         background-color: #fff;
         padding: 0.9rem 1rem;
-        border: 1px solid
-          ${GlobalStyled.theme.createArticlePageInputBorderColor};
+        border: 1px solid ${GlobalStyled.theme.lineBlue1};
         font-size: 1rem;
         &:focus {
           outline: none;
@@ -134,14 +133,14 @@ const CreateArticlePage = styled.div`
       }
 
       select {
-        color: ${GlobalStyled.theme.categoryNameTextColor};
+        color: ${GlobalStyled.theme.textWhite};
         font-size: 1.1rem;
         font-weight: 700;
         padding-top: 0;
         padding-bottom: 0;
       }
       svg {
-        color: ${GlobalStyled.theme.categoryNameTextColor};
+        color: ${GlobalStyled.theme.textWhite};
       }
     }
   }
