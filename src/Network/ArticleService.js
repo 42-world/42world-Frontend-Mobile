@@ -91,6 +91,25 @@ const ArticleService = {
    * `200` : success \
    * `401` : fail
    */
+  getAllArticles: async (categoryId, page) => {
+    const method = 'GET';
+    const url = articleUrl('');
+    const take = 1000;
+    // const take = 3;
+    const params = { categoryId, page, take };
+
+    let response;
+    try {
+      response = await API.AXIOS({
+        params,
+        method,
+        url,
+      });
+    } catch (error) {
+      alert(error);
+    }
+    return response.data;
+  },
   getArticles: async (categoryId, page) => {
     const method = 'GET';
     const url = articleUrl('');
