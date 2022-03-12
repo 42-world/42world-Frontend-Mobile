@@ -86,17 +86,15 @@ const ProfileBackgroundDiv = styled.div`
 
   // color
   background-color: ${props =>
-    props.isProfile
-      ? theme.profilePageMyInfoBackgroundColor
-      : theme.profilePageBackgroundColor};
+    props.isProfile ? theme.backgroundTheme3 : theme.backgroundGray1};
 `;
 
 const BoardTitleDiv = styled.div`
   box-sizing: border-box;
   width: 100%;
   display: flex;
-  background-color: ${theme.categoryNameBackgroundColor};
-  color: ${theme.categoryNameTextColor};
+  background-color: ${theme.backgroundBlue3};
+  color: ${theme.textWhite};
   // padding: 0.65rem 1.2rem;
   padding: 0.65rem 1rem;
   align-items: center;
