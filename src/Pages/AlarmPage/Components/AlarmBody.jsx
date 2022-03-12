@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import NotificationService from 'Network/NotificationService';
-import dayjs from 'dayjs';
+import { getArticleTime } from 'Utils/dayjsUtils';
 
 import Styled from './AlarmArticle.styled.js';
 
@@ -36,8 +36,6 @@ const AlarmBody = () => {
         : article.content;
     return alarmType(context, article.type);
   };
-
-  const getArticleTime = time => dayjs(time).format('MM/DD HH:mm');
 
   const readAlarm = async () => {
     const read = await NotificationService.readAllNotifications();
