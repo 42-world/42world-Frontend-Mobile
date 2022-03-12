@@ -22,7 +22,6 @@ const CategoryBody = () => {
   // const [hasNextPage, setHasNextPage] = useState(true);
   let hasNextPage = true;
   const [target, setTarget] = useState(null);
-  const [curCate, setCurCate] = useState('');
   const cateList = ['자유 게시판', '익명 게시판', '공지 게시판'];
   const loca = useLocation();
   const navi = useNavigate();
@@ -36,37 +35,13 @@ const CategoryBody = () => {
     navi(`/article/${id}`);
   };
 
-  // const setInitalArticles = async () => {
-  //   setIsLoaded(true);
-  //   const result = await ArticleService.getArticles(categoryId);
-  //   console.log('result ,', result);
-  //   const meta = result.meta;
-  //   setArticles(result.data);
-  //   setIsLoaded(false);
-  //   setHasNextPage(meta.hasNextPage);
-  //   hasNextPage = meta.hasNextPage;
-  // };
-
   const handleChangeCate = id => {
     navi(`/category/${parseInt(id) + 1}`);
   };
-  
-  useEffect(() => {
-    if (categoryId > 3) {
-      alert('준비 중입니다!');
-      navi('/');
-    }
-    setCurCate(getCategoryByUrl(loca));
-  }, [categoryId]);
 
-  // 동기적으로 sleep하는 함수
-  // const sleep = delay => {
-  //   let start = new Date().getTime();
-  //   while (new Date().getTime() < start + delay);
-  // };
-
-  const getMoreItem = async () => {
+  const getMoreArticles = async () => {
     if (!hasNextPage) return;
+
     setIsLoaded(true);
     const result = await ArticleService.getArticles(categoryId, page);
     const newData = result.data;
@@ -81,19 +56,23 @@ const CategoryBody = () => {
 
   const onIntersect = async ([entry], observer) => {
     if (entry.isIntersecting && !isLoaded) {
+      // if (page === 1 && hasNextPage) console.log("리렌더링 확인")
       observer.unobserve(entry.target);
-      await getMoreItem();
+      await getMoreArticles();
       observer.observe(entry.target);
     }
   };
 
+  // 존재하지 않는 categortId 일 경우의 예외 처리, 하드 코딩.
   useEffect(() => {
     if (categoryId > 3) {
-      alert('준비 중입니다!');
-      navi('/');
+      navi('/error');
     }
-    setCurCate(getCategoryByUrl(loca));
-  }, []);
+    setArticles([]);
+    // 리렌더링 되면서 let으로 선언한 page, hasNextPage가 자동으로 초기화 되므로 state만 초기화 주면 된다.
+    // page = 1;
+    // hasNextPage = true;
+  }, [categoryId]);
 
   useEffect(() => {
     let observer;
@@ -105,7 +84,7 @@ const CategoryBody = () => {
       observer.observe(target); // observer가 해당 객체를 감시하여 변경된다면 onIntersect 콜백 함수를 실행할 것이다.
     }
     return () => observer && observer.disconnect(); // 주석 씌워도 잘 돌아가네?
-  }, [target]);
+  }, [target, categoryId]);
 
   return (
     <>

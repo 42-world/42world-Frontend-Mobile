@@ -11,7 +11,9 @@ const PreviewArticle = ({ article, isBestArticle, onClickArticle }) => {
     dayjs(time).isSame(dayjs(), 'day')
       ? dayjs(time).format('HH:mm')
       : dayjs(time).format('MM/DD');
+
   const isNewArticle = time => dayjs().isBefore(dayjs(time).add(12, 'hour'));
+
   isNewArticle(article.createdAt);
   const getPlainText = text => removeMarkdown(text).replaceAll('\\', '');
   return (
