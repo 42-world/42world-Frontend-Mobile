@@ -27,7 +27,7 @@ const ArticleViewDiv = styled.div`
     align-items: flex-end;
     padding: 0.7rem;
     width: 100%;
-    border-bottom: 1px solid ${GlobalStyled.theme.borderColor};
+    border-bottom: 1px solid ${GlobalStyled.theme.lineGray2};
 
     .title {
       display: flex;
@@ -37,7 +37,7 @@ const ArticleViewDiv = styled.div`
       h1 {
         font-size: 1rem;
         font-weight: 600;
-        color: ${GlobalStyled.theme.textColor};
+        color: ${GlobalStyled.theme.textBlack};
         margin-bottom: 0.2rem;
         padding-right: 0.5rem;
       }
@@ -48,7 +48,7 @@ const ArticleViewDiv = styled.div`
         align-items: center;
 
         h2 {
-          color: ${GlobalStyled.theme.textColorGray};
+          color: ${GlobalStyled.theme.textGray3};
           font-size: 0.7rem;
           font-weight: 300;
           margin-right: 0.8rem;
@@ -89,7 +89,7 @@ const ArticleReactionDiv = styled.div`
   margin-top: 1em;
   margin-bottom: 0.2rem;
   font-size: 0.95rem;
-  color: ${GlobalStyled.theme.likedCountColor};
+  color: ${GlobalStyled.theme.buttonRed1};
 
   svg {
     width: 2rem;
@@ -114,12 +114,12 @@ const CommentsCountDiv = styled.div`
   width: 100%;
   align-items: center;
   justify-content: flex-start;
-  color: ${GlobalStyled.theme.commentIconColor};
+  color: ${GlobalStyled.theme.buttonBlue2};
   font-size: 0.85rem;
 
   margin-top: 0.5rem;
   padding: 0.3rem 0.8rem 0.5rem 0.8rem;
-  border-top: 1.5px solid ${GlobalStyled.theme.borderColor};
+  border-top: 1.5px solid ${GlobalStyled.theme.lineGray2};
 
   svg {
     width: 1.3rem;
@@ -154,13 +154,13 @@ const CommentViewDiv = styled.div`
       margin: 0rem 0.7rem;
       ${props => props.isMine && `text-align: right;`}
       h1 {
-        color: ${GlobalStyled.theme.textColor};
+        color: ${GlobalStyled.theme.textBlack};
         font-size: 0.9rem;
         font-weight: 600;
         line-height: 1.1;
       }
       h2 {
-        color: ${GlobalStyled.theme.textColorGray};
+        color: ${GlobalStyled.theme.textGray3};
         font-size: 0.4rem;
         font-weight: 400;
       }
