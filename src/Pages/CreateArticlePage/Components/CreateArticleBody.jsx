@@ -18,7 +18,7 @@ const CreateArticleBody = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [curCate, setCurCate] = useState(0);
-  const cateList = ['자유 게시판', '익명 게시판'];
+  const cateList = ['자유 게시판'];
   const [isSending, setIsSending] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
 

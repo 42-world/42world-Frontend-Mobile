@@ -65,7 +65,7 @@ const CategoryBody = () => {
 
   // 존재하지 않는 categortId 일 경우의 예외 처리, 하드 코딩.
   useEffect(() => {
-    if (categoryId > 3) {
+    if (categoryId > 3 || categoryId == 2) {
       navi('/error');
     }
     setArticles([]);
@@ -98,6 +98,7 @@ const CategoryBody = () => {
               }}
             >
               {cateList.map((cate, idx) => {
+                if (idx === 1) return;
                 return <option value={idx}>{cate}</option>;
               })}
             </NativeSelect>
