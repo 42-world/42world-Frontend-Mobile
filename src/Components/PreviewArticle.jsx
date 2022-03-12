@@ -1,4 +1,5 @@
-import dayjs from 'dayjs';
+import { getArticleTime, isNewArticle } from 'Utils/dayjsUtils';
+import removeMarkdown from 'remove-markdown';
 
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import SmsOutlined from '@mui/icons-material/SmsOutlined';
@@ -6,12 +7,7 @@ import SmsOutlined from '@mui/icons-material/SmsOutlined';
 import Styled from './PreviewArticle.styled';
 
 const PreviewArticle = ({ article, isBestArticle, onClickArticle }) => {
-  const getArticleTime = time =>
-  dayjs(time).isSame(dayjs(), 'day')
-  ? dayjs(time).format('HH:mm')
-  : dayjs(time).format('MM/DD');
-  const isNewArticle = time => dayjs().isBefore(dayjs(time).add(12, "hour"));
-  isNewArticle(article.createdAt);
+  const getPlainText = text => removeMarkdown(text).replaceAll('\\', '');
   return (
     <Styled.PreviewArticleDiv
       button
@@ -25,7 +21,7 @@ const PreviewArticle = ({ article, isBestArticle, onClickArticle }) => {
         {isNewArticle(article.createdAt) && <img src="/assets/new.svg" />}
         {article.title}
       </div>
-      <div className="middle">{article.content}</div>
+      <div className="middle">{getPlainText(article.content)}</div>
       <div className="bottom">
         {article.writer && <h2>{article.writer.nickname}</h2>}
         <h2>{getArticleTime(article.createdAt)}</h2>

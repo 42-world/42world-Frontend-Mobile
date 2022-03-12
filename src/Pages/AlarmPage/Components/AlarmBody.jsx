@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import NotificationService from 'Network/NotificationService';
-import dayjs from 'dayjs';
+import { getArticleTime } from 'Utils/dayjsUtils';
 
 import Styled from './AlarmArticle.styled.js';
 
@@ -26,8 +26,7 @@ const AlarmBody = () => {
   const mainTextLen = 10;
 
   const moveArticles = articleId => {
-    alert('구현 중입니다!');
-    // navi(`/article/${articleId}`);
+    navi(`/article/${articleId}`);
   };
 
   const previewMainText = article => {
@@ -37,8 +36,6 @@ const AlarmBody = () => {
         : article.content;
     return alarmType(context, article.type);
   };
-
-  const getArticleTime = time => dayjs(time).format('MM/DD HH:mm');
 
   const readAlarm = async () => {
     const read = await NotificationService.readAllNotifications();
@@ -68,7 +65,7 @@ const AlarmBody = () => {
               className="article"
               isRead={article.isRead}
               isNotice={false}
-              onClick={() => moveArticles(article.userId)}
+              onClick={() => moveArticles(article.articleId)}
             >
               <div className="left">새 댓글</div>
               <div className="middle">{previewMainText(article)}</div>
