@@ -13,7 +13,7 @@ const ProfileHeaderDiv = styled.div`
   box-sizing: border-box;
 
   svg {
-    color: ${GlobalStyled.theme.headerIconColor};
+    color: ${GlobalStyled.theme.white};
     cursor: pointer;
   }
   #unvisible {

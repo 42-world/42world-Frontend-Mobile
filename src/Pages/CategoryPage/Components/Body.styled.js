@@ -34,7 +34,7 @@ const StyledList = styled(List)`
     right: 1.5rem;
     z-index: 100;
     background-color: ${GlobalStyled.theme.secondary};
-    color: ${GlobalStyled.theme.headerIconColor};
+    color: ${GlobalStyled.theme.buttonWhite};
     border-radius: 40%;
     cursor: 'pointer';
     @media (min-width: ${GlobalStyled.theme.mobileMinWidth}) {

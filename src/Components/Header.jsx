@@ -101,13 +101,13 @@ const Header = () => {
         <div>
           {!isArticle && (
             <MenuIcon
-              sx={{ color: GlobalStyled.theme.headerIconColor }}
+              sx={{ color: GlobalStyled.theme.white }}
               onClick={handleOpenMenu}
             />
           )}
           {isArticle && (
             <ArrowBackIosRoundedIcon
-              sx={{ color: GlobalStyled.theme.headerIconColor }}
+              sx={{ color: GlobalStyled.theme.white }}
               onClick={handleBackButton}
             />
           )}
@@ -122,15 +122,15 @@ const Header = () => {
         </div>
         <div>
           {/*<SearchIcon
-            sx={{ color: GlobalStyled.theme.headerIconColor }}
+            sx={{ color: GlobalStyled.theme.white }}
             onClick={handleToggleSearch}
           />*/}
           <AccountCircleIcon
-            sx={{ color: GlobalStyled.theme.headerIconColor }}
+            sx={{ color: GlobalStyled.theme.white }}
             onClick={() => navi('/profile')}
           />
           <NotificationsIcon
-            sx={{ color: GlobalStyled.theme.headerIconColor }}
+            sx={{ color: GlobalStyled.theme.white }}
             onClick={() => navi('/alarm')}
           />
         </div>
@@ -142,7 +142,7 @@ const Header = () => {
           height: GlobalStyled.theme.headerHeight,
         }}
       ></div>
-      {/* <SearchIcon sx={{ color: GlobalStyled.theme.headerIconColor }} onClick={() => navi('/search')} /> */}
+      {/* <SearchIcon sx={{ color: GlobalStyled.theme.white }} onClick={() => navi('/search')} /> */}
       <SwipeableDrawer
         anchor="left"
         open={isMenuModal}

@@ -17,9 +17,10 @@ const AlramArticleDiv = styled.div`
   background-color: #fff;
   ${props => (props.isNotice ? `cursor: default;` : `cursor: pointer;`)}
   ${props =>
-    props.isRead && `background-color: ${GlobalStyled.theme.textColorLight};`}
+    props.isRead && `background-color: ${GlobalStyled.theme.textGray1};`}
   ${props =>
-    props.isNotice && `background-color: ${GlobalStyled.theme.primary}99;`}
+    props.isNotice &&
+    `background-color: ${GlobalStyled.theme.backgroundBlue2}99;`}
 
   .left {
     word-break: keep-all;

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import GlobalStyled from 'Styled/Global.styled';
 
 const SettingDiv = styled.div`
-  background: ${GlobalStyled.theme.profilePageBackgroundColor};
+  background: ${GlobalStyled.theme.backgroundGray1};
   .setting_container_title {
     box-sizing: border-box;
     font-size: 1.2rem;
