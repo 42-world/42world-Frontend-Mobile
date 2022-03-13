@@ -22,7 +22,7 @@ const CategoryBody = () => {
   // const [hasNextPage, setHasNextPage] = useState(true);
   let hasNextPage = true;
   const [target, setTarget] = useState(null);
-  const cateList = ['자유 게시판', '익명 게시판', '공지 게시판'];
+  const cateList = ['자유게시판', '익명게시판', '42born2code 공지'];
   const loca = useLocation();
   const navi = useNavigate();
   const categoryId = loca.pathname.split('/')[2];
