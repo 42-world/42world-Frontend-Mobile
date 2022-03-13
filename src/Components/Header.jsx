@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
 
+import { NotificationService } from 'Network';
 import qs from 'qs';
 
 import MenuModal from './MenuModal';
@@ -8,6 +9,7 @@ import MenuModal from './MenuModal';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+// import NotificationAddIcon from '@mui/icons-material/NotificationAdd';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
@@ -55,6 +57,7 @@ const Header = () => {
   const [isSearch, setIsSearch] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const [isArticle, setIsArticle] = useState(false);
+  const [isAlarm, setIsAlarm] = useState(false);
   const loca = useLocation();
 
   const handleOpenMenu = (anchor, open) => {
@@ -87,11 +90,22 @@ const Header = () => {
       setIsMenuModal(true);
     }
   }, [queryData.mode]);
+
   useEffect(() => {
     if (loca.pathname.includes('article')) {
       setIsArticle(true);
     }
   }, [loca]);
+
+  useEffect(() => {
+    const getNoti = async () => {
+      const response = await NotificationService.getNotifications(); // 알람 API 필요
+      response.map(alarm => {
+        !alarm.isRead && setIsAlarm(true);
+      });
+    };
+    getNoti();
+  }, []);
 
   const navi = useNavigate();
 
@@ -129,10 +143,19 @@ const Header = () => {
             sx={{ color: GlobalStyled.theme.white }}
             onClick={() => navi('/profile')}
           />
-          <NotificationsIcon
-            sx={{ color: GlobalStyled.theme.white }}
-            onClick={() => navi('/alarm')}
-          />
+          {isAlarm ? (
+            <div className="newAlarm">
+              <NotificationsIcon
+                sx={{ color: GlobalStyled.theme.white }}
+                onClick={() => navi('/alarm')}
+              />
+            </div>
+          ) : (
+            <NotificationsIcon
+              sx={{ color: GlobalStyled.theme.white }}
+              onClick={() => navi('/alarm')}
+            />
+          )}
         </div>
         {/*{isSearch && <SearchBar />}*/}
       </Styled.HeaderStyleDiv>
