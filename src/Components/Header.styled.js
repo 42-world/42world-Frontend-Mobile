@@ -45,6 +45,17 @@ const HeaderStyleDiv = styled.div`
       margin-left: 0.5rem;
     }
   }
+  .newAlarm {
+    width: auto;
+    flex-grow: 0;
+    &:after {
+      content: '●';
+      color: ${GlobalStyled.theme.buttonRed2};
+      font-size: 0.5rem;
+      width: 0;
+      transform: translateX(-0.7rem) translateY(-0.25rem);
+    }
+  }
 `;
 
 const Styled = { HeaderStyleDiv };
