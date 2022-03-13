@@ -144,10 +144,12 @@ const Header = () => {
             onClick={() => navi('/profile')}
           />
           {isAlarm ? (
-            <NotificationsIcon
-              sx={{ color: GlobalStyled.theme.white }}
-              onClick={() => navi('/alarm')}
-            />
+            <div className="newAlarm">
+              <NotificationsIcon
+                sx={{ color: GlobalStyled.theme.white }}
+                onClick={() => navi('/alarm')}
+              />
+            </div>
           ) : (
             <NotificationsIcon
               sx={{ color: GlobalStyled.theme.white }}
