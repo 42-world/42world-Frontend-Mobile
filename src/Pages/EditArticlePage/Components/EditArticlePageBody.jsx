@@ -9,7 +9,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 import { getCategoryById } from 'Utils';
 import { AuthContext } from 'App';
-import { ArticleService } from 'Network';
+import { ArticleService, ImageService } from 'Network';
 
 import GlobalStyled from 'Styled/Global.styled';
 
@@ -65,9 +65,15 @@ const EditArticlePageBody = () => {
 
   const markdownEditorSetting = () => {
     const editor = editorRef.current;
-    //console.log(editor);
     editor.getRootElement().classList.add('editor');
-    //console.log(editor.getInstance());
+    editor.getInstance().removeHook('addImageBlobHook');
+    editor.getInstance().addHook('addImageBlobHook', (blob, callback) => {
+      (async () => {
+        ImageService.uploadImage(blob).then(res => {
+          callback(res);
+        });
+      })();
+    });
   };
 
   useEffect(() => {
