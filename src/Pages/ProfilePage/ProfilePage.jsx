@@ -35,7 +35,7 @@ const ProfilePage = () => {
             <Info />
             <Articles />
           </Styled.CustomBox>
-          <Styled.CustomBox marginBottom="16px">
+          <Styled.CustomBox marginBottom="16px" style={{ cursor: 'default' }}>
             <Authenticate />
           </Styled.CustomBox>
           <Styled.CustomBox marginBottom="16px">
