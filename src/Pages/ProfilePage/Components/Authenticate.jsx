@@ -18,7 +18,10 @@ const Authenticate = () => {
   };
   return (
     <>
-      <CommonStyled.CustomDiv onClick={handleAuthClick}>
+      <CommonStyled.CustomDiv
+        style={auth.state !== 200 ? { cursor: 'pointer' } : {}}
+        onClick={handleAuthClick}
+      >
         {auth.state !== 200 ? (
           <>
             <div style={{ color: '#53B7BA' }}>인증하기</div>
