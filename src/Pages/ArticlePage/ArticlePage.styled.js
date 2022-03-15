@@ -159,10 +159,32 @@ const CommentViewDiv = styled.div`
         font-weight: 600;
         line-height: 1.1;
       }
+
       h2 {
         color: ${GlobalStyled.theme.textGray3};
         font-size: 0.4rem;
         font-weight: 400;
+        display: flex;
+        flex-direction: row-reverse;
+
+        .delete_button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: row;
+          margin-bottom: 0.2rem;
+          font-size: 0.75rem;
+          border: none;
+          background: none;
+          color: ${GlobalStyled.theme.textGray3};
+
+          svg {
+            width: 1rem;
+            height: 1rem;
+            margin-right: 0.1rem;
+            cursor: pointer;
+          }
+        }
       }
     }
   }
@@ -202,24 +224,12 @@ const CommentContent = styled.div`
     margin: 0 0.3rem;
   }
 
-  .delete_button {
-    background: none;
-    border: none;
-    font-size: 0.7rem;
-    white-space: nowrap;
-    margin-bottom: 0.2rem;
-    margin-left: 1rem;
-    margin-right: 0.2rem;
-    color: ${GlobalStyled.theme.textGray4};
-  }
-
   .liked_count {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: row;
     margin-bottom: 0.2rem;
-    margin-right: 1rem;
     font-size: 0.75rem;
     color: ${GlobalStyled.theme.buttonRed1};
 
