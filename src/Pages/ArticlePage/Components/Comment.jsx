@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { getProfile } from 'Utils';
 import { getArticleTime } from 'Utils/dayjsUtils';
@@ -7,7 +7,14 @@ import CommentView from './CommentView';
 import { useDeleteComment, useLikeComment } from './hooks';
 
 const Comment = ({ currentUserId, articleId, comment }) => {
-  const likeComment = useLikeComment(comment.id, articleId);
+  const [isLike, setIsLike] = useState(comment.isLike);
+  const [likeCount, setLikeCount] = useState(comment.likeCount);
+  const likeComment = useLikeComment(
+    comment.id,
+    articleId,
+    setIsLike,
+    setLikeCount,
+  );
   const deleteComment = useDeleteComment(comment.id, articleId);
 
   const props = {
@@ -15,11 +22,11 @@ const Comment = ({ currentUserId, articleId, comment }) => {
     profileSrc: getProfile.findProfileById(comment.writer.character),
     writer: comment.writer.nickname,
     time: getArticleTime(comment.createdAt),
-    likeCount: comment.likeCount,
+    likeCount: likeCount,
     content: comment.content,
     handleClickDelete: deleteComment.mutate,
     handleClickLike: likeComment.mutate,
-    isLike: comment.isLike,
+    isLike: isLike,
   };
   return <CommentView {...props} />;
 };

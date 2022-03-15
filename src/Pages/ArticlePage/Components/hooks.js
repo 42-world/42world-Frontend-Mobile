@@ -73,7 +73,7 @@ export function useCreateComment(input, articleId, lastComment) {
   );
 }
 
-export function useLikeComment(commentId, articleId) {
+export function useLikeComment(commentId, articleId, setIsLike, setLikeCount) {
   const queryClient = useQueryClient();
   return useMutation(
     async () =>
@@ -91,9 +91,11 @@ export function useLikeComment(commentId, articleId) {
       //     },
       //   );
       // },
-      onSuccess: () => {
+      onSuccess: result => {
+        setIsLike(result.isLike);
+        setLikeCount(result.likeCount);
         // 새로 fetch
-        queryClient.invalidateQueries(['getCommentsByArticleId', articleId]);
+        // queryClient.invalidateQueries(['getCommentsByArticleId', articleId]);
       },
     },
   );
