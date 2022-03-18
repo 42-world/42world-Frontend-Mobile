@@ -55,7 +55,7 @@ const theme = {
 };
 
 const assets = {
-  headerLogo: '/assets/42mainlogo3.png',
+  headerLogo: '/assets/42mainlogo.png',
   sidebar: {
     '80000co': '/assets/sidebar/80000co.png',
     humansof42: '/assets/sidebar/humansof42.png',
