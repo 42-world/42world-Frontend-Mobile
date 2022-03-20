@@ -192,11 +192,14 @@ const UserService = {
       response = await API.AXIOS({
         method,
         url,
+        params: {
+          take: 2000,
+        },
       });
     } catch (error) {
       console.log('service : ', error);
     }
-    return response.data;
+    return response.data.data;
   },
   getMyArticles: async () => {
     const method = 'GET';
@@ -207,11 +210,14 @@ const UserService = {
       response = await API.AXIOS({
         method,
         url,
+        params: {
+          take: 2000,
+        },
       });
     } catch (error) {
       console.log('service : ', error);
     }
-    return response.data;
+    return response.data.data;
   },
   getMyComments: async () => {
     const method = 'GET';
@@ -222,11 +228,14 @@ const UserService = {
       response = await API.AXIOS({
         method,
         url,
+        params: {
+          take: 2000,
+        },
       });
     } catch (error) {
       console.log('service : ', error);
     }
-    return response.data;
+    return response.data.data;
   },
   getNoviceProfile: async () => {
     const method = 'GET';
