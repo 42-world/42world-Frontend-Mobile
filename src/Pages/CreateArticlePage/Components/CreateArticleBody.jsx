@@ -26,6 +26,7 @@ const CreateArticleBody = () => {
   const open = Boolean(anchorEl);
 
   const editorRef = useRef(null);
+  const titleRef = useRef(null);
 
   const handleClickPopper = event => {
     setAnchorEl(event.currentTarget);
@@ -86,6 +87,7 @@ const CreateArticleBody = () => {
     if (editorRef.current) {
       markdownEditorSetting();
     }
+    titleRef.current.focus();
   }, [editorRef]);
 
   const handleClick = () => {
@@ -132,6 +134,7 @@ const CreateArticleBody = () => {
             placeholder="제목을 입력하세요"
             onChange={handleChangeTitle}
             maxLength={30}
+            ref={titleRef}
           />
 
           <Editor
@@ -140,6 +143,7 @@ const CreateArticleBody = () => {
             placeholder="내용을 입력하세요"
             onChange={handleChangeContent}
             ref={editorRef}
+            autofocus={false}
           />
         </form>
       </div>
