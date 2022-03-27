@@ -6,6 +6,7 @@ const CreateArticlePage = styled.div`
   .page_header {
     position: fixed;
 
+    z-index: 999;
     box-sizing: border-box;
     width: 100%;
     display: flex;
