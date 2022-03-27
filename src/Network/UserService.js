@@ -193,7 +193,7 @@ const UserService = {
         method,
         url,
         params: {
-          take: 2000,
+          take: 999,
         },
       });
     } catch (error) {
@@ -211,7 +211,7 @@ const UserService = {
         method,
         url,
         params: {
-          take: 2000,
+          take: 999,
         },
       });
     } catch (error) {
@@ -229,7 +229,7 @@ const UserService = {
         method,
         url,
         params: {
-          take: 2000,
+          take: 999,
         },
       });
     } catch (error) {
