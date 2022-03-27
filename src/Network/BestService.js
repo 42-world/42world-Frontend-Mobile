@@ -17,7 +17,7 @@ const BestService = {
    */
   getBestArticle: async count => {
     const method = 'GET';
-    const url = bestUrl(`?limit=${count}`);
+    const url = bestUrl(`?take=${count}`);
     let response;
     try {
       response = await API.AXIOS({
