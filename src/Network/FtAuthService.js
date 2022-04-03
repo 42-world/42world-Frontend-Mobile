@@ -1,7 +1,7 @@
 import * as API from './APIType';
 
 const ftauthUrl = path => {
-  return `${API.url('/ft-auth')}${path}`;
+  return `${API.url('/intra-auth')}${path}`;
 };
 
 const FtAuthService = {
